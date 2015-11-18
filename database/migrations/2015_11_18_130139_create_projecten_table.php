@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGebruikersTable extends Migration
+class CreateProjectenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +12,16 @@ class CreateGebruikersTable extends Migration
      */
     public function up()
     {
-        Schema::create('gebruikers', function (Blueprint $table) {
+        Schema::create('projecten', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('gebruikersnaam')->unique();
+            $table->string('projectnaam');
+            $table->string('projecturl');
+            $table->string('gebruikersnaam');
             $table->string('wachtwoord');
-            $table->string('klantnummer')->unique();
-            $table->string('email');
             $table->string('bedrijf');
-            $table->string('voornaam');
-            $table->string('achternaam');
-            $table->text('profielfoto');
-        });
+            $table->text('omschrijvingproject');
+            });
     }
 
     /**
@@ -33,6 +31,6 @@ class CreateGebruikersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('gebruikers');
+        Schema::drop('projecten');
     }
 }
