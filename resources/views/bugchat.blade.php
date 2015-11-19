@@ -141,7 +141,6 @@
                     </li>
                     <li class="active">
                         <a href="{{URL::to('/bugchat')}}"><i class="fa fa-briefcase"></i> Bug discussie</a>
-
                     </li>
                 </ol>
             </div>

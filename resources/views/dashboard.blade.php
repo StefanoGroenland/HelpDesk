@@ -13,8 +13,6 @@
 
     @extends('layouts.top-links')
 
-
-
 </head>
 
 <body>
@@ -159,33 +157,11 @@
                         </ol>
                     </div>
                 </div>
-
+                
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="row">
-                    <a href="projectMuteren.html">
-                    <div class="col-lg-12 col-md-6">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <i class="fa fa-plus fa-4x"></i>
-                                    </div>
-                                    </div>
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <h3>Nieuw Project</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </a>
-                    </div>
-                </div>
-                    <div class="col-lg-3">
-                        <div class="row">
-                    <a href="klantMuteren.html">
+                    <a href="profiel.html">
                     <div class="col-lg-12 col-md-6">
                         <div class="panel panel-warning">
                             <div class="panel-heading">
@@ -196,29 +172,7 @@
                                     </div>
                                 <div class="row">
                                     <div class="col-xs-12 text-center">
-                                        <h3>Klanten muteren</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </a>
-                    </div>
-                </div>
-                    <div class="col-lg-3">
-                        <div class="row">
-                    <a href="medewerkerMuteren.html">
-                    <div class="col-lg-12 col-md-6">
-                        <div class="panel panel-danger">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <i class="fa fa-pencil fa-4x"></i>
-                                    </div>
-                                    </div>
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <h3>Medewerker muteren</h3>
+                                        <h3>Profiel wijzigen</h3>
                                     </div>
                                 </div>
                             </div>
@@ -250,15 +204,15 @@
                     </div>
                 </div>
                 </div>
-
-
+                
+                
                 <div class="row">
-                    <div class="col-lg-3 col-md-6"><h3>Recent actief</h3></div>
+                    <div class="col-lg-3 col-md-6"><h3>Mijn projecten</h3></div>
                     <div class="col-lg-3 col-md-6"></div>
                     <div class="col-lg-3 col-md-6"></div>
                     <div class="col-lg-3 col-md-6"></div>
                 </div>
-
+                
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
@@ -351,7 +305,7 @@
                             </a>
                         </div>
                     </div>
-
+                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <h4>Laatst gemelde bugs</h4>
@@ -386,10 +340,11 @@
                             </table>
                         </div>
                     </div>
-                 </div>
+                    
+                    
                 </div>
-
-
+                
+                
 
 
             </div>

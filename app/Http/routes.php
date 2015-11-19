@@ -20,11 +20,11 @@ Route::get('/admin', function () {
 });
 //klantdashboard scherm
 Route::get('/dashboard', function () {
-    return view('klantdashboard');
+    return view('dashboard');
 });
 //admin dashboard scherm
 Route::get('/admindashboard', function () {
-    return view('dashboard');
+    return view('admindashboard');
 });
 //bugchatscherm
 Route::get('/bugchat', function () {
