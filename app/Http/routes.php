@@ -12,11 +12,13 @@
 */
 //loginscherm voor klanten
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/welcome');
 });
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
 //loginscherm voor admins
 Route::get('/admin', function () {
-    return view('admin');
+    return view('auth/admin');
 });
 //klantdashboard scherm
 Route::get('/dashboard', function () {

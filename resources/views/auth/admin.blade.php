@@ -11,7 +11,7 @@
 
        <title>Moodles - Helpdesk</title>
 
-       @extends('layouts.top-links')
+       @extends('...layouts.top-links')
 
    </head>
 
@@ -42,7 +42,7 @@
                <!-- /.container-fluid -->
 
 
-       @extends('layouts.footer')
+       @extends('...layouts.footer')
 
    </body>
 

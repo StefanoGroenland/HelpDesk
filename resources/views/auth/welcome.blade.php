@@ -20,27 +20,27 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-        @extends('layouts.top-links')
+        @extends('...layouts.top-links')
 </head>
 
 <body>
             <div class="container">
-                    <form>
+                    <form method="POST" action="/auth/login">
                         <div class="row">
                             <div class="col-lg-4"></div>
                             <div class="col-lg-4 well">
                                 <img src="{{URL::asset('../assets/images/logo.png')}}" class="img-responsive center-block" alt="Responsive image">
                                 <div class="form-group">
                                     <label for="klantnummer">Klantnummer</label>
-                                    <input type="number" class="form-control" id="klantnummer" placeholder="Klantnummer">
+                                    <input type="number" class="form-control" id="klantnummer" name="klantnummer" placeholder="Klantnummer">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Gebruikersnaam">Gebrukersnaam</label>
-                                    <input type="text" class="form-control" id="gebruikersnaam" placeholder="Gebrukersnaam">
+                                    <label for="gebruikersnaam">Gebrukersnaan</label>
+                                    <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam" placeholder="Gebrukersnaam">
                                 </div>
                                 <div class="form-group">
-                                    <label for="kwachtwoord">Wachtwoord</label>
-                                    <input type="password" class="form-control" id="wachtwoord" placeholder="Password">
+                                    <label for="wachtwoord">Wachtwoord</label>
+                                    <input type="password" class="form-control" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord">
                                 </div>
                                 <button type="submit" class="btn btn-success">Aanmelden</button>
 
@@ -53,7 +53,7 @@
             </div>
             <!-- /.container-fluid -->
 
-        @extends('layouts.footer')
+        @extends('...layouts.footer')
 
 </body>
 

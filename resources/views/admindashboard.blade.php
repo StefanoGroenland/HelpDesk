@@ -26,13 +26,12 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-
-                <a class="navbar-brand" href="index.html">Moodles Helpdesk</a>
+                 <a class="navbar-brand" href="index.html">Moodles Helpdesk</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="">
-                    <a class="" href="#">Medewerker aanpassen</a>
+                    <a class="" href="{{URL::to('/medewerkermuteren')}}">Medewerker aanpassen</a>
                 </li>
                 <li class="dropdown">
 
@@ -40,7 +39,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="profiel.html"><i class="fa fa-fw fa-user"></i> Profiel</a>
+                            <a href="{{URL::to('/profiel')}}"><i class="fa fa-fw fa-user"></i> Profiel</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -82,7 +81,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="row">
-                    <a href="projectMuteren.html">
+                    <a href="{{URL::to('/projectmuteren')}}">
                     <div class="col-lg-12 col-md-6">
                         <div class="panel panel-success">
                             <div class="panel-heading">
@@ -115,7 +114,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="projectBugs.html">
+                            <a href="{{URL::to('/bugoverzicht')}}">
                                 <div class="panel-footer">
                                     <span class="pull-left">Bekijk</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -125,83 +124,83 @@
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-6">
-                                            <div class="panel panel-yellow">
-                                                <div class="panel-heading">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 text-right">
-                                                            <span class="label label-warning">Project X</span>
-                                                            <div><span class="badge">0</span> Openstaand</div>
-                                                            <div><span class="badge">4</span> Bezig</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="projectBugs.html">
-                                                    <div class="panel-footer">
-                                                        <span class="pull-left">Bekijk</span>
-                                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </div>
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-12 text-right">
+                                    <span class="label label-warning">Project X</span>
+                                    <div><span class="badge">0</span> Openstaand</div>
+                                    <div><span class="badge">4</span> Bezig</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{URL::to('/bugoverzicht')}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Bekijk</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-12 text-right">
+                                        <span class="label label-danger">Project Y</span>
+                                        <div><span class="badge">4</span> Openstaand</div>
+                                        <div><span class="badge">4</span> Bezig</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{URL::to('/bugoverzicht')}}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Bekijk</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-right">
+                                            <span class="label label-info">Project Z</span>
+                                            <div><span class="badge">4</span> Openstaand</div>
+                                            <div><span class="badge">4</span> Bezig</div>
                                         </div>
-                                        <div class="col-lg-2 col-md-6">
-                                            <div class="panel panel-red">
-                                                <div class="panel-heading">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 text-right">
-                                                            <span class="label label-danger">Project Y</span>
-                                                            <div><span class="badge">4</span> Openstaand</div>
-                                                            <div><span class="badge">4</span> Bezig</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="projectBugs.html">
-                                                    <div class="panel-footer">
-                                                        <span class="pull-left">Bekijk</span>
-                                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    <div class="col-lg-2 col-md-6">
-                                            <div class="panel panel-info">
-                                                <div class="panel-heading">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 text-right">
-                                                            <span class="label label-info">Project Z</span>
-                                                            <div><span class="badge">4</span> Openstaand</div>
-                                                            <div><span class="badge">4</span> Bezig</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="projectBugs.html">
-                                                    <div class="panel-footer">
-                                                        <span class="pull-left">Bekijk</span>
-                                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-6">
-                                            <div class="panel panel-purple">
-                                                <div class="panel-heading">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 text-right">
-                                                            <span class="label label-purple">Project Z</span>
-                                                            <div><span class="badge">4</span> Openstaand</div>
-                                                            <div><span class="badge">4</span> Bezig</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="projectBugs.html">
-                                                    <div class="panel-footer">
-                                                        <span class="pull-left">Bekijk</span>
-                                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </a>
+                                    </div>
+                                </div>
+                                <a href="{{URL::to('/bugoverzicht')}}">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">Bekijk</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-purple">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-12 text-right">
+                                        <span class="label label-purple">Project Z</span>
+                                        <div><span class="badge">4</span> Openstaand</div>
+                                        <div><span class="badge">4</span> Bezig</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{URL::to('/bugoverzicht')}}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Bekijk</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
                                </div>
                          </div>
                          </div>
@@ -229,7 +228,7 @@
                                         <td>#21341</td>
                                         <td>Google</td>
                                         <td>
-                                            <a href="bekijkenBug.html">
+                                            <a href="{{URL::to('/bugchat')}}">
                                         <button type="submit" class="btn btn-success btn-xs">
                                             <i class="glyphicon glyphicon-search"></i>
                                         </button>
