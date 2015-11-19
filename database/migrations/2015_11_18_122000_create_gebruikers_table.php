@@ -15,14 +15,16 @@ class CreateGebruikersTable extends Migration
         Schema::create('gebruikers', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('gebruikersnaam')->unique();
-            $table->string('wachtwoord');
-            $table->string('klantnummer')->unique();
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->string('klantnummer');
             $table->string('email');
             $table->string('bedrijf');
             $table->string('voornaam');
             $table->string('achternaam');
             $table->text('profielfoto');
+            $table->rememberToken();
+
         });
     }
 

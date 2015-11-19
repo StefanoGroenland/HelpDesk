@@ -22,6 +22,8 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    protected $redirectPath = '/dashboard';
+    protected $loginPath = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -35,16 +37,16 @@ class AuthController extends Controller
 
     /**
      * Get a validator for an incoming registration request.
-     *
      * @param  array  $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'gebruikersnaam' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:gebruikers',
-            'wachtwoord' => 'required|confirmed',
+            'username' => 'required|max:255|unique:gebruikers',
+            'email' => 'required|max:255|unique:gebruikers',
+            'password' => 'required|confirmed|min:6',
         ]);
     }
 
@@ -57,7 +59,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

@@ -14,11 +14,12 @@
 Route::get('/', function () {
     return view('auth/welcome');
 });
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
 //loginscherm voor admins
 Route::get('/admin', function () {
     return view('auth/admin');
+});
+Route::get('/home', function () {
+    return view('dashboard');
 });
 //klantdashboard scherm
 Route::get('/dashboard', function () {
@@ -52,3 +53,18 @@ Route::get('/profiel', function () {
 Route::get('/projectmuteren', function () {
     return view('projectmuteren');
 });
+
+//login en logout routes
+// Authentication routes...
+Route::get('auth/welcome', 'Auth\AuthController@getLogin');
+Route::post('auth/welcome', 'Auth\AuthController@postLogin');
+Route::get('/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+
+Route::controllers([
+    'wachtwoord' => 'Auth\PasswordController',
+]);
