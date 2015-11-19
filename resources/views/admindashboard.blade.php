@@ -204,19 +204,8 @@
                                                 </a>
                                </div>
                          </div>
+                         </div>
                 </div>
-
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-6"><h3>Recent actief</h3></div>
-                    <div class="col-lg-3 col-md-6"></div>
-                    <div class="col-lg-3 col-md-6"></div>
-                    <div class="col-lg-3 col-md-6"></div>
-                </div>
-
-
-
-
                 <div class="row">
                     <div class="col-lg-12">
                         <h4>Laatst gemelde bugs</h4>
