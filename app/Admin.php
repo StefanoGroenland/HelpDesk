@@ -16,6 +16,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Session;
+use DB;
 
 class Admin extends Model implements AuthenticatableContract,
     AuthorizableContract,
@@ -42,6 +43,21 @@ class Admin extends Model implements AuthenticatableContract,
             return view('medewerkermuteren');
         }else{
             return redirect('/dashboard');
+        }
+    }
+
+    public function getMedewerkers(){
+      $admins = DB::table('gebruikers')
+          ->select(DB::raw('voornaam,achternaam,email,bedrijf'))
+          ->where('bedrijf', 'moodles')
+          ->get();
+              foreach ($admins as $adm) {
+                  echo "<tr>";
+                  echo "<td>". ucfirst($adm->voornaam) ." ". ucfirst($adm->achternaam) . "</td>";
+                  echo "<td>". $adm->email . "</td>";
+                  echo "<td><a href='#'> <button type='submit' class='btn btn-success btn-xs'> <i class='fa fa-check'> </i> </button> </a>";
+                  echo "<button class='btn btn-danger btn-xs'> <i class='fa fa-remove'></i></button></td>";
+                  echo "</tr>";
         }
     }
 }

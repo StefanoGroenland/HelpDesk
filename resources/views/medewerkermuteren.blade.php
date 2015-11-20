@@ -121,45 +121,16 @@
                                 <th></th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Stefano groenland</td>
-                                        <td>stefano@moodles.nl</td>
-                                        <td>
-                                            <a href="#" class="">
-                                        <button type="submit" class="btn btn-success btn-xs">
-                                            <i class="fa fa-check "></i>
-                                        </button>
-                                        </a>
-                                        <button class="btn btn-danger btn-xs">
-                                                <i class="fa fa-remove"></i>
-                                        </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Stefano Groenland</td>
-                                        <td>stefano@moodles.nl</td>
-                                        <td>
-                                            <a href="#" class="">
-                                        <button type="submit" class="btn btn-success btn-xs">
-                                            <i class="fa fa-check "></i>
-                                        </button>
-                                        </a>
-                                        <button class="btn btn-danger btn-xs">
-                                                <i class="fa fa-remove"></i>
-                                        </button>
-                                        </td>
-                                    </tr>
+                                 <?php
+                                  $adm = new \App\Http\Controllers\AdminController();
+                                  $adm->showMedewerkers();
+
+                                  ?>
                                 </tbody>
                             </table>
 </div>
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
             <!-- /.container-fluid -->
 

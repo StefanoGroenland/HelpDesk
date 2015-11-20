@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\DatabaseServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
@@ -44,4 +45,5 @@ class User extends Model implements AuthenticatableContract,
             $this->breadcrumbs = 'layouts.breadcrumbs';
         }
     }
+
 }

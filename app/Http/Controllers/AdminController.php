@@ -28,4 +28,9 @@ class AdminController extends Controller
         $admin = new Admin();
         return $admin->showMedewerkerMuteren();
     }
+    public function showMedewerkers(){
+        $admin = new Admin();
+        return $admin->getMedewerkers();
+    }
+
 }
