@@ -22,11 +22,7 @@
                             Project bugs <small>alle bugs</small>
                         </h1>
                         <ol class="breadcrumb">
-                            @if(Auth::user()->bedrijf == 'moodles')
-                                @include('layouts.adminbreadcrumbs')
-                            @else
-                                @include('layouts.breadcrumbs')
-                            @endif
+                           @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs');
                         </ol>
                     </div>
                 </div>
