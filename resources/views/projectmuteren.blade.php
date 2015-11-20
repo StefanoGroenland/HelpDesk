@@ -24,7 +24,7 @@
                         </h1>
                         {{--breadcrumbs layout spot!--}}
                         <ol class="breadcrumb">
-                               @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs');
+                               @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
                            </ol>
                     </div>
                 </div>

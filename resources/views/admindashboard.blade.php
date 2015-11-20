@@ -162,7 +162,6 @@
                                </div>
                          </div>
                          </div>
-                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <h4>Laatst gemelde bugs</h4>
@@ -197,16 +196,16 @@
                             </table>
                         </div>
                     </div>
-                 </div>
-                </div>
+
+
 
 
 
 
             </div>
+            </div>
             <!-- /.container-fluid -->
 
-        </div>
         <!-- /#page-wrapper -->
 <!--</div>-->
 

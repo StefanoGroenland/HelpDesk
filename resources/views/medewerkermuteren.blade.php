@@ -24,7 +24,7 @@
                             Medewerker muteren <small>Muteer medewekers</small>
                         </h1>
                         <ol class="breadcrumb">
-                            @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs');
+                            @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
                         </ol>
                     </div>
                 </div>
