@@ -131,12 +131,11 @@
                     Bug Discussie <small>Bug meldings gesprek</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li>
-                        <a href="{{URL::to('/dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <a href="{{URL::to('/bugchat')}}"><i class="fa fa-briefcase"></i> Bug discussie</a>
-                    </li>
+                    @if(Auth::user()->bedrijf == 'moodles')
+                         @include('layouts.adminbreadcrumbs')
+                     @else
+                         @include('layouts.breadcrumbs')
+                     @endif
                 </ol>
             </div>
         </div>

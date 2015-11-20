@@ -58,11 +58,11 @@
                             Mijn profiel <small>profiel wijzigen</small>
                         </h1>
                         <ol class="breadcrumb">
-                            <li><i class="fa fa-users"></i> Dashboard</li>
-
-                            <li class="active">
-                                <i class="fa fa-users"></i> Profiel
-                            </li>
+                            @if(Auth::user()->bedrijf == 'moodles')
+                                 @include('layouts.adminbreadcrumbs')
+                             @else
+                                 @include('layouts.breadcrumbs')
+                             @endif
                         </ol>
                     </div>
                 </div>

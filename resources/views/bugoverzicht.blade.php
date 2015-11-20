@@ -52,12 +52,11 @@
                             Project bugs <small>alle bugs</small>
                         </h1>
                         <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Project bugs
-                            </li>
+                            @if(Auth::user()->bedrijf == 'moodles')
+                                                        @include('layouts.adminbreadcrumbs')
+                                                    @else
+                                                        @include('layouts.breadcrumbs')
+                                                    @endif
                         </ol>
                     </div>
                 </div>

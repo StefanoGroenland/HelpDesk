@@ -57,11 +57,10 @@
                         <h1 class="page-header">
                             Dashboard <small>Overzicht</small>
                         </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-                        </ol>
+                        {{--Breadcrumbs spot!--}}
+                         <ol class="breadcrumb">
+                         @include('layouts.breadcrumbs')
+                         </ol>
 
                     </div>
                 </div>

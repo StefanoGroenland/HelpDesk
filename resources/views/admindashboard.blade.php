@@ -48,16 +48,6 @@
                     </ul>
                 </li>
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-<!--            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                        <a href="klantMuteren.html"><i class="fa fa-fw fa-users"></i> Klant muteren</a>
-                    </li>
-                </ul>
-            </div>-->
-            <!-- /.navbar-collapse -->
         </nav>
 
         <div id="page-wrapper">
@@ -70,10 +60,9 @@
                         <h1 class="page-header">
                             Dashboard <small>Overzicht</small>
                         </h1>
+                        {{--Breadcrumbs spot!--}}
                         <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
+                            @include('layouts.adminbreadcrumbs')
                         </ol>
                     </div>
                 </div>

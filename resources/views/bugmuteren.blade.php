@@ -73,44 +73,58 @@
                         </div>
                         <div class="panel-body">
                             <form>
+                            <div class="form-group">
+                                <label for="bedrijfsnaam">Project</label>
+                               <input type="text" class="form-control" id="titel" placeholder="Titel">
+                             </div>
+                              <div class="form-group">
+                                <select class="form-control">
+                                  <option value="open_status">Prioriteit</option>
+                                  <option value="open_status">Laag</option>
+                                  <option value="bezig_status">Gemiddeld</option>
+                                  <option value="gesloten_status">Hoog</option>
+                                  <option value="gesloten_status">Kritisch</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="projectnaam" placeholder="Projectnaam">
+                              </div>
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="project_url" placeholder="Project URL">
+                              </div>
+                              <div class="form-group">
+                              <label for="start_date">Startdatum</label>
+                                <input type="date" class="form-control" value="{{date('Y-m-d')}}" id="startdatum">
+                              </div>
+                              <div class="form-group">
+                              <label for="start_date">Einddatum</label>
+                                <input type="datetime-local" class="form-control" id="einddatum">
+                              </div>
                                 <div class="form-group">
-                                    <label for="project">Project</label>
-                                    <input type="text" class="form-control" id="email" placeholder="Projectnaam">
-                                </div>
+                                <label for="bedrijfsnaam">Gebruiker</label>
+                                <input type="text" class="form-control" id="username" placeholder="gebruikersnaam">
+                              </div>
+                              <div class="form-group">
+                                <input type="password" class="form-control" id="password" placeholder="Wachtwoord">
+                              </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="gebruikersnaam" placeholder="Project URL">
-                                </div>
+                                <label for="bedrijfsnaam">Contactpersoon</label>
+                                <input type="text" class="form-control" id="voornaam" placeholder="Voornaam">
+                              </div>
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="achternaam" placeholder="Achternaam">
+                              </div>
                                 <div class="form-group">
-                                    <label for="gebruiker">Gebruiker</label>
-                                    <input type="text" class="form-control" id="voornaam" placeholder="gebruikersnaam">
-                                </div>
+                                <input type="email" class="form-control" id="email" placeholder="E-mail">
+                              </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="wachtwoord" placeholder="Wachtwoord">
-                                </div>
+                                <label for="bedrijfsnaam">Bedrijf</label>
+                                <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Bedrijfsnaam">
+                              </div>
                                 <div class="form-group">
-                                    <label for="voornaam">Contact persoon</label>
-                                    <input type="text" class="form-control" id="achternaam" placeholder="Voornaam">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="achternaam" placeholder="Achternaam">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="achternaam" placeholder="E-mail">
-                                </div>
-                                <div class="form-group">
-                                    <label for="bedrijfsnaam">Bedrijf</label>
-                                    <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Bedrijfsnaam">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Telefoon nummer">
-                                </div>
-                                <div class="form-group">
-                                    <label for="voornaam">Beschrijving</label>
-                                    <textarea class="form-control" rows="6"></textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12"><button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button></div>
-                                </div>
+                                <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Telefoon nummer">
+                              </div>
+                              <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
                             </form>
                         </div>
                     </div>

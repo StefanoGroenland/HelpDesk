@@ -35,4 +35,13 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['wachtwoord', 'remember_token'];
+    protected  $breadcrumbs;
+
+    public function decideMenu(){
+        if(\Auth::user()->bedrijf == 'moodles'){
+            $this->breadcrumbs = 'layouts.adminbreadcrumbs';
+        }else{
+            $this->breadcrumbs = 'layouts.breadcrumbs';
+        }
+    }
 }
