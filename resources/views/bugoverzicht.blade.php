@@ -13,36 +13,6 @@
 
     @extends('layouts.top-links')
 
-</head>
-
-<body>
-
-    <div id="page-wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">Moodles Helpdesk</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="{{URL::to('/profiel')}}"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -53,10 +23,10 @@
                         </h1>
                         <ol class="breadcrumb">
                             @if(Auth::user()->bedrijf == 'moodles')
-                                                        @include('layouts.adminbreadcrumbs')
-                                                    @else
-                                                        @include('layouts.breadcrumbs')
-                                                    @endif
+                                @include('layouts.adminbreadcrumbs')
+                            @else
+                                @include('layouts.breadcrumbs')
+                            @endif
                         </ol>
                     </div>
                 </div>
