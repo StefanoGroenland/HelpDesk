@@ -25,7 +25,7 @@
 
 <body>
             <div class="container">
-                    <form method="POST" action="/auth/welcome">
+                    <form method="POST" action="/auth/login">
                      {!! csrf_field() !!}
                         <div class="row">
                             <div class="col-lg-4"></div>

@@ -10,54 +10,44 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-//loginscherm voor klanten
+//loginscherm
 Route::get('/', function () {
     return view('auth/welcome');
 });
-//loginscherm voor admins
-Route::get('/admin', function () {
-    return view('auth/admin');
-});
-Route::get('/home', function () {
-    return view('dashboard');
-});
 //klantdashboard scherm
-Route::get('/dashboard', function () {
+Route::get('/dashboard',['middleware' => 'auth', function () {
     return view('dashboard');
-});
+}]);
 //admin dashboard scherm
-Route::get('/admindashboard', function () {
-    return view('admindashboard');
-});
+Route::get('/admindashboard', 'AdminController@showDashboard');
+
 //bugchatscherm
-Route::get('/bugchat', function () {
+Route::get('/bugchat',['middleware' => 'auth', function () {
     return view('bugchat');
-});
+}]);
 //bugmuteren scherm
-Route::get('/bugmuteren', function () {
+Route::get('/bugmuteren',['middleware' => 'auth', function () {
     return view('bugmuteren');
-});
+}]);
 //bugoverzicht scherm
-Route::get('/bugoverzicht', function () {
+Route::get('/bugoverzicht',['middleware' => 'auth', function () {
     return view('bugoverzicht');
-});
+}]);
 //medewerker muteren scherm
-Route::get('/medewerkermuteren', function () {
-    return view('medewerkermuteren');
-});
+Route::get('/medewerkermuteren', 'AdminController@showMwMuteren');
 //profiel scherm
-Route::get('/profiel', function () {
+Route::get('/profiel',['middleware' => 'auth', function () {
     return view('profiel');
-});
+}]);
 //projectmuteren scherm
-Route::get('/projectmuteren', function () {
+Route::get('/projectmuteren',['middleware' => 'auth', function () {
     return view('projectmuteren');
-});
+}]);
 
 //login en logout routes
 // Authentication routes...
-Route::get('auth/welcome', 'Auth\AuthController@getLogin');
-Route::post('auth/welcome', 'Auth\AuthController@postLogin');
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
