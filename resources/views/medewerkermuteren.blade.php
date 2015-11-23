@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Medewerker muteren <small>Muteer medewekers</small>
+                            Medewerker aanpassen <small>Verander medewekers</small>
                         </h1>
                         <ol class="breadcrumb">
                             @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
@@ -132,11 +132,6 @@
                                 <th></th>
                                 </thead>
                                 <tbody>
-                                 <?php
-                                  $adm = new \App\Http\Controllers\AdminController();
-                                  $adm->showMedewerkers();
-
-                                  ?>
                                 </tbody>
                             </table>
 </div>

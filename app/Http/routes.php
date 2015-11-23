@@ -10,54 +10,49 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-//loginscherm
+//Routes for user eyes only
+Route::group(['middleware' => 'auth'], function () {
+
+
+    Route::get('/admindashboard', array('as' => 'admindashboard', 'uses' => 'UserController@showDashboard'));
+
+    Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'UserController@showDashboard'));
+
+    Route::get('/bugchat',array('as' => 'bugchat', 'uses' => 'UserController@showbugChat'));
+
+    Route::get('/bugmuteren', array('as' => 'bugmuteren', 'uses' => 'UserController@showBugMuteren'));
+
+    Route::get('/bugoverzicht',function () {
+        return view('bugoverzicht');
+    });
+    Route::get('/profiel', function () {
+        return view('profiel');
+    });
+    //projectmuteren scherm
+    Route::get('/projectmuteren', function () {
+        return view('projectmuteren');
+    });
+    //medewerker muteren scherm
+    Route::get('medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
+
+    Route::get('/tooninfo', array('as' => 'tooninfo', 'uses' => 'UserController@getMedewerkers'));
+
+    Route::get('/verwijderMedewerker/{id}', 'UserController@deleteRow')->name('remove_id');
+//medewerkers toevoegen route
+    Route::post('addMedewerker', 'UserController@addMedewerker');
+
+});
+
+//unrestricted routes
 Route::get('/', function () {
     return view('auth/welcome');
 });
-//klantdashboard scherm
-Route::get('/dashboard',['middleware' => 'auth', function () {
-    return view('dashboard');
-}]);
-//admin dashboard scherm
-Route::get('/admindashboard', 'AdminController@showDashboard');
 
-//bugchatscherm
-Route::get('/bugchat',['middleware' => 'auth', function () {
-    return view('bugchat');
-}]);
-//bugmuteren scherm
-Route::get('/bugmuteren',['middleware' => 'auth', function () {
-    return view('bugmuteren');
-}]);
-//bugoverzicht scherm
-Route::get('/bugoverzicht',['middleware' => 'auth', function () {
-    return view('bugoverzicht');
-}]);
-//medewerker muteren scherm
-Route::get('/medewerkermuteren', 'AdminController@showMwMuteren');
-//profiel scherm
-Route::get('/profiel',['middleware' => 'auth', function () {
-    return view('profiel');
-}]);
-//projectmuteren scherm
-Route::get('/projectmuteren',['middleware' => 'auth', function () {
-    return view('projectmuteren');
-}]);
-Route::get('/deleteRow/{id}', 'AdminController@deleteRow')->name('remove_id');
-//medewerkers toevoegen route
-Route::post('addMedewerker', 'AdminController@addMedewerker');
-
-//login en logout routes
-// Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
-
-// Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
-
-
 Route::controllers([
     'wachtwoord' => 'Auth\PasswordController',
 ]);

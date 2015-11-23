@@ -7,27 +7,38 @@
  */
 
 namespace App\Http\Controllers;
-use App\Admin;
+use App\User;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use App\User;
-use Route;
-class AdminController extends Controller
+use Route, View;
+class UserController extends Controller
 {
+
     public function showDashboard()
     {
-        $admin = new Admin();
-        return $admin->showAdminDashboard();
+        if(\Auth::guest()){
+            return redirect('/');
+        }
+        else if(\Auth::user()->bedrijf == 'moodles'){
+            return View::make('admindashboard');
+        }else{
+            return redirect('/dashboard');
+        }
+    }
+    public function showBugChat(){
+        return View::make('bugchat');
+    }
+    public function showBugmuteren(){
+        return View::make('bugmuteren');
     }
     public function showMwMuteren(){
-        $admin = new Admin();
-        return $admin->showMedewerkerMuteren();
+        return View::make('medewerkermuteren');
     }
-    public function showMedewerkers(){
-        $admin = new Admin();
-        return $admin->getMedewerkers();
+    public function getMedewerkers(){
+        $medewerkers = User::all();
+
+        return View::make('voorbeeld', compact('medewerkers'));
     }
     public function addMedewerker(Request $request){
 
@@ -49,10 +60,9 @@ class AdminController extends Controller
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
         return redirect('medewerkermuteren');
     }
-    public function deleteRow(){
-        $admin = new Admin();
+    public function verwijderMedewerker(){
         $sid = Route::current()->getParameter('id');
-        return $admin->deleteRow($sid);
+        return User::verwijderMedewerker($sid);
     }
 
 }
