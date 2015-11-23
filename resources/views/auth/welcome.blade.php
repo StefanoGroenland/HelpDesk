@@ -21,10 +21,6 @@
                             <div class="col-lg-4 well">
                                 <img src="{{URL::asset('../assets/images/logo.png')}}" class="img-responsive center-block" alt="Responsive image">
                                 <div class="form-group">
-                                    <label for="klantnummer">Klantnummer</label>
-                                    <input type="number" class="form-control" id="klantnummer" name="klantnummer" placeholder="Klantnummer" value="{{old('klantnummer')}}">
-                                </div>
-                                <div class="form-group">
                                     <label for="gebruikersnaam">Gebrukersnaan</label>
                                     <input type="text" class="form-control" id="username" name="username" placeholder="Gebrukersnaam" value="{{old('username')}}">
                                 </div>

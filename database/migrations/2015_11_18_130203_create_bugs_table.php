@@ -17,8 +17,8 @@ class CreateBugsTable extends Migration
             $table->timestamps();
             $table->integer('project_id');
             $table->string('titel');
-            $table->string('status');
             $table->string('prioriteit');
+            $table->string('status');
             $table->string('naam_contactpersoon');
             $table->string('naam_medewerker');
             $table->string('behandeld_door');

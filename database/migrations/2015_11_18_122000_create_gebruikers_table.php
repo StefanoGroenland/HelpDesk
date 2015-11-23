@@ -24,7 +24,6 @@ class CreateGebruikersTable extends Migration
             $table->string('achternaam');
             $table->text('profielfoto');
             $table->rememberToken();
-
         });
     }
 

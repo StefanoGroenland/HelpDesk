@@ -1,6 +1,5 @@
 <form method="POST" action="/auth/register">
     {!! csrf_field() !!}
-
     <div>
         Name
         <input type="text" name="username" value="{{ old('username') }}">

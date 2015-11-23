@@ -47,6 +47,7 @@ class AuthController extends Controller
             'username' => 'required|max:255|unique:gebruikers',
             'email' => 'required|max:255|unique:gebruikers',
             'password' => 'required|confirmed|min:6',
+            'klantnummer' => 'unique:gebruikers',
         ]);
     }
 
@@ -62,6 +63,7 @@ class AuthController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'klantnummer' => rand(111,9999),
         ]);
     }
 }
