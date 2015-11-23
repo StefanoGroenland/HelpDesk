@@ -72,7 +72,7 @@ class Admin extends Model implements AuthenticatableContract,
 
     public function getMedewerkers(){
       $admins = DB::table('gebruikers')
-          ->select(DB::raw('voornaam,achternaam,email,bedrijf'))
+          ->select(DB::raw('id,voornaam,achternaam,email,bedrijf'))
           ->where('bedrijf', 'moodles')
           ->get();
               foreach ($admins as $adm) {
@@ -80,8 +80,14 @@ class Admin extends Model implements AuthenticatableContract,
                   echo "<td>". ucfirst($adm->voornaam) ." ". ucfirst($adm->achternaam) . "</td>";
                   echo "<td>". $adm->email . "</td>";
                   echo "<td><a href='#'> <button type='submit' class='btn btn-success btn-xs'> <i class='fa fa-check'> </i> </button> </a>";
-                  echo "<button class='btn btn-danger btn-xs'> <i class='fa fa-remove'></i></button></td>";
+                  echo "<input type='hidden'>
+                        <a href='../deleteRow/".$adm->id ."' name='remove' value='$adm->id' class='btn btn-danger btn-xs'> <i class='fa fa-remove'></i></a>
+                        </td>";
                   echo "</tr>";
+            }
+}
+    public function deleteRow($id){
+        DB::table('gebruikers')->where('id', '=',$id)->delete();
+        return redirect('/medewerkermuteren');
         }
     }
-}

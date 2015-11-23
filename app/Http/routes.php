@@ -43,6 +43,7 @@ Route::get('/profiel',['middleware' => 'auth', function () {
 Route::get('/projectmuteren',['middleware' => 'auth', function () {
     return view('projectmuteren');
 }]);
+Route::get('/deleteRow/{id}', 'AdminController@deleteRow')->name('remove_id');
 //medewerkers toevoegen route
 Route::post('addMedewerker', 'AdminController@addMedewerker');
 

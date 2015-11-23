@@ -10,11 +10,12 @@ namespace App\Http\Controllers;
 use App\Admin;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use App\User;
+use Route;
 class AdminController extends Controller
 {
-
     public function showDashboard()
     {
         $admin = new Admin();
@@ -30,7 +31,7 @@ class AdminController extends Controller
     }
     public function addMedewerker(Request $request){
 
-        $valid = Validator::make($request->all(),[
+        Validator::make($request->all(),[
             'username' => 'required|max:255|unique:gebruikers',
             'email' => 'required|max:255|unique:gebruikers',
             'password' => 'required|confirmed|min:6',
@@ -47,6 +48,11 @@ class AdminController extends Controller
         ]);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
         return redirect('medewerkermuteren');
+    }
+    public function deleteRow(){
+        $admin = new Admin();
+        $sid = Route::current()->getParameter('id');
+        return $admin->deleteRow($sid);
     }
 
 }
