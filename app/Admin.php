@@ -17,12 +17,36 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Session;
 use DB;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class Admin extends Model implements AuthenticatableContract,
     AuthorizableContract,
     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'gebruikers';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['username',
+        'email',
+        'password',
+        'bedrijf',
+        'voornaam',
+        'achternaam',
+        'klantnummer',
+        'profielfoto'
+    ];
+
 
 
     public function showAdminDashboard(){

@@ -43,6 +43,8 @@ Route::get('/profiel',['middleware' => 'auth', function () {
 Route::get('/projectmuteren',['middleware' => 'auth', function () {
     return view('projectmuteren');
 }]);
+//medewerkers toevoegen route
+Route::post('addMedewerker', 'AdminController@addMedewerker');
 
 //login en logout routes
 // Authentication routes...

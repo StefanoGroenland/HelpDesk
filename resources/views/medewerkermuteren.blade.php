@@ -28,34 +28,45 @@
                         </ol>
                     </div>
                 </div>
+                                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                  @if(Session::has('alert-' . $msg))
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                        </div>
+                                    </div>
+                                  @endif
+                                @endforeach
                 <div class="row">
                     <div class="col-lg-4">
 
                       <div class="panel panel-green">
                         <div class="panel-heading">
-                          <h3 class="panel-title">Nieuwe medewerker</h3>
+                          <h3 class="panel-title">Nieuwe medewerker </h3>
+
                         </div>
                         <div class="panel-body">
-                          <form>
+                          <form method="POST" action="/addMedewerker" >
+                          {!! csrf_field() !!}
                             <div class="form-group">
                               <label for="email">Email address</label>
-                              <input type="email" class="form-control" id="email" placeholder="Email">
+                              <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                             </div>
                             <div class="form-group">
                               <label for="gebruikersnaam">Gebruikersnaam</label>
-                              <input type="text" class="form-control" id="gebruikersnaam" placeholder="Gebruikersnaam">
+                              <input type="text" class="form-control" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam">
                             </div>
                             <div class="form-group">
                               <label for="wachtwoord">Wachtwoord</label>
-                              <input type="password" class="form-control" id="wachtwoord" placeholder="Wachtwoord">
+                              <input type="password" class="form-control" id="wachtwoord" name="password" placeholder="Wachtwoord">
                             </div>
                               <div class="form-group">
                               <label for="voornaam">Voornaam</label>
-                              <input type="text" class="form-control" id="voornaam" placeholder="Voornaam">
+                              <input type="text" class="form-control" id="voornaam" name="voornaam" placeholder="Voornaam">
                             </div>
                             <div class="form-group">
                               <label for="achternaam">Achternaam</label>
-                              <input type="text" class="form-control" id="achternaam" placeholder="Achternaam">
+                              <input type="text" class="form-control" id="achternaam" name="achternaam" placeholder="Achternaam">
                             </div>
                             <div class="row">
                                   <div class="col-lg-12"><button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button></div>
