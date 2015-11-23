@@ -186,7 +186,7 @@
                                         <td>#21341</td>
                                         <td>Google</td>
                                         <td>
-                                            <a href="bekijkenBug.html">
+                                            <a href="{{URL::to('/bugchat')}}">
                                         <button type="submit" class="btn btn-success btn-xs">
                                             <i class="glyphicon glyphicon-search"></i>
                                         </button>

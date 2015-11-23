@@ -30,6 +30,8 @@
         <div class="row">
             <div class="col-lg-2">
                 <h3>Bug : #168423 <span class="label label-success">Laag</span></h3>
+
+                @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
                     <div class="col-lg-10">
                         <form>
@@ -62,6 +64,9 @@
 
                     </div>
                 </div>
+                @else
+                @endif
+
             </div>
             <div class="col-lg-10 well">
                 <h3>Omschrijving :</h3>
@@ -78,10 +83,12 @@
                     ornare ut a augue.
                 </p>
             </div>
-            <h3>Discussie<i class="fa fa-fw fa-weixin"></i></h3>
+
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
+
+                    <h3>Discussie<i class="fa fa-fw fa-weixin"></i></h3>
                     <ul class="list-unstyled">
                         <!--linker persoon-->
                         <li class="text-left">
