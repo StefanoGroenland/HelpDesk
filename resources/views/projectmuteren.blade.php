@@ -39,17 +39,17 @@
                           <form>
                           <div class="form-group">
                               <label for="bedrijfsnaam">Project</label>
-                             <input type="text" class="form-control" id="email" placeholder="Titel">
+                             <input type="text" class="form-control" id="titel" placeholder="Titel">
                            </div>
                            <div class="form-group">
-                              <select class="form-control">
+                              <select class="form-control" id="status">
                                 <option value="open_status">Open</option>
                                 <option value="bezig_status">Bezig</option>
                                 <option value="gesloten_status">Gesloten</option>
                               </select>
                             </div>
                             <div class="form-group">
-                              <select class="form-control">
+                              <select class="form-control" id="prioriteit">
                                 <option value="open_status">Laag</option>
                                 <option value="bezig_status">Gemiddeld</option>
                                 <option value="gesloten_status">Hoog</option>
@@ -57,7 +57,7 @@
                               </select>
                             </div>
                             <div class="form-group">
-                             <select class="form-control">
+                             <select class="form-control" id="type">
                                <option value="open_status">Lay-out</option>
                                <option value="bezig_status">SEO</option>
                                <option value="gesloten_status">Performance</option>
@@ -65,37 +65,37 @@
                              </select>
                            </div>
                             <div class="form-group">
-                              <input type="text" class="form-control" id="email" placeholder="Projectnaam">
+                              <input type="text" class="form-control" id="projectnaam" placeholder="Projectnaam" value="">
                             </div>
                             <div class="form-group">
-                              <input type="text" class="form-control" id="gebruikersnaam" placeholder="Project URL">
+                              <input type="text" class="form-control" id="projecturl" placeholder="Project URL" value="">
                             </div>
                               <div class="form-group">
                               <label for="bedrijfsnaam">Gebruiker</label>
-                              <input type="text" class="form-control" id="voornaam" placeholder="gebruikersnaam">
+                              <input type="text" class="form-control" id="gebruikersnaam" placeholder="gebruikersnaam" value="">
                             </div>
                             <div class="form-group">
-                              <input type="password" class="form-control" id="wachtwoord" placeholder="Wachtwoord">
+                              <input type="password" class="form-control" id="wachtwoord" placeholder="Wachtwoord" value="">
                             </div>
                               <div class="form-group">
                               <label for="bedrijfsnaam">Contactpersoon</label>
-                              <input type="text" class="form-control" id="achternaam" placeholder="Voornaam">
+                              <input type="text" class="form-control" id="voornaam" placeholder="Voornaam" value="">
                             </div>
                             <div class="form-group">
-                              <input type="text" class="form-control" id="achternaam" placeholder="Achternaam">
+                              <input type="text" class="form-control" id="achternaam" placeholder="Achternaam" value="">
                             </div>
                               <div class="form-group">
-                              <input type="email" class="form-control" id="achternaam" placeholder="E-mail">
+                              <input type="email" class="form-control" id="email" placeholder="E-mail" value="">
                             </div>
                               <div class="form-group">
                               <label for="bedrijfsnaam">Bedrijf</label>
-                              <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Bedrijfsnaam">
+                              <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Bedrijfsnaam" value="">
                             </div>
                               <div class="form-group">
-                              <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Telefoon nummer">
+                              <input type="text" class="form-control" id="telefoonnummer" placeholder="Telefoon nummer" value="">
                             </div>
                             <div class="form-group">
-                               <textarea class="form-control" rows="5" id="omschrijving" ></textarea>
+                               <textarea class="form-control" rows="5" id="omschrijving" value="" ></textarea>
                              </div>
 
                             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
@@ -186,51 +186,21 @@
                                 <th></th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Moodles Helpdesk</td>
-                                        <td>www.moodles.nl/helpdesk</td>
-                                        <td>Moodles</td>
-                                        <td>
-                                            <a href="#" class="">
-                                        <button type="submit" class="btn btn-success btn-xs">
-                                            <i class="fa fa-check "></i>
-                                        </button>
-                                        </a>
-                                        <button class="btn btn-danger btn-xs">
-                                                <i class="fa fa-remove"></i>
-                                        </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Moodles</td>
-                                        <td>www.moodles.nl</td>
-                                        <td>Moodles</td>
-                                        <td>
-                                            <a href="#" class="">
-                                        <button type="submit" class="btn btn-success btn-xs">
-                                            <i class="fa fa-check "></i>
-                                        </button>
-                                        </a>
-                                        <button class="btn btn-danger btn-xs">
-                                                <i class="fa fa-remove"></i>
-                                        </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Google Mail</td>
-                                        <td>mail.google.nl</td>
-                                        <td>Google</td>
-                                        <td>
-                                            <a href="#" class="">
-                                        <button type="submit" class="btn btn-success btn-xs">
-                                            <i class="fa fa-check "></i>
-                                        </button>
-                                        </a>
-                                        <button class="btn btn-danger btn-xs">
-                                                <i class="fa fa-remove"></i>
-                                        </button>
-                                        </td>
-                                    </tr>
+                                    @foreach($projects as $project)
+                                      <tr>
+                                      <td>{{$project->naam}}</td>
+                                      <td>{{$project->url}}</td>
+                                      <td>{{$project->bedrijf}}</td>
+                                      <td>
+                                      <a href="/verwijderProject/{{$project->id}}" class="">
+                                         <button type="submit" class="btn btn-danger btn-xs">
+                                             <i class="glyphicon glyphicon-remove"></i>
+                                         </button>
+                                      </a>
+
+                                      </td>
+                                      </tr>
+                                      @endforeach
                                 </tbody>
                             </table>
 </div>

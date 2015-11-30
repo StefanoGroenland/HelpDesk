@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfiel'));
 
-    Route::get('/projectmuteren', array('as' => 'projectmuteren', 'uses' => 'UserController@showProjectMuteren'));
+    Route::get('/projectmuteren', array('as' => 'projectmuteren', 'uses' => 'ProjectController@showProjectMuteren'));
 
     Route::get('/medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
 

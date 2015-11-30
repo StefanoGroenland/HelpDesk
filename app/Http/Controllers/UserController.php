@@ -47,7 +47,7 @@ class UserController extends Controller
         return View::make('projectmuteren');
     }
     public function updateMedewerker(Request $request){
-            $email = $request->input('zoekmail');
+            $email = $request->input('email');
             $data = array(
                 'username'   => $request['username'],
                 'email'      => $request['email'],
@@ -61,7 +61,6 @@ class UserController extends Controller
     }
     public function getUpdateData(){
         $email = $_POST['email'];
-        $medewerkers = User::all();
         $inputdata = User::getMedewerker($email);
 
         return $inputdata;
@@ -88,6 +87,7 @@ class UserController extends Controller
 
     }
     public function verwijderGebruiker(){
+//      flash of alert bij voegen?
         $sid = Route::current()->getParameter('id');
         return User::verwijderGebruiker($sid);
     }

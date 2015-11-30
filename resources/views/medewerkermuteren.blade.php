@@ -178,7 +178,6 @@
                             }
                     })
                       .done(function( msg ) {
-//                        $('#achternaam2').val(msg[0].achternaam);
                         $('#email2').val(msg[0].email);
                         $('#gebruikersnaam2').val(msg[0].username);
                         $('#voornaam2').val(msg[0].voornaam);

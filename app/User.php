@@ -60,6 +60,7 @@ class User extends Model implements AuthenticatableContract,
         DB::table('gebruikers')->where('id', '=',$id)->delete();
         return redirect('/medewerkermuteren');
     }
+
     public static function getMedewerker($email){
         return DB::table('gebruikers')
             ->select(DB::raw('email,username,password,voornaam,achternaam'))
