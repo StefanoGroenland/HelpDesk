@@ -16,6 +16,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use DB;
+use App\Input as Input;
 
 
 class User extends Model implements AuthenticatableContract,
@@ -47,15 +48,26 @@ class User extends Model implements AuthenticatableContract,
     protected $guarded = ['id'];
 
 
-    public function getMedewerkers()
+    public static function getMedewerkers()
     {
         return DB::table('gebruikers')
             ->select(DB::raw('id,voornaam,achternaam,email,bedrijf'))
             ->where('bedrijf', 'moodles')
             ->get();
+
     }
-    public function verwijderMedewerker($id){
-        DB::table($this->table)->where('id', '=',$id)->delete();
+    public static function updateMedewerker($email)
+    {
+        return DB::table('gebruikers')
+            ->where('email', $email)
+            ->update(['email' => \Input::get('email')],
+                ['username' => \Input::get('gebruikersnaam')],
+                ['password' => \Input::get('wachtwoord')],
+                ['voornaam' => \Input::get('voornaam')],
+                ['achternaam' => \Input::get('achternaam')]);
+    }
+    public static function verwijderGebruiker($id){
+        DB::table('gebruikers')->where('id', '=',$id)->delete();
         return redirect('/medewerkermuteren');
     }
 }

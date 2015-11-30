@@ -22,23 +22,18 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/bugmuteren', array('as' => 'bugmuteren', 'uses' => 'UserController@showBugMuteren'));
 
-    Route::get('/bugoverzicht',function () {
-        return view('bugoverzicht');
-    });
-    Route::get('/profiel', function () {
-        return view('profiel');
-    });
-    //projectmuteren scherm
-    Route::get('/projectmuteren', function () {
-        return view('projectmuteren');
-    });
-    //medewerker muteren scherm
+    Route::get('/bugoverzicht', array('as' => 'bugoverzicht', 'uses' => 'UserController@showBugOverzicht'));
+
+    Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfiel'));
+
+    Route::get('/projectmuteren', array('as' => 'projectmuteren', 'uses' => 'UserController@showProjectMuteren'));
+
     Route::get('medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
 
-    Route::get('/tooninfo', array('as' => 'tooninfo', 'uses' => 'UserController@getMedewerkers'));
+    Route::post('veranderMedewerker', array('as' => 'veranderMw', 'uses' =>'UserController@veranderMedewerker'));
 
-    Route::get('/verwijderMedewerker/{id}', 'UserController@deleteRow')->name('remove_id');
-//medewerkers toevoegen route
+    Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker')->name('remove_id');
+
     Route::post('addMedewerker', 'UserController@addMedewerker');
 
 });

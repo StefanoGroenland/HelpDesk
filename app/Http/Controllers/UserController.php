@@ -7,7 +7,7 @@
  */
 
 namespace App\Http\Controllers;
-use App\User;
+use App\User as User;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -33,13 +33,20 @@ class UserController extends Controller
         return View::make('bugmuteren');
     }
     public function showMwMuteren(){
-        return View::make('medewerkermuteren');
-    }
-    public function getMedewerkers(){
-        $medewerkers = User::all();
 
-        return View::make('voorbeeld', compact('medewerkers'));
+        $medewerkers = User::all();
+        return View::make('medewerkermuteren', compact('medewerkers'));
     }
+    public function showBugOverzicht(){
+        return View::make('bugoverzicht');
+    }
+    public function showProfiel(){
+        return View::make('profiel');
+    }
+    public function showProjectMuteren(){
+        return View::make('projectmuteren');
+    }
+
     public function addMedewerker(Request $request){
 
         Validator::make($request->all(),[
@@ -58,11 +65,11 @@ class UserController extends Controller
             'achternaam' => $request['achternaam'],
         ]);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
-        return redirect('medewerkermuteren');
-    }
-    public function verwijderMedewerker(){
-        $sid = Route::current()->getParameter('id');
-        return User::verwijderMedewerker($sid);
-    }
+        return redirect('tooninfo');
 
+    }
+    public function verwijderGebruiker(){
+        $sid = Route::current()->getParameter('id');
+        return User::verwijderGebruiker($sid);
+    }
 }
