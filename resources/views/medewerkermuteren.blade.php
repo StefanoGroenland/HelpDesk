@@ -50,23 +50,23 @@
                    {!! csrf_field() !!}
                      <div class="form-group">
                        <label for="email">Email address</label>
-                       <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                       <input type="email" class="form-control" required="true" id="email" name="email" placeholder="Email">
                      </div>
                      <div class="form-group">
                        <label for="gebruikersnaam">Gebruikersnaam</label>
-                       <input type="text" class="form-control" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam">
+                       <input type="text" class="form-control" required="true" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam">
                      </div>
                      <div class="form-group">
                        <label for="wachtwoord">Wachtwoord</label>
-                       <input type="password" class="form-control" id="wachtwoord" name="password" placeholder="Wachtwoord">
+                       <input type="password" class="form-control" required="true" id="wachtwoord" name="password" placeholder="Wachtwoord">
                      </div>
                        <div class="form-group">
                        <label for="voornaam">Voornaam</label>
-                       <input type="text" class="form-control" id="voornaam" name="voornaam" placeholder="Voornaam">
+                       <input type="text" class="form-control" required="true" id="voornaam" name="voornaam" placeholder="Voornaam">
                      </div>
                      <div class="form-group">
                        <label for="achternaam">Achternaam</label>
-                       <input type="text" class="form-control" id="achternaam" name="achternaam" placeholder="Achternaam">
+                       <input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam">
                      </div>
                      <div class="row">
                            <div class="col-lg-12"><button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button></div>
@@ -87,31 +87,31 @@
                    <input type="hidden" name="_method" value="PUT">
                      <div class="form-group">
                        <div class="input-group">
-                         <input type="text" id="zoekmail" name="zoekmail" class="form-control" placeholder="E-mail">
+                         <input type="text" required="true" id="zoekmail" name="zoekmail" class="form-control" placeholder="E-mail">
                          <span class="input-group-btn">
-                           <button class="btn btn-default" name="zoekGebruiker" type="submit">Zoek persoon</button>
+                           <button class="btn btn-default" id="zoekKnop" name="zoekGebruiker" type="button">Zoek persoon</button>
                          </span>
                        </div>
                      </div>
                      <div class="form-group">
                        <label for="email">Email address</label>
-                       <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
+                       <input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail" value="{{isset($inputdata) ? $inputdata->email : ''}}">
                      </div>
                      <div class="form-group">
                        <label for="gebruikersnaam">Gebruikersnaam</label>
-                       <input type="text" class="form-control" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam">
+                       <input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="{{isset($inputdata) ? $inputdata->username : ''}}">
                      </div>
                      <div class="form-group">
                        <label for="wachtwoord">Wachtwoord</label>
-                       <input type="password" class="form-control" id="wachtwoord" name="password" placeholder="wachtwoord">
+                       <input type="password" class="form-control" required="true" id="wachtwoord2" name="password" placeholder="Wachtwoord">
                      </div>
                        <div class="form-group">
                        <label for="voornaam">Voornaam</label>
-                       <input type="text" class="form-control" id="voornaam" name="voornaam" placeholder="Voornaam">
+                       <input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="{{isset($inputdata) ? $inputdata->voornaam : ''}}">
                      </div>
                      <div class="form-group">
                        <label for="achternaam">Achternaam</label>
-                       <input type="text" class="form-control" id="achternaam" name="achternaam" placeholder="Achternaam">
+                       <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="{{isset($inputdata) ? $inputdata->achternaam : ''}}">
                      </div>
                              <div class="row">
                            <div class="col-sm-4"><button type="submit" name="veranderGebruiker" class="btn btn-success">
@@ -158,6 +158,35 @@
 
         </div>
         <!-- /#page-wrapper -->
+
+        @section('scripts')
+        <script type="text/javascript">
+            $("#zoekKnop").on("click",function(){
+
+
+                    var email = $('#zoekmail').val();
+                    $('#email2').val('');
+                    $('#gebruikersnaam2').val('');
+                    $('#voornaam2').val('');
+                    $('#achternaam2').val('');
+
+                    $.ajax({
+                      method: "POST",
+                      url: "/updateData",
+                      data: {   email: email ,
+                                _token: "{{ csrf_token() }}"
+                            }
+                    })
+                      .done(function( msg ) {
+//                        $('#achternaam2').val(msg[0].achternaam);
+                        $('#email2').val(msg[0].email);
+                        $('#gebruikersnaam2').val(msg[0].username);
+                        $('#voornaam2').val(msg[0].voornaam);
+                        $('#achternaam2').val(msg[0].achternaam);
+                      });
+            });
+        </script>
+        @stop
 
     </div>
     <!-- /#wrapper -->

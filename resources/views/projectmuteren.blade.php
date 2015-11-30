@@ -94,6 +94,9 @@
                               <div class="form-group">
                               <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Telefoon nummer">
                             </div>
+                            <div class="form-group">
+                               <textarea class="form-control" rows="5" id="omschrijving" ></textarea>
+                             </div>
 
                             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
                           </form>

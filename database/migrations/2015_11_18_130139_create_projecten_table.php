@@ -16,10 +16,11 @@ class CreateProjectenTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('titel');
-            $table->string('projectnaam');
-            $table->string('projecturl');
             $table->string('status');
             $table->string('prioriteit');
+            $table->string('type');
+            $table->string('projectnaam');
+            $table->string('projecturl');
             $table->string('gebruikersnaam');
             $table->string('wachtwoord');
             $table->string('bedrijf');

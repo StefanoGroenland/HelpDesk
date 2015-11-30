@@ -28,9 +28,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/projectmuteren', array('as' => 'projectmuteren', 'uses' => 'UserController@showProjectMuteren'));
 
-    Route::get('medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
+    Route::get('/medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
 
-    Route::put('updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
+    Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
+
+    Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
 
     Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
 

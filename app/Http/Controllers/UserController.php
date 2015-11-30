@@ -34,7 +34,6 @@ class UserController extends Controller
         return View::make('bugmuteren');
     }
     public function showMwMuteren(){
-
         $medewerkers = User::all();
         return View::make('medewerkermuteren', compact('medewerkers'));
     }
@@ -48,33 +47,40 @@ class UserController extends Controller
         return View::make('projectmuteren');
     }
     public function updateMedewerker(Request $request){
-            $email      = $request->input('zoekmail');
-
+            $email = $request->input('zoekmail');
             $data = array(
-                'username' => $request['username'],
-                'email' => $request['email'],
-                'password' => bcrypt($request['password']),
-                'voornaam' => $request['voornaam'],
+                'username'   => $request['username'],
+                'email'      => $request['email'],
+                'password'   => bcrypt($request['password']),
+                'voornaam'   => $request['voornaam'],
                 'achternaam' => $request['achternaam'],
             );
-        User::whereEmail($email)->update($data);
-        return redirect('/medewerkermuteren');
+            User::whereEmail($email)->update($data);
+        $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
+            return redirect('/medewerkermuteren');
+    }
+    public function getUpdateData(){
+        $email = $_POST['email'];
+        $medewerkers = User::all();
+        $inputdata = User::getMedewerker($email);
+
+        return $inputdata;
     }
     public function addMedewerker(Request $request){
 
         Validator::make($request->all(),[
             'username' => 'required|max:255|unique:gebruikers',
-            'email' => 'required|max:255|unique:gebruikers',
+            'email'    => 'required|max:255|unique:gebruikers',
             'password' => 'required|confirmed|min:6',
-            'bedrijf' => 'required',
+            'bedrijf'  => 'required',
             'voornaam' => 'required|min:4',
         ]);
         User::create([
-            'username' => $request['username'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-            'bedrijf' => 'moodles',
-            'voornaam' => $request['voornaam'],
+            'username'   => $request['username'],
+            'email'      => $request['email'],
+            'password'   => bcrypt($request['password']),
+            'bedrijf'    => 'moodles',
+            'voornaam'   => $request['voornaam'],
             'achternaam' => $request['achternaam'],
         ]);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
