@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Project extends Model
 {
     /**
@@ -23,11 +23,16 @@ class Project extends Model
         'type',
         'projectnaam',
         'projecturl',
-        'username',
-        'password',
+        'gebruikersnaam',
+        'wachtwoord',
         'bedrijf',
         'telefoonnummer',
         'omschrijvingproject'
     ];
     protected $guarded = ['id'];
+
+    public static function verwijderProject($id){
+        DB::table('projecten')->where('id', '=',$id)->delete();
+        return redirect('/projectmuteren');
+    }
 }

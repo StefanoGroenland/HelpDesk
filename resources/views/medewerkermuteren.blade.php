@@ -113,14 +113,9 @@
                        <label for="achternaam">Achternaam</label>
                        <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="{{isset($inputdata) ? $inputdata->achternaam : ''}}">
                      </div>
-                             <div class="row">
-                           <div class="col-sm-4"><button type="submit" name="veranderGebruiker" class="btn btn-success">
-                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
-                            </div>
-
-                           <div class="col-sm-4"><button type="submit" class="btn btn-warning">Annuleer</button>
-                            </div>
-                       </div>
+                      <div class="row">
+                        <div class="col-lg-12"><button type="submit" name="veranderGebruiker" class="btn btn-warning center-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Verander</button></div>
+                      </div>
                    </form>
                  </div>
                </div>

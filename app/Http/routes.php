@@ -35,8 +35,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
 
     Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
+    Route::get('/verwijderProject/{id}', 'ProjectController@verwijderProject');
 
     Route::post('addMedewerker', 'UserController@addMedewerker');
+    Route::post('addProject', 'ProjectController@addProject');
 
 
 });
