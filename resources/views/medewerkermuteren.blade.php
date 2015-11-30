@@ -82,10 +82,12 @@
                    <h3 class="panel-title">Verander medewerker</h3>
                  </div>
                  <div class="panel-body">
-                   <form>
+                   <form method="POST" action="/updateMedewerker">
+                   {!! csrf_field() !!}
+                   <input type="hidden" name="_method" value="PUT">
                      <div class="form-group">
                        <div class="input-group">
-                         <input type="email" class="form-control" placeholder="E-mail">
+                         <input type="text" id="zoekmail" name="zoekmail" class="form-control" placeholder="E-mail">
                          <span class="input-group-btn">
                            <button class="btn btn-default" name="zoekGebruiker" type="submit">Zoek persoon</button>
                          </span>
@@ -93,23 +95,23 @@
                      </div>
                      <div class="form-group">
                        <label for="email">Email address</label>
-                       <input type="email" class="form-control" id="email" placeholder="E-mail">
+                       <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
                      </div>
                      <div class="form-group">
                        <label for="gebruikersnaam">Gebruikersnaam</label>
-                       <input type="text" class="form-control" id="gebruikersnaam" placeholder="{{isset($user) ? $user->username : 'Gebruikersnaam' }}">
+                       <input type="text" class="form-control" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam">
                      </div>
                      <div class="form-group">
                        <label for="wachtwoord">Wachtwoord</label>
-                       <input type="password" class="form-control" id="wachtwoord" placeholder="Wachtwoord">
+                       <input type="password" class="form-control" id="wachtwoord" name="password" placeholder="wachtwoord">
                      </div>
                        <div class="form-group">
                        <label for="voornaam">Voornaam</label>
-                       <input type="text" class="form-control" id="voornaam" placeholder="{{isset($user) ? $user->voornaam : 'Voornaam' }}">
+                       <input type="text" class="form-control" id="voornaam" name="voornaam" placeholder="Voornaam">
                      </div>
                      <div class="form-group">
                        <label for="achternaam">Achternaam</label>
-                       <input type="text" class="form-control" id="achternaam" placeholder="{{isset($user) ? $user->achternaam : 'Achternaam' }}">
+                       <input type="text" class="form-control" id="achternaam" name="achternaam" placeholder="Achternaam">
                      </div>
                              <div class="row">
                            <div class="col-sm-4"><button type="submit" name="veranderGebruiker" class="btn btn-success">

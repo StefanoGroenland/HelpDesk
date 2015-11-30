@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 use App\User as User;
+use App\Http\Controllers\Hash as Hash;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -46,7 +47,19 @@ class UserController extends Controller
     public function showProjectMuteren(){
         return View::make('projectmuteren');
     }
+    public function updateMedewerker(Request $request){
+            $email      = $request->input('zoekmail');
 
+            $data = array(
+                'username' => $request['username'],
+                'email' => $request['email'],
+                'password' => bcrypt($request['password']),
+                'voornaam' => $request['voornaam'],
+                'achternaam' => $request['achternaam'],
+            );
+        User::whereEmail($email)->update($data);
+        return redirect('/medewerkermuteren');
+    }
     public function addMedewerker(Request $request){
 
         Validator::make($request->all(),[
@@ -65,7 +78,7 @@ class UserController extends Controller
             'achternaam' => $request['achternaam'],
         ]);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
-        return redirect('tooninfo');
+        return redirect('medewerkermuteren');
 
     }
     public function verwijderGebruiker(){

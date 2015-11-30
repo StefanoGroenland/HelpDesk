@@ -56,16 +56,6 @@ class User extends Model implements AuthenticatableContract,
             ->get();
 
     }
-    public static function updateMedewerker($email)
-    {
-        return DB::table('gebruikers')
-            ->where('email', $email)
-            ->update(['email' => \Input::get('email')],
-                ['username' => \Input::get('gebruikersnaam')],
-                ['password' => \Input::get('wachtwoord')],
-                ['voornaam' => \Input::get('voornaam')],
-                ['achternaam' => \Input::get('achternaam')]);
-    }
     public static function verwijderGebruiker($id){
         DB::table('gebruikers')->where('id', '=',$id)->delete();
         return redirect('/medewerkermuteren');

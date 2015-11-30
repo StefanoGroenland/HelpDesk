@@ -30,11 +30,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
 
-    Route::post('veranderMedewerker', array('as' => 'veranderMw', 'uses' =>'UserController@veranderMedewerker'));
+    Route::put('updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
 
-    Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker')->name('remove_id');
+    Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
 
     Route::post('addMedewerker', 'UserController@addMedewerker');
+
 
 });
 
