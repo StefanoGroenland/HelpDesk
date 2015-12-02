@@ -22,9 +22,9 @@ class UserController extends Controller
             return redirect('/');
         }
         else if(\Auth::user()->bedrijf == 'moodles'){
-            return View::make('admindashboard');
+            return View::make('/admindashboard');
         }else{
-            return redirect('/dashboard');
+            return View::make('/dashboard');
         }
     }
     public function showBugChat(){

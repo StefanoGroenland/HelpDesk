@@ -18,11 +18,14 @@ class CreateProjectenTable extends Migration
             $table->string('titel');
             $table->string('status');
             $table->string('prioriteit');
-            $table->string('type');
+            $table->string('soort');
             $table->string('projectnaam');
             $table->string('projecturl');
             $table->string('gebruikersnaam');
             $table->string('wachtwoord');
+            $table->string('voornaam');
+            $table->string('achternaam');
+            $table->string('email');
             $table->string('bedrijf');
             $table->string('telefoonnummer');
             $table->text('omschrijvingproject');

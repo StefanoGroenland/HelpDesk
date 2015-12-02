@@ -24,7 +24,7 @@ class ProjectController extends Controller
             'titel' => 'required|max:255|unique:projecten',
             'status'    => 'required',
             'prioriteit' => 'required',
-            'type'  => 'required',
+            'soort'  => 'required',
             'projectnaam' => 'required',
             'projecturl' => 'required',
             'gebruikersnaam' => 'required',
@@ -41,7 +41,7 @@ class ProjectController extends Controller
             'titel'  => $request['titel'],
             'status'     => $request['status'],
             'prioriteit'  => $request['prioriteit'],
-            'type'   => $request['type'],
+            'soort'   => $request['soort'],
             'projectnaam'  => $request['projectnaam'],
             'projecturl'  => $request['projecturl'],
             'gebruikersnaam'  => $request['gebruikersnaam'],
@@ -54,9 +54,37 @@ class ProjectController extends Controller
             'omschrijvingproject' => $request['omschrijvingproject'],
         ]);
         $request->session()->flash('alert-success', 'Project '. $request['titel']. ' toegevoegd.');
-        return redirect('projectmuteren');
+        return redirect('/projectmuteren');
     }
+    public function updateProject(Request $request){
+        $input = $request->input('projectnaam');
+        $data = array(
+            'titel'  => $request['titel'],
+            'status'     => $request['status'],
+            'prioriteit'  => $request['prioriteit'],
+            'soort'   => $request['soort'],
+            'projectnaam'  => $request['projectnaam'],
+            'projecturl'  => $request['projecturl'],
+            'gebruikersnaam'  => $request['gebruikersnaam'],
+            'wachtwoord' => bcrypt($request['wachtwoord']),
+            'wachtwoord' => bcrypt($request['wachtwoord']),
+            'voornaam'  => $request['voornaam'],
+            'achternaam' => $request['achternaam'],
+            'email'=> $request['email'],
+            'bedrijf' => $request['bedrijf'],
+            'telefoonnummer' => $request['telefoonnummer'],
+            'omschrijvingproject' => $request['omschrijvingproject'],
+        );
+        Project::whereEmail($input)->update($data);
+        $request->session()->flash('alert-success', 'Project '. $request['projectnaam']. ' veranderd.');
+        return redirect('/projectmuteren');
+    }
+    public function getUpdateData(){
+        $input = $_POST['input'];
+        $inputdata = Project::getProjectOnSearch($input);
 
+        return $inputdata;
+    }
     public function verwijderProject(){
 //      flash of alert bij voegen?
         $sid = Route::current()->getParameter('id');

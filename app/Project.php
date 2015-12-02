@@ -20,19 +20,30 @@ class Project extends Model
     protected $fillable = ['titel',
         'status',
         'prioriteit',
-        'type',
+        'soort',
         'projectnaam',
         'projecturl',
         'gebruikersnaam',
         'wachtwoord',
         'bedrijf',
         'telefoonnummer',
-        'omschrijvingproject'
+        'omschrijvingproject',
+        'voornaam',
+        'achternaam',
+        'email'
     ];
     protected $guarded = ['id'];
 
     public static function verwijderProject($id){
         DB::table('projecten')->where('id', '=',$id)->delete();
         return redirect('/projectmuteren');
+    }
+    public static function getProjectOnSearch($inp){
+        return DB::table('projecten')
+            ->select(DB::raw('titel,status,prioriteit,soort,projectnaam,projecturl
+            ,gebruikersnaam,wachtwoord,voornaam,achternaam,email,bedrijf
+            ,telefoonnummer,omschrijvingproject'))
+            ->where('projectnaam', 'LIKE', '%'.$inp.'%')
+            ->get();
     }
 }

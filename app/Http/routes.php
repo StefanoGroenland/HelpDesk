@@ -31,8 +31,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
 
     Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
+    Route::put('/updateProject', array('as' => 'veranderPJ', 'uses' => 'ProjectController@updateProject'));
 
     Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
+    Route::post('/updateProjectData', array('as' => 'updateData', 'uses' => 'ProjectController@getUpdateData'));
 
     Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
     Route::get('/verwijderProject/{id}', 'ProjectController@verwijderProject');

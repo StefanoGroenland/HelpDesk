@@ -58,7 +58,7 @@
                               </select>
                             </div>
                             <div class="form-group">
-                             <select class="form-control" id="type" name="type" required="true">
+                             <select class="form-control" id="soort" required="true" name="soort">
                                <option value="lay-out">Lay-out</option>
                                <option value="seo">SEO</option>
                                <option value="performance">Performance</option>
@@ -111,14 +111,14 @@
                             <h3 class="panel-title">Verander project</h3>
                           </div>
                           <div class="panel-body">
-                            <form method="POST" action="/">
+                            <form method="POST" action="/updateProject">
                                                {!! csrf_field() !!}
                                                <input type="hidden" name="_method" value="PUT">
                                                  <div class="form-group">
                                                    <div class="input-group">
                                                      <input type="text" required="true" id="zoeknaam" name="zoeknaam" class="form-control" placeholder="Projectnaam">
                                                      <span class="input-group-btn">
-                                                       <button class="btn btn-default" id="zoekKnop" name="zoekProject" type="button">Zoek project</button>
+                                                       <button class="btn btn-default" id="zoekKnop2" name="zoekProject" type="button">Zoek project</button>
                                                      </span>
                                                    </div>
                                                  </div>
@@ -127,28 +127,28 @@
                                <input type="text" class="form-control" id="titel2" placeholder="Titel">
                              </div>
                              <div class="form-group">
-                                <select class="form-control" id="status2">
-                                  <option value="open_status">Open</option>
-                                  <option value="bezig_status">Bezig</option>
-                                  <option value="gesloten_status">Gesloten</option>
+                                 <select class="form-control" id="status2" name="status" required="true">
+                                   <option value="open">Open</option>
+                                   <option value="bezig">Bezig</option>
+                                   <option value="gesloten">Gesloten</option>
+                                 </select>
+                               </div>
+                               <div class="form-group">
+                                 <select class="form-control" id="prioriteit2" required="true" name="prioriteit">
+                                   <option value="laag">Laag</option>
+                                   <option value="gemiddeld">Gemiddeld</option>
+                                   <option value="hoog">Hoog</option>
+                                   <option value="kritisch">Kritisch</option>
+                                 </select>
+                               </div>
+                               <div class="form-group">
+                                <select class="form-control" id="soort2" required="true" name="soort">
+                                  <option value="lay-out">Lay-out</option>
+                                  <option value="seo">SEO</option>
+                                  <option value="performance">Performance</option>
+                                  <option value="code">Code</option>
                                 </select>
                               </div>
-                              <div class="form-group">
-                                <select class="form-control" id="prioriteit2">
-                                  <option value="open_status">Laag</option>
-                                  <option value="bezig_status">Gemiddeld</option>
-                                  <option value="gesloten_status">Hoog</option>
-                                  <option value="gesloten_status">Kritisch</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                               <select class="form-control" id="type2">
-                                 <option value="open_status">Lay-out</option>
-                                 <option value="bezig_status">SEO</option>
-                                 <option value="gesloten_status">Performance</option>
-                                 <option value="gesloten_status">Code</option>
-                               </select>
-                             </div>
                               <div class="form-group">
                                 <input type="text" class="form-control" id="projectnaam2" placeholder="Projectnaam" value="">
                               </div>
@@ -174,7 +174,7 @@
                               </div>
                                 <div class="form-group">
                                 <label for="bedrijfsnaam">Bedrijf</label>
-                                <input type="text" class="form-control" id="bedrijfsnaam2" placeholder="Bedrijfsnaam" value="">
+                                <input type="text" class="form-control" id="bedrijf2" placeholder="Bedrijfsnaam" value="">
                               </div>
                                 <div class="form-group">
                                 <input type="text" class="form-control" id="telefoonnummer2" placeholder="Telefoon nummer" value="">
@@ -219,18 +219,58 @@
 </div>
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
             <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
+            @section('scripts')
+                    <script type="text/javascript">
+                        $("#zoekKnop2").on("click",function(){
 
+
+                                var email = $('#zoeknaam').val();
+                                $('#titel2').val('');
+                                $('#status2').val('');
+                                $('#prioriteit2').val('');
+                                $('#type2').val('');
+                                $('#projectnaam2').val('');
+                                $('#projecturl2').val('');
+                                $('#gebruikersnaam2').val('');
+                                $('#wachtwoord2').val('');
+                                $('#voornaam2').val('');
+                                $('#achternaam2').val('');
+                                $('#email2').val('');
+                                $('#bedrijf2').val('');
+                                $('#telefoonnummer2').val('');
+                                $('#omschrijving2').val('');
+
+                                $.ajax({
+                                  method: "POST",
+                                  url: "/updateProjectData",
+                                  data: {   input: email ,
+                                            _token: "{{ csrf_token() }}"
+                                        }
+                                })
+                                  .done(function( msg ) {
+                                    $('#titel2').val(msg[0].titel);
+                                    $('#status2').val(msg[0].status);
+                                    $('#prioriteit2').val(msg[0].prioriteit);
+                                    $('#soort2').val(msg[0].soort);
+                                    $('#projectnaam2').val(msg[0].projectnaam);
+                                    $('#projecturl2').val(msg[0].projecturl);
+                                    $('#gebruikersnaam2').val(msg[0].gebruikersnaam);
+                                    $('#wachtwoord2').val(msg[0].wachtwoord);
+                                    $('#voornaam2').val(msg[0].voornaam);
+                                    $('#achternaam2').val(msg[0].achternaam);
+                                    $('#email2').val(msg[0].email);
+                                    $('#bedrijf2').val(msg[0].bedrijf);
+                                    $('#telefoonnummer2').val(msg[0].telefoonnummer);
+                                    $('#omschrijving2').val(msg[0].omschrijvingproject);
+                                  });
+                        });
+                    </script>
+                    @stop
     </div>
     <!-- /#wrapper -->
 
