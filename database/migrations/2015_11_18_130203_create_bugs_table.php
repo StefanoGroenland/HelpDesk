@@ -23,7 +23,7 @@ class CreateBugsTable extends Migration
             $table->string('naam_medewerker');
             $table->string('behandeld_door');
             $table->text('beschrijving');
-            $table->string('type');
+            $table->string('soort');
         });
     }
     /**
