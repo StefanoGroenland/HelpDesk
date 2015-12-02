@@ -44,25 +44,25 @@
                            </div>
                            <div class="form-group">
                               <select class="form-control" id="status" name="status" required="true">
-                                <option value="open_status">Open</option>
-                                <option value="bezig_status">Bezig</option>
-                                <option value="gesloten_status">Gesloten</option>
+                                <option value="open">Open</option>
+                                <option value="bezig">Bezig</option>
+                                <option value="gesloten">Gesloten</option>
                               </select>
                             </div>
                             <div class="form-group">
                               <select class="form-control" id="prioriteit" required="true" name="prioriteit">
-                                <option value="open_status">Laag</option>
-                                <option value="bezig_status">Gemiddeld</option>
-                                <option value="gesloten_status">Hoog</option>
-                                <option value="gesloten_status">Kritisch</option>
+                                <option value="laag">Laag</option>
+                                <option value="gemiddeld">Gemiddeld</option>
+                                <option value="hoog">Hoog</option>
+                                <option value="kritisch">Kritisch</option>
                               </select>
                             </div>
                             <div class="form-group">
                              <select class="form-control" id="type" name="type" required="true">
-                               <option value="open_status">Lay-out</option>
-                               <option value="bezig_status">SEO</option>
-                               <option value="gesloten_status">Performance</option>
-                               <option value="gesloten_status">Code</option>
+                               <option value="lay-out">Lay-out</option>
+                               <option value="seo">SEO</option>
+                               <option value="performance">Performance</option>
+                               <option value="code">Code</option>
                              </select>
                            </div>
                             <div class="form-group">
