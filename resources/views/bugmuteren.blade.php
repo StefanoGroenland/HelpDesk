@@ -52,6 +52,15 @@
                                 </select>
                               </div>
                               <div class="form-group">
+                                <select class="form-control">
+                                  <option value="geen_prio">Soort</option>
+                                  <option value="laag">Laag</option>
+                                  <option value="gemiddeld">Gemiddeld</option>
+                                  <option value="hoog">Hoog</option>
+                                  <option value="kritisch">Kritisch</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
                                 <input type="text" class="form-control" id="projectnaam" placeholder="Projectnaam">
                               </div>
                               <div class="form-group">

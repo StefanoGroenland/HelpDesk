@@ -29,7 +29,7 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-2">
-                <h3>Bug : #168423 <span class="label label-success">Laag</span></h3>
+                <h3>Bug : # {{$bug->id}} <span class="label label-success">Laag</span></h3>
 
                 @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
@@ -38,27 +38,43 @@
                             <div class="form-group">
                                 <label for="sel1">Verander prioriteit</label>
                                 <select class="form-control" id="sel1">
+                                    <option>{{$bug->prioriteit}}</option>
+                                    <option>Kritisch</option>
                                     <option>Hoog</option>
                                     <option>Gemiddeld</option>
                                     <option>Laag</option>
                                 </select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="sel2">Verander soort</label>
+                                <select class="form-control" id="sel2">
+                                    <option>{{$bug->soort}}</option>
+                                    <option>Lay-out</option>
+                                    <option>SEO</option>
+                                    <option>Performance</option>
+                                    <option>Code</option>
+                                </select>
+
+                            </div>
+                         <div class="form-group">
+                                <label for="sel3">Verander status</label>
+                                   <select class="form-control" id="sel3">
+                                       <option>{{$bug->status}}</option>
+                                       <option>Open</option>
+                                       <option>Gesloten</option>
+                                   </select>
+                          </div>
+                            <div class="form-group">
+                                <label for="sel4">Koppel medewerker</label>
+                                <select class="form-control" id="sel4">
+                                    <option>{{$bug->behandeld_door}}</option>
+                                    @foreach($medewerkers as $mw)
+                                    <option>{{$mw->voornaam}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
-                            <div class="form-group">
-                                <label for="sel1">Verander status</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Open</option>
-                                    <option>Gesloten</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="sel1">Koppel medewerker</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Medewerker 1</option>
-                                    <option>Medewerker 2</option>
-                                    <option>Medewerker 3</option>
-                                </select>
-                            </div>
                             <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander</button>
                         </form>
 

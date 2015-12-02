@@ -73,7 +73,8 @@ class ProjectController extends Controller
             'telefoonnummer' => $request['telefoonnummer'],
             'omschrijvingproject' => $request['omschrijvingproject'],
         );
-        Project::whereEmail($input)->update($data);
+//        dd($data);
+        Project::where('projectnaam', '=', $input)->update($data);
         $request->session()->flash('alert-success', 'Project '. $request['projectnaam']. ' veranderd.');
         return redirect('/projectmuteren');
     }

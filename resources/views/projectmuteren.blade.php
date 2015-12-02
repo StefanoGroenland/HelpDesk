@@ -133,7 +133,7 @@
                                                  </div>
                             <div class="form-group">
                                 <label for="bedrijfsnaam">Project</label>
-                               <input type="text" class="form-control" id="titel2" placeholder="Titel">
+                               <input type="text" class="form-control" id="titel2" name="titel" placeholder="Titel">
                              </div>
                              <div class="form-group">
                                  <select class="form-control" id="status2" name="status" required="true">
@@ -159,37 +159,37 @@
                                 </select>
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control" id="projectnaam2" placeholder="Projectnaam" value="">
+                                <input type="text" class="form-control" id="projectnaam2" name="projectnaam" placeholder="Projectnaam" value="">
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control" id="projecturl2" placeholder="Project URL" value="">
+                                <input type="text" class="form-control" id="projecturl2" name="projecturl" placeholder="Project URL" value="">
                               </div>
                                 <div class="form-group">
                                 <label for="bedrijfsnaam">Gebruiker</label>
-                                <input type="text" class="form-control" id="gebruikersnaam2" placeholder="gebruikersnaam" value="">
+                                <input type="text" class="form-control" id="gebruikersnaam2" name="gebruikersnaam" placeholder="gebruikersnaam" value="">
                               </div>
                               <div class="form-group">
-                                <input type="password" class="form-control" id="wachtwoord2" placeholder="Wachtwoord" value="">
+                                <input type="password" class="form-control" id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="">
                               </div>
                                 <div class="form-group">
                                 <label for="bedrijfsnaam">Contactpersoon</label>
-                                <input type="text" class="form-control" id="voornaam2" placeholder="Voornaam" value="">
+                                <input type="text" class="form-control" id="voornaam2" name="voornaam" placeholder="Voornaam" value="">
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control" id="achternaam2" placeholder="Achternaam" value="">
+                                <input type="text" class="form-control" id="achternaam2"name="achternaam" placeholder="Achternaam" value="">
                               </div>
                                 <div class="form-group">
-                                <input type="email" class="form-control" id="email2" placeholder="E-mail" value="">
+                                <input type="email" class="form-control" id="email2" name="email" placeholder="E-mail" value="">
                               </div>
                                 <div class="form-group">
                                 <label for="bedrijfsnaam">Bedrijf</label>
-                                <input type="text" class="form-control" id="bedrijf2" placeholder="Bedrijfsnaam" value="">
+                                <input type="text" class="form-control" id="bedrijf2" name="bedrijf" placeholder="Bedrijfsnaam" value="">
                               </div>
                                 <div class="form-group">
-                                <input type="text" class="form-control" id="telefoonnummer2" placeholder="Telefoon nummer" value="">
+                                <input type="text" class="form-control" id="telefoonnummer2" name="telefoonnummer" placeholder="Telefoon nummer" value="">
                               </div>
                               <div class="form-group">
-                                 <textarea class="form-control" rows="5" id="omschrijving2" value="" ></textarea>
+                                 <textarea class="form-control" rows="5" id="omschrijving2" name="omschrijvingproject" value="" ></textarea>
                                </div>
 
                               <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
