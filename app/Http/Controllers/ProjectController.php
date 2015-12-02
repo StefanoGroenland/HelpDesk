@@ -88,6 +88,7 @@ class ProjectController extends Controller
     public function verwijderProject(){
 //      flash of alert bij voegen?
         $sid = Route::current()->getParameter('id');
+        session()->flash('alert-danger', 'Project met id : '. $sid . ' verwijderd.');
         return Project::verwijderProject($sid);
     }
 }
