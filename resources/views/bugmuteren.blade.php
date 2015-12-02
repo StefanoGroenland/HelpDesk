@@ -44,11 +44,11 @@
                              </div>
                               <div class="form-group">
                                 <select class="form-control">
-                                  <option value="open_status">Prioriteit</option>
-                                  <option value="open_status">Laag</option>
-                                  <option value="bezig_status">Gemiddeld</option>
-                                  <option value="gesloten_status">Hoog</option>
-                                  <option value="gesloten_status">Kritisch</option>
+                                  <option value="geen_prio">Prioriteit</option>
+                                  <option value="laag">Laag</option>
+                                  <option value="gemiddeld">Gemiddeld</option>
+                                  <option value="hoog">Hoog</option>
+                                  <option value="kritisch">Kritisch</option>
                                 </select>
                               </div>
                               <div class="form-group">

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Project as Project;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Hash as Hash;
 use Illuminate\Support\Facades\Validator;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -66,7 +65,6 @@ class ProjectController extends Controller
             'projectnaam'  => $request['projectnaam'],
             'projecturl'  => $request['projecturl'],
             'gebruikersnaam'  => $request['gebruikersnaam'],
-            'wachtwoord' => bcrypt($request['wachtwoord']),
             'wachtwoord' => bcrypt($request['wachtwoord']),
             'voornaam'  => $request['voornaam'],
             'achternaam' => $request['achternaam'],

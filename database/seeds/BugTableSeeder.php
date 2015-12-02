@@ -11,11 +11,13 @@ class BugTableSeeder extends Seeder
      */
     public function run()
     {
+        $prio = array('laag', 'gemiddeld', 'hoog' , 'kritisch');
+        $i = rand(0,3);
         DB::table('bugs')->insert([
             'project_id' => rand(11,990),
             'titel' => str_random(10),
             'status' => 'open',
-            'prioriteit' => 'laag',
+            'prioriteit' => $prio[$i],
             'soort' => 'seo',
             'naam_contactpersoon' => str_random(140),
             'naam_medewerker' => str_random(140),

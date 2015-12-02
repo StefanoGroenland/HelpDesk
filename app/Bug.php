@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Bug extends Model
 {
     /**
@@ -21,11 +21,27 @@ class Bug extends Model
         'titel',
         'prioriteit',
         'status',
-        'naam_contactpersoon',
+        'voornaam_contactpersoon',
+        'achternaam_contactpersoon',
+        'email_contactpersoon',
+        'bedrijf_contactpersoon',
+        'telefoon_contactpersoon',
+        'gebruikersnaam',
+        'wachtwoord',
         'naam_medewerker',
         'behandeld_door',
         'beschrijving',
-        'soort'
+        'soort',
+        'start_datum',
+        'eind_datum',
     ];
     protected $guarded = ['id'];
+
+    public function getAllBugs(){
+       DB::table('bugs')->all();
+    }
+    public static function verwijderBug($id){
+        DB::table('bugs')->where('id', '=',$id)->delete();
+        return redirect('/bugoverzicht');
+    }
 }

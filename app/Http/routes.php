@@ -13,34 +13,28 @@
 //Routes for user eyes only
 Route::group(['middleware' => 'auth'], function () {
 
-
+//    UserController Routes
     Route::get('/admindashboard', array('as' => 'admindashboard', 'uses' => 'UserController@showDashboard'));
-
     Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'UserController@showDashboard'));
-
-    Route::get('/bugchat',array('as' => 'bugchat', 'uses' => 'UserController@showbugChat'));
-
-    Route::get('/bugmuteren', array('as' => 'bugmuteren', 'uses' => 'UserController@showBugMuteren'));
-
-    Route::get('/bugoverzicht', array('as' => 'bugoverzicht', 'uses' => 'UserController@showBugOverzicht'));
-
     Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfiel'));
-
-    Route::get('/projectmuteren', array('as' => 'projectmuteren', 'uses' => 'ProjectController@showProjectMuteren'));
-
     Route::get('/medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
-
-    Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
-    Route::put('/updateProject', array('as' => 'veranderPJ', 'uses' => 'ProjectController@updateProject'));
-
     Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
-    Route::post('/updateProjectData', array('as' => 'updateData', 'uses' => 'ProjectController@getUpdateData'));
-
+    Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
     Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
-    Route::get('/verwijderProject/{id}', 'ProjectController@verwijderProject');
-
     Route::post('addMedewerker', 'UserController@addMedewerker');
-    Route::post('addProject', 'ProjectController@addProject');
+
+//    ProjectController Routes
+    Route::get('/projectmuteren', array('as' => 'projectmuteren', 'uses' => 'ProjectController@showProjectMuteren'));
+    Route::put('/updateProject', array('as' => 'veranderPJ', 'uses' => 'ProjectController@updateProject'));
+    Route::post('/updateProjectData', array('as' => 'updateData', 'uses' => 'ProjectController@getUpdateData'));
+    Route::get('/verwijderProject/{id}', 'ProjectController@verwijderProject');
+    Route::post('/addProject', 'ProjectController@addProject');
+
+//    BugController Routes
+    Route::get('/bugchat',array('as' => 'bugchat', 'uses' => 'BugController@showbugChat'));
+    Route::get('/bugmuteren', array('as' => 'bugmuteren', 'uses' => 'BugController@showBugMuteren'));
+    Route::get('/bugoverzicht', array('as' => 'bugoverzicht', 'uses' => 'BugController@showBugOverzicht'));
+    Route::get('/verwijderBug/{id}', 'BugController@verwijderBug');
 
 
 });

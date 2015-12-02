@@ -27,18 +27,9 @@ class UserController extends Controller
             return View::make('/dashboard');
         }
     }
-    public function showBugChat(){
-        return View::make('bugchat');
-    }
-    public function showBugmuteren(){
-        return View::make('bugmuteren');
-    }
     public function showMwMuteren(){
         $medewerkers = User::all();
         return View::make('medewerkermuteren', compact('medewerkers'));
-    }
-    public function showBugOverzicht(){
-        return View::make('bugoverzicht');
     }
     public function showProfiel(){
         return View::make('profiel');

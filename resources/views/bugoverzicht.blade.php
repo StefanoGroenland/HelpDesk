@@ -33,80 +33,52 @@
                 <div class="row">
                     <div class="col-lg-12">
                     <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover ">
                         <thead>
                         <th>ID</th>
                         <th>Samenvatting</th>
                         <th>Status</th>
+                        <th>Soort</th>
                         <th>Prioriteit</th>
                         <th></th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>#3465412</td>
-                                <td>De bug berekening bij het gedeelte....</td>
-                                <td>Bezig</td>
-                                <td><span class="label label-danger">Hoog</span></td>
-                                <td>
-                                    <a href="{{URL::to('/bugchat')}}" class="">
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="glyphicon glyphicon-search"></i>
-                                        </button>
-                                    </a>
-                                <button class="btn btn-danger">
-                                        <i class="fa fa-remove"></i>
-                                </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#3465413</td>
-                                <td>Help!! webserver loopt vast na 10 bezoekers!..</td>
-                                <td>Bezig</td>
-                                <td><span class="label label-danger">Hoog</span></td>
-                                <td>
-                                    <a href="{{URL::to('/bugchat')}}" class="">
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="glyphicon glyphicon-search"></i>
-                                        </button>
-                                    </a>
-                                <button class="btn btn-danger">
-                                        <i class="fa fa-remove"></i>
-                                </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#3465414</td>
-                                <td>Website is trager als normaal</td>
-                                <td>Openstaand</td>
-                                <td><span class="label label-warning">Laag</span></td>
-                                <td>
-                                    <a href="{{URL::to('/bugchat')}}" class="">
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="glyphicon glyphicon-search"></i>
-                                        </button>
-                                    </a>
-                                <button class="btn btn-danger">
-                                        <i class="fa fa-remove"></i>
-                                </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#3465415</td>
-                                <td>Logo footer ontbreekt zonder foutmelding</td>
-                                <td>Openstaand</td>
-                                <td><span class="label label-success">Gemiddeld</span></td>
-                                <td>
-                                    <a href="{{URL::to('/bugchat')}}" class="">
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="glyphicon glyphicon-search"></i>
-                                        </button>
-                                    </a>
-                                <button class="btn btn-danger">
-                                        <i class="fa fa-remove"></i>
-                                </button>
-                                </td>
-                            </tr>
-                            
+                           @foreach($bugs as $bug)
+                                <tr>
+                                    <td># {{$bug->id}}</td>
+                                    <td>{{substr($bug->beschrijving,0,15)}}</td>
+                                    <td>{{$bug->status}}</td>
+                                    <td>{{$bug->soort}}</td>
+                                    <td>
+                                    @if($bug->prioriteit == 'laag')
+                                    <span class="label label-success">Laag</span>
+                                    @elseif($bug->prioriteit == 'gemiddeld')
+                                    <span class="label label-warning">Gemmideld</span>
+                                    @elseif($bug->prioriteit == 'hoog')
+                                    <span class="label label-danger">Hoog</span>
+                                    @elseif($bug->prioriteit == 'kritisch')
+                                    <span class="label label-purple">Kritisch</span>
+                                    @else
+                                    <span class="label label-info">Geen prioriteit</span>
+                                    @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{URL::to('/bugchat')}}" class="">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                            </button>
+                                        </a>
+                                        <a href="/verwijderBug/{{$bug->id}}" class="">
+                                            <button class="btn btn-danger">
+                                                    <i class="fa fa-remove"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+
+
+                            @endforeach
+
                         </tbody>
                       </table>
                     </div>
