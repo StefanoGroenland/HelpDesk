@@ -133,6 +133,10 @@
                        <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="">
                      </div>
                      <div class="form-group">
+                       <label for="telefoonnummer">Telefoonnummer</label>
+                       <input type="text" class="form-control" required="true" id="telefoonnummer2" name="telefoonnummer" placeholder="Telefoonnummer">
+                     </div>
+                     <div class="form-group">
                      <label for="geslacht">Geslacht</label>
                        <select class="form-control" id="geslacht2" required="true" name="geslacht">
                          <option value="man">Man</option>
@@ -191,6 +195,7 @@
                     $('#voornaam2').val('');
                     $('#tussenvoegsel2').val('');
                     $('#achternaam2').val('');
+                    $('#telefoonnummer2').val('');
 
                     $.ajax({
                       method: "POST",
@@ -205,6 +210,7 @@
                         $('#voornaam2').val(msg[0].voornaam);
                         $('#tussenvoegsel2').val(msg[0].tussenvoegsel);
                         $('#achternaam2').val(msg[0].achternaam);
+                        $('#telefoonnummer2').val(msg[0].telefoonnummer);
                       });
             });
         </script>

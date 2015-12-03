@@ -68,7 +68,7 @@ class User extends Model implements AuthenticatableContract,
     }
     public static function getMedewerker($email){
         return DB::table('gebruikers')
-            ->select(DB::raw('email,username,voornaam,achternaam,tussenvoegsel'))
+            ->select(DB::raw('email,username,voornaam,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
             ->where('email', 'LIKE', '%'.$email.'%')
             ->get();
     }
