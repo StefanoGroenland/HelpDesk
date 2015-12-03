@@ -34,6 +34,10 @@ class Project extends Model
     ];
     protected $guarded = ['id'];
 
+    public function user(){
+        return $this->belongsTo('App\User', 'id');
+    }
+
     public static function verwijderProject($id){
         DB::table('projecten')->where('id', '=',$id)->delete();
         return redirect('/projectmuteren');

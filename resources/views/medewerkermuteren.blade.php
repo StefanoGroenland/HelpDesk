@@ -95,23 +95,34 @@
                      </div>
                      <div class="form-group">
                        <label for="email">Email address</label>
-                       <input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail" value="{{isset($inputdata) ? $inputdata->email : ''}}">
+                       <input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail" value="">
                      </div>
                      <div class="form-group">
                        <label for="gebruikersnaam">Gebruikersnaam</label>
-                       <input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="{{isset($inputdata) ? $inputdata->username : ''}}">
+                       <input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="">
                      </div>
-                     <div class="form-group">
-                       <label for="wachtwoord">Wachtwoord</label>
-                       <input type="password" class="form-control" required="true" id="wachtwoord2" name="password" placeholder="Wachtwoord">
-                     </div>
+                     {{--<div class="form-group">--}}
+                       {{--<label for="wachtwoord">Wachtwoord</label>--}}
+                       {{--<input type="password" class="form-control" required="true" id="wachtwoord2" name="password" placeholder="Wachtwoord">--}}
+                     {{--</div>--}}
                        <div class="form-group">
                        <label for="voornaam">Voornaam</label>
-                       <input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="{{isset($inputdata) ? $inputdata->voornaam : ''}}">
+                       <input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="">
                      </div>
                      <div class="form-group">
+                        <label for="tussenvoegsel">Tussenvoegsel</label>
+                        <input type="text" class="form-control" id="tussenvoegsel2" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="">
+                      </div>
+                     <div class="form-group">
                        <label for="achternaam">Achternaam</label>
-                       <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="{{isset($inputdata) ? $inputdata->achternaam : ''}}">
+                       <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="">
+                     </div>
+                     <div class="form-group">
+                     <label for="geslacht">Geslacht</label>
+                       <select class="form-control" id="geslacht2" required="true" name="geslacht">
+                         <option value="man">Man</option>
+                         <option value="vrouw">Vrouw</option>
+                       </select>
                      </div>
                       <div class="row">
                         <div class="col-lg-12"><button type="submit" name="veranderGebruiker" class="btn btn-warning center-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Verander</button></div>
@@ -131,7 +142,7 @@
                          <tbody>
                              @foreach($medewerkers as $medewerker)
                              <tr>
-                             <td>{{$medewerker->voornaam . ' ' . $medewerker->achternaam}}</td>
+                             <td>{{$medewerker->voornaam . ' ' . $medewerker->tussenvoegsel . ' ' . $medewerker->achternaam}}</td>
                              <td>{{$medewerker->email}}</td>
                              <td>
                              <a href="/verwijderGebruiker/{{$medewerker->id}}" class="">
@@ -163,6 +174,7 @@
                     $('#email2').val('');
                     $('#gebruikersnaam2').val('');
                     $('#voornaam2').val('');
+                    $('#tussenvoegsel2').val('');
                     $('#achternaam2').val('');
 
                     $.ajax({
@@ -176,6 +188,7 @@
                         $('#email2').val(msg[0].email);
                         $('#gebruikersnaam2').val(msg[0].username);
                         $('#voornaam2').val(msg[0].voornaam);
+                        $('#tussenvoegsel2').val(msg[0].tussenvoegsel);
                         $('#achternaam2').val(msg[0].achternaam);
                       });
             });

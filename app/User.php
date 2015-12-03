@@ -48,6 +48,13 @@ class User extends Model implements AuthenticatableContract,
     protected $guarded = ['id'];
 
 
+    public function bug(){
+        return $this->hasMany('App\Bug','klant_id');
+    }
+    public function project(){
+        return $this->hasMany('App\Project','gebruiker_id');
+    }
+
     public static function getMedewerkers()
     {
         return DB::table('gebruikers')
@@ -58,7 +65,7 @@ class User extends Model implements AuthenticatableContract,
     }
     public static function getMedewerker($email){
         return DB::table('gebruikers')
-            ->select(DB::raw('email,username,password,voornaam,achternaam'))
+            ->select(DB::raw('email,username,voornaam,achternaam,tussenvoegsel'))
             ->where('email', 'LIKE', '%'.$email.'%')
             ->get();
     }

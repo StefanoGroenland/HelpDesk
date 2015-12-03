@@ -23,12 +23,8 @@ class CreateProjectenTable extends Migration
             $table->string('projecturl');
             $table->string('gebruikersnaam');
             $table->string('wachtwoord');
-            $table->string('voornaam');
-            $table->string('achternaam');
-            $table->string('email');
-            $table->string('bedrijf');
-            $table->string('telefoonnummer');
             $table->text('omschrijvingproject');
+            $table->integer('gebruiker_id');
             });
     }
 

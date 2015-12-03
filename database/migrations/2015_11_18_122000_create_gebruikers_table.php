@@ -21,8 +21,11 @@ class CreateGebruikersTable extends Migration
             $table->string('email');
             $table->string('bedrijf');
             $table->string('voornaam');
+            $table->string('tussenvoegsel');
             $table->string('achternaam');
+            $table->string('geslacht');
             $table->text('profielfoto');
+            $table->text('telefoonnummer');
             $table->rememberToken();
         });
     }

@@ -23,17 +23,10 @@ class BugTableSeeder extends Seeder
             'status' => $status[$y],
             'prioriteit' => $prio[$x],
             'soort' => $soort[$i],
-            'voornaam_contactpersoon' => str_random(10),
-            'achternaam_contactpersoon' => str_random(10),
-            'naam_medewerker' => str_random(10),
-            'bedrijf_contactpersoon' => str_random(10),
-            'telefoon_contactpersoon' => str_random(10),
-            'email_contactpersoon' => str_random(10).'@gmail.com',
-            'naam_medewerker' => str_random(10),
-            'gebruikersnaam' => str_random(10),
-            'wachtwoord' => str_random(10),
-            'behandeld_door' => str_random(10),
             'beschrijving' => str_random(140),
+            'klant_id' => rand(10,99),
+            'project_id' => rand(10,99),
+            'medewerker_id' => rand(10,99),
         ]);
 
     }
