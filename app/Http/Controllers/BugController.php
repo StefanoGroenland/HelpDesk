@@ -14,7 +14,7 @@ class BugController extends Controller
 {
     public function showBugChat($id){
         $bug = Bug::find($id);
-        $medewerkers = User::all();
+        $medewerkers = User::where('bedrijf' ,'=' , 'moodles')->get();
         return View::make('/bugchat', compact('bug', 'medewerkers'));
     }
     public function showBugmuteren(){
