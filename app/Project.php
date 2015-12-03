@@ -25,12 +25,10 @@ class Project extends Model
         'projecturl',
         'gebruikersnaam',
         'wachtwoord',
-        'bedrijf',
         'telefoonnummer',
         'omschrijvingproject',
-        'voornaam',
-        'achternaam',
-        'email'
+        'gebruiker_id',
+
     ];
     protected $guarded = ['id'];
 

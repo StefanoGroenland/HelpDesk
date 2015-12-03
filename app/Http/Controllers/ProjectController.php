@@ -29,11 +29,6 @@ class ProjectController extends Controller
             'projecturl' => 'required',
             'gebruikersnaam' => 'required',
             'wachtwoord' => 'required',
-            'voornaam' => 'required',
-            'achternaam' => 'required',
-            'email' => 'required',
-            'bedrijf' => 'required',
-            'telefoonnummer' => 'required',
             'omschrijvingproject' => 'required',
             'gebruiker_id' => 'required',
         ]);
@@ -47,11 +42,6 @@ class ProjectController extends Controller
             'projecturl'  => $request['projecturl'],
             'gebruikersnaam'  => $request['gebruikersnaam'],
             'wachtwoord' => bcrypt($request['wachtwoord']),
-            'voornaam'  => $request['voornaam'],
-            'achternaam' => $request['achternaam'],
-            'email'=> $request['email'],
-            'bedrijf' => $request['bedrijf'],
-            'telefoonnummer' => $request['telefoonnummer'],
             'omschrijvingproject' => $request['omschrijvingproject'],
             'gebruiker_id' => $request['gebruiker_id'],
         ]);

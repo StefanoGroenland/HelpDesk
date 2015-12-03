@@ -80,10 +80,17 @@
                             <div class="form-group">
                               <input type="text" class="form-control" id="projecturl" required="true" name="projecturl" placeholder="Project URL" value="">
                             </div>
+                            <div class="form-group">
+                                    <label for="sel4">Beheer account</label>
+                                  <input type="text" class="form-control" id="gebruikersnaam" required="true" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
+                                </div>
+                                 <div class="form-group">
+                                  <input type="text" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
+                                </div>
 
                                <div class="form-group">
                                     <label for="sel4">Koppel klant</label>
-                                    <select class="form-control" id="gebruiker_id">
+                                    <select class="form-control"  id="gebruiker_id" name="gebruiker_id">
                                         @foreach($klanten as $klant)
                                         <option value="{{$klant->id}}" >{{$klant->voornaam.' '.$klant->achternaam.' #'. $klant->id }}</option>
                                         @endforeach
