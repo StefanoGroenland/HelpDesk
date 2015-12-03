@@ -59,11 +59,7 @@ class ProjectController extends Controller
             'projecturl'  => $request['projecturl'],
             'gebruikersnaam'  => $request['gebruikersnaam'],
             'wachtwoord' => bcrypt($request['wachtwoord']),
-            'voornaam'  => $request['voornaam'],
-            'achternaam' => $request['achternaam'],
-            'email'=> $request['email'],
-            'bedrijf' => $request['bedrijf'],
-            'telefoonnummer' => $request['telefoonnummer'],
+            'gebruiker_id' => $request['gebruiker_id'],
             'omschrijvingproject' => $request['omschrijvingproject'],
         );
 //        dd($data);

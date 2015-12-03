@@ -159,29 +159,14 @@
                                 <input type="text" class="form-control" id="projecturl2" name="projecturl" placeholder="Project URL" value="">
                               </div>
                                 <div class="form-group">
-                                <label for="bedrijfsnaam">Gebruiker</label>
-                                <input type="text" class="form-control" id="gebruikersnaam2" name="gebruikersnaam" placeholder="gebruikersnaam" value="">
+                                <label for="bedrijfsnaam">Beheer account</label>
+                                <input type="text" class="form-control" id="gebruikersnaam2" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
                               </div>
                               <div class="form-group">
                                 <input type="password" class="form-control" id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="">
                               </div>
-                                <div class="form-group">
-                                <label for="bedrijfsnaam">Contactpersoon</label>
-                                <input type="text" class="form-control" id="voornaam2" name="voornaam" placeholder="Voornaam" value="">
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" id="achternaam2"name="achternaam" placeholder="Achternaam" value="">
-                              </div>
-                                <div class="form-group">
-                                <input type="email" class="form-control" id="email2" name="email" placeholder="E-mail" value="">
-                              </div>
-                                <div class="form-group">
-                                <label for="bedrijfsnaam">Bedrijf</label>
-                                <input type="text" class="form-control" id="bedrijf2" name="bedrijf" placeholder="Bedrijfsnaam" value="">
-                              </div>
-                                <div class="form-group">
-                                <input type="text" class="form-control" id="telefoonnummer2" name="telefoonnummer" placeholder="Telefoon nummer" value="">
-                              </div>
+
+
                               <div class="form-group">
                                  <textarea class="form-control" rows="5" id="omschrijving2" name="omschrijvingproject" value="" ></textarea>
                                </div>
@@ -241,11 +226,7 @@
                                 $('#projecturl2').val('');
                                 $('#gebruikersnaam2').val('');
                                 $('#wachtwoord2').val('');
-                                $('#voornaam2').val('');
-                                $('#achternaam2').val('');
-                                $('#email2').val('');
-                                $('#bedrijf2').val('');
-                                $('#telefoonnummer2').val('');
+                                $('#gebruiker_id2').val('');
                                 $('#omschrijving2').val('');
 
                                 $.ajax({
@@ -264,11 +245,7 @@
                                     $('#projecturl2').val(msg[0].projecturl);
                                     $('#gebruikersnaam2').val(msg[0].gebruikersnaam);
                                     $('#wachtwoord2').val(msg[0].wachtwoord);
-                                    $('#voornaam2').val(msg[0].voornaam);
-                                    $('#achternaam2').val(msg[0].achternaam);
-                                    $('#email2').val(msg[0].email);
-                                    $('#bedrijf2').val(msg[0].bedrijf);
-                                    $('#telefoonnummer2').val(msg[0].telefoonnummer);
+                                    $('#gebruiker_id2').val(msg[0].gebruiker_id);
                                     $('#omschrijving2').val(msg[0].omschrijvingproject);
                                   });
                         });

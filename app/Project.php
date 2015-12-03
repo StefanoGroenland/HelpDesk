@@ -48,8 +48,8 @@ class Project extends Model
     public static function getProjectOnSearch($inp){
         return DB::table('projecten')
             ->select(DB::raw('titel,status,prioriteit,soort,projectnaam,projecturl
-            ,gebruikersnaam,wachtwoord,voornaam,achternaam,email,bedrijf
-            ,telefoonnummer,omschrijvingproject'))
+            ,gebruikersnaam,wachtwoord
+            ,gebruiker_id,omschrijvingproject'))
             ->where('projectnaam', 'LIKE', '%'.$inp.'%')
             ->get();
     }
