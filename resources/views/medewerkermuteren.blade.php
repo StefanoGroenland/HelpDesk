@@ -65,9 +65,24 @@
                        <input type="text" class="form-control" required="true" id="voornaam" name="voornaam" placeholder="Voornaam">
                      </div>
                      <div class="form-group">
+                        <label for="tussenvoegsel">Tussenvoegsel</label>
+                        <input type="text" class="form-control" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="">
+                      </div>
+                     <div class="form-group">
                        <label for="achternaam">Achternaam</label>
                        <input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam">
                      </div>
+                     <div class="form-group">
+                        <label for="telefoonnummer">Telefoonnummer</label>
+                        <input type="text" class="form-control" required="true" id="telefoonnummer" name="telefoonnummer" placeholder="Telefoonnummer">
+                      </div>
+                      <div class="form-group">
+                      <label for="geslacht">Geslacht</label>
+                        <select class="form-control" id="geslacht" required="true" name="geslacht">
+                          <option value="man">Man</option>
+                          <option value="vrouw">Vrouw</option>
+                        </select>
+                      </div>
                      <div class="row">
                            <div class="col-lg-12"><button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button></div>
                        </div>

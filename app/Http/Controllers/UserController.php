@@ -44,7 +44,9 @@ class UserController extends Controller
                 'email'      => $request['email'],
                 'password'   => bcrypt($request['password']),
                 'voornaam'   => $request['voornaam'],
+                'tussenvoegsel'   => $request['tussenvoegsel'],
                 'achternaam' => $request['achternaam'],
+                'geslacht' => $request['geslacht'],
             );
             User::whereEmail($email)->update($data);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
@@ -61,9 +63,13 @@ class UserController extends Controller
         Validator::make($request->all(),[
             'username' => 'required|max:255|unique:gebruikers',
             'email'    => 'required|max:255|unique:gebruikers',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
             'bedrijf'  => 'required',
-            'voornaam' => 'required|min:4',
+            'voornaam' => 'required',
+            'tussenvoegsel' => 'required',
+            'achternaam' => 'required',
+            'telefoonnummer' => 'required',
+            'geslacht' => 'required',
         ]);
         User::create([
             'username'   => $request['username'],
@@ -71,7 +77,10 @@ class UserController extends Controller
             'password'   => bcrypt($request['password']),
             'bedrijf'    => 'moodles',
             'voornaam'   => $request['voornaam'],
+            'tussenvoegsel'   => $request['tussenvoegsel'],
             'achternaam' => $request['achternaam'],
+            'telefoonnummer' => $request['telefoonnummer'],
+            'geslacht' => $request['geslacht'],
         ]);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
         return redirect('medewerkermuteren');
