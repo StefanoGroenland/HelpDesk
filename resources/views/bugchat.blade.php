@@ -68,7 +68,6 @@
                             <div class="form-group">
                                 <label for="sel4">Koppel medewerker</label>
                                 <select class="form-control" id="sel4">
-                                    <option>{{$bug->behandeld_door}}</option>
                                     @foreach($medewerkers as $mw)
                                     <option>{{$mw->voornaam}}</option>
                                     @endforeach

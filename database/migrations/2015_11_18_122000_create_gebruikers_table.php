@@ -17,7 +17,6 @@ class CreateGebruikersTable extends Migration
             $table->timestamps();
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('klantnummer');
             $table->string('email');
             $table->string('bedrijf');
             $table->string('voornaam');

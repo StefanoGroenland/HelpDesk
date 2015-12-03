@@ -15,7 +15,8 @@ class ProjectController extends Controller
 {
     public function showProjectMuteren(){
         $projects = Project::all();
-        return View::make('projectmuteren', compact('projects'));
+        $klanten = Project::getUsers();
+        return View::make('projectmuteren', compact('projects', 'klanten'));
     }
     public function addProject(Request $request){
 
@@ -34,6 +35,7 @@ class ProjectController extends Controller
             'bedrijf' => 'required',
             'telefoonnummer' => 'required',
             'omschrijvingproject' => 'required',
+            'gebruiker_id' => 'required',
         ]);
         Project::create([
 
@@ -51,6 +53,7 @@ class ProjectController extends Controller
             'bedrijf' => $request['bedrijf'],
             'telefoonnummer' => $request['telefoonnummer'],
             'omschrijvingproject' => $request['omschrijvingproject'],
+            'gebruiker_id' => $request['gebruiker_id'],
         ]);
         $request->session()->flash('alert-success', 'Project '. $request['titel']. ' toegevoegd.');
         return redirect('/projectmuteren');

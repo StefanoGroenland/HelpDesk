@@ -47,6 +47,7 @@ class UserController extends Controller
                 'tussenvoegsel'   => $request['tussenvoegsel'],
                 'achternaam' => $request['achternaam'],
                 'geslacht' => $request['geslacht'],
+                'telefoonnummer' => $request['telefoonnummer'],
             );
             User::whereEmail($email)->update($data);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');

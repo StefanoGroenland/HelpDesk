@@ -80,30 +80,17 @@
                             <div class="form-group">
                               <input type="text" class="form-control" id="projecturl" required="true" name="projecturl" placeholder="Project URL" value="">
                             </div>
-                              <div class="form-group">
-                              <label for="bedrijfsnaam">Gebruiker</label>
-                              <input type="text" class="form-control" id="gebruikersnaam" required="true" name="gebruikersnaam" placeholder="gebruikersnaam" value="">
-                            </div>
-                            <div class="form-group">
-                              <input type="password" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
-                            </div>
-                              <div class="form-group">
-                              <label for="bedrijfsnaam">Contactpersoon</label>
-                              <input type="text" class="form-control" id="voornaam" required="true" name="voornaam" placeholder="Voornaam" value="">
-                            </div>
-                            <div class="form-group">
-                              <input type="text" class="form-control" id="achternaam" required="true" name="achternaam" placeholder="Achternaam" value="">
-                            </div>
-                              <div class="form-group">
-                              <input type="email" class="form-control" id="email" required="true" name="email" placeholder="E-mail" value="">
-                            </div>
-                              <div class="form-group">
-                              <label for="bedrijfsnaam">Bedrijf</label>
-                              <input type="text" class="form-control" id="bedrijf" required="true" name="bedrijf" placeholder="Bedrijfsnaam" value="">
-                            </div>
-                              <div class="form-group">
-                              <input type="text" class="form-control" id="telefoonnummer" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="">
-                            </div>
+
+                               <div class="form-group">
+                                    <label for="sel4">Koppel klant</label>
+                                    <select class="form-control" id="gebruiker_id">
+                                        @foreach($klanten as $klant)
+                                        <option value="{{$klant->id}}" >{{$klant->voornaam.' '.$klant->achternaam.' #'. $klant->id }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+
                             <div class="form-group">
                                <textarea class="form-control" rows="5" id="omschrijvingproject" required="true" name="omschrijvingproject" value="" ></textarea>
                              </div>
@@ -204,7 +191,7 @@
                                 <thead>
                                 <th>Project</th>
                                 <th>URL</th>
-                                <th>Bedrijf</th>
+                                <th>Klantnummer</th>
                                 <th></th>
                                 </thead>
                                 <tbody>
@@ -212,7 +199,7 @@
                                       <tr>
                                       <td>{{$project->projectnaam}}</td>
                                       <td>{{$project->projecturl}}</td>
-                                      <td>{{$project->bedrijf}}</td>
+                                      <td>{{$project->gebruiker_id}}</td>
                                       <td>
                                       <a href="/verwijderProject/{{$project->id}}" class="">
                                          <button type="submit" class="btn btn-danger btn-xs">

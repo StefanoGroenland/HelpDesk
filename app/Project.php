@@ -38,6 +38,11 @@ class Project extends Model
         return $this->belongsTo('App\User', 'id');
     }
 
+    public static function getUsers(){
+        $users = User::where('bedrijf','!=', 'moodles' )->get();
+        return $users;
+    }
+
     public static function verwijderProject($id){
         DB::table('projecten')->where('id', '=',$id)->delete();
         return redirect('/projectmuteren');
