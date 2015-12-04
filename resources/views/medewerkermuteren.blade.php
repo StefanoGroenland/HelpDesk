@@ -198,6 +198,7 @@
                     $('#tussenvoegsel2').val('');
                     $('#achternaam2').val('');
                     $('#telefoonnummer2').val('');
+                    $('#geslacht2').val('');
 
                     $.ajax({
                       method: "POST",
@@ -213,6 +214,7 @@
                         $('#tussenvoegsel2').val(msg[0].tussenvoegsel);
                         $('#achternaam2').val(msg[0].achternaam);
                         $('#telefoonnummer2').val(msg[0].telefoonnummer);
+                        $('#geslacht2').val(msg[0].geslacht);
                       });
             });
         </script>
