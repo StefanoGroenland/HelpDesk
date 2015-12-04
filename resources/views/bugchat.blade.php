@@ -29,7 +29,20 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-2">
-                <h3>Bug : # {{$bug->id}} <span class="label label-success">Laag</span></h3>
+                <h3>Bug : # {{$bug->id}}
+
+                @if($bug->prioriteit == 'laag')
+                <span class="label label-success">Laag</span>
+                @elseif($bug->prioriteit == 'gemiddeld')
+                <span class="label label-warning">Gem.</span>
+                @elseif($bug->prioriteit == 'hoog')
+                <span class="label label-danger">Hoog</span>
+                @elseif($bug->prioriteit == 'kritisch')
+                <span class="label label-purple">Krit.</span>
+                @else
+                <span class="label label-info">Geen prioriteit</span>
+                @endif
+                </h3>
 
                 @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
