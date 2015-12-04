@@ -85,7 +85,7 @@
                                   <input type="text" class="form-control" id="gebruikersnaam" required="true" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
                                 </div>
                                  <div class="form-group">
-                                  <input type="text" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
+                                  <input type="password" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
                                 </div>
 
                                <div class="form-group">

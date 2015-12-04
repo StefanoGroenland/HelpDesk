@@ -160,6 +160,7 @@
                          </thead>
                          <tbody>
                              @foreach($medewerkers as $medewerker)
+                             @if($medewerker->bedrijf == 'moodles')
                              <tr>
                              <td>{{$medewerker->voornaam . ' ' . $medewerker->tussenvoegsel . ' ' . $medewerker->achternaam}}</td>
                              <td>{{$medewerker->email}}</td>
@@ -172,6 +173,7 @@
 
                              </td>
                              </tr>
+                             @endif
                              @endforeach
                          </tbody>
                      </table>
