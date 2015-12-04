@@ -7,7 +7,6 @@ use App\Http\Requests;
 use App\Bug as Bug;
 use App\User as User;
 use App\Http\Controllers\Hash as Hash;
-use Illuminate\Support\Facades\Validator;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Route, View;
 use Illuminate\Http\Request;
@@ -24,21 +23,26 @@ class BugController extends Controller
         return View::make('/bugmuteren');
     }
     public function showBugOverzicht($id){
-        if(Auth::user()->bedrijf == 'moodles'){
-            $bugs = Bug::where('medewerker_id','=', $id)->get();
-        }else{
-            $bugs = Bug::where('klant_id','=', $id)->get();
-        }
-
-        return View::make('/bugoverzicht', compact('bugs_klant','bugs'));
+        $bugs = $this->getRelatedBugs($id);
+        return View::make('/bugoverzicht', compact('bugs'));
     }
     public function verwijderBug(){
         $sid = Route::current()->getParameter('id');
         session()->flash('alert-danger', 'Bug met id : '. $sid . ' verwijderd.');
         return Bug::verwijderBug($sid);
     }
+    public function getRelatedBugs($id){
+        if(Auth::user()->bedrijf == 'moodles'){
+            $bugs = Bug::where('medewerker_id','=', $id)->get();
+        }else{
+            $bugs = Bug::where('klant_id','=', $id)->get();
+        }
+        return $bugs;
+    }
     public function updateBug($id,Request $request){
         $bug = Bug::find($id);
+        $user_id = Auth::user()->id;
+        $bugs = $this->getRelatedBugs($user_id);
         $data = array(
             'prioriteit'  => $request['prioriteit'],
             'soort'  => $request['soort'],
@@ -47,6 +51,6 @@ class BugController extends Controller
         );
         Bug::where('id', '=', $bug->id)->update($data);
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
-        return redirect('/bugoverzicht');
+        return redirect()->action('BugController@showBugOverzicht', [Auth::user()->id]);
     }
 }
