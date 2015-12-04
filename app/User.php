@@ -69,6 +69,7 @@ class User extends Model implements AuthenticatableContract,
         return DB::table('gebruikers')
             ->select(DB::raw('email,username,voornaam,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
             ->where('email', 'LIKE', '%'.$email.'%')
+            ->where('bedrijf', '=' , 'moodles')
             ->get();
     }
     public static function verwijderGebruiker($id){
