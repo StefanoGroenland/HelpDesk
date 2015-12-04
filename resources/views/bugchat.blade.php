@@ -47,42 +47,42 @@
                 @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
                     <div class="col-lg-10">
-                        <form>
+                        <form method="POST" action="/updateBug/{{$bug->id}}">
+                                           {!! csrf_field() !!}
+                                           <input type="hidden" name="_method" value="PUT">
                             <div class="form-group">
                                 <label for="sel1">Verander prioriteit</label>
-                                <select class="form-control" id="sel1">
-                                    <option>{{$bug->prioriteit}}</option>
-                                    <option>Kritisch</option>
-                                    <option>Hoog</option>
-                                    <option>Gemiddeld</option>
-                                    <option>Laag</option>
+                                <select class="form-control" id="prioriteit" name="prioriteit">
+                                    <option value="kritisch"  @if($bug->prioriteit == 'kritisch') selected @endif >Kritisch</option>
+                                    <option value="hoog" @if($bug->prioriteit == 'hoog') selected @endif >Hoog</option>
+                                    <option value="gemiddeld"  @if($bug->prioriteit == 'gemiddeld') selected @endif >Gemiddeld</option>
+                                    <option value="laag" @if($bug->prioriteit == 'laag') selected @endif >Laag</option>
                                 </select>
 
                             </div>
                             <div class="form-group">
                                 <label for="sel2">Verander soort</label>
-                                <select class="form-control" id="sel2">
-                                    <option>{{$bug->soort}}</option>
-                                    <option>Lay-out</option>
-                                    <option>SEO</option>
-                                    <option>Performance</option>
-                                    <option>Code</option>
+                                <select class="form-control" id="soort" name="soort">
+                                    <option value="lay-out" @if($bug->soort == 'lay-out') selected @endif >Lay-out</option>
+                                    <option value="seo" @if($bug->soort == 'seo') selected @endif >SEO</option>
+                                    <option value="performance" @if($bug->soort == 'performance') selected @endif >Performance</option>
+                                    <option value="code" @if($bug->soort == 'code') selected @endif >Code</option>
                                 </select>
 
                             </div>
                          <div class="form-group">
                                 <label for="sel3">Verander status</label>
-                                   <select class="form-control" id="sel3">
-                                       <option>{{$bug->status}}</option>
-                                       <option>Open</option>
-                                       <option>Gesloten</option>
+                                   <select class="form-control" id="status" name="status">
+                                       <option value="open" @if($bug->status == 'open') selected @endif >Open</option>
+                                       <option value="bezig" @if($bug->status == 'bezig') selected @endif >Bezig</option>
+                                       <option value="gesloten" @if($bug->status == 'gesloten') selected @endif >Gesloten</option>
                                    </select>
                           </div>
                             <div class="form-group">
                                 <label for="sel4">Koppel medewerker</label>
-                                <select class="form-control" id="sel4">
+                                <select class="form-control" id="medewerker" name="medewerker">
                                     @foreach($medewerkers as $mw)
-                                    <option>{{$mw->voornaam}}</option>
+                                    <option value="{{$mw->id}}" @if($bug->user->id == $mw->id) selected @endif>{{$mw->voornaam .' '. $mw->achternaam }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -99,16 +99,7 @@
             <div class="col-lg-10 well">
                 <h3>Omschrijving :</h3>
                 <p>
-                    Volledige beschrijving :
-                    s aptent taciti sociosqu ad litora torquent
-                    per conubia nostra, per inceptos himenaeos. Quisque
-                    eros quam, ultrices id ipsum non, tempus aliquet turpis.
-                    Cras dignissim nisi at nisl feugiat convallis. Curabitur
-                    at ligula faucibus, dapibus tortor ultricies, scelerisque justo.
-                    Ut turpis dolor, viverra ut sem non, gravida iaculis velit. Sed feugiat,
-                    velit ac vestibulum egestas, eros purus fringilla purus, a consequat velit
-                    ipsum et quam. Pellentesque sed posuere leo. Etiam in magna in tellus fringilla
-                    ornare ut a augue.
+                    {{$bug->beschrijving}}
                 </p>
             </div>
 

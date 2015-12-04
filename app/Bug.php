@@ -38,9 +38,8 @@ class Bug extends Model
     protected $guarded = ['id'];
 
     public function user(){
-        return $this->belongsTo('App\User','id');
+        return $this->belongsTo('App\User','medewerker_id','id');
     }
-
     public function getAllBugs(){
        DB::table('bugs')->all();
     }
