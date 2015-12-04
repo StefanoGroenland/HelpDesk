@@ -41,8 +41,6 @@ class BugController extends Controller
     }
     public function updateBug($id,Request $request){
         $bug = Bug::find($id);
-        $user_id = Auth::user()->id;
-        $bugs = $this->getRelatedBugs($user_id);
         $data = array(
             'prioriteit'  => $request['prioriteit'],
             'soort'  => $request['soort'],
