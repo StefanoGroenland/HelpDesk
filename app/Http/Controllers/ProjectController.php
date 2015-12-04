@@ -49,7 +49,7 @@ class ProjectController extends Controller
         return redirect('/projectmuteren');
     }
     public function updateProject(Request $request){
-        $input = $request->input('projectnaam');
+        $input = $request->input('zoeknaam');
         $data = array(
             'titel'  => $request['titel'],
             'status'     => $request['status'],
@@ -61,8 +61,7 @@ class ProjectController extends Controller
             'wachtwoord' => bcrypt($request['wachtwoord']),
             'omschrijvingproject' => $request['omschrijvingproject'],
         );
-//        dd($data);
-        Project::where('projectnaam', '=', $input)->update($data);
+        Project::where('projectnaam', 'LIKE', '%'.$input.'%')->update($data);
         $request->session()->flash('alert-success', 'Project '. $request['projectnaam']. ' veranderd.');
         return redirect('/projectmuteren');
     }

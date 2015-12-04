@@ -28,7 +28,6 @@ class Project extends Model
         'telefoonnummer',
         'omschrijvingproject',
         'gebruiker_id',
-
     ];
     protected $guarded = ['id'];
 

@@ -38,7 +38,7 @@ class UserController extends Controller
         return View::make('projectmuteren');
     }
     public function updateMedewerker(Request $request){
-            $email = $request->input('email');
+            $email = $request->input('zoekmail');
             $data = array(
                 'username'   => $request['username'],
                 'email'      => $request['email'],
@@ -49,7 +49,7 @@ class UserController extends Controller
                 'geslacht' => $request['geslacht'],
                 'telefoonnummer' => $request['telefoonnummer'],
             );
-            User::whereEmail($email)->update($data);
+            User::where('email', 'LIKE', '%'.$email.'%')->update($data);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
             return redirect('/medewerkermuteren');
     }
