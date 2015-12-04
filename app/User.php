@@ -51,7 +51,7 @@ class User extends Model implements AuthenticatableContract,
 
 
     public function bug(){
-        return $this->hasMany('App\Bug','klant_id');
+        return $this->hasMany('App\Bug','klant_id','id');
     }
     public function project(){
         return $this->hasMany('App\Project','gebruiker_id');

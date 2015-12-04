@@ -9,7 +9,7 @@
             </a>
         </li>
         <li>
-            <a href="{{URL::to('/bugoverzicht')}}">
+            <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
                <i class="fa fa-briefcase"></i> Bug overzicht
             </a>
         </li>

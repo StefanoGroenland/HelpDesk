@@ -52,7 +52,7 @@
                         <th></th>
                         </thead>
                         <tbody>
-                           @foreach($bugs as $bug)
+                           @foreach($bugs as $bug )
                                 <tr>
                                     <td># {{$bug->id}}</td>
                                     <td>{{substr($bug->beschrijving,0,15)}}</td>
@@ -84,10 +84,7 @@
                                         </a>
                                     </td>
                                 </tr>
-
-
                             @endforeach
-
                         </tbody>
                       </table>
                     </div>

@@ -11,21 +11,26 @@ use Illuminate\Support\Facades\Validator;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Route, View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class BugController extends Controller
 {
     public function showBugChat($id){
         $bug = Bug::with('user')->find($id);
         $medewerkers = User::where('bedrijf' ,'=', 'moodles')->get();
-//        $koppel = $bug->user();
 
-        return View::make('/bugchat', compact('bug', 'medewerkers', 'koppel'));
+        return View::make('/bugchat', compact('bug', 'medewerkers'));
     }
     public function showBugmuteren(){
         return View::make('/bugmuteren');
     }
-    public function showBugOverzicht(){
-        $bugs = Bug::all();
-        return View::make('/bugoverzicht', compact('bugs'));
+    public function showBugOverzicht($id){
+        if(Auth::user()->bedrijf == 'moodles'){
+            $bugs = Bug::where('medewerker_id','=', $id)->get();
+        }else{
+            $bugs = Bug::where('klant_id','=', $id)->get();
+        }
+
+        return View::make('/bugoverzicht', compact('bugs_klant','bugs'));
     }
     public function verwijderBug(){
         $sid = Route::current()->getParameter('id');
