@@ -59,7 +59,6 @@ class ProjectController extends Controller
             'projecturl'  => $request['projecturl'],
             'gebruikersnaam'  => $request['gebruikersnaam'],
             'wachtwoord' => bcrypt($request['wachtwoord']),
-            'gebruiker_id' => $request['gebruiker_id'],
             'omschrijvingproject' => $request['omschrijvingproject'],
         );
 //        dd($data);
