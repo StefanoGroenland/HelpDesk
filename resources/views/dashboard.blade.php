@@ -169,30 +169,40 @@
                         <div class="table-responsive">
                         <table class="table table-hover">
                                 <thead>
-                                <th>Datum</th>
-                                <th>Tijd</th>
-                                <th>Project</th>
+                                <th>Gepost op :</th>
+                                <th>Start datum</th>
+                                <th>Deadline</th>
                                 <th>Prioriteit</th>
-                                <th>Klantnummer</th>
-                                <th>Bedrijfsnaam</th>
                                 <th></th>
                                 </thead>
                                 <tbody>
+                                @foreach($bugs_send as $bug)
                                     <tr>
-                                        <td>15-10-2015</td>
-                                        <td>14:13</td>
-                                        <td>Threadstone</td>
-                                        <td><span class="label label-danger">Hoog</span></td>
-                                        <td>#21341</td>
-                                        <td>Google</td>
+                                        <td>{{$bug->created_at}}</td>
+                                        <td>{{$bug->start_datum}}</td>
+                                        <td>{{$bug->eind_datum}}</td>
                                         <td>
-                                            <a href="{{URL::to('/bugchat')}}">
+                                        @if($bug->prioriteit == 'laag')
+                                        <span class="label label-success">Laag</span>
+                                        @elseif($bug->prioriteit == 'gemiddeld')
+                                        <span class="label label-warning">Gemmideld</span>
+                                        @elseif($bug->prioriteit == 'hoog')
+                                        <span class="label label-danger">Hoog</span>
+                                        @elseif($bug->prioriteit == 'kritisch')
+                                        <span class="label label-purple">Kritisch</span>
+                                        @else
+                                        <span class="label label-info">Geen prioriteit</span>
+                                        @endif
+                                        </td>
+                                        <td>
+                                            <a href="/bugchat/{{$bug->id}}">
                                         <button type="submit" class="btn btn-success btn-xs">
                                             <i class="glyphicon glyphicon-search"></i>
                                         </button>
-                                    </a>
+                                            </a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -13,18 +13,24 @@ use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Route, View;
+use Illuminate\Support\Facades\Auth;
+use App\Bug as Bug;
 class UserController extends Controller
 {
 
     public function showDashboard()
     {
+        $klant_id = Auth::user()->id;
+        $bugs = Bug::all();
+        $bugs_send = Bug::where('klant_id' , '=', $klant_id)->get();
+
         if(\Auth::guest()){
             return redirect('/');
         }
         else if(\Auth::user()->bedrijf == 'moodles'){
-            return View::make('/admindashboard');
+            return View::make('/admindashboard', compact('bugs'));
         }else{
-            return View::make('/dashboard');
+            return View::make('/dashboard', compact('bugs_send'));
         }
     }
     public function showMwMuteren(){
