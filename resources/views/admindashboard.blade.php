@@ -178,6 +178,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($bugs as $bug)
+
                                     <tr>
                                         <td>{{$bug->created_at}}</td>
                                         <td>{{$bug->eind_datum}}</td>

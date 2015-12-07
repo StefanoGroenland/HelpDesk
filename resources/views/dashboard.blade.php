@@ -172,6 +172,7 @@
                                 <th>Gepost op :</th>
                                 <th>Start datum</th>
                                 <th>Deadline</th>
+                                <th>Status</th>
                                 <th>Prioriteit</th>
                                 <th></th>
                                 </thead>
@@ -181,6 +182,7 @@
                                         <td>{{$bug->created_at}}</td>
                                         <td>{{$bug->start_datum}}</td>
                                         <td>{{$bug->eind_datum}}</td>
+                                        <td>{{$bug->status}}</td>
                                         <td>
                                         @if($bug->prioriteit == 'laag')
                                         <span class="label label-success">Laag</span>

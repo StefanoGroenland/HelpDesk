@@ -23,7 +23,6 @@ class UserController extends Controller
         $klant_id = Auth::user()->id;
         $bugs = Bug::all();
         $bugs_send = Bug::where('klant_id' , '=', $klant_id)->get();
-
         if(\Auth::guest()){
             return redirect('/');
         }
