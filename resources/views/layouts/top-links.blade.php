@@ -18,7 +18,7 @@
 @if (\Auth::guest())
 <body>
 @else
-
+<body>
     <!--<div id="wrapper">-->
         <div id="page-wrapper">
 

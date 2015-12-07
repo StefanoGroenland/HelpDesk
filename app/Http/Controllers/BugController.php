@@ -33,7 +33,8 @@ class BugController extends Controller
     public function verwijderBug(){
         $sid = Route::current()->getParameter('id');
         session()->flash('alert-danger', 'Bug met id : '. $sid . ' verwijderd.');
-        return Bug::verwijderBug($sid);
+        Bug::verwijderBug($sid);
+        return redirect('/bugoverzicht/'. Auth::user()->id);
     }
     public function getRelatedBugs($id){
         if(Auth::user()->bedrijf == 'moodles'){

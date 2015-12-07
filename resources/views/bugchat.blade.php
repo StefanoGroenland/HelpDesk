@@ -48,8 +48,8 @@
                 <div class="row">
                     <div class="col-lg-10">
                         <form method="POST" action="/updateBug/{{$bug->id}}">
-                                           {!! csrf_field() !!}
-                                           <input type="hidden" name="_method" value="PUT">
+                           {!! csrf_field() !!}
+                           <input type="hidden" name="_method" value="PUT">
                             <div class="form-group">
                                 <label for="sel1">Verander prioriteit</label>
                                 <select class="form-control" id="prioriteit" name="prioriteit">
@@ -92,9 +92,7 @@
 
                     </div>
                 </div>
-                @else
                 @endif
-
             </div>
             <div class="col-lg-10 well">
                 <h3>Omschrijving :</h3>
@@ -118,7 +116,6 @@
                                 </div>
                             </div>
                         </li>
-                        <!--linker persoon-->
                         <!--rechter persoon-->
                         <li class="text-right">
 
@@ -155,7 +152,6 @@
             </div>
         </div>
     </div>
-</div>
 <!-- /.container-fluid -->
 </div>
 <!-- /#page-wrapper -->

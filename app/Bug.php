@@ -41,7 +41,7 @@ class Bug extends Model
        DB::table('bugs')->all();
     }
     public static function verwijderBug($id){
-        DB::table('bugs')->where('id', '=',$id)->delete();
-        return redirect('/bugoverzicht');
+        return DB::table('bugs')->where('id', '=',$id)->delete();
+
     }
 }

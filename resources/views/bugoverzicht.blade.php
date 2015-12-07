@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Project bugs <small>alle bugs</small>
+                            Feedback<small>feedback pagina waar bugs worden verdeeld/getoond</small>
                         </h1>
                         <ol class="breadcrumb">
                            @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
@@ -58,7 +58,7 @@
                            @foreach($bugs_related as $bug)
                                 <tr>
                                     <td># {{$bug->id}}</td>
-                                    <td>{{substr($bug->beschrijving,0,15)}}</td>
+                                    <td>{{substr($bug->beschrijving,0,15)}}...</td>
                                     <td>{{$bug->status}}</td>
                                     <td>{{$bug->soort}}</td>
                                     <td>
