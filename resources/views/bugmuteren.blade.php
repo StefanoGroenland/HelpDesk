@@ -37,67 +37,47 @@
                             <h3 class="panel-title">Nieuwe bug</h3>
                         </div>
                         <div class="panel-body">
-                            <form>
+                            <form method="POST" action="/addBug" >
+                             {!! csrf_field() !!}
                             <div class="form-group">
                                 <label for="bedrijfsnaam">Project</label>
-                               <input type="text" class="form-control" id="titel" placeholder="Titel">
+                                <input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel">
                              </div>
                               <div class="form-group">
-                                <select class="form-control">
-                                  <option value="geen_prio">Prioriteit</option>
-                                  <option value="laag">Laag</option>
-                                  <option value="gemiddeld">Gemiddeld</option>
-                                  <option value="hoog">Hoog</option>
-                                  <option value="kritisch">Kritisch</option>
+                                <select class="form-control" name="project" required="true">
+                                  @foreach($projecten as $project)
+                                        <option value="{{$project->id}}">{{$project->titel}}</option>
+                                  @endforeach
                                 </select>
-                              </div>
-                              <div class="form-group">
-                                <select class="form-control">
-                                  <option value="geen_prio">Soort</option>
-                                  <option value="laag">Laag</option>
-                                  <option value="gemiddeld">Gemiddeld</option>
-                                  <option value="hoog">Hoog</option>
-                                  <option value="kritisch">Kritisch</option>
+                                </div>
+                                <div class="form-group">
+                                <select class="form-control" name="prioriteit" required="true">
+                                   <option value="laag">Laag</option>
+                                   <option value="gemiddeld">Gemiddeld</option>
+                                   <option value="hoog">Hoog</option>
+                                   <option value="kritisch">Kritisch</option>
                                 </select>
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" id="projectnaam" placeholder="Projectnaam">
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" id="project_url" placeholder="Project URL">
-                              </div>
+                                </div>
+                                {{--status standaard op open!!--}}
+                                <div class="form-group">
+                                <select class="form-control" name="soort" required="true">
+                                  <option value="lay-out">Lay-out</option>
+                                  <option value="seo">SEO</option>
+                                  <option value="performance">Performance</option>
+                                  <option value="code">Code</option>
+                                </select>
+                                </div>
                               <div class="form-group">
                               <label for="start_date">Startdatum</label>
-                                <input type="date" class="form-control" value="{{date('Y-m-d')}}" id="startdatum">
+                                <input type="date" class="form-control" name="start_datum" required="true" value="{{date('Y-m-d')}}" id="start_datum">
                               </div>
                               <div class="form-group">
-                              <label for="start_date">Einddatum</label>
-                                <input type="datetime-local" class="form-control" id="einddatum">
+                              <label for="end_date">Einddatum</label>
+                                <input type="datetime-local" required="true" name="eind_datum" class="form-control" id="einddatum">
                               </div>
-                                <div class="form-group">
-                                <label for="bedrijfsnaam">Gebruiker</label>
-                                <input type="text" class="form-control" id="username" placeholder="gebruikersnaam">
-                              </div>
-                              <div class="form-group">
-                                <input type="password" class="form-control" id="password" placeholder="Wachtwoord">
-                              </div>
-                                <div class="form-group">
-                                <label for="bedrijfsnaam">Contactpersoon</label>
-                                <input type="text" class="form-control" id="voornaam" placeholder="Voornaam">
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" id="achternaam" placeholder="Achternaam">
-                              </div>
-                                <div class="form-group">
-                                <input type="email" class="form-control" id="email" placeholder="E-mail">
-                              </div>
-                                <div class="form-group">
-                                <label for="bedrijfsnaam">Bedrijf</label>
-                                <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Bedrijfsnaam">
-                              </div>
-                                <div class="form-group">
-                                <input type="text" class="form-control" id="bedrijfsnaam" placeholder="Telefoon nummer">
-                              </div>
+                               <div class="form-group">
+                                  <textarea class="form-control" rows="5" id="beschrijving" required="true" name="beschrijving" value="" ></textarea>
+                                </div>
                               <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
                             </form>
                         </div>

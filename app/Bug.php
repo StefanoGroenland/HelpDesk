@@ -21,24 +21,21 @@ class Bug extends Model
         'titel',
         'prioriteit',
         'status',
-        'voornaam_contactpersoon',
-        'achternaam_contactpersoon',
-        'email_contactpersoon',
-        'bedrijf_contactpersoon',
-        'telefoon_contactpersoon',
-        'gebruikersnaam',
-        'wachtwoord',
-        'naam_medewerker',
-        'behandeld_door',
-        'beschrijving',
         'soort',
+        'beschrijving',
         'start_datum',
         'eind_datum',
+        'klant_id',
+        'project_id',
+        'medewerker_id',
     ];
     protected $guarded = ['id'];
 
     public function user(){
         return $this->belongsTo('App\User','medewerker_id','id');
+    }
+    public function project(){
+        return $this->belongsTo('App\Project', 'id');
     }
     public function getAllBugs(){
        DB::table('bugs')->all();

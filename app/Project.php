@@ -34,6 +34,9 @@ class Project extends Model
     public function user(){
         return $this->belongsTo('App\User', 'id');
     }
+    public function bug(){
+        return $this->hasMany('App\Bug', 'project_id');
+    }
 
     public static function getUsers(){
         $users = User::where('bedrijf','!=', 'moodles' )->get();
