@@ -41,6 +41,9 @@
                 
                 <div class="row">
                     <div class="col-lg-12">
+                    <h3 class="page-header">
+                        Gekoppelde bugs <small>aan mij gekoppelde bugs</small>
+                    </h3>
                     <div class="table-responsive">
                     <table class="table table-hover ">
                         <thead>
@@ -52,7 +55,7 @@
                         <th></th>
                         </thead>
                         <tbody>
-                           @foreach($bugs as $bug)
+                           @foreach($bugs_related as $bug)
                                 <tr>
                                     <td># {{$bug->id}}</td>
                                     <td>{{substr($bug->beschrijving,0,15)}}</td>
@@ -92,6 +95,65 @@
                     
                     
                 </div>
+                @if(Auth::user()->bedrijf == 'moodles')
+                <div class="row">
+                    <div class="col-lg-12">
+                    <h3 class="page-header">
+                        Alle bugs <small>een lijst van alle bugs</small>
+                    </h3>
+                    <div class="table-responsive">
+                    <table class="table table-hover ">
+                        <thead>
+                        <th>ID</th>
+                        <th>Samenvatting</th>
+                        <th>Status</th>
+                        <th>Soort</th>
+                        <th>Prioriteit</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+
+                           @foreach($bugs_all as $bug)
+                                <tr>
+                                    <td># {{$bug->id}}</td>
+                                    <td>{{substr($bug->beschrijving,0,15)}}</td>
+                                    <td>{{$bug->status}}</td>
+                                    <td>{{$bug->soort}}</td>
+                                    <td>
+                                    @if($bug->prioriteit == 'laag')
+                                    <span class="label label-success">Laag</span>
+                                    @elseif($bug->prioriteit == 'gemiddeld')
+                                    <span class="label label-warning">Gemmideld</span>
+                                    @elseif($bug->prioriteit == 'hoog')
+                                    <span class="label label-danger">Hoog</span>
+                                    @elseif($bug->prioriteit == 'kritisch')
+                                    <span class="label label-purple">Kritisch</span>
+                                    @else
+                                    <span class="label label-info">Geen prioriteit</span>
+                                    @endif
+                                    </td>
+                                    <td>
+                                        <a href="/bugchat/{{$bug->id}}" class="">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                            </button>
+                                        </a>
+                                        <a href="/verwijderBug/{{$bug->id}}" class="">
+                                            <button class="btn btn-danger">
+                                                    <i class="fa fa-remove"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                      </table>
+                    </div>
+                   </div>
+                  </div>
+                  @else
+                                              @endif
                 <!-- /.row -->
 
             </div>

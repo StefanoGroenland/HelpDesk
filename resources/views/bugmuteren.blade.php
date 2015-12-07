@@ -58,7 +58,6 @@
                                    <option value="kritisch">Kritisch</option>
                                 </select>
                                 </div>
-                                {{--status standaard op open!!--}}
                                 <div class="form-group">
                                 <select class="form-control" name="soort" required="true">
                                   <option value="lay-out">Lay-out</option>
