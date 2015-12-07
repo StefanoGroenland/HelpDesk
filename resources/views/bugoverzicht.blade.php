@@ -80,11 +80,13 @@
                                                 <i class="glyphicon glyphicon-search"></i>
                                             </button>
                                         </a>
+                                        @if(Auth::user()->bedrijf == 'moodles')
                                         <a href="/verwijderBug/{{$bug->id}}" class="">
                                             <button class="btn btn-danger">
                                                     <i class="fa fa-remove"></i>
                                             </button>
                                         </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
