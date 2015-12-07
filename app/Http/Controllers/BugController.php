@@ -58,7 +58,6 @@ class BugController extends Controller
     }
 
     public function addBug( Request $request){
-
         Validator::make($request->all(),[
             'titel' => 'required',
             'start_datum' => 'required',
@@ -70,6 +69,7 @@ class BugController extends Controller
             'klant_id' => 'required',
             'project_id' => 'required',
             'klant_id' => 'required',
+            'medewerker_id' => 'required',
         ]);
         Bug::create([
             'titel'  => $request['titel'],
@@ -80,6 +80,7 @@ class BugController extends Controller
             'eind_datum'   => $request['eind_datum'],
             'beschrijving'   => $request['beschrijving'],
             'klant_id'   => Auth::user()->id,
+            'medewerker_id'   => Auth::user()->id,
             'project_id'  => $request['project'],
         ]);
         $request->session()->flash('alert-success', 'Bug '. $request['titel']. ' toegevoegd.');
