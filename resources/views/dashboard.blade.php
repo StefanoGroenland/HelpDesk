@@ -42,9 +42,12 @@
                                                     </div>
                                                     </div>
                                                 <div class="row">
-                                                    <div class="col-xs-12 text-center">
-                                                        <h5>Bug melden</h5>
-                                                    </div>
+                                                <a href="/bugmuteren">
+                                                <div class="col-xs-12 text-center">
+                                                    <h5>Bug melden</h5>
+                                                </div>
+                                                </a>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -172,6 +175,7 @@
                                 <th>Gepost op :</th>
                                 <th>Start datum</th>
                                 <th>Deadline</th>
+                                <th>Soort</th>
                                 <th>Status</th>
                                 <th>Prioriteit</th>
                                 <th></th>
@@ -182,6 +186,7 @@
                                         <td>{{$bug->created_at}}</td>
                                         <td>{{$bug->start_datum}}</td>
                                         <td>{{$bug->eind_datum}}</td>
+                                        <td>{{$bug->soort}}</td>
                                         <td>{{$bug->status}}</td>
                                         <td>
                                         @if($bug->prioriteit == 'laag')
