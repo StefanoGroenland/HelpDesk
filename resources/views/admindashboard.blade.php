@@ -212,7 +212,9 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="panel-body">
+                        <div class="panel panel-success">
+                        <div class="panel-heading"><small>Wachtwoord reset</small></div>
+                        <div class="panel-footer">
                         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                             @if(Session::has('alert-' . $msg))
                               <div class="row">
@@ -225,7 +227,7 @@
                           <form method="POST" action="/resetUserPassword" >
                              {!! csrf_field() !!}
                              <input type="hidden" name="_method" value="PUT">
-                             <h4>Wachtwoord reset</h4>
+
                           <div class="form-group">
                              <input type="text" class="form-control" name="username" required="true" placeholder="Gebruikersnaam">
                            </div>
@@ -234,6 +236,7 @@
                             </div>
                            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Reset</button>
                           </form>
+                        </div>
                         </div>
                     </div>
             </div>

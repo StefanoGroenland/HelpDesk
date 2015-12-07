@@ -93,7 +93,6 @@ class UserController extends Controller
 
     }
     public function verwijderGebruiker(){
-//      flash of alert bij voegen?
         $sid = Route::current()->getParameter('id');
         session()->flash('alert-danger', 'Gebruiker met id : '. $sid . ' verwijderd.');
         return User::verwijderGebruiker($sid);

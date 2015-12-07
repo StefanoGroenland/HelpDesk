@@ -28,15 +28,15 @@
                            </ol>
                                         </div>
                                     </div>
-                                                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                                                      @if(Session::has('alert-' . $msg))
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                                                            </div>
-                                                        </div>
-                                                      @endif
-                                                    @endforeach
+                        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                          @if(Session::has('alert-' . $msg))
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                </div>
+                            </div>
+                          @endif
+                        @endforeach
                 <div class="row">
                     <div class="col-lg-4">
 
