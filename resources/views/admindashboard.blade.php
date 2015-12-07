@@ -163,7 +163,7 @@
                          </div>
                          </div>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <h4>Laatst gemelde bugs</h4>
                         <div class="table-responsive">
                         <table class="table table-hover">
@@ -211,12 +211,31 @@
                             </table>
                         </div>
                     </div>
-
-
-
-
-
-
+                    <div class="col-lg-3">
+                        <div class="panel-body">
+                        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                            @if(Session::has('alert-' . $msg))
+                              <div class="row">
+                                  <div class="col-lg-12">
+                                      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                  </div>
+                              </div>
+                            @endif
+                          @endforeach
+                          <form method="POST" action="/resetUserPassword" >
+                             {!! csrf_field() !!}
+                             <input type="hidden" name="_method" value="PUT">
+                             <h4>Wachtwoord reset</h4>
+                          <div class="form-group">
+                             <input type="text" class="form-control" name="username" required="true" placeholder="Gebruikersnaam">
+                           </div>
+                           <div class="form-group">
+                              <input type="text" class="form-control"  name="password" required="true" placeholder="Wachtwoord">
+                            </div>
+                           <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Reset</button>
+                          </form>
+                        </div>
+                    </div>
             </div>
             </div>
             <!-- /.container-fluid -->

@@ -98,4 +98,14 @@ class UserController extends Controller
         session()->flash('alert-danger', 'Gebruiker met id : '. $sid . ' verwijderd.');
         return User::verwijderGebruiker($sid);
     }
+    public function resetUserPassword(Request $request){
+        $username = $request->input('username');
+        $data = array(
+            'username'   => $request['username'],
+            'password'   => bcrypt($request['password']),
+        );
+        User::where('username', '=', $username)->update($data);
+        $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
+        return redirect('/admindashboard');
+    }
 }

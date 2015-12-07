@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
     Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
     Route::post('addMedewerker', 'UserController@addMedewerker');
+    Route::put('/resetUserPassword', 'UserController@resetUserPassword');
 
 //    ProjectController Routes
     Route::get('/projectmuteren', array('as' => 'projectmuteren', 'uses' => 'ProjectController@showProjectMuteren'));
