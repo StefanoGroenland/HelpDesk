@@ -125,9 +125,9 @@
                             <h6><strong>Soort</strong> :</h6>
                          </div>
                          <div class="col-lg-6 pull-right">
-                            <h6>{{substr($bug->created_at,0,10)}}</h6>
-                            <h6>{{substr($bug->updated_at,0,10)}}</h6>
-                            <h6>{{substr($bug->eind_datum,0,10)}}</h6>
+                            <h6>{{$bug->created_at->format('d-m-y - H:i')}}</h6>
+                            <h6>{{$bug->updated_at->format('d-m-y - H:i')}}</h6>
+                            <h6>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</h6>
                             <h6>{{$bug->klant_id}}               </h6>
                             <h6>{{$bug->status}}                 </h6>
                             <h6>{{$bug->soort}}                  </h6>

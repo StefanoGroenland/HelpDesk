@@ -66,7 +66,7 @@
                            {{-- */$x=$bug->klant_id - 2;/* --}}
                            {{-- */$y=$bug->medewerker_id - 2;/* --}}
                                 <tr>
-                                    <td># {{$bug->id}}</td>
+                                    <td>{{$bug->id}}</td>
                                     <td>{{substr($bug->titel,0,15)}}</td>
                                     <td>{{$bug->status}}</td>
                                     <td>{{$bug->soort}}</td>
@@ -84,9 +84,9 @@
                                     @endif
                                     </td>
                                     <td>{{$bug->eind_datum}}</td>
-                                    <td>#{{$klanten[$x]->id.' '.$klanten[$x]->voornaam.' '.$klanten[$x]->tussenvoegsel.' '.$klanten[$x]->achternaam}}</td>
-                                    <td>#{{$projects_all[$i]->id.' '.$projects_all[$i]->projectnaam}}</td>
-                                    <td>#{{$klanten[$y]->id .' '. $klanten[$y]->voornaam.' '. $klanten[$y]->tussenvoegsel.' '. $klanten[$y]->achternaam}}</td>
+                                    <td>{{$klanten[$x]->voornaam.' '.$klanten[$x]->tussenvoegsel.' '.$klanten[$x]->achternaam}}</td>
+                                    <td>{{$projects_all[$i]->projectnaam}}</td>
+                                    <td>{{$klanten[$y]->voornaam.' '. $klanten[$y]->tussenvoegsel.' '. $klanten[$y]->achternaam}}</td>
                                     <td>
                                         <a href="/bugchat/{{$bug->id}}" class="">
                                             <button type="submit" class="btn btn-success btn-xs">
@@ -140,7 +140,7 @@
                                                  {{-- */$y=$bug->medewerker_id - 2;/* --}}
                                            @if($bug->project_id == $project->id)
                                                 <tr>
-                                                    <td>#{{$bug->id}}</td>
+                                                    <td>{{$bug->id}}</td>
                                                     <td>{{substr($bug->titel,0,15)}}...</td>
                                                     <td>{{$bug->status}}</td>
                                                     <td>{{$bug->soort}}</td>
@@ -158,9 +158,9 @@
                                                     @endif
                                                     </td>
                                                     <td>{{$bug->eind_datum}}</td>
-                                                    <td>#{{ $klanten[$x]->id .' '.$klanten[$x]->voornaam .' '.$klanten[$x]->tussenvoegsel.' '. $klanten[$x]->achternaam}}</td>
-                                                    <td>#{{ $project->id.' '.$project->projectnaam}}</td>
-                                                    <td>#{{$klanten[$y]->id .' '.$klanten[$y]->voornaam .' '.$klanten[$y]->tussenvoegsel.' '. $klanten[$y]->achternaam}}</td>
+                                                    <td>{{$klanten[$x]->voornaam .' '.$klanten[$x]->tussenvoegsel.' '. $klanten[$x]->achternaam}}</td>
+                                                    <td>{{$project->projectnaam}}</td>
+                                                    <td>{{$klanten[$y]->voornaam .' '.$klanten[$y]->tussenvoegsel.' '. $klanten[$y]->achternaam}}</td>
 
                                                     <td>
                                                         <a href="/bugchat/{{$bug->id}}" class="">
@@ -205,7 +205,7 @@
                            {{-- */$x=$bugs_all[$i]->klant_id - 2;/* --}}
                            {{-- */$y=$bugs_all[$i]->medewerker_id - 2;/* --}}
                                 <tr>
-                                    <td>#{{$bugs_all[$i]->id}}</td>
+                                    <td>{{$bugs_all[$i]->id}}</td>
                                     <td>{{substr($bugs_all[$i]->titel,0,15)}}</td>
                                     <td>{{$bugs_all[$i]->status}}</td>
                                     <td>{{$bugs_all[$i]->soort}}</td>
@@ -223,9 +223,9 @@
                                     @endif
                                     </td>
                                     <td>{{$bugs_all[$i]->eind_datum}}</td>
-                                    <td>#{{ $klanten[$x]->id .' '.$klanten[$x]->voornaam .' '.$klanten[$x]->tussenvoegsel.' '. $klanten[$x]->achternaam}}</td>
-                                    <td>#{{ $project->id.' '.$project->projectnaam}}</td>
-                                    <td>#{{$klanten[$y]->id .' '.$klanten[$y]->voornaam .' '.$klanten[$y]->tussenvoegsel.' '. $klanten[$y]->achternaam}}</td>
+                                    <td>{{$klanten[$x]->voornaam .' '.$klanten[$x]->tussenvoegsel.' '. $klanten[$x]->achternaam}}</td>
+                                    <td>{{$project->projectnaam}}</td>
+                                    <td>{{$klanten[$y]->voornaam .' '.$klanten[$y]->tussenvoegsel.' '. $klanten[$y]->achternaam}}</td>
                                     <td>
                                         <a href="/bugchat/{{$bugs_all[$i]->id}}" class="">
                                             <button type="submit" class="btn btn-success btn-xs">
