@@ -44,9 +44,10 @@
                 @endif
                 </h3>
 
+
                 @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-12">
                         <form method="POST" action="/updateBug/{{$bug->id}}">
                            {!! csrf_field() !!}
                            <input type="hidden" name="_method" value="PUT">
@@ -151,17 +152,15 @@
                         </button>
                     </form>
                 </div>
-
-
+            </div>
             </div>
         </div>
     </div>
 <!-- /.container-fluid -->
-</div>
+{{--</div>--}}
 <!-- /#page-wrapper -->
 
 @extends('layouts.footer')
-
 </body>
 
 </html>
