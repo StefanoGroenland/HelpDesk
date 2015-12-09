@@ -140,7 +140,7 @@
                                                  {{-- */$y=$bug->medewerker_id - 2;/* --}}
                                            @if($bug->project_id == $project->id)
                                                 <tr>
-                                                    <td># {{$bug->id}}</td>
+                                                    <td>#{{$bug->id}}</td>
                                                     <td>{{substr($bug->titel,0,15)}}...</td>
                                                     <td>{{$bug->status}}</td>
                                                     <td>{{$bug->soort}}</td>

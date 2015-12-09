@@ -94,10 +94,50 @@
 
                             <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander</button>
                         </form>
-
+                        <br>
                     </div>
                 </div>
                 @endif
+                <div class="row">
+                    <div class="col-lg-12">
+                       @if($bug->prioriteit == 'laag')
+                       <div class="panel panel-success">
+                       @elseif($bug->prioriteit == 'gemiddeld')
+                       <div class="panel panel-yellow">
+                       @elseif($bug->prioriteit == 'hoog')
+                       <div class="panel panel-red">
+                       @elseif($bug->prioriteit == 'kritisch')
+                       <div class="panel panel-purple">
+                       @else
+                       <div class="panel panle-info">
+                       @endif
+                         <div class="panel-heading">
+                           <h3 class="panel-title">{{$bug->titel}}</h3>
+                         </div>
+                         <div class="panel-body">
+                         <div class="row">
+                         <div class="col-lg-6 pull-left">
+                            <h6><strong>Aangemaakt</strong> :</h6>
+                            <h6><strong>Gewijzigd</strong> :</h6>
+                            <h6><strong>Deadline</strong> :</h6>
+                            <h6><strong>Klant nummer</strong> :</h6>
+                            <h6><strong>Status</strong> :</h6>
+                            <h6><strong>Soort</strong> :</h6>
+                         </div>
+                         <div class="col-lg-6 pull-right">
+                            <h6>{{substr($bug->created_at,0,10)}}</h6>
+                            <h6>{{substr($bug->updated_at,0,10)}}</h6>
+                            <h6>{{substr($bug->eind_datum,0,10)}}</h6>
+                            <h6>{{$bug->klant_id}}               </h6>
+                            <h6>{{$bug->status}}                 </h6>
+                            <h6>{{$bug->soort}}                  </h6>
+                         </div>
+                         </div>
+
+                         </div>
+                       </div>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-10 well">
                 <h3>Omschrijving :</h3>
