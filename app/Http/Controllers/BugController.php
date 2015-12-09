@@ -28,7 +28,10 @@ class BugController extends Controller
     public function showBugOverzicht($id){
         $bugs_related = $this->getRelatedBugs($id);
         $bugs_all = Bug::all();
-        return View::make('/bugoverzicht', compact('bugs_related', 'bugs_all'));
+        $projects = Project::where('gebruiker_id','=', $id)->get();
+        $projects_all = Project::all();
+        $klanten = User::all();
+        return View::make('/bugoverzicht', compact('bugs_related', 'bugs_all', 'projects', 'projects_all', 'klanten'));
     }
     public function verwijderBug(){
         $sid = Route::current()->getParameter('id');

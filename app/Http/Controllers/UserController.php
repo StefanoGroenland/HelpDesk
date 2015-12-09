@@ -25,6 +25,7 @@ class UserController extends Controller
         $bugs = Bug::all();
         $bugs_send = Bug::where('klant_id' , '=', $klant_id)->get();
         $projects = Project::all();
+        $projects_send = Project::where('gebruiker_id', '=', $klant_id)->get();
         if(\Auth::guest()){
             return redirect('/');
         }
@@ -32,7 +33,7 @@ class UserController extends Controller
             return View::make('/admindashboard', compact('bugs','projects'));
 
         }else{
-            return View::make('/dashboard', compact('bugs_send','projects'));
+            return View::make('/dashboard', compact('bugs_send','projects_send'));
         }
     }
     public function showMwMuteren(){
