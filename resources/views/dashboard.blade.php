@@ -60,65 +60,65 @@
                 </h4>
                 </div>
                        @foreach($projects_send as $project)
-                       {{-- */$i=0;/* --}}
-                       {{-- */$x=0;/* --}}
-                       {{-- */$y=0;/* --}}
-                           <div class="col-lg-2 col-md-6">
-                           @if($project->prioriteit == 'laag')
-                                  <div class="panel panel-green">
-                              @elseif($project->prioriteit == 'gemiddeld')
-                                  <div class="panel panel-yellow">
-                              @elseif($project->prioriteit == 'hoog')
-                                  <div class="panel panel-red">
-                              @elseif($project->prioriteit == 'kritisch')
-                                  <div class="panel panel-purple">
-                              @endif
-                                   <div class="panel-heading">
-                                       <div class="row">
-                                       <div id='notificatie'><div>2</div></div>
-                                           <div class="col-xs-12 text-right">
-                                           @if($project->prioriteit == 'laag')
-                                               <span class="label label-success">{{$project->projectnaam}}</span>
-                                           @elseif($project->prioriteit == 'gemiddeld')
-                                               <span class="label label-yellow">{{$project->projectnaam}}</span>
-                                           @elseif($project->prioriteit == 'hoog')
-                                               <span class="label label-danger">{{$project->projectnaam}}</span>
-                                           @elseif($project->prioriteit == 'kritisch')
-                                               <span class="label label-purple">{{$project->projectnaam}}</span>
-                                           @endif
-                                               <div><span class="badge">
-                                               @foreach($bugs_send as $bug)
-                                               @if($bug->status == 'open')
-                                                   @if($bug->project_id == $project->id)
-                                                       {{-- */$i++/* --}}
-                                                   @endif
-                                               @endif
-                                               @endforeach
-                                               {{$i}}
-                                               </span> Openstaand</div>
-                                               <div><span class="badge">
-                                               @foreach($bugs_send as $bug)
-                                               @if($bug->status == 'bezig')
-                                                   @if($bug->project_id == $project->id)
-                                                       {{-- */$x++/* --}}
-                                                   @endif
-                                               @endif
-                                               @endforeach
-                                               {{$x}}
-                                               </span> Bezig</div>
-                                               <div><span class="badge">
-                                               @foreach($bugs_send as $bug)
-                                               @if($bug->status == 'gesloten')
-                                                   @if($bug->project_id == $project->id)
-                                                       {{-- */$y++/* --}}
-                                                   @endif
-                                               @endif
-                                               @endforeach
-                                               {{$y}}
-                                               </span> Gesloten</div>
-                                           </div>
-                                       </div>
-                                   </div>
+                                        {{-- */$i=0;/* --}}
+                                        {{-- */$x=0;/* --}}
+                                        {{-- */$y=0;/* --}}
+                                       <div class="col-lg-2 col-md-6">
+                                       @if($project->prioriteit == 'laag')
+                                              <div class="panel panel-green">
+                                          @elseif($project->prioriteit == 'gemiddeld')
+                                              <div class="panel panel-yellow">
+                                          @elseif($project->prioriteit == 'hoog')
+                                              <div class="panel panel-red">
+                                          @elseif($project->prioriteit == 'kritisch')
+                                              <div class="panel panel-purple">
+                                          @endif
+                                               <div class="panel-heading">
+                                                   <div class="row">
+                                                   <div id='notificatie'><div>2</div></div>
+                                                       <div class="col-xs-12 text-right">
+                                                       @if($project->prioriteit == 'laag')
+                                                           <span class="label label-success">{{$project->projectnaam}}</span>
+                                                       @elseif($project->prioriteit == 'gemiddeld')
+                                                           <span class="label label-yellow">{{$project->projectnaam}}</span>
+                                                       @elseif($project->prioriteit == 'hoog')
+                                                           <span class="label label-danger">{{$project->projectnaam}}</span>
+                                                       @elseif($project->prioriteit == 'kritisch')
+                                                           <span class="label label-purple">{{$project->projectnaam}}</span>
+                                                       @endif
+                                                           <div><span class="badge">
+                                                           @foreach($bugs_send as $bug)
+                                                           @if($bug->status == 'open')
+                                                               @if($bug->project_id == $project->id)
+                                                                   {{-- */$i++/* --}}
+                                                               @endif
+                                                           @endif
+                                                           @endforeach
+                                                           {{$i}}
+                                                           </span> Openstaand</div>
+                                                           <div><span class="badge">
+                                                           @foreach($bugs_send as $bug)
+                                                           @if($bug->status == 'bezig')
+                                                               @if($bug->project_id == $project->id)
+                                                                   {{-- */$x++/* --}}
+                                                               @endif
+                                                           @endif
+                                                           @endforeach
+                                                           {{$x}}
+                                                           </span> Bezig</div>
+                                                           <div><span class="badge">
+                                                           @foreach($bugs_send as $bug)
+                                                           @if($bug->status == 'gesloten')
+                                                               @if($bug->project_id == $project->id)
+                                                                   {{-- */$y++/* --}}
+                                                               @endif
+                                                           @endif
+                                                           @endforeach
+                                                           {{$y}}
+                                                           </span> Gesloten</div>
+                                                       </div>
+                                                   </div>
+                                               </div>
                                    <a href="/bugoverzicht/{{Auth::user()->id}}">
                                        <div class="panel-footer">
                                            <span class="pull-left">Bekijk</span>

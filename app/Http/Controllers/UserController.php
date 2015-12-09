@@ -31,7 +31,6 @@ class UserController extends Controller
         }
         else if(\Auth::user()->bedrijf == 'moodles'){
             return View::make('/admindashboard', compact('bugs','projects'));
-
         }else{
             return View::make('/dashboard', compact('bugs_send','projects_send'));
         }
