@@ -20,11 +20,13 @@ class BugController extends Controller
         $medewerkers = User::where('bedrijf' ,'=', 'moodles')->get();
         return View::make('/bugchat', compact('bug', 'medewerkers'));
     }
+
     public function showBugmuteren(){
         $user_id = Auth::user()->id;
         $projecten = Project::where('gebruiker_id', '=', $user_id)->get();
         return View::make('/bugmuteren' , compact('projecten'));
     }
+
     public function showBugOverzicht($id){
         $bugs_related = $this->getRelatedBugs($id);
         $bugs_all = Bug::all();
@@ -33,12 +35,14 @@ class BugController extends Controller
         $klanten = User::all();
         return View::make('/bugoverzicht', compact('bugs_related', 'bugs_all', 'projects', 'projects_all', 'klanten'));
     }
+
     public function verwijderBug(){
         $sid = Route::current()->getParameter('id');
         session()->flash('alert-danger', 'Bug met id : '. $sid . ' verwijderd.');
         Bug::verwijderBug($sid);
         return redirect('/bugoverzicht/'. Auth::user()->id);
     }
+
     public function getRelatedBugs($id){
         if(Auth::user()->bedrijf == 'moodles'){
             $bugs = Bug::where('medewerker_id','=', $id)->get();

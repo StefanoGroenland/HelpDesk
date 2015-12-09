@@ -35,7 +35,7 @@
                               </div>
                             @endif
                           @endforeach
-                
+
                 
                 <!-- /.row -->
                 
@@ -110,9 +110,9 @@
                     </div>
                     </div>
                     
-                    
-                </div>
+
                 @endif
+                </div>
                 @foreach($projects as $project)
                 {{-- */$i=0;/* --}}
                                 <div class="row">
@@ -247,7 +247,7 @@
                       </table>
                     </div>
                    </div>
-                  </div>
+                   </div>
                   @else
                                               @endif
                 <!-- /.row -->
