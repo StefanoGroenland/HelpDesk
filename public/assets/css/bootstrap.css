@@ -4796,11 +4796,11 @@ a.label:focus {
     background-color: #31b0d5;
 }
 .label-purple {
-    background-color: #de5bc0;
+    background-color: #ad4ef0;
 }
 .label-purple[href]:hover,
 .label-purple[href]:focus {
-  background-color: #d531b0;
+  background-color: #ad4ef0;
 }
 .label-warning {
   background-color: #f0ad4e;

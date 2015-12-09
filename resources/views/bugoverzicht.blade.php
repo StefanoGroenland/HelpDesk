@@ -40,6 +40,7 @@
                 <!-- /.row -->
                 
                 <div class="row">
+
                     <div class="col-lg-12">
                     <h3 class="page-header">
                         Gekoppelde bugs <small>aan mij gekoppelde bugs</small>
@@ -47,7 +48,7 @@
                     <div class="table-responsive">
                     <table class="table table-hover ">
                         <thead>
-                        <th>ID</th>
+                        <th>Bug nummer</th>
                         <th>Samenvatting</th>
                         <th>Status</th>
                         <th>Soort</th>
@@ -106,7 +107,7 @@
                     <div class="table-responsive">
                     <table class="table table-hover ">
                         <thead>
-                        <th>ID</th>
+                        <th>Bug nummer</th>
                         <th>Samenvatting</th>
                         <th>Status</th>
                         <th>Soort</th>

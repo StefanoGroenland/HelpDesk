@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 use App\User as User;
+use App\Project as Project;
 use App\Http\Controllers\Hash as Hash;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Illuminate\Http\Request;
@@ -23,13 +24,15 @@ class UserController extends Controller
         $klant_id = Auth::user()->id;
         $bugs = Bug::all();
         $bugs_send = Bug::where('klant_id' , '=', $klant_id)->get();
+        $projects = Project::all();
         if(\Auth::guest()){
             return redirect('/');
         }
         else if(\Auth::user()->bedrijf == 'moodles'){
-            return View::make('/admindashboard', compact('bugs'));
+            return View::make('/admindashboard', compact('bugs','projects'));
+
         }else{
-            return View::make('/dashboard', compact('bugs_send'));
+            return View::make('/dashboard', compact('bugs_send','projects'));
         }
     }
     public function showMwMuteren(){
