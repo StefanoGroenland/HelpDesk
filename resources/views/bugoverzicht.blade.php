@@ -12,7 +12,6 @@
     <title>Moodles - Helpdesk</title>
 
     @extends('layouts.top-links')
-
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -260,7 +259,7 @@
                    </div>
                    </div>
                   @else
-                                              @endif
+                 @endif
                 <!-- /.row -->
 
             </div>

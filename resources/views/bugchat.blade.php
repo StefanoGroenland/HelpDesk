@@ -44,7 +44,6 @@
                 @endif
                 </h3>
 
-
                 @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
                     <div class="col-lg-12">
@@ -59,7 +58,6 @@
                                     <option value="gemiddeld"  @if($bug->prioriteit == 'gemiddeld') selected @endif >Gemiddeld</option>
                                     <option value="laag" @if($bug->prioriteit == 'laag') selected @endif >Laag</option>
                                 </select>
-
                             </div>
                             <div class="form-group">
                                 <label for="sel2">Verander soort</label>
@@ -69,7 +67,6 @@
                                     <option value="performance" @if($bug->soort == 'performance') selected @endif >Performance</option>
                                     <option value="code" @if($bug->soort == 'code') selected @endif >Code</option>
                                 </select>
-
                             </div>
                          <div class="form-group">
                                 <label for="sel3">Verander status</label>
@@ -90,10 +87,8 @@
                                             </option>
                                         @endif
                                     @endforeach
-
                                 </select>
                             </div>
-
                             <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander</button>
                         </form>
                         <br>
