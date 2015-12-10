@@ -149,9 +149,9 @@
                                 <tbody>
                                 @foreach($bugs_send as $bug)
                                     <tr>
-                                        <td>{{$bug->created_at}}</td>
-                                        <td>{{$bug->start_datum}}</td>
-                                        <td>{{$bug->eind_datum}}</td>
+                                        <td>{{$bug->created_at->format('d-m-y - H:i')}}</td>
+                                        <td>{{date('d-m-y - H:i',strtotime($bug->start_datum))}}</td>
+                                        <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                         <td>{{$bug->soort}}</td>
                                         <td>{{$bug->status}}</td>
                                         <td>
