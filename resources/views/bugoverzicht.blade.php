@@ -54,17 +54,14 @@
                         <th>Soort</th>
                         <th>Prioriteit</th>
                         <th>Deadline</th>
-                        <th>Klant <small>(nummer + naam)</small></th>
-                        <th>Project <small>(nummer + naam)</small></th>
-                        <th>Medewerker <small>(nummer + naam)</small></th>
+                        <th>Klant</th>
+                        <th>Project</th>
+                        <th>Medewerker</th>
                         <th></th>
                         </thead>
                         <tbody>
 
-                        {{-- */$i=0;/* --}}
                            @foreach($bugs_related as $bug)
-                           {{-- */$x=$bug->klant_id - 2;/* --}}
-                           {{-- */$y=$bug->medewerker_id - 2;/* --}}
                                 <tr>
                                     <td>{{$bug->id}}</td>
                                     <td>{{substr($bug->titel,0,15)}}</td>
@@ -84,9 +81,14 @@
                                     @endif
                                     </td>
                                     <td>{{$bug->eind_datum}}</td>
-                                    <td>{{$klanten[$x]->voornaam.' '.$klanten[$x]->tussenvoegsel.' '.$klanten[$x]->achternaam}}</td>
-                                    <td>{{$projects_all[$i]->projectnaam}}</td>
-                                    <td>{{$klanten[$y]->voornaam.' '. $klanten[$y]->tussenvoegsel.' '. $klanten[$y]->achternaam}}</td>
+                                    <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
+                                    {{--<td>{{$project->projectnaam}}</td>--}}
+                                    <td>{{$bug->project->projectnaam}}</td>
+                                    @if($bug->user)
+                                    <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
+                                    @else
+                                    <td>Geen medewerker</td>
+                                    @endif
                                     <td>
                                         <a href="/bugchat/{{$bug->id}}" class="">
                                             <button type="submit" class="btn btn-success btn-xs">
@@ -102,8 +104,8 @@
                                         @endif
                                     </td>
                                 </tr>
-                                {{-- */$i++;/* --}}
-                            @endforeach
+
+                                @endforeach
 
                         </tbody>
                       </table>
@@ -114,7 +116,6 @@
                 @endif
                 </div>
                 @foreach($projects as $project)
-                {{-- */$i=0;/* --}}
                                 <div class="row">
                                    <div class="col-lg-12">
                                    <h3 class="page-header">
@@ -129,15 +130,13 @@
                                         <th>Soort</th>
                                         <th>Prioriteit</th>
                                         <th>Deadline</th>
-                                        <th>Klant <small>(nummer + naam)</small></th>
-                                        <th>Project <small>(nummer + naam)</small></th>
-                                        <th>Medewerker <small>(nummer + naam)</small></th>
+                                        <th>Klant</th>
+                                        <th>Project</th>
+                                        <th>Medewerker</th>
                                         <th></th>
                                         </thead>
                                         <tbody>
                                            @foreach($bugs_all as $bug)
-                                                 {{-- */$x=$bug->klant_id - 2;/* --}}
-                                                 {{-- */$y=$bug->medewerker_id - 2;/* --}}
                                            @if($bug->project_id == $project->id)
                                                 <tr>
                                                     <td>{{$bug->id}}</td>
@@ -158,10 +157,13 @@
                                                     @endif
                                                     </td>
                                                     <td>{{$bug->eind_datum}}</td>
-                                                    <td>{{$klanten[$x]->voornaam .' '.$klanten[$x]->tussenvoegsel.' '. $klanten[$x]->achternaam}}</td>
+                                                    <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
                                                     <td>{{$project->projectnaam}}</td>
-                                                    <td>{{$klanten[$y]->voornaam .' '.$klanten[$y]->tussenvoegsel.' '. $klanten[$y]->achternaam}}</td>
-
+                                                    @if($bug->user)
+                                                    <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
+                                                    @else
+                                                    <td>Geen medewerker</td>
+                                                    @endif
                                                     <td>
                                                         <a href="/bugchat/{{$bug->id}}" class="">
                                                             <button type="submit" class="btn btn-success btn-xs">
@@ -178,8 +180,8 @@
                                   </div>
                                  </div>
                                 @endforeach
+
                 @if(Auth::user()->bedrijf == 'moodles')
-                {{-- */$i=0;/* --}}
                 <div class="row">
                     <div class="col-lg-12">
                     <h3 class="page-header">
@@ -194,53 +196,62 @@
                         <th>Soort</th>
                         <th>Prioriteit</th>
                         <th>Deadline</th>
-                        <th>Klant <small>(nummer + naam)</small></th>
-                        <th>Project <small>(nummer + naam)</small></th>
-                        <th>Medewerker <small>(nummer + naam)</small></th>
+                        <th>Klant</th>
+                        <th>Project</th>
+                        <th>Medewerker</th>
                         <th></th>
                         </thead>
                         <tbody>
+                        {{-- */$i=0;/* --}}
                            @foreach($projects_all as $project)
-                           @if($bugs_all[$i]->project_id == $project->id)
-                           {{-- */$x=$bugs_all[$i]->klant_id - 2;/* --}}
-                           {{-- */$y=$bugs_all[$i]->medewerker_id - 2;/* --}}
-                                <tr>
-                                    <td>{{$bugs_all[$i]->id}}</td>
-                                    <td>{{substr($bugs_all[$i]->titel,0,15)}}</td>
-                                    <td>{{$bugs_all[$i]->status}}</td>
-                                    <td>{{$bugs_all[$i]->soort}}</td>
-                                    <td>
-                                    @if($bugs_all[$i]->prioriteit == 'laag')
-                                    <span class="label label-success">Laag</span>
-                                    @elseif($bugs_all[$i]->prioriteit == 'gemiddeld')
-                                    <span class="label label-warning">Gemmideld</span>
-                                    @elseif($bugs_all[$i]->prioriteit == 'hoog')
-                                    <span class="label label-danger">Hoog</span>
-                                    @elseif($bugs_all[$i]->prioriteit == 'kritisch')
-                                    <span class="label label-purple">Kritisch</span>
-                                    @else
-                                    <span class="label label-info">Geen prioriteit</span>
+                            @foreach($bugs_all as $bug)
+                                @if(count($bugs_all) > 0)
+                                    @if($bug->project_id == $project->id)
+                                    <tr>
+                                        <td>{{$bug->id}}</td>
+                                        <td>{{substr($bug->titel,0,15)}}</td>
+                                        <td>{{$bug->status}}</td>
+                                        <td>{{$bug->soort}}</td>
+                                        <td>
+                                        @if($bug->prioriteit == 'laag')
+                                            <span class="label label-success">Laag</span>
+                                            @elseif($bug->prioriteit == 'gemiddeld')
+                                            <span class="label label-warning">Gemmideld</span>
+                                            @elseif($bug->prioriteit == 'hoog')
+                                            <span class="label label-danger">Hoog</span>
+                                            @elseif($bug->prioriteit == 'kritisch')
+                                            <span class="label label-purple">Kritisch</span>
+                                            @else
+                                            <span class="label label-info">Geen prioriteit</span>
+                                            @endif
+                                        </td>
+                                        <td>{{$bug->eind_datum}}</td>
+                                        <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
+                                        <td>{{$project->projectnaam}}</td>
+                                        @if($bug->user)
+                                        <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
+                                        @else
+                                        <td>Geen medewerker</td>
+                                        @endif
+                                        <td>
+                                            <a href="/bugchat/{{$bugs_all[$i]->id}}" class="">
+                                                <button type="submit" class="btn btn-success btn-xs">
+                                                    <i class="glyphicon glyphicon-search"></i>
+                                                </button>
+                                            </a>
+                                            <a href="/verwijderBug/{{$bugs_all[$i]->id}}" class="">
+                                                <button class="btn btn-danger btn-xs">
+                                                        <i class="fa fa-remove"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {{-- */$i++;/* --}}
+
                                     @endif
-                                    </td>
-                                    <td>{{$bugs_all[$i]->eind_datum}}</td>
-                                    <td>{{$klanten[$x]->voornaam .' '.$klanten[$x]->tussenvoegsel.' '. $klanten[$x]->achternaam}}</td>
-                                    <td>{{$project->projectnaam}}</td>
-                                    <td>{{$klanten[$y]->voornaam .' '.$klanten[$y]->tussenvoegsel.' '. $klanten[$y]->achternaam}}</td>
-                                    <td>
-                                        <a href="/bugchat/{{$bugs_all[$i]->id}}" class="">
-                                            <button type="submit" class="btn btn-success btn-xs">
-                                                <i class="glyphicon glyphicon-search"></i>
-                                            </button>
-                                        </a>
-                                        <a href="/verwijderBug/{{$bugs_all[$i]->id}}" class="">
-                                            <button class="btn btn-danger btn-xs">
-                                                    <i class="fa fa-remove"></i>
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                {{-- */$i++;/* --}}
-                                @endif
+
+                                 @endif
+                            @endforeach
                             @endforeach
 
                         </tbody>

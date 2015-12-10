@@ -82,13 +82,24 @@
                             <div class="form-group">
                                 <label for="sel4">Koppel medewerker</label>
                                 <select class="form-control" id="medewerker" name="medewerker">
+                                    {{--@foreach($medewerkers as $mw)--}}
+
+                                       {{--<option value="{{$mw->id}}"--}}
+                                        {{--@if($bug->user->id == $mw->id) selected @endif--}}
+                                        {{-->--}}
+                                       {{--{{$mw->voornaam .' '. $mw->achternaam }}--}}
+                                       {{--</option>--}}
+
+                                    {{--@endforeach--}}
                                     @foreach($medewerkers as $mw)
-                                    <option value="{{$mw->id}}"
-                                     @if($bug->user->id == $mw->id) selected @endif
-                                     >
-                                    {{$mw->voornaam .' '. $mw->achternaam }}
-                                    </option>
+                                        @if($mw->id != 0)
+                                            <option value="{{$mw->id}}"
+                                            selected>
+                                            {{$mw->voornaam .' '. $mw->achternaam }}
+                                            </option>
+                                        @endif
                                     @endforeach
+
                                 </select>
                             </div>
 

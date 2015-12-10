@@ -86,7 +86,7 @@
                                     <div><span class="badge">
                                     @foreach($bugs as $bug)
                                     @if($bug->status == 'open')
-                                        @if($bug->project_id == $project->id)
+                                        @if($bug->project_id == $project->id )
                                             {{-- */$i++/* --}}
                                         @endif
                                     @endif

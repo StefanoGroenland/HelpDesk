@@ -34,8 +34,13 @@ class Bug extends Model
     public function user(){
         return $this->belongsTo('App\User','medewerker_id','id');
     }
+
+    public function klant(){
+        return $this->belongsTo('App\User','klant_id','id');
+    }
+
     public function project(){
-        return $this->belongsTo('App\Project', 'id');
+        return $this->belongsTo('App\Project', 'project_id', 'id');
     }
     public function getAllBugs(){
        DB::table('bugs')->all();

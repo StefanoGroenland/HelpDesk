@@ -29,7 +29,7 @@ class BugController extends Controller
 
     public function showBugOverzicht($id){
         $bugs_related = $this->getRelatedBugs($id);
-        $bugs_all = Bug::all();
+        $bugs_all = Bug::with('klant','user')->get();
         $projects = Project::where('gebruiker_id','=', $id)->get();
         $projects_all = Project::all();
         $klanten = User::all();
@@ -76,7 +76,7 @@ class BugController extends Controller
             'klant_id' => 'required',
             'project_id' => 'required',
             'klant_id' => 'required',
-            'medewerker_id' => 'required',
+//            'medewerker_id' => 'required',
         ]);
         Bug::create([
             'titel'  => $request['titel'],
@@ -87,7 +87,7 @@ class BugController extends Controller
             'eind_datum'   => $request['eind_datum'],
             'beschrijving'   => $request['beschrijving'],
             'klant_id'   => Auth::user()->id,
-            'medewerker_id'   => Auth::user()->id,
+//            'medewerker_id'   => Auth::user()->id,
             'project_id'  => $request['project'],
         ]);
         $request->session()->flash('alert-success', 'Bug '. $request['titel']. ' toegevoegd.');
