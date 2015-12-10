@@ -80,7 +80,7 @@
                                     <span class="label label-info">Geen prioriteit</span>
                                     @endif
                                     </td>
-                                    <td>{{$bug->eind_datum}}</td>
+                                    <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                     <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
                                     {{--<td>{{$project->projectnaam}}</td>--}}
                                     <td>{{$bug->project->projectnaam}}</td>
@@ -156,7 +156,7 @@
                                                     <span class="label label-info">Geen prioriteit</span>
                                                     @endif
                                                     </td>
-                                                    <td>{{$bug->eind_datum}}</td>
+                                                    <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                                     <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
                                                     <td>{{$project->projectnaam}}</td>
                                                     @if($bug->user)
@@ -225,7 +225,7 @@
                                             <span class="label label-info">Geen prioriteit</span>
                                             @endif
                                         </td>
-                                        <td>{{$bug->eind_datum}}</td>
+                                        <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                         <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
                                         <td>{{$project->projectnaam}}</td>
                                         @if($bug->user)

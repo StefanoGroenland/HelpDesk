@@ -145,8 +145,8 @@
                                 @foreach($bugs as $bug)
 
                                     <tr>
-                                        <td>{{$bug->created_at}}</td>
-                                        <td>{{$bug->eind_datum}}</td>
+                                        <td>{{$bug->created_at->format('d-m-y - H:i')}}</td>
+                                        <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                         <td>{{$bug->titel}}</td>
                                         <td>
                                         @if($bug->prioriteit == 'laag')
@@ -161,8 +161,8 @@
                                         <span class="label label-info">Geen prioriteit</span>
                                         @endif
                                         </td>
-                                        <td># {{$bug->klant_id}}</td>
-                                        <td># {{$bug->project_id}}</td>
+                                        <td>{{$bug->klant->voornaam .' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
+                                        <td>{{$bug->project->projectnaam}}</td>
                                         <td>
                                             <a href="/bugchat/{{$bug->id}}">
                                         <button type="submit" class="btn btn-success btn-xs">
