@@ -48,16 +48,16 @@
                     <div class="table-responsive">
                     <table class="table table-hover ">
                         <thead>
-                        <th>Bug nummer</th>
-                        <th>Bug titel</th>
-                        <th>Status</th>
-                        <th>Soort</th>
-                        <th>Prioriteit</th>
-                        <th>Deadline</th>
-                        <th>Klant</th>
-                        <th>Project</th>
-                        <th>Medewerker</th>
-                        <th></th>
+                        <th style="width: 10%">Bug nummer</th>
+                        <th style="width: 10%">Bug titel</th>
+                        <th style="width: 10%">Status</th>
+                        <th style="width: 10%">Soort</th>
+                        <th style="width: 10%">Prioriteit</th>
+                        <th style="width: 10%">Deadline</th>
+                        <th style="width: 10%">Klant</th>
+                        <th style="width: 10%">Project</th>
+                        <th style="width: 10%">Medewerker</th>
+                        <th style="width: 10%"></th>
                         </thead>
                         <tbody>
 
@@ -124,16 +124,16 @@
                                    <div class="table-responsive">
                                     <table class="table table-hover ">
                                         <thead>
-                                        <th>Bug nummer</th>
-                                        <th>Bug titel</th>
-                                        <th>Status</th>
-                                        <th>Soort</th>
-                                        <th>Prioriteit</th>
-                                        <th>Deadline</th>
-                                        <th>Klant</th>
-                                        <th>Project</th>
-                                        <th>Medewerker</th>
-                                        <th></th>
+                                        <th style="width: 10%">Bug nummer</th>
+                                        <th style="width: 10%">Bug titel</th>
+                                        <th style="width: 10%">Status</th>
+                                        <th style="width: 10%">Soort</th>
+                                        <th style="width: 10%">Prioriteit</th>
+                                        <th style="width: 10%">Deadline</th>
+                                        <th style="width: 10%">Klant</th>
+                                        <th style="width: 10%">Project</th>
+                                        <th style="width: 10%">Medewerker</th>
+                                        <th style="width: 10%"></th>
                                         </thead>
                                         <tbody>
                                            @foreach($bugs_all as $bug)
@@ -190,16 +190,16 @@
                     <div class="table-responsive">
                     <table class="table table-hover ">
                         <thead>
-                        <th>Bug nummer</th>
-                        <th>Bug titel</th>
-                        <th>Status</th>
-                        <th>Soort</th>
-                        <th>Prioriteit</th>
-                        <th>Deadline</th>
-                        <th>Klant</th>
-                        <th>Project</th>
-                        <th>Medewerker</th>
-                        <th></th>
+                        <th style="width: 10%">Bug nummer</th>
+                        <th style="width: 10%">Bug titel</th>
+                        <th style="width: 10%">Status</th>
+                        <th style="width: 10%">Soort</th>
+                        <th style="width: 10%">Prioriteit</th>
+                        <th style="width: 10%">Deadline</th>
+                        <th style="width: 10%">Klant</th>
+                        <th style="width: 10%">Project</th>
+                        <th style="width: 10%">Medewerker</th>
+                        <th style="width: 10%"></th>
                         </thead>
                         <tbody>
                         {{-- */$i=0;/* --}}

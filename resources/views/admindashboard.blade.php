@@ -137,8 +137,8 @@
                                 <th>Deadline</th>
                                 <th>Project</th>
                                 <th>Prioriteit</th>
-                                <th>Klant #</th>
-                                <th>Project #</th>
+                                <th>Klant</th>
+                                <th>Project</th>
                                 <th></th>
                                 </thead>
                                 <tbody>

@@ -122,14 +122,14 @@
                             <h6><strong>Aangemaakt</strong> :</h6>
                             <h6><strong>Gewijzigd</strong> :</h6>
                             <h6><strong>Deadline</strong> :</h6>
-                            <h6><strong>Klant nummer</strong> :</h6>
+                            <h6><strong>Klant nr.</strong> :</h6>
                             <h6><strong>Status</strong> :</h6>
                             <h6><strong>Soort</strong> :</h6>
                          </div>
                          <div class="col-lg-6 pull-right">
-                            <h6>{{$bug->created_at->format('d-m-y - H:i')}}</h6>
-                            <h6>{{$bug->updated_at->format('d-m-y - H:i')}}</h6>
-                            <h6>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</h6>
+                            <h6>{{$bug->created_at->format('d-m-y')}}</h6>
+                            <h6>{{$bug->updated_at->format('d-m-y')}}</h6>
+                            <h6>{{date('d-m-y',strtotime($bug->eind_datum))}}</h6>
                             <h6>{{$bug->klant_id}}               </h6>
                             <h6>{{$bug->status}}                 </h6>
                             <h6>{{$bug->soort}}                  </h6>
