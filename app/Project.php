@@ -36,6 +36,7 @@ class Project extends Model
     public function user(){
         return $this->belongsTo('App\User', 'id');
     }
+
     public function bug(){
         return $this->hasMany('App\Bug', 'project_id');
     }
@@ -49,48 +50,15 @@ class Project extends Model
         DB::table('projecten')->where('id', '=',$id)->delete();
         return redirect('/projectmuteren');
     }
+
     public static function getProjectOnSearch($inp){
         return DB::table('projecten')
             ->select(DB::raw('titel,status,prioriteit,soort,projectnaam,projecturl
             ,gebruikersnaam,wachtwoord
             ,gebruiker_id,omschrijvingproject'))
-            ->where('projectnaam', 'LIKE', '%'.$inp.'%')
+            ->where('projectnaam', '=', $inp)
             ->get();
     }
-    public static function insertNewProject(Request $request){
-        $lastidplus = (int)User::getLastRow();
-        return DB::table('projecten')->insert(
-            [
-                'titel'  => $request['titel'],
-                'status'     => $request['status'],
-                'prioriteit'  => $request['prioriteit'],
-                'soort'   => $request['soort'],
-                'projectnaam'  => $request['projectnaam'],
-                'projecturl'  => $request['projecturl'],
-                'gebruikersnaam'  => $request['gebruikersnaam'],
-                'wachtwoord' => bcrypt($request['wachtwoord']),
-                'omschrijvingproject' => $request['omschrijvingproject'],
-                'gebruiker_id' => $lastidplus,
-            ]
-        );
-    }
-    public static function insertNewProjectKoppel(Request $request){
-        return DB::table('projecten')->insert(
-            [
-                'titel'  => $request['titel'],
-                'status'     => $request['status'],
-                'prioriteit'  => $request['prioriteit'],
-                'soort'   => $request['soort'],
-                'projectnaam'  => $request['projectnaam'],
-                'projecturl'  => $request['projecturl'],
-                'gebruikersnaam'  => $request['gebruikersnaam'],
-                'wachtwoord' => bcrypt($request['wachtwoord']),
-                'omschrijvingproject' => $request['omschrijvingproject'],
-                'gebruiker_id' => $request['gebruiker_id'],
-            ]
-        );
-    }
-
 
 
 

@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="row">
-                    <a href="{{URL::to('/projectmuteren')}}">
+                    <a href="{{URL::to('/newproject')}}">
                     <div class="col-lg-12 col-md-6">
                         <div class="panel panel-success">
                             <div class="panel-heading">
@@ -45,7 +45,7 @@
                                     </div>
                                 <div class="row">
                                     <div class="col-xs-12 text-center">
-                                        <h3>Nieuw Project</h3>
+                                        <h3>Nieuw project</h3>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +56,9 @@
                     </div>
 
                 </div>
+                @if(count($projects) > 0)
                 @foreach($projects as $project)
+
                  {{-- */$i=0;/* --}}
                  {{-- */$x=0;/* --}}
                  {{-- */$y=0;/* --}}
@@ -125,7 +127,9 @@
                         </a>
                     </div>
                     </div>
+
                 @endforeach
+                  @endif
                   </div>
                 <div class="row">
                     <div class="col-lg-9">
@@ -142,6 +146,7 @@
                                 <th></th>
                                 </thead>
                                 <tbody>
+                                @if(count($bugs) > 0)
                                 @foreach($bugs as $bug)
 
                                     <tr>
@@ -161,8 +166,12 @@
                                         <span class="label label-info">Geen prioriteit</span>
                                         @endif
                                         </td>
+                                        @if($bug->klant)
                                         <td>{{$bug->klant->voornaam .' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
-                                        <td>{{$bug->project->projectnaam}}</td>
+                                        @endif
+                                        @if($bug->project)
+                                            <td>{{$bug->project->projectnaam}}</td>
+                                        @endif
                                         <td>
                                             <a href="/bugchat/{{$bug->id}}">
                                         <button type="submit" class="btn btn-success btn-xs">
@@ -171,7 +180,9 @@
                                            </a>
                                         </td>
                                     </tr>
+
                                     @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

@@ -57,17 +57,17 @@
                                                  </div>
                             <div class="form-group">
                                 <label for="bedrijfsnaam">Project</label>
-                               <input type="text" class="form-control" id="titel2" name="titel" placeholder="Titel">
+                               <input type="text" class="form-control titel2" id="titel2" required="true" name="titel" placeholder="Titel">
                              </div>
                              <div class="form-group">
-                                 <select class="form-control" id="status2" name="status" required="true">
+                                 <select class="form-control status2" id="status2" name="status" required="true">
                                    <option value="open">Open</option>
                                    <option value="bezig">Bezig</option>
                                    <option value="gesloten">Gesloten</option>
                                  </select>
                                </div>
                                <div class="form-group">
-                                 <select class="form-control" id="prioriteit2" required="true" name="prioriteit">
+                                 <select class="form-control prioriteit2" id="prioriteit2" required="true" name="prioriteit">
                                    <option value="laag">Laag</option>
                                    <option value="gemiddeld">Gemiddeld</option>
                                    <option value="hoog">Hoog</option>
@@ -75,7 +75,7 @@
                                  </select>
                                </div>
                                <div class="form-group">
-                                <select class="form-control" id="soort2" required="true" name="soort">
+                                <select class="form-control soort2" id="soort2" required="true" name="soort">
                                   <option value="lay-out">Lay-out</option>
                                   <option value="seo">SEO</option>
                                   <option value="performance">Performance</option>
@@ -83,29 +83,29 @@
                                 </select>
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control" id="projectnaam2" name="projectnaam" placeholder="Projectnaam" value="">
+                                <input type="text" class="form-control projectnaam2" required="true" id="projectnaam2" name="projectnaam" placeholder="Projectnaam" value="">
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control" id="projecturl2" name="projecturl" placeholder="Project URL" value="">
+                                <input type="text" class="form-control projecturl2" required="true" id="projecturl2" name="projecturl" placeholder="Project URL" value="">
                               </div>
                                 <div class="form-group">
                                 <label for="bedrijfsnaam">Beheer account</label>
-                                <input type="text" class="form-control" id="gebruikersnaam2" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
+                                <input type="text" class="form-control gebruikersnaam2" required="true" id="gebruikersnaam2" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
                               </div>
                               <div class="form-group">
-                                <input type="password" class="form-control" id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="">
+                                <input type="password" class="form-control wachtwoord2"  required="true"id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="">
                               </div>
 
 
                               <div class="form-group">
-                                 <textarea class="form-control" rows="5" id="omschrijving2" name="omschrijvingproject" value="" ></textarea>
+                                 <textarea class="form-control omschrijving2" rows="5" id="omschrijving2" name="omschrijvingproject" value="" ></textarea>
                                </div>
 
                               <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
-                            </form>
+
                             </div>
                            </div>
-
+                        </form>
                          </div>
                     <div class="col-lg-4">
                         <div class="table-responsive">
@@ -115,6 +115,7 @@
                                 <th>URL</th>
                                 <th>Klantnummer</th>
                                 <th></th>
+                                <th></th>
                                 </thead>
                                 <tbody>
                                     @foreach($projects as $project)
@@ -123,29 +124,32 @@
                                       <td>{{$project->projecturl}}</td>
                                       <td>{{$project->gebruiker_id}}</td>
                                       <td>
-                                      <a href="/verwijderProject/{{$project->id}}" class="">
-                                         <button type="submit" class="btn btn-danger btn-xs">
-                                             <i class="glyphicon glyphicon-remove"></i>
-                                         </button>
-                                      </a>
-
+                                         <input type="hidden" class="zoeknaam2" value="{{$project->projectnaam}}"  name="zoeknaam2" class="form-control" placeholder="Projectnaam">
+                                           <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button">
+                                                  <i class="glyphicon glyphicon-pencil"></i>
+                                           </button>
                                       </td>
+                                        <td>
+                                        <a href="/verwijderProject/{{$project->id}}" class="">
+                                            <button type="submit" class="btn btn-danger btn-xs">
+                                               <i class="glyphicon glyphicon-remove"></i>
+                                            </button>
+                                        </a>
+                                        </td>
                                       </tr>
                                       @endforeach
                                 </tbody>
                             </table>
-</div>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- /#page-wrapper -->
             @section('scripts')
                     <script type="text/javascript">
                         $("#zoekKnop2").on("click",function(){
-
 
                                 var email = $('#zoeknaam').val();
                                 $('#titel2').val('');
@@ -156,7 +160,6 @@
                                 $('#projecturl2').val('');
                                 $('#gebruikersnaam2').val('');
                                 $('#wachtwoord2').val('');
-                                $('#gebruiker_id2').val('');
                                 $('#omschrijving2').val('');
 
                                 $.ajax({
@@ -175,11 +178,47 @@
                                     $('#projecturl2').val(msg[0].projecturl);
                                     $('#gebruikersnaam2').val(msg[0].gebruikersnaam);
                                     $('#wachtwoord2').val(msg[0].wachtwoord);
-                                    $('#gebruiker_id2').val(msg[0].gebruiker_id);
                                     $('#omschrijving2').val(msg[0].omschrijvingproject);
                                   });
                         });
                     </script>
+                    <script type="text/javascript">
+                    $(".wijzigKnop2").on("click",function(){
+                    var email2 = $('.zoeknaam2').val();
+                     $('.titel2').val('');
+                     $('.status2').val('');
+                     $('.prioriteit2').val('');
+                     $('.type2').val('');
+                     $('.projectnaam2').val('');
+                     $('.projecturl2').val('');
+                     $('.gebruikersnaam2').val('');
+                     $('.wachtwoord2').val('');
+                     $('.omschrijving2').val('');
+
+                     $.ajax({
+                       method: "POST",
+                       url: "/updateProjectData",
+                       data: {   input2: email2 ,
+                                 _token: "{{ csrf_token() }}"
+                             }
+                     })
+                       .done(function( msg ) {
+                        console.log(JSON.stringify(msg));
+                         $('.titel2').val(msg[0].titel);
+                         $('.status2').val(msg[0].status);
+                         $('.prioriteit2').val(msg[0].prioriteit);
+                         $('.soort2').val(msg[0].soort);
+                         $('.projectnaam2').val(msg[0].projectnaam);
+                         $('.projecturl2').val(msg[0].projecturl);
+                         $('.gebruikersnaam2').val(msg[0].gebruikersnaam);
+                         $('.wachtwoord2').val(msg[0].wachtwoord);
+                         $('.omschrijving2').val(msg[0].omschrijvingproject);
+                       });
+
+                     });
+                    </script>
+
+
                     @stop
     </div>
     <!-- /#wrapper -->

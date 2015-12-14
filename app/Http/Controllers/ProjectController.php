@@ -25,7 +25,6 @@ class ProjectController extends Controller
         return View::make('newproject', compact('projects', 'klanten'));
     }
     public function addProject(Request $request){
-        $lastidplus = (int)User::getLastRow() + 1;
 
         if(isset($_POST['radmaak'])){
             Validator::make($request->all(),[
@@ -103,13 +102,12 @@ class ProjectController extends Controller
                     'gebruiker_id' => $request['gebruiker_id'],
                 ]);
             }
-
-
         $request->session()->flash('alert-success', 'Project '. $request['titel']. ' toegevoegd.');
         return redirect('/newproject');
     }
     public function updateProject(Request $request){
         $input = $request->input('zoeknaam');
+
         $data = array(
             'titel'  => $request['titel'],
             'status'     => $request['status'],
@@ -126,11 +124,11 @@ class ProjectController extends Controller
         return redirect('/projectmuteren');
     }
     public function getUpdateData(){
-        $input = $_POST['input'];
+        $input = $_POST['input2'];
         $inputdata = Project::getProjectOnSearch($input);
-
         return $inputdata;
     }
+
     public function verwijderProject(){
 //      flash of alert bij voegen?
         $sid = Route::current()->getParameter('id');

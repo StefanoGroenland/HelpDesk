@@ -108,7 +108,7 @@
                             <input type="radio" name="radkoppel" id="radkoppel" value="koppel_klant"> Koppel klant
                           </label>
                           <label class="radio-inline">
-                            <input type="radio" name="radmaak" id="radmaak" value="maak_klant"> Maak klant
+                            <input type="radio" name="radmaak" id="radmaak" value="maak_klant" checked> Maak klant
                           </label>
                         </div>
 

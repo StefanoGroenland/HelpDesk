@@ -78,25 +78,4 @@ class User extends Model implements AuthenticatableContract,
         DB::table('gebruikers')->where('id', '=',$id)->delete();
         return redirect('/medewerkermuteren');
     }
-    public static function getLastRow(){
-        $data =  DB::table('gebruikers')->select('id')
-            ->orderBy('id', 'desc')
-            ->first();
-        return $data->id;
-    }
-    public static function insertNewKlant(Request $request){
-        return DB::table('gebruikers')->insert(
-            [
-                'username' => $request['username'],
-                'password' => bcrypt($request['password']),
-                'email' => $request['email'],
-                'bedrijf' => $request['bedrijf'],
-                'voornaam' => $request['voornaam'],
-                'tussenvoegsel' => $request['tussenvoegsel'],
-                'achternaam' => $request['achternaam'],
-                'geslacht' => $request['geslacht'],
-                'telefoonnummer' => $request['telefoonnummer'],
-            ]
-        );
-    }
 }
