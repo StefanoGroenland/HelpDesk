@@ -27,7 +27,6 @@ class ProjectController extends Controller
     public function addProject(Request $request){
         $lastidplus = (int)User::getLastRow() + 1;
 
-
         if(isset($_POST['radmaak'])){
             Validator::make($request->all(),[
 //                projecten table
@@ -53,7 +52,7 @@ class ProjectController extends Controller
                 'geslacht'  => $request['geslacht'],
                 'telefoonnummer'  => $request['telefoonnummer'],
             ]);
-            User::create([
+            $user = User::create([
                     'username'  => $request['username'],
                     'password'  => bcrypt($request['password']),
                     'email'  => $request['email'],
@@ -74,7 +73,7 @@ class ProjectController extends Controller
                 'gebruikersnaam'  => $request['gebruikersnaam'],
                 'wachtwoord' => bcrypt($request['wachtwoord']),
                 'omschrijvingproject' => $request['omschrijvingproject'],
-                'gebruiker_id' => $lastidplus,
+                'gebruiker_id' => $user->id,
             ]);
             }
             elseif(isset($_POST['radkoppel'])){
