@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Project as Project;
+use App\User as User;
 use App\Http\Controllers\Hash as Hash;
 use Illuminate\Support\Facades\Validator;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -18,35 +19,95 @@ class ProjectController extends Controller
         $klanten = Project::getUsers();
         return View::make('projectmuteren', compact('projects', 'klanten'));
     }
+    public function showNewProject(){
+        $projects = Project::all();
+        $klanten = Project::getUsers();
+        return View::make('newproject', compact('projects', 'klanten'));
+    }
     public function addProject(Request $request){
+        $lastidplus = (int)User::getLastRow() + 1;
 
-        Validator::make($request->all(),[
-            'titel' => 'required|max:255|unique:projecten',
-            'status'    => 'required',
-            'prioriteit' => 'required',
-            'soort'  => 'required',
-            'projectnaam' => 'required',
-            'projecturl' => 'required',
-            'gebruikersnaam' => 'required',
-            'wachtwoord' => 'required',
-            'omschrijvingproject' => 'required',
-            'gebruiker_id' => 'required',
-        ]);
-        Project::create([
 
-            'titel'  => $request['titel'],
-            'status'     => $request['status'],
-            'prioriteit'  => $request['prioriteit'],
-            'soort'   => $request['soort'],
-            'projectnaam'  => $request['projectnaam'],
-            'projecturl'  => $request['projecturl'],
-            'gebruikersnaam'  => $request['gebruikersnaam'],
-            'wachtwoord' => bcrypt($request['wachtwoord']),
-            'omschrijvingproject' => $request['omschrijvingproject'],
-            'gebruiker_id' => $request['gebruiker_id'],
-        ]);
+        if(isset($_POST['radmaak'])){
+            Validator::make($request->all(),[
+//                projecten table
+                'titel' => 'required|max:255|unique:projecten',
+                'status'    => 'required',
+                'prioriteit' => 'required',
+                'soort'  => 'required',
+                'projectnaam' => 'required',
+                'projecturl' => 'required',
+                'gebruikersnaam' => 'required',
+                'wachtwoord' => 'required',
+                'omschrijvingproject' => 'required',
+                'gebruiker_id' => 'required',
+
+//                gebruikers table
+                'username'  => $request['username'],
+                'password'  => bcrypt($request['password']),
+                'email'  => $request['email'],
+                'bedrijf'  => $request['bedrijf'],
+                'voornaam'  => $request['voornaam'],
+                'tussenvoegsel'  => $request['tussenvoegsel'],
+                'achternaam'  => $request['achternaam'],
+                'geslacht'  => $request['geslacht'],
+                'telefoonnummer'  => $request['telefoonnummer'],
+            ]);
+            User::create([
+                    'username'  => $request['username'],
+                    'password'  => bcrypt($request['password']),
+                    'email'  => $request['email'],
+                    'bedrijf'  => $request['bedrijf'],
+                    'voornaam'  => $request['voornaam'],
+                    'tussenvoegsel'  => $request['tussenvoegsel'],
+                    'achternaam'  => $request['achternaam'],
+                    'geslacht'  => $request['geslacht'],
+                    'telefoonnummer'  => $request['telefoonnummer'],
+                ]);
+            Project::create([
+                'titel'  => $request['titel'],
+                'status'     => $request['status'],
+                'prioriteit'  => $request['prioriteit'],
+                'soort'   => $request['soort'],
+                'projectnaam'  => $request['projectnaam'],
+                'projecturl'  => $request['projecturl'],
+                'gebruikersnaam'  => $request['gebruikersnaam'],
+                'wachtwoord' => bcrypt($request['wachtwoord']),
+                'omschrijvingproject' => $request['omschrijvingproject'],
+                'gebruiker_id' => $lastidplus,
+            ]);
+            }
+            elseif(isset($_POST['radkoppel'])){
+                Validator::make($request->all(),[
+//                projecten table
+                    'titel' => 'required|max:255|unique:projecten',
+                    'status'    => 'required',
+                    'prioriteit' => 'required',
+                    'soort'  => 'required',
+                    'projectnaam' => 'required',
+                    'projecturl' => 'required',
+                    'gebruikersnaam' => 'required',
+                    'wachtwoord' => 'required',
+                    'omschrijvingproject' => 'required',
+                    'gebruiker_id' => 'required',
+                    ]);
+                Project::create([
+                    'titel'  => $request['titel'],
+                    'status'     => $request['status'],
+                    'prioriteit'  => $request['prioriteit'],
+                    'soort'   => $request['soort'],
+                    'projectnaam'  => $request['projectnaam'],
+                    'projecturl'  => $request['projecturl'],
+                    'gebruikersnaam'  => $request['gebruikersnaam'],
+                    'wachtwoord' => bcrypt($request['wachtwoord']),
+                    'omschrijvingproject' => $request['omschrijvingproject'],
+                    'gebruiker_id' => $request['gebruiker_id'],
+                ]);
+            }
+
+
         $request->session()->flash('alert-success', 'Project '. $request['titel']. ' toegevoegd.');
-        return redirect('/projectmuteren');
+        return redirect('/newproject');
     }
     public function updateProject(Request $request){
         $input = $request->input('zoeknaam');

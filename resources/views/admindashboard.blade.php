@@ -135,7 +135,7 @@
                                 <thead>
                                 <th>Gepost op :</th>
                                 <th>Deadline</th>
-                                <th>Project</th>
+                                <th>Bug</th>
                                 <th>Prioriteit</th>
                                 <th>Klant</th>
                                 <th>Project</th>

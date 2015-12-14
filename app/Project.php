@@ -3,7 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use DB;
+
 class Project extends Model
 {
     /**
@@ -55,4 +57,41 @@ class Project extends Model
             ->where('projectnaam', 'LIKE', '%'.$inp.'%')
             ->get();
     }
+    public static function insertNewProject(Request $request){
+        $lastidplus = (int)User::getLastRow();
+        return DB::table('projecten')->insert(
+            [
+                'titel'  => $request['titel'],
+                'status'     => $request['status'],
+                'prioriteit'  => $request['prioriteit'],
+                'soort'   => $request['soort'],
+                'projectnaam'  => $request['projectnaam'],
+                'projecturl'  => $request['projecturl'],
+                'gebruikersnaam'  => $request['gebruikersnaam'],
+                'wachtwoord' => bcrypt($request['wachtwoord']),
+                'omschrijvingproject' => $request['omschrijvingproject'],
+                'gebruiker_id' => $lastidplus,
+            ]
+        );
+    }
+    public static function insertNewProjectKoppel(Request $request){
+        return DB::table('projecten')->insert(
+            [
+                'titel'  => $request['titel'],
+                'status'     => $request['status'],
+                'prioriteit'  => $request['prioriteit'],
+                'soort'   => $request['soort'],
+                'projectnaam'  => $request['projectnaam'],
+                'projecturl'  => $request['projecturl'],
+                'gebruikersnaam'  => $request['gebruikersnaam'],
+                'wachtwoord' => bcrypt($request['wachtwoord']),
+                'omschrijvingproject' => $request['omschrijvingproject'],
+                'gebruiker_id' => $request['gebruiker_id'],
+            ]
+        );
+    }
+
+
+
+
 }

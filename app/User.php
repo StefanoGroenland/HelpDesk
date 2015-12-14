@@ -17,6 +17,8 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use DB;
 use App\Input as Input;
+//use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 
 class User extends Model implements AuthenticatableContract,
@@ -75,5 +77,26 @@ class User extends Model implements AuthenticatableContract,
     public static function verwijderGebruiker($id){
         DB::table('gebruikers')->where('id', '=',$id)->delete();
         return redirect('/medewerkermuteren');
+    }
+    public static function getLastRow(){
+        $data =  DB::table('gebruikers')->select('id')
+            ->orderBy('id', 'desc')
+            ->first();
+        return $data->id;
+    }
+    public static function insertNewKlant(Request $request){
+        return DB::table('gebruikers')->insert(
+            [
+                'username' => $request['username'],
+                'password' => bcrypt($request['password']),
+                'email' => $request['email'],
+                'bedrijf' => $request['bedrijf'],
+                'voornaam' => $request['voornaam'],
+                'tussenvoegsel' => $request['tussenvoegsel'],
+                'achternaam' => $request['achternaam'],
+                'geslacht' => $request['geslacht'],
+                'telefoonnummer' => $request['telefoonnummer'],
+            ]
+        );
     }
 }
