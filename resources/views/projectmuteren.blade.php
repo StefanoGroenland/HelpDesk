@@ -124,8 +124,8 @@
                                       <td>{{$project->projecturl}}</td>
                                       <td>{{$project->gebruiker_id}}</td>
                                       <td>
-                                         <input type="hidden" class="zoeknaam2" value="{{$project->projectnaam}}"  name="zoeknaam2" class="form-control" placeholder="Projectnaam">
-                                           <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button">
+                                         {{--<input type="hidden" class="zoeknaam2" value="{{$project->projectnaam}}"  name="zoeknaam2" class="form-control" placeholder="Projectnaam">--}}
+                                           <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
                                                   <i class="glyphicon glyphicon-pencil"></i>
                                            </button>
                                       </td>
@@ -184,7 +184,10 @@
                     </script>
                     <script type="text/javascript">
                     $(".wijzigKnop2").on("click",function(){
-                    var email2 = $('.zoeknaam2').val();
+
+
+
+                    var email2 = $(this).data('project');
                      $('.titel2').val('');
                      $('.status2').val('');
                      $('.prioriteit2').val('');
@@ -198,12 +201,12 @@
                      $.ajax({
                        method: "POST",
                        url: "/updateProjectData",
-                       data: {   input2: email2 ,
+                       data: {   input: email2 ,
                                  _token: "{{ csrf_token() }}"
                              }
                      })
                        .done(function( msg ) {
-                        console.log(JSON.stringify(msg));
+                        console.log(msg);
                          $('.titel2').val(msg[0].titel);
                          $('.status2').val(msg[0].status);
                          $('.prioriteit2').val(msg[0].prioriteit);

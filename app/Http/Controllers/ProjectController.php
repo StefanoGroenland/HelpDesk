@@ -124,7 +124,7 @@ class ProjectController extends Controller
         return redirect('/projectmuteren');
     }
     public function getUpdateData(){
-        $input = $_POST['input2'];
+        $input = $_POST['input'];
         $inputdata = Project::getProjectOnSearch($input);
         return $inputdata;
     }
