@@ -80,7 +80,9 @@
                                     @endif
                                     </td>
                                     <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
+                                    @if($bug->klant)
                                     <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
+                                    @endif
                                     {{--<td>{{$project->projectnaam}}</td>--}}
                                     @if($bug->project)
                                     <td>{{$bug->project->projectnaam}}</td>
@@ -88,7 +90,7 @@
                                     @if($bug->user)
                                     <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
                                     @else
-                                    <td>Geen medewerker</td>
+                                    <td>Geen</td>
                                     @endif
                                     <td>
                                         <a href="/bugchat/{{$bug->id}}" class="">
@@ -158,12 +160,14 @@
                                                     @endif
                                                     </td>
                                                     <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
+                                                    @if($bug->klant)
                                                     <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
+                                                    @endif
                                                     <td>{{$project->projectnaam}}</td>
                                                     @if($bug->user)
                                                     <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
                                                     @else
-                                                    <td>Geen medewerker</td>
+                                                    <td>Geen</td>
                                                     @endif
                                                     <td>
                                                         <a href="/bugchat/{{$bug->id}}" class="">
@@ -227,12 +231,14 @@
                                             @endif
                                         </td>
                                         <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
+                                        @if($bug->klant)
                                         <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
+                                        @endif
                                         <td>{{$project->projectnaam}}</td>
                                         @if($bug->user)
                                         <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
                                         @else
-                                        <td>Geen medewerker</td>
+                                        <td>Geen</td>
                                         @endif
                                         <td>
                                             <a href="/bugchat/{{$bugs_all[$i]->id}}" class="">

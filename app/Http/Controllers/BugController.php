@@ -90,7 +90,7 @@ class BugController extends Controller
 //            'medewerker_id'   => Auth::user()->id,
             'project_id'  => $request['project'],
         ]);
-        $request->session()->flash('alert-success', 'Bug '. $request['titel']. ' toegevoegd.');
+        $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
         return redirect('/bugmuteren');
 
 

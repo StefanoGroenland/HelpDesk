@@ -81,7 +81,9 @@
                                 <select class="form-control" id="medewerker" name="medewerker">
                                     @foreach($medewerkers as $mw)
                                     <option value="{{$mw->id}}"
+                                    @if($bug->user)
                                      @if($bug->user->id == $mw->id) selected @endif
+                                     @endif
                                      >
                                     {{$mw->voornaam .' '. $mw->achternaam }}
                                     </option>

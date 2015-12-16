@@ -108,7 +108,7 @@
                            </div>
                         </form>
                          </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>

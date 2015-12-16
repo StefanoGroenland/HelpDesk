@@ -50,7 +50,7 @@
                    <input type="hidden" name="_method" value="PUT">
                      <div class="form-group">
                        <div class="input-group">
-                         <input type="text" required="true" id="zoekmail" name="zoekmail" class="form-control" placeholder="E-mail">
+                         <input type="text" id="zoekmail" name="zoekmail" class="form-control" placeholder="E-mail">
                          <span class="input-group-btn">
                            <button class="btn btn-default" id="zoekKnop" name="zoekGebruiker" type="button">Zoek persoon</button>
                          </span>
