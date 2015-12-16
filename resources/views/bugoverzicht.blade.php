@@ -209,10 +209,10 @@
                         </thead>
                         <tbody>
                         {{-- */$i=0;/* --}}
-                           @foreach($projects_all as $project)
+                           {{--@foreach($projects_all as $project)--}}
                             @foreach($bugs_all as $bug)
                                 @if(count($bugs_all) > 0)
-                                    @if($bug->project_id == $project->id)
+                                    @if($bug->project_id == $bug->project->id)
                                     <tr>
                                         <td>{{$bug->id}}</td>
                                         <td>{{substr($bug->titel,0,15)}}...</td>
@@ -235,7 +235,7 @@
                                         @if($bug->klant)
                                         <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
                                         @endif
-                                        <td>{{$project->projectnaam}}</td>
+                                        <td>{{$bug->project->projectnaam}}</td>
                                         @if($bug->user)
                                         <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
                                         @else
@@ -253,7 +253,7 @@
 
                                  @endif
                             @endforeach
-                            @endforeach
+                            {{--@endforeach--}}
 
                         </tbody>
                       </table>

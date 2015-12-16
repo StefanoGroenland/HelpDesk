@@ -29,7 +29,7 @@ class BugController extends Controller
 
     public function showBugOverzicht($id){
         $bugs_related = $this->getRelatedBugs($id);
-        $bugs_all = Bug::with('klant','user')->get();
+        $bugs_all = Bug::with('klant','user')->orderBy('id','desc')->get();
         $projects = Project::where('gebruiker_id','=', $id)->get();
         $projects_all = Project::all();
         $klanten = User::all();
