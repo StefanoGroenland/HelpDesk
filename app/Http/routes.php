@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfiel'));
     Route::get('/medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
     Route::get('/klantmuteren', array('as' => 'kmuteren', 'uses' =>'UserController@showKlantMuteren'));
-    Route::get('/newklant', array('as' => 'klantmute', 'uses' =>'UserController@showNewKlant'));
+    Route::get('/newklant', array('as' => 'klantmuteren', 'uses' =>'UserController@showNewKlant'));
     Route::get('/newmedewerker', array('as' => 'newmw', 'uses' =>'UserController@showNewMedewerker'));
     Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
     Route::post('/updateKlantData', array('as' => 'klantdata', 'uses' => 'UserController@getKlantData'));

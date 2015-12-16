@@ -36,7 +36,7 @@ class UserController extends Controller
         }
     }
     public function showMwMuteren(){
-        $medewerkers = User::all();
+        $medewerkers = User::where('bedrijf','=','moodles')->get();
         return View::make('medewerkermuteren', compact('medewerkers'));
     }
     public function showKlantMuteren(){

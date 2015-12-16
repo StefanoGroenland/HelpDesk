@@ -215,21 +215,21 @@
                                     @if($bug->project_id == $project->id)
                                     <tr>
                                         <td>{{$bug->id}}</td>
-                                        <td>{{substr($bug->titel,0,15)}}</td>
+                                        <td>{{substr($bug->titel,0,15)}}...</td>
                                         <td>{{$bug->status}}</td>
                                         <td>{{$bug->soort}}</td>
                                         <td>
                                         @if($bug->prioriteit == 'laag')
-                                            <span class="label label-success">Laag</span>
-                                            @elseif($bug->prioriteit == 'gemiddeld')
-                                            <span class="label label-warning">Gemmideld</span>
-                                            @elseif($bug->prioriteit == 'hoog')
-                                            <span class="label label-danger">Hoog</span>
-                                            @elseif($bug->prioriteit == 'kritisch')
-                                            <span class="label label-purple">Kritisch</span>
-                                            @else
-                                            <span class="label label-info">Geen prioriteit</span>
-                                            @endif
+                                        <span class="label label-success">Laag</span>
+                                        @elseif($bug->prioriteit == 'gemiddeld')
+                                        <span class="label label-warning">Gemmideld</span>
+                                        @elseif($bug->prioriteit == 'hoog')
+                                        <span class="label label-danger">Hoog</span>
+                                        @elseif($bug->prioriteit == 'kritisch')
+                                        <span class="label label-purple">Kritisch</span>
+                                        @else
+                                        <span class="label label-info">Geen prioriteit</span>
+                                        @endif
                                         </td>
                                         <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                         @if($bug->klant)
@@ -242,20 +242,13 @@
                                         <td>Geen</td>
                                         @endif
                                         <td>
-                                            <a href="/bugchat/{{$bugs_all[$i]->id}}" class="">
+                                            <a href="/bugchat/{{$bug->id}}" class="">
                                                 <button type="submit" class="btn btn-success btn-xs">
                                                     <i class="glyphicon glyphicon-search"></i>
                                                 </button>
                                             </a>
-                                            <a href="/verwijderBug/{{$bugs_all[$i]->id}}" class="">
-                                                <button class="btn btn-danger btn-xs">
-                                                        <i class="fa fa-remove"></i>
-                                                </button>
-                                            </a>
                                         </td>
                                     </tr>
-                                    {{-- */$i++;/* --}}
-
                                     @endif
 
                                  @endif

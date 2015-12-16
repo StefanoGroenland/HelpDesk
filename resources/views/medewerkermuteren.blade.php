@@ -104,7 +104,7 @@
                  <div class="table-responsive">
                      <table class="table table-hover">
                          <thead>
-                         <th>Naam</th>
+                         <th>Volledige naam</th>
                          <th>E-mail</th>
                          <th></th>
                          <th></th>
@@ -128,7 +128,7 @@
                                </a>
                                </td>
                              </tr>
-                                                                   @endforeach
+                            @endforeach
                          </tbody>
                      </table>
                  </div>
