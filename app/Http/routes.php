@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'UserController@showDashboard'));
     Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfiel'));
     Route::get('/medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
+    Route::get('/newmedewerker', array('as' => 'newmw', 'uses' =>'UserController@showNewMedewerker'));
     Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
     Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
     Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');

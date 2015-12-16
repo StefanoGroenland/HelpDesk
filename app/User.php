@@ -67,10 +67,10 @@ class User extends Model implements AuthenticatableContract,
             ->get();
 
     }
-    public static function getMedewerker($email){
+    public static function getMedewerker($id){
         return DB::table('gebruikers')
-            ->select(DB::raw('email,username,voornaam,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
-            ->where('email', 'LIKE', '%'.$email.'%')
+            ->select(DB::raw('id,email,username,voornaam,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
+            ->where('email', '=', $id)
             ->where('bedrijf', '=' , 'moodles')
             ->get();
     }

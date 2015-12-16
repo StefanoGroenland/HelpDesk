@@ -39,6 +39,10 @@ class UserController extends Controller
         $medewerkers = User::all();
         return View::make('medewerkermuteren', compact('medewerkers'));
     }
+    public function showNewMedewerker(){
+        $medewerkers = User::all();
+        return View::make('newmedewerker', compact('medewerkers'));
+    }
     public function showProfiel(){
         return View::make('profiel');
     }
@@ -46,8 +50,9 @@ class UserController extends Controller
         return View::make('projectmuteren');
     }
     public function updateMedewerker(Request $request){
-            $email = $request->input('zoekmail');
+            $id = $request['id'];
             $data = array(
+                'id'         => $request['id'],
                 'username'   => $request['username'],
                 'email'      => $request['email'],
                 'password'   => bcrypt($request['password']),
@@ -57,14 +62,13 @@ class UserController extends Controller
                 'geslacht' => $request['geslacht'],
                 'telefoonnummer' => $request['telefoonnummer'],
             );
-            User::where('email', 'LIKE', '%'.$email.'%')->update($data);
+            User::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
             return redirect('/medewerkermuteren');
     }
     public function getUpdateData(){
-        $email = $_POST['email'];
-        $inputdata = User::getMedewerker($email);
-
+        $input = $_POST['input'];
+        $inputdata = User::getMedewerker($input);
         return $inputdata;
     }
     public function addMedewerker(Request $request){
@@ -92,7 +96,7 @@ class UserController extends Controller
             'geslacht' => $request['geslacht'],
         ]);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
-        return redirect('medewerkermuteren');
+        return redirect('newmedewerker');
 
     }
     public function verwijderGebruiker(){

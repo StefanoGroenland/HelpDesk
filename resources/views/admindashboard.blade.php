@@ -45,17 +45,38 @@
                                     </div>
                                 <div class="row">
                                     <div class="col-xs-12 text-center">
-                                        <h3>Nieuw project</h3>
+                                        <h3>Project</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </a>
-
                     </div>
-
                 </div>
+                <div class="col-lg-2">
+                    <div class="row">
+                <a href="{{URL::to('/newmedewerker')}}">
+                <div class="col-lg-12 col-md-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    <i class="fa fa-plus fa-4x"></i>
+                                </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    <h3>Medewerker</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+                </div>
+               </div>
+
                 @if(count($projects) > 0)
                 @foreach($projects as $project)
 

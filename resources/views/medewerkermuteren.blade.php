@@ -38,59 +38,7 @@
                            @endif
                          @endforeach
          <div class="row">
-             <div class="col-lg-4">
 
-               <div class="panel panel-green">
-                 <div class="panel-heading">
-                   <h3 class="panel-title">Nieuwe medewerker </h3>
-
-                 </div>
-                 <div class="panel-body">
-                   <form method="POST" action="/addMedewerker" >
-                   {!! csrf_field() !!}
-                     <div class="form-group">
-                       <label for="email">Email address</label>
-                       <input type="email" class="form-control" required="true" id="email" name="email" placeholder="Email">
-                     </div>
-                     <div class="form-group">
-                       <label for="gebruikersnaam">Gebruikersnaam</label>
-                       <input type="text" class="form-control" required="true" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam">
-                     </div>
-                     <div class="form-group">
-                       <label for="wachtwoord">Wachtwoord</label>
-                       <input type="password" class="form-control" required="true" id="wachtwoord" name="password" placeholder="Wachtwoord">
-                     </div>
-                       <div class="form-group">
-                       <label for="voornaam">Voornaam</label>
-                       <input type="text" class="form-control" required="true" id="voornaam" name="voornaam" placeholder="Voornaam">
-                     </div>
-                     <div class="form-group">
-                        <label for="tussenvoegsel">Tussenvoegsel</label>
-                        <input type="text" class="form-control" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="">
-                      </div>
-                     <div class="form-group">
-                       <label for="achternaam">Achternaam</label>
-                       <input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam">
-                     </div>
-                     <div class="form-group">
-                        <label for="telefoonnummer">Telefoonnummer</label>
-                        <input type="text" class="form-control" required="true" id="telefoonnummer" name="telefoonnummer" placeholder="Telefoonnummer">
-                      </div>
-                      <div class="form-group">
-                      <label for="geslacht">Geslacht</label>
-                        <select class="form-control" id="geslacht" required="true" name="geslacht">
-                          <option value="man">Man</option>
-                          <option value="vrouw">Vrouw</option>
-                        </select>
-                      </div>
-                     <div class="row">
-                           <div class="col-lg-12"><button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button></div>
-                       </div>
-                   </form>
-                 </div>
-               </div>
-
-             </div>
              <div class="col-lg-4">
                  <div class="panel panel-warning">
                  <div class="panel-heading">
@@ -111,6 +59,7 @@
                      <div class="form-group">
                        <label for="email">Email address</label>
                        <input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail" value="">
+                       <input type="hidden" class="form-control id2" id="id2"  name="id">
                      </div>
                      <div class="form-group">
                        <label for="gebruikersnaam">Gebruikersnaam</label>
@@ -150,31 +99,35 @@
                  </div>
                </div>
              </div>
-             <div class="col-lg-4">
+             <div class="col-lg-6">
                  <div class="table-responsive">
                      <table class="table table-hover">
                          <thead>
                          <th>Naam</th>
                          <th>E-mail</th>
                          <th></th>
+                         <th></th>
                          </thead>
                          <tbody>
                              @foreach($medewerkers as $medewerker)
-                             @if($medewerker->bedrijf == 'moodles')
                              <tr>
-                             <td>{{$medewerker->voornaam . ' ' . $medewerker->tussenvoegsel . ' ' . $medewerker->achternaam}}</td>
+                             <td>{{$medewerker->voornaam . ' ' . substr($medewerker->tussenvoegsel,0,5) . ' ' . $medewerker->achternaam}}</td>
                              <td>{{$medewerker->email}}</td>
                              <td>
-                             <a href="/verwijderGebruiker/{{$medewerker->id}}" class="">
-                                <button type="submit" class="btn btn-danger btn-xs">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </button>
-                             </a>
-
+                                {{--<input type="hidden" class="zoeknaam2" value="{{$project->projectnaam}}"  name="zoeknaam2" class="form-control" placeholder="Projectnaam">--}}
+                                  <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$medewerker->email}}">
+                                         <i class="glyphicon glyphicon-pencil"></i>
+                                  </button>
                              </td>
+                               <td>
+                               <a href="/verwijderGebruiker/{{$medewerker->id}}" class="">
+                                   <button type="submit" class="btn btn-danger btn-xs">
+                                      <i class="glyphicon glyphicon-remove"></i>
+                                   </button>
+                               </a>
+                               </td>
                              </tr>
-                             @endif
-                             @endforeach
+                                                                   @endforeach
                          </tbody>
                      </table>
                  </div>
@@ -192,6 +145,7 @@
 
 
                     var email = $('#zoekmail').val();
+                    $('#id2').val('');
                     $('#email2').val('');
                     $('#gebruikersnaam2').val('');
                     $('#voornaam2').val('');
@@ -203,11 +157,12 @@
                     $.ajax({
                       method: "POST",
                       url: "/updateData",
-                      data: {   email: email ,
+                      data: {   input: email ,
                                 _token: "{{ csrf_token() }}"
                             }
                     })
                       .done(function( msg ) {
+                        $('.id2').val(msg[0].id);
                         $('#email2').val(msg[0].email);
                         $('#gebruikersnaam2').val(msg[0].username);
                         $('#voornaam2').val(msg[0].voornaam);
@@ -218,6 +173,42 @@
                       });
             });
         </script>
+           <script type="text/javascript">
+                        $(".wijzigKnop2").on("click",function(){
+
+                        var email2 = $(this).data('project');
+                         $('#id2').val('');
+                         $('#email2').val('');
+                         $('#gebruikersnaam2').val('');
+                         $('#voornaam2').val('');
+                         $('#tussenvoegsel2').val('');
+                         $('#achternaam2').val('');
+                         $('#telefoonnummer2').val('');
+                         $('#geslacht2').val('');
+
+                         $.ajax({
+                           method: "POST",
+                           url: "/updateData",
+                           data: {   input: email2 ,
+                                     _token: "{{ csrf_token() }}"
+                                 }
+                         })
+                           .done(function( msg ) {
+                            console.log(msg);
+                             $('.id2').val(msg[0].id);
+                             $('#email2').val(msg[0].email);
+                             $('#gebruikersnaam2').val(msg[0].username);
+                             $('#voornaam2').val(msg[0].voornaam);
+                             $('#tussenvoegsel2').val(msg[0].tussenvoegsel);
+                             $('#achternaam2').val(msg[0].achternaam);
+                             $('#telefoonnummer2').val(msg[0].telefoonnummer);
+                             $('#geslacht2').val(msg[0].geslacht);
+
+                           });
+
+                         });
+                </script>
+
         @stop
 
     </div>
