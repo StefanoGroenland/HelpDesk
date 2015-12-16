@@ -85,6 +85,7 @@ class UserController extends Controller
             'achternaam' => $request['achternaam'],
             'geslacht' => $request['geslacht'],
             'telefoonnummer' => $request['telefoonnummer'],
+            'bedrijf' => $request['bedrijf'],
         );
         User::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Klant '. $request['username']. ' veranderd.');

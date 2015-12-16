@@ -83,6 +83,10 @@
                         <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="">
                       </div>
                       <div class="form-group">
+                        <label for="achternaam">Bedrijf</label>
+                        <input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="">
+                      </div>
+                      <div class="form-group">
                         <label for="telefoonnummer">Telefoonnummer</label>
                         <input type="text" class="form-control" required="true" id="telefoonnummer2" name="telefoonnummer" placeholder="Telefoonnummer">
                       </div>
@@ -106,6 +110,7 @@
                           <thead>
                           <th>Naam</th>
                           <th>E-mail</th>
+                          <th>Bedrijf</th>
                           <th></th>
                           <th></th>
                           </thead>
@@ -114,6 +119,7 @@
                               <tr>
                               <td>{{$klant->voornaam . ' ' . substr($klant->tussenvoegsel,0,5) . ' ' . $klant->achternaam}}</td>
                               <td>{{$klant->email}}</td>
+                              <td>{{$klant->bedrijf}}</td>
                               <td>
                                  {{--<input type="hidden" class="zoeknaam2" value="{{$project->projectnaam}}"  name="zoeknaam2" class="form-control" placeholder="Projectnaam">--}}
                                    <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$klant->email}}">
@@ -154,6 +160,7 @@
                      $('#achternaam2').val('');
                      $('#telefoonnummer2').val('');
                      $('#geslacht2').val('');
+                     $('#bedrijf2').val('');
 
                      $.ajax({
                        method: "POST",
@@ -171,6 +178,7 @@
                          $('#achternaam2').val(msg[0].achternaam);
                          $('#telefoonnummer2').val(msg[0].telefoonnummer);
                          $('#geslacht2').val(msg[0].geslacht);
+                         $('#bedrijf2').val(msg[0].bedrijf);
                        });
              });
          </script>
@@ -186,6 +194,7 @@
                           $('#achternaam2').val('');
                           $('#telefoonnummer2').val('');
                           $('#geslacht2').val('');
+                          $('#bedrijf2').val('');
 
                           $.ajax({
                             method: "POST",
@@ -204,6 +213,7 @@
                               $('#achternaam2').val(msg[0].achternaam);
                               $('#telefoonnummer2').val(msg[0].telefoonnummer);
                               $('#geslacht2').val(msg[0].geslacht);
+                              $('#bedrijf2').val(msg[0].bedrijf);
 
                             });
 
