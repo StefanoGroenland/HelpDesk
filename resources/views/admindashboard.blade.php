@@ -205,7 +205,7 @@
                              <input type="hidden" name="_method" value="PUT">
 
                           <div class="form-group">
-                             <input type="text" class="form-control" name="username" required="true" placeholder="Gebruikersnaam">
+                             <input type="text" class="form-control" name="email" required="true" placeholder="E-mail">
                            </div>
                            <div class="form-group">
                               <input type="text" class="form-control"  name="password" required="true" placeholder="Wachtwoord">

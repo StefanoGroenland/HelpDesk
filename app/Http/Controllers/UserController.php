@@ -101,13 +101,13 @@ class UserController extends Controller
         return User::verwijderGebruiker($sid);
     }
     public function resetUserPassword(Request $request){
-        $username = $request->input('username');
+        $email = $request->input('email');
         $data = array(
-            'username'   => $request['username'],
+            'email'   => $request['email'],
             'password'   => bcrypt($request['password']),
         );
-        User::where('username', '=', $username)->update($data);
-        $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
+        User::where('email', '=', $email)->update($data);
+        $request->session()->flash('alert-success',  $request['email']. ' veranderd.');
         return redirect('/admindashboard');
     }
 }
