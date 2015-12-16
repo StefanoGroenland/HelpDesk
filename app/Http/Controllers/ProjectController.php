@@ -106,9 +106,9 @@ class ProjectController extends Controller
         return redirect('/newproject');
     }
     public function updateProject(Request $request){
-        $input = $request->input('zoeknaam');
-
+        $id = $request['id'];
         $data = array(
+            'id'  => $request['id'],
             'titel'  => $request['titel'],
             'status'     => $request['status'],
             'prioriteit'  => $request['prioriteit'],
@@ -119,7 +119,7 @@ class ProjectController extends Controller
             'wachtwoord' => bcrypt($request['wachtwoord']),
             'omschrijvingproject' => $request['omschrijvingproject'],
         );
-        Project::where('projectnaam', 'LIKE', '%'.$input.'%')->update($data);
+        Project::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Project '. $request['projectnaam']. ' veranderd.');
         return redirect('/projectmuteren');
     }

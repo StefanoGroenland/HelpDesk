@@ -49,7 +49,7 @@
                                                <input type="hidden" name="_method" value="PUT">
                                                  <div class="form-group">
                                                    <div class="input-group">
-                                                     <input type="text" required="true" id="zoeknaam" name="zoeknaam" class="form-control" placeholder="Projectnaam">
+                                                     <input type="text"  id="zoeknaam" name="zoeknaam" class="form-control" placeholder="Projectnaam">
                                                      <span class="input-group-btn">
                                                        <button class="btn btn-default" id="zoekKnop2" name="zoekProject" type="button">Zoek project</button>
                                                      </span>
@@ -58,6 +58,7 @@
                             <div class="form-group">
                                 <label for="bedrijfsnaam">Project</label>
                                <input type="text" class="form-control titel2" id="titel2" required="true" name="titel" placeholder="Titel">
+                               <input type="hidden" class="form-control id2" id="id2"  name="id">
                              </div>
                              <div class="form-group">
                                  <select class="form-control status2" id="status2" name="status" required="true">
@@ -153,6 +154,7 @@
 
                                 var email = $('#zoeknaam').val();
                                 $('#titel2').val('');
+                                $('#id2').val('');
                                 $('#status2').val('');
                                 $('#prioriteit2').val('');
                                 $('#type2').val('');
@@ -171,6 +173,7 @@
                                 })
                                   .done(function( msg ) {
                                     $('#titel2').val(msg[0].titel);
+                                    $('#id2').val(msg[0].id);
                                     $('#status2').val(msg[0].status);
                                     $('#prioriteit2').val(msg[0].prioriteit);
                                     $('#soort2').val(msg[0].soort);
@@ -189,6 +192,7 @@
 
                     var email2 = $(this).data('project');
                      $('.titel2').val('');
+                     $('#id2').val('');
                      $('.status2').val('');
                      $('.prioriteit2').val('');
                      $('.type2').val('');
@@ -208,6 +212,7 @@
                        .done(function( msg ) {
                         console.log(msg);
                          $('.titel2').val(msg[0].titel);
+                         $('.id2').val(msg[0].id);
                          $('.status2').val(msg[0].status);
                          $('.prioriteit2').val(msg[0].prioriteit);
                          $('.soort2').val(msg[0].soort);

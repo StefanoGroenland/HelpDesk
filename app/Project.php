@@ -53,7 +53,7 @@ class Project extends Model
 
     public static function getProjectOnSearch($inp){
         return DB::table('projecten')
-            ->select(DB::raw('titel,status,prioriteit,soort,projectnaam,projecturl
+            ->select(DB::raw('id,titel,status,prioriteit,soort,projectnaam,projecturl
             ,gebruikersnaam,wachtwoord
             ,gebruiker_id,omschrijvingproject'))
             ->where('projectnaam', '=', $inp)
