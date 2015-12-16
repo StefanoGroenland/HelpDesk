@@ -83,6 +83,10 @@
                  {{-- */$i=0;/* --}}
                  {{-- */$x=0;/* --}}
                  {{-- */$y=0;/* --}}
+                 {{-- */$krit=0;/* --}}
+                 {{-- */$hoog=0;/* --}}
+                 {{-- */$gem=0;/* --}}
+                 {{-- */$laag=0;/* --}}
                 <div class="col-lg-2 col-md-6">
                 @if($project->prioriteit == 'laag')
                        <div class="panel panel-green">
@@ -96,7 +100,30 @@
                         <div class="panel-heading">
                             <div class="row">
                             <div id='notificatie'><div>2</div></div>
-                                <div class="col-xs-12 text-right">
+                                @foreach($bugs as $bug)
+                                @if($bug->prioriteit == 'laag')
+                                    @if($bug->project_id == $project->id)
+                                    {{-- */$laag++;/* --}}
+                                    @endif
+                                @endif
+                                @if($bug->prioriteit == 'gemiddeld')
+                                    @if($bug->project_id == $project->id)
+                                    {{-- */$gem++;/* --}}
+                                    @endif
+                                @endif
+                                @if($bug->prioriteit == 'hoog')
+                                    @if($bug->project_id == $project->id)
+                                    {{-- */$hoog++;/* --}}
+                                    @endif
+                                @endif
+                                @if($bug->prioriteit == 'kritisch')
+                                    @if($bug->project_id == $project->id)
+                                    {{-- */$krit++;/* --}}
+                                    @endif
+                                @endif
+                                @endforeach
+                                <div class="col-xs-12 text-right pull-right">
+                                <span style="border: solid #ffffff 1px;" class="label label-purple pull-left">{{$krit}}</span>
                                 @if($project->prioriteit == 'laag')
                                     <span class="label label-success">{{$project->projectnaam}}</span>
                                 @elseif($project->prioriteit == 'gemiddeld')
@@ -106,7 +133,8 @@
                                 @elseif($project->prioriteit == 'kritisch')
                                     <span class="label label-purple">{{$project->projectnaam}}</span>
                                 @endif
-                                    <div><span class="badge">
+                                    <div>
+                                    <span style="border: solid #ffffff 1px;" class="label label-danger pull-left">{{$hoog}}</span><span class="badge">
                                     @foreach($bugs as $bug)
                                     @if($bug->status == 'open')
                                         @if($bug->project_id == $project->id )
@@ -116,6 +144,7 @@
                                     @endforeach
                                     {{$i}}
                                     </span> Openstaand</div>
+                                    <span style="border: solid #ffffff 1px;" class="label label-warning pull-left">{{$gem}}</span>
                                     <div><span class="badge">
                                     @foreach($bugs as $bug)
                                     @if($bug->status == 'bezig')
@@ -126,6 +155,7 @@
                                     @endforeach
                                     {{$x}}
                                     </span> Bezig</div>
+                                    <span style="border: solid #ffffff 1px;" class="label label-success pull-left">{{$laag}}</span>
                                     <div><span class="badge">
                                     @foreach($bugs as $bug)
                                     @if($bug->status == 'gesloten')
