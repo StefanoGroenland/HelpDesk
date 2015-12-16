@@ -18,10 +18,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'UserController@showDashboard'));
     Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfiel'));
     Route::get('/medewerkermuteren', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
-    Route::get('/newklant', array('as' => 'klantmute', 'uses' =>'UserController@showKlantMuteren'));
+    Route::get('/klantmuteren', array('as' => 'kmuteren', 'uses' =>'UserController@showKlantMuteren'));
+    Route::get('/newklant', array('as' => 'klantmute', 'uses' =>'UserController@showNewKlant'));
     Route::get('/newmedewerker', array('as' => 'newmw', 'uses' =>'UserController@showNewMedewerker'));
     Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
+    Route::post('/updateKlantData', array('as' => 'klantdata', 'uses' => 'UserController@getKlantData'));
     Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
+    Route::put('/updateKlant', array('as' => 'veranderk', 'uses' => 'UserController@updateKlant'));
     Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
     Route::post('addMedewerker', 'UserController@addMedewerker');
     Route::post('addUser', 'UserController@addUser');

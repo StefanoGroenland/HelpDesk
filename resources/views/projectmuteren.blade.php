@@ -103,7 +103,7 @@
                                  <textarea class="form-control omschrijving2" rows="5" id="omschrijving2" name="omschrijvingproject" value="" ></textarea>
                                </div>
 
-                              <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
+                              <button type="submit" class="btn btn-warning center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
 
                             </div>
                            </div>

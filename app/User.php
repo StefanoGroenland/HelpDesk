@@ -74,6 +74,13 @@ class User extends Model implements AuthenticatableContract,
             ->where('bedrijf', '=' , 'moodles')
             ->get();
     }
+    public static function getKlant($id){
+        return DB::table('gebruikers')
+            ->select(DB::raw('id,email,username,voornaam,bedrijf,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
+            ->where('email','=',$id)
+            ->where('bedrijf','!=','moodles')
+            ->get();
+    }
     public static function verwijderGebruiker($id){
         DB::table('gebruikers')->where('id', '=',$id)->delete();
         return redirect('/medewerkermuteren');

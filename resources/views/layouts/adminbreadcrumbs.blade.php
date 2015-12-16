@@ -24,7 +24,7 @@
             </a>
         </li>
         <li>
-            <a href="{{URL::to('/newklant')}}">
-               <i class="fa fa-pencil"></i> Klant aanmaken
+            <a href="{{URL::to('/klantmuteren')}}">
+               <i class="fa fa-pencil"></i> Klant aanpassen
             </a>
         </li>

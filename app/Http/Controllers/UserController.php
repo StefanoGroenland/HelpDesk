@@ -40,11 +40,15 @@ class UserController extends Controller
         return View::make('medewerkermuteren', compact('medewerkers'));
     }
     public function showKlantMuteren(){
-        return View::make('newklant');
+        $klanten = User::where('bedrijf','!=', 'moodles')->get();
+        return View::make('klantmuteren' , compact('klanten'));
     }
     public function showNewMedewerker(){
         $medewerkers = User::all();
         return View::make('newmedewerker', compact('medewerkers'));
+    }
+    public function showNewKlant(){
+        return View::make('newklant');
     }
     public function showProfiel(){
         return View::make('profiel');
@@ -69,9 +73,31 @@ class UserController extends Controller
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
             return redirect('/medewerkermuteren');
     }
+    public function updateKlant(Request $request){
+        $id = $request['id'];
+        $data = array(
+            'id'         => $request['id'],
+            'username'   => $request['username'],
+            'email'      => $request['email'],
+            'password'   => bcrypt($request['password']),
+            'voornaam'   => $request['voornaam'],
+            'tussenvoegsel'   => $request['tussenvoegsel'],
+            'achternaam' => $request['achternaam'],
+            'geslacht' => $request['geslacht'],
+            'telefoonnummer' => $request['telefoonnummer'],
+        );
+        User::where('id', '=', $id)->update($data);
+        $request->session()->flash('alert-success', 'Klant '. $request['username']. ' veranderd.');
+        return redirect('/klantmuteren');
+    }
     public function getUpdateData(){
         $input = $_POST['input'];
         $inputdata = User::getMedewerker($input);
+        return $inputdata;
+    }
+    public function getKlantData(){
+        $input = $_POST['input'];
+        $inputdata = User::getKlant($input);
         return $inputdata;
     }
     public function addMedewerker(Request $request){
