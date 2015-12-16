@@ -39,6 +39,9 @@ class UserController extends Controller
         $medewerkers = User::all();
         return View::make('medewerkermuteren', compact('medewerkers'));
     }
+    public function showKlantMuteren(){
+        return View::make('newklant');
+    }
     public function showNewMedewerker(){
         $medewerkers = User::all();
         return View::make('newmedewerker', compact('medewerkers'));
@@ -73,6 +76,34 @@ class UserController extends Controller
     }
     public function addMedewerker(Request $request){
 
+    Validator::make($request->all(),[
+        'username' => 'required|max:255|unique:gebruikers',
+        'email'    => 'required|max:255|unique:gebruikers',
+        'password' => 'required|min:6',
+        'bedrijf'  => 'required',
+        'voornaam' => 'required',
+        'tussenvoegsel' => 'required',
+        'achternaam' => 'required',
+        'telefoonnummer' => 'required',
+        'geslacht' => 'required',
+    ]);
+    User::create([
+        'username'   => $request['username'],
+        'email'      => $request['email'],
+        'password'   => bcrypt($request['password']),
+        'bedrijf'    => 'moodles',
+        'voornaam'   => $request['voornaam'],
+        'tussenvoegsel'   => $request['tussenvoegsel'],
+        'achternaam' => $request['achternaam'],
+        'telefoonnummer' => $request['telefoonnummer'],
+        'geslacht' => $request['geslacht'],
+    ]);
+    $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
+    return redirect('newmedewerker');
+
+}
+    public function addUser(Request $request){
+
         Validator::make($request->all(),[
             'username' => 'required|max:255|unique:gebruikers',
             'email'    => 'required|max:255|unique:gebruikers',
@@ -88,7 +119,7 @@ class UserController extends Controller
             'username'   => $request['username'],
             'email'      => $request['email'],
             'password'   => bcrypt($request['password']),
-            'bedrijf'    => 'moodles',
+            'bedrijf'    => $request['bedrijf'],
             'voornaam'   => $request['voornaam'],
             'tussenvoegsel'   => $request['tussenvoegsel'],
             'achternaam' => $request['achternaam'],

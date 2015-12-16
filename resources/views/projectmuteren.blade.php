@@ -21,6 +21,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Project wijzigen <small>Hier kan een project worden veranderd/aangemaakt worden</small>
+                            @include('layouts.header-controls')
                         </h1>
                         {{--breadcrumbs layout spot!--}}
                         <ol class="breadcrumb">

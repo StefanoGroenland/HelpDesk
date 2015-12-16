@@ -21,7 +21,7 @@
          <div class="row">
              <div class="col-lg-12">
                  <h1 class="page-header">
-                     Medewerker aanpassen <small>Verander medewekers</small>
+                     Klant aanmaken <small>maak een nieuwe klant aan</small>
                      @include('layouts.header-controls')
                  </h1>
                  <ol class="breadcrumb">
@@ -43,11 +43,11 @@
 
                <div class="panel panel-green">
                  <div class="panel-heading">
-                   <h3 class="panel-title">Nieuwe medewerker </h3>
+                   <h3 class="panel-title">Nieuwe klant</h3>
 
                  </div>
                  <div class="panel-body">
-                   <form method="POST" action="/addMedewerker" >
+                   <form method="POST" action="/addUser" >
                    {!! csrf_field() !!}
                      <div class="form-group">
                        <label for="email">Email address</label>
@@ -74,6 +74,10 @@
                        <input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam">
                      </div>
                      <div class="form-group">
+                       <label for="achternaam">Bedrijf</label>
+                       <input type="text" class="form-control" required="true" id="bedrijf" name="bedrijf" placeholder="Bedrijf">
+                     </div>
+                     <div class="form-group">
                         <label for="telefoonnummer">Telefoonnummer</label>
                         <input type="text" class="form-control" required="true" id="telefoonnummer" name="telefoonnummer" placeholder="Telefoonnummer">
                       </div>
@@ -85,7 +89,7 @@
                         </select>
                       </div>
                      <div class="row">
-                           <div class="col-lg-12"><button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button></div>
+                           <div class="col-lg-12"><button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak klant</button></div>
                        </div>
                    </form>
                  </div>

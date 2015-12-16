@@ -22,6 +22,7 @@
              <div class="col-lg-12">
                  <h1 class="page-header">
                      Medewerker aanpassen <small>Verander medewekers</small>
+                     @include('layouts.header-controls')
                  </h1>
                  <ol class="breadcrumb">
                      @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')

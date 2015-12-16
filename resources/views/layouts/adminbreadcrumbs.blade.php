@@ -23,3 +23,8 @@
                <i class="fa fa-pencil"></i> Medewerker aanpassen
             </a>
         </li>
+        <li>
+            <a href="{{URL::to('/newklant')}}">
+               <i class="fa fa-pencil"></i> Klant aanmaken
+            </a>
+        </li>
