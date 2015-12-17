@@ -35,8 +35,6 @@
                               </div>
                             @endif
                           @endforeach
-
-                
                 <!-- /.row -->
                 
                 <div class="row">
@@ -108,17 +106,14 @@
                                         @endif
                                     </td>
                                 </tr>
-
                                 @endforeach
-
                         </tbody>
                       </table>
                     </div>
                     </div>
-                    
-
                 @endif
-                </div>
+             </div>
+
                 @foreach($projects as $project)
                                 <div class="row">
                                    <div class="col-lg-12">
@@ -185,7 +180,7 @@
                                    </div>
                                   </div>
                                  </div>
-                                @endforeach
+                @endforeach
 
                 @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
@@ -209,7 +204,6 @@
                         </thead>
                         <tbody>
                         {{-- */$i=0;/* --}}
-                           {{--@foreach($projects_all as $project)--}}
                             @foreach($bugs_all as $bug)
                                 @if(count($bugs_all) > 0)
                                     @if($bug->project_id == $bug->project->id)
@@ -253,7 +247,6 @@
 
                                  @endif
                             @endforeach
-                            {{--@endforeach--}}
 
                         </tbody>
                       </table>
@@ -263,18 +256,13 @@
                   @else
                  @endif
                 <!-- /.row -->
-
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
-
    @extends('layouts.footer')
-
 </body>
 
 </html>
