@@ -80,6 +80,7 @@
                             <div class="form-group">
                                 <label for="sel4">Koppel medewerker</label>
                                 <select class="form-control" id="medewerker" name="medewerker">
+                                    <option value="0">Geen</option>
                                     @foreach($medewerkers as $mw)
                                     <option value="{{$mw->id}}"
                                     @if($bug->user)

@@ -39,6 +39,7 @@
                            @endif
                          @endforeach
          <div class="row">
+         <div class="col-lg-4"></div>
              <div class="col-lg-4">
 
                <div class="panel panel-green">
@@ -96,6 +97,7 @@
                </div>
 
              </div>
+             <div class="col-lg-4"></div>
                </div>
              </div>
          </div>

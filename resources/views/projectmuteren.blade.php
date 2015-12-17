@@ -39,7 +39,7 @@
                           @endif
                         @endforeach
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="panel panel-warning">
                           <div class="panel-heading">
                             <h3 class="panel-title">Verander project</h3>
@@ -97,14 +97,10 @@
                               <div class="form-group">
                                 <input type="password" class="form-control wachtwoord2"  required="true"id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="">
                               </div>
-
-
                               <div class="form-group">
                                  <textarea class="form-control omschrijving2" rows="5" id="omschrijving2" name="omschrijvingproject" value="" ></textarea>
                                </div>
-
                               <button type="submit" class="btn btn-warning center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
-
                             </div>
                            </div>
                         </form>
@@ -126,7 +122,6 @@
                                       <td>{{$project->projecturl}}</td>
                                       <td>{{$project->gebruiker_id}}</td>
                                       <td>
-                                         {{--<input type="hidden" class="zoeknaam2" value="{{$project->projectnaam}}"  name="zoeknaam2" class="form-control" placeholder="Projectnaam">--}}
                                            <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
                                                   <i class="glyphicon glyphicon-pencil"></i>
                                            </button>

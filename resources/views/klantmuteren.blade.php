@@ -40,7 +40,7 @@
                           @endforeach
           <div class="row">
 
-              <div class="col-lg-4">
+              <div class="col-lg-6">
                   <div class="panel panel-warning">
                   <div class="panel-heading">
                     <h3 class="panel-title">Verander klant</h3>
@@ -66,10 +66,6 @@
                         <label for="gebruikersnaam">Gebruikersnaam</label>
                         <input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="">
                       </div>
-                      {{--<div class="form-group">--}}
-                        {{--<label for="wachtwoord">Wachtwoord</label>--}}
-                        {{--<input type="password" class="form-control" required="true" id="wachtwoord2" name="password" placeholder="Wachtwoord">--}}
-                      {{--</div>--}}
                         <div class="form-group">
                         <label for="voornaam">Voornaam</label>
                         <input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="">

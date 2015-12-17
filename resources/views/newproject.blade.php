@@ -39,6 +39,7 @@
                           @endif
                         @endforeach
                 <div class="row">
+                <div class="col-lg-2"></div>
                     <div class="col-lg-4">
 
                       <div class="panel panel-green">
@@ -155,12 +156,13 @@
                                      <input type="text" class="form-control" id="telefoonnummer" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="">
                                 </div>
                             </fieldset>
-                            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
+                            <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
                           </div>
                        </div>
 
                     </form>
                     </div>
+                    <div class="col-lg-2"></div>
 
 
 

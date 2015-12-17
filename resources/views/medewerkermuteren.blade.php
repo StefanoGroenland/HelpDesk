@@ -40,7 +40,7 @@
                          @endforeach
          <div class="row">
 
-             <div class="col-lg-4">
+             <div class="col-lg-6">
                  <div class="panel panel-warning">
                  <div class="panel-heading">
                    <h3 class="panel-title">Verander medewerker</h3>
