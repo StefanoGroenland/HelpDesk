@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Project wijzigen <small>Hier kan een project worden veranderd/aangemaakt worden</small>
+                            Projecten <small> een overzicht van alle projecten.</small>
                             @include('layouts.header-controls')
                         </h1>
                         {{--breadcrumbs layout spot!--}}

@@ -21,7 +21,7 @@
          <div class="row">
              <div class="col-lg-12">
                  <h1 class="page-header">
-                     Medewerker aanpassen <small>Verander medewekers</small>
+                     Medewerker aanpassen <small> hier kan een medewerker gewijzigd worden </small>
                      @include('layouts.header-controls')
                  </h1>
                  <ol class="breadcrumb">
