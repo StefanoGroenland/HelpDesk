@@ -100,10 +100,10 @@
          </div>
          <!-- /#page-wrapper -->
 
-         @section('scripts')
+         {{--@section('scripts')--}}
 
 
-         @stop
+         {{--@stop--}}
 
      </div>
      <!-- /#wrapper -->

@@ -14,22 +14,27 @@
 Route::group(['middleware' => 'auth'], function () {
 
 //    UserController Routes
-    Route::get('/admindashboard', array('as' => 'admindashboard', 'uses' => 'UserController@showDashboard'));
-    Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'UserController@showDashboard'));
+
+//    global ones
     Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfiel'));
-    Route::get('/medewerkermuteren/{id}', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
+    Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
+    Route::put('/resetUserPassword', 'UserController@resetUserPassword');
+//    klant routes
+    Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'UserController@showDashboard'));
     Route::get('/klantmuteren/{id}', array('as' => 'kmuteren', 'uses' =>'UserController@showKlantMuteren'));
     Route::get('/newklant', array('as' => 'klantmuteren', 'uses' =>'UserController@showNewKlant'));
-    Route::get('/newmedewerker', array('as' => 'newmw', 'uses' =>'UserController@showNewMedewerker'));
-    Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
     Route::post('/updateKlantData', array('as' => 'klantdata', 'uses' => 'UserController@getKlantData'));
-    Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
     Route::put('/updateKlant', array('as' => 'veranderk', 'uses' => 'UserController@updateKlant'));
-    Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
-    Route::post('addMedewerker', 'UserController@addMedewerker');
     Route::post('addUser', 'UserController@addUser');
-    Route::put('/resetUserPassword', 'UserController@resetUserPassword');
     Route::get('/klanten', 'UserController@showKlantenOverzicht');
+
+//    medewerker routes
+    Route::get('/admindashboard', array('as' => 'admindashboard', 'uses' => 'UserController@showDashboard'));
+    Route::get('/medewerkermuteren/{id}', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
+    Route::get('/newmedewerker', array('as' => 'newmw', 'uses' =>'UserController@showNewMedewerker'));
+    Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
+    Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
+    Route::post('addMedewerker', 'UserController@addMedewerker');
     Route::get('/medewerkers', 'UserController@showMedewerkersOverzicht');
 
 

@@ -81,8 +81,8 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
-            @section('scripts')
-              @stop
+            {{--@section('scripts')--}}
+              {{--@stop--}}
     </div>
     <!-- /#wrapper -->
 
