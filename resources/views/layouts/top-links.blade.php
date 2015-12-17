@@ -17,7 +17,7 @@
             <br>
             @if(Auth::user()->bedrijf == 'moodles')
                       <button type="submit" class="btn btn-default btn-xs disabled">
-                         <i class="fa fa-clock-o"></i>
+                         <i class="fa fa-clock-o fa-spin"></i>
                          {{date('d-m-y - H:i')}}
                       </button>
                       <button type="submit" class="btn btn-default btn-xs disabled">
@@ -32,7 +32,6 @@
                            Projecten :
                            {{count(\App\Project::all())}}
                         </button>
-
 
                           <button type="submit" class="btn btn-default btn-xs disabled">
                              <i class="fa fa-user"></i>
