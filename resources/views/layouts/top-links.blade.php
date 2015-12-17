@@ -1,5 +1,4 @@
 
-
 </head>
 @if (\Auth::guest())
 <body>

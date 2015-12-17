@@ -44,7 +44,7 @@
                         Gekoppelde bugs <small>aan mij gekoppelde bugs</small>
                     </h3>
                     <div class="table-responsive">
-                    <table class="table table-hover ">
+                    <table class="table table-hover data_table">
                         <thead>
                         <th style="width: 10%">Bug nummer</th>
                         <th style="width: 10%">Bug titel</th>
@@ -121,7 +121,7 @@
                                        {{$project->projectnaam}} <small>alle bugs voor {{$project->projectnaam}}</small>
                                    </h3>
                                    <div class="table-responsive">
-                                    <table class="table table-hover ">
+                                    <table class="table table-hover data_table">
                                         <thead>
                                         <th style="width: 10%">Bug nummer</th>
                                         <th style="width: 10%">Bug titel</th>
@@ -189,7 +189,7 @@
                         Alle bugs <small>een lijst van alle bugs</small>
                     </h3>
                     <div class="table-responsive">
-                    <table class="table table-hover ">
+                    <table class="table table-hover data_table">
                         <thead>
                         <th style="width: 10%">Bug nummer</th>
                         <th style="width: 10%">Bug titel</th>

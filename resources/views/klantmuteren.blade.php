@@ -102,7 +102,7 @@
               </div>
               <div class="col-lg-6">
                   <div class="table-responsive">
-                      <table class="table table-hover" id="tableusers">
+                      <table class="table table-hover data_table" >
                           <thead>
                           <th>Naam</th>
                           <th>E-mail</th>
@@ -144,11 +144,6 @@
 
          @section('scripts')
 
-         <script>
-         $(document).ready(function() {
-             $('#tableusers').DataTable();
-         } );
-         </script>
          <script type="text/javascript">
              $("#zoekKnop").on("click",function(){
 

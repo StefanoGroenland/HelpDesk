@@ -107,7 +107,7 @@
                          </div>
                     <div class="col-lg-6">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-hover data_table">
                                 <thead>
                                 <th>Project</th>
                                 <th>URL</th>

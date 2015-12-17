@@ -137,7 +137,7 @@
                     <div class="col-lg-12">
                         <h4>Verstuurde feedback</h4>
                         <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover data_table">
                                 <thead>
                                 <th>Gepost op :</th>
                                 <th>Start datum</th>

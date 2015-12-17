@@ -22,4 +22,33 @@
     <script src="{{URL::asset('../assets/js/plugins/morris/morris.js')}}"></script>
     <script src="{{URL::asset('../assets/js/plugins/morris/morris-data.js')}}"></script>
 
+
+
+
+    {{--datatables--}}
+        <script src="{{URL::asset('../assets/js/datatables.js')}}"></script>
+        <link href="{{URL::asset('../assets/css/datatables.min.css')}}" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+                    $(document).ready( function () {
+                        $('.data_table').DataTable({
+                        "order": [[ 0, "desc" ]],
+                            "oLanguage" : {
+                                "sInfo" : "Toon _START_ tot _END_ van _TOTAL_ rijen" ,
+                                "sInfoEmpty" : "Geen rijen gevonden" ,
+                                "sInfoEmptyTable" : "Geen rijen gevonden" ,
+                                "sInfoFiltered" : "(Gezocht in _MAX_ rijen)" ,
+                                "sZeroRecords" : "Geen rijen gevonden",
+                                "sLengthMenu" : "Toon _MENU_ rijen",
+                                "sSearch" : "Zoek : ",
+
+                                    "oPaginate" : {
+                                        "sNext" : "Volgende",
+                                        "sPrevious" : "Vorige"
+                                    }
+                            }
+                        });
+
+                    } );
+        </script>
     @yield('scripts')

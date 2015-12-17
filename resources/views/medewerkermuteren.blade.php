@@ -102,7 +102,7 @@
              </div>
              <div class="col-lg-6">
                  <div class="table-responsive">
-                     <table class="table table-hover">
+                     <table class="table table-hover data_table">
                          <thead>
                          <th>Volledige naam</th>
                          <th>E-mail</th>
@@ -141,6 +141,8 @@
         <!-- /#page-wrapper -->
 
         @section('scripts')
+
+
         <script type="text/javascript">
             $("#zoekKnop").on("click",function(){
 

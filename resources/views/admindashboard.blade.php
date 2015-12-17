@@ -187,7 +187,7 @@
                     <div class="col-lg-9">
                         <h4>Laatst gemelde bugs</h4>
                         <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover data_table">
                                 <thead>
                                 <th>Gepost op :</th>
                                 <th>Deadline</th>
