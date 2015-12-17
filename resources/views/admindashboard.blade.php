@@ -189,7 +189,8 @@
                         <div class="table-responsive">
                         <table class="table table-hover data_table">
                                 <thead>
-                                <th>Gepost op :</th>
+                                <th>Gepost op </th>
+                                <th>Status </th>
                                 <th>Deadline</th>
                                 <th>Bug</th>
                                 <th>Prioriteit</th>
@@ -203,6 +204,7 @@
 
                                     <tr>
                                         <td>{{$bug->created_at->format('d-m-y - H:i')}}</td>
+                                        <td>{{$bug->status}}</td>
                                         <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                         <td>{{$bug->titel}}</td>
                                         <td>

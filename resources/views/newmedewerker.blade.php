@@ -42,7 +42,7 @@
          <div class="col-lg-4"></div>
              <div class="col-lg-4">
 
-               <div class="panel panel-green">
+               <div class="panel panel-warning">
                  <div class="panel-heading">
                    <h3 class="panel-title">Nieuwe medewerker </h3>
 
@@ -86,7 +86,7 @@
                         </select>
                       </div>
                      <div class="row">
-                           <div class="col-lg-12"><button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button></div>
+                           <div class="col-lg-12"><button type="submit" class="btn btn-warning center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button></div>
                        </div>
                    </form>
                  </div>

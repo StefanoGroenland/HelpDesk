@@ -42,7 +42,7 @@
          <div class="col-lg-4"></div>
              <div class="col-lg-4">
 
-               <div class="panel panel-green">
+               <div class="panel panel-info">
                  <div class="panel-heading">
                    <h3 class="panel-title">Nieuwe klant</h3>
 
@@ -90,7 +90,7 @@
                         </select>
                       </div>
                      <div class="row">
-                           <div class="col-lg-12"><button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak klant</button></div>
+                           <div class="col-lg-12"><button type="submit" class="btn btn-info center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak klant</button></div>
                        </div>
                    </form>
                  </div>

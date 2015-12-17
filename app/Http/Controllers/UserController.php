@@ -58,7 +58,7 @@ class UserController extends Controller
         return View::make('klanten' , compact('klanten'));
     }
     public function showMedewerkersOverzicht(){
-        $medewerkers = User::where('bedrijf','!=', 'moodles')->get();
+        $medewerkers = User::getMedewerkers();
         return View::make('medewerkers' , compact('medewerkers'));
     }
     public function updateMedewerker(Request $request){

@@ -16,8 +16,7 @@ class ProjectController extends Controller
 {
     public function showProjectMuteren($id){
         $project = Project::find($id);
-        $klanten = Project::getUsers();
-        return View::make('projectmuteren', compact('project', 'klanten'));
+        return View::make('projectmuteren', compact('project'));
     }
     public function showProjectenOverzicht(){
         $projects = Project::all();
@@ -125,7 +124,7 @@ class ProjectController extends Controller
         );
         Project::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Project '. $request['projectnaam']. ' veranderd.');
-        return redirect('/projecten');
+        return redirect('/projectmuteren');
     }
     public function getUpdateData(){
         $input = $_POST['input'];

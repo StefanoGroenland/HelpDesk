@@ -46,7 +46,11 @@
                                 <thead>
                                 <th>Project</th>
                                 <th>URL</th>
+                                <th>Titel</th>
                                 <th>Klantnummer</th>
+                                <th>Satus</th>
+                                <th>Soort</th>
+                                <th>Prioriteit</th>
                                 <th></th>
                                 <th></th>
                                 </thead>
@@ -55,7 +59,11 @@
                                       <tr>
                                       <td>{{$project->projectnaam}}</td>
                                       <td>{{$project->projecturl}}</td>
+                                      <td>{{$project->titel}}</td>
                                       <td>{{$project->gebruiker_id}}</td>
+                                      <td>{{$project->status}}</td>
+                                      <td>{{$project->soort}}</td>
+                                      <td>{{$project->prioriteit}}</td>
                                       <td>
                                       <a href="/projectmuteren/{{$project->id}}" class="">
                                            <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">

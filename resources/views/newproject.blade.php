@@ -42,7 +42,7 @@
                 <div class="col-lg-2"></div>
                     <div class="col-lg-4">
 
-                      <div class="panel panel-green">
+                      <div class="panel panel-success">
                         <div class="panel-heading">
                           <h3 class="panel-title">Nieuw project 1/2</h3>
                         </div>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="col-lg-4">
 
-                    <div class="panel panel-green">
+                    <div class="panel panel-success">
                         <div class="panel-heading">
                           <h3 class="panel-title">Nieuw project 2/2</h3>
                         </div>

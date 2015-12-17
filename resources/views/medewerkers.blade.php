@@ -44,16 +44,30 @@
                  <div class="table-responsive">
                      <table class="table table-hover data_table">
                          <thead>
-                         <th>Volledige naam</th>
+                         <th>Voornaam</th>
+                         <th>Tussenvoegsel</th>
+                         <th>Achternaam</th>
+                         <th>Gebruikersnaam</th>
+                         <th>Geslacht</th>
                          <th>E-mail</th>
+                         <th>Telefoonummer</th>
                          <th></th>
                          <th></th>
                          </thead>
                          <tbody>
                              @foreach($medewerkers as $medewerker)
                              <tr>
-                             <td>{{$medewerker->voornaam . ' ' . substr($medewerker->tussenvoegsel,0,5) . ' ' . $medewerker->achternaam}}</td>
+                             <td>{{$medewerker->voornaam}}</td>
+                             @if($medewerker->tussenvoegsel)
+                             <td>{{$medewerker->tussenvoegsel}}</td>
+                             @else
+                             <td>geen</td>
+                             @endif
+                             <td>{{$medewerker->achternaam}}</td>
+                             <td>{{$medewerker->username}}</td>
+                             <td>{{$medewerker->geslacht}}</td>
                              <td>{{$medewerker->email}}</td>
+                             <td>{{$medewerker->telefoonnummer}}</td>
                              <td>
                                 <a href="/medewerkermuteren/{{$medewerker->id}}" class="">
                                   <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$medewerker->email}}">

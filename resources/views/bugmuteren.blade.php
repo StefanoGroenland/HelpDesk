@@ -42,7 +42,7 @@
                 <div class="col-lg-4"></div>
                 <div class="col-lg-4">
 
-                    <div class="panel panel-green">
+                    <div class="panel panel-success">
                         <div class="panel-heading">
                             <h3 class="panel-title">Nieuwe bug</h3>
                         </div>
@@ -87,7 +87,7 @@
                                <div class="form-group">
                                   <textarea class="form-control" rows="5" id="beschrijving" required="true" name="beschrijving" value="" ></textarea>
                                 </div>
-                              <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
+                              <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
                             </form>
                         </div>
                     </div>

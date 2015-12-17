@@ -41,7 +41,7 @@
                 <div class="row">
                 <div class="col-lg-4"></div>
                     <div class="col-lg-4">
-                        <div class="panel panel-warning">
+                        <div class="panel panel-success">
                           <div class="panel-heading">
                             <h3 class="panel-title">Verander project</h3>
                           </div>
@@ -96,7 +96,7 @@
                               <div class="form-group">
                                  <textarea class="form-control omschrijving2" rows="5" id="omschrijving2" name="omschrijvingproject" value="{{$project->omschrijvingproject}}" ></textarea>
                                </div>
-                              <button type="submit" class="btn btn-warning center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
+                              <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
                             </div>
                            </div>
                         </form>
