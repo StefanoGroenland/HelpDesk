@@ -29,26 +29,26 @@
         <script src="{{URL::asset('../assets/js/datatables.js')}}"></script>
         <link href="{{URL::asset('../assets/css/datatables.min.css')}}" rel="stylesheet" type="text/css">
 
-<script type="text/javascript">
-                    $(document).ready( function () {
-                        $('.data_table').DataTable({
-                        "order": [[ 0, "desc" ]],
-                            "oLanguage" : {
-                                "sInfo" : "Toon _START_ tot _END_ van _TOTAL_ rijen" ,
-                                "sInfoEmpty" : "Geen rijen gevonden" ,
-                                "sInfoEmptyTable" : "Geen rijen gevonden" ,
-                                "sInfoFiltered" : "(Gezocht in _MAX_ rijen)" ,
-                                "sZeroRecords" : "Geen rijen gevonden",
-                                "sLengthMenu" : "Toon _MENU_ rijen",
-                                "sSearch" : "Zoek : ",
+        <script type="text/javascript">
+                            $(document).ready( function () {
+                                $('.data_table').DataTable({
+                                "order": [[ 0, "desc" ]],
+                                    "oLanguage" : {
+                                        "sInfo" : "Toon _START_ tot _END_ van _TOTAL_ records" ,
+                                        "sInfoEmpty" : "Geen resultaten gevonden" ,
+                                        "sInfoEmptyTable" : "Geen resultaten gevonden" ,
+                                        "sInfoFiltered" : "(Gezocht in _MAX_ records)" ,
+                                        "sZeroRecords" : "Geen resultaten gevonden",
+                                        "sLengthMenu" : "Toon _MENU_ rijen",
+                                        "sSearch" : "Zoek : ",
 
-                                    "oPaginate" : {
-                                        "sNext" : "Volgende",
-                                        "sPrevious" : "Vorige"
+                                            "oPaginate" : {
+                                                "sNext" : "Volgende",
+                                                "sPrevious" : "Vorige"
+                                            }
                                     }
-                            }
-                        });
+                                });
 
-                    } );
-        </script>
+                            } );
+                </script>
     @yield('scripts')

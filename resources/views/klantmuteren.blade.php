@@ -39,183 +39,69 @@
                             @endif
                           @endforeach
           <div class="row">
-
-              <div class="col-lg-6">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
                   <div class="panel panel-info">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Verander klant</h3>
-                  </div>
-                  <div class="panel-body">
-                    <form method="POST" action="/updateKlant">
-                    {!! csrf_field() !!}
-                    <input type="hidden" name="_method" value="PUT">
-                      <div class="form-group">
-                        <div class="input-group">
-                          <input type="text" id="zoekmail" name="zoekmail" class="form-control" placeholder="E-mail">
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" id="zoekKnop" name="zoekGebruiker" type="button">Zoek persoon</button>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail" value="">
-                        <input type="hidden" class="form-control id2" id="id2"  name="id">
-                      </div>
-                      <div class="form-group">
-                        <label for="gebruikersnaam">Gebruikersnaam</label>
-                        <input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="">
-                      </div>
-                        <div class="form-group">
-                        <label for="voornaam">Voornaam</label>
-                        <input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="">
-                      </div>
-                      <div class="form-group">
-                         <label for="tussenvoegsel">Tussenvoegsel</label>
-                         <input type="text" class="form-control" id="tussenvoegsel2" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="">
-                       </div>
-                      <div class="form-group">
-                        <label for="achternaam">Achternaam</label>
-                        <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="">
-                      </div>
-                      <div class="form-group">
-                        <label for="achternaam">Bedrijf</label>
-                        <input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="">
-                      </div>
-                      <div class="form-group">
-                        <label for="telefoonnummer">Telefoonnummer</label>
-                        <input type="text" class="form-control" required="true" id="telefoonnummer2" name="telefoonnummer" placeholder="Telefoonnummer">
-                      </div>
-                      <div class="form-group">
-                      <label for="geslacht">Geslacht</label>
-                        <select class="form-control" id="geslacht2" required="true" name="geslacht">
-                          <option value="man">Man</option>
-                          <option value="vrouw">Vrouw</option>
-                        </select>
-                      </div>
-                       <div class="row">
-                         <div class="col-lg-12"><button type="submit" name="veranderGebruiker" class="btn btn-info center-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Verander</button></div>
-                       </div>
-                    </form>
-                  </div>
-                </div>
+                                    <div class="panel-heading">
+                                      <h3 class="panel-title">Verander klant</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                      <form method="POST" action="/updateKlant">
+                                      {!! csrf_field() !!}
+                                      <input type="hidden" name="_method" value="PUT">
+                                        <div class="form-group">
+                                          <label for="email">Email address</label>
+                                          <input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail" value="{{$klant->email}}">
+                                          <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$klant->id}}">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="gebruikersnaam">Gebruikersnaam</label>
+                                          <input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="{{$klant->username}}">
+                                        </div>
+                                          <div class="form-group">
+                                          <label for="voornaam">Voornaam</label>
+                                          <input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="{{$klant->voornaam}}">
+                                        </div>
+                                        <div class="form-group">
+                                           <label for="tussenvoegsel">Tussenvoegsel</label>
+                                           <input type="text" class="form-control" id="tussenvoegsel2" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="{{$klant->tussenvoegsel}}">
+                                         </div>
+                                        <div class="form-group">
+                                          <label for="achternaam">Achternaam</label>
+                                          <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="{{$klant->achternaam}}">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="achternaam">Bedrijf</label>
+                                          <input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="{{$klant->bedrijf}}">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="telefoonnummer">Telefoonnummer</label>
+                                          <input type="text" class="form-control" required="true" id="telefoonnummer2" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$klant->telefoonnummer}}">
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="geslacht">Geslacht</label>
+                                          <select class="form-control" id="geslacht2" required="true" name="geslacht">
+                                            <option value="{{$klant->geslacht}}">{{$klant->geslacht}}</option>
+                                            <option value="man">Man</option>
+                                            <option value="vrouw">Vrouw</option>
+                                          </select>
+                                        </div>
+                                         <div class="row">
+                                           <div class="col-lg-12"><button type="submit" name="veranderGebruiker" class="btn btn-info center-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Verander</button></div>
+                                         </div>
+                                      </form>
+                                    </div>
+                                  </div>
               </div>
-              <div class="col-lg-6">
-                  <div class="table-responsive">
-                      <table class="table table-hover data_table" >
-                          <thead>
-                          <th>Naam</th>
-                          <th>E-mail</th>
-                          <th>Bedrijf</th>
-                          <th></th>
-                          <th></th>
-                          </thead>
-                          <tbody>
-                              @foreach($klanten as $klant)
-                              <tr>
-                              <td>{{$klant->voornaam . ' ' . substr($klant->tussenvoegsel,0,5) . ' ' . $klant->achternaam}}</td>
-                              <td>{{$klant->email}}</td>
-                              <td>{{$klant->bedrijf}}</td>
-                              <td>
-                                 {{--<input type="hidden" class="zoeknaam2" value="{{$project->projectnaam}}"  name="zoeknaam2" class="form-control" placeholder="Projectnaam">--}}
-                                   <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$klant->email}}">
-                                          <i class="glyphicon glyphicon-pencil"></i>
-                                   </button>
-                              </td>
-                                <td>
-                                <a href="/verwijderGebruiker/{{$klant->id}}" class="">
-                                    <button type="submit" class="btn btn-danger btn-xs">
-                                       <i class="glyphicon glyphicon-remove"></i>
-                                    </button>
-                                </a>
-                                </td>
-                              </tr>
-                                                                    @endforeach
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
+              <div clas="col-lg-4"></div>
           </div>
       </div>
              <!-- /.container-fluid -->
-
          </div>
          <!-- /#page-wrapper -->
 
          @section('scripts')
 
-         <script type="text/javascript">
-             $("#zoekKnop").on("click",function(){
-
-
-                     var email = $('#zoekmail').val();
-                     $('#id2').val('');
-                     $('#email2').val('');
-                     $('#gebruikersnaam2').val('');
-                     $('#voornaam2').val('');
-                     $('#tussenvoegsel2').val('');
-                     $('#achternaam2').val('');
-                     $('#telefoonnummer2').val('');
-                     $('#geslacht2').val('');
-                     $('#bedrijf2').val('');
-
-                     $.ajax({
-                       method: "POST",
-                       url: "/updateKlantData",
-                       data: {   input: email ,
-                                 _token: "{{ csrf_token() }}"
-                             }
-                     })
-                       .done(function( msg ) {
-                         $('.id2').val(msg[0].id);
-                         $('#email2').val(msg[0].email);
-                         $('#gebruikersnaam2').val(msg[0].username);
-                         $('#voornaam2').val(msg[0].voornaam);
-                         $('#tussenvoegsel2').val(msg[0].tussenvoegsel);
-                         $('#achternaam2').val(msg[0].achternaam);
-                         $('#telefoonnummer2').val(msg[0].telefoonnummer);
-                         $('#geslacht2').val(msg[0].geslacht);
-                         $('#bedrijf2').val(msg[0].bedrijf);
-                       });
-             });
-         </script>
-            <script type="text/javascript">
-                         $(".wijzigKnop2").on("click",function(){
-
-                         var email2 = $(this).data('project');
-                          $('#id2').val('');
-                          $('#email2').val('');
-                          $('#gebruikersnaam2').val('');
-                          $('#voornaam2').val('');
-                          $('#tussenvoegsel2').val('');
-                          $('#achternaam2').val('');
-                          $('#telefoonnummer2').val('');
-                          $('#geslacht2').val('');
-                          $('#bedrijf2').val('');
-
-                          $.ajax({
-                            method: "POST",
-                            url: "/updateKlantData",
-                            data: {   input: email2 ,
-                                      _token: "{{ csrf_token() }}"
-                                  }
-                          })
-                            .done(function( msg ) {
-                             console.log(msg);
-                              $('.id2').val(msg[0].id);
-                              $('#email2').val(msg[0].email);
-                              $('#gebruikersnaam2').val(msg[0].username);
-                              $('#voornaam2').val(msg[0].voornaam);
-                              $('#tussenvoegsel2').val(msg[0].tussenvoegsel);
-                              $('#achternaam2').val(msg[0].achternaam);
-                              $('#telefoonnummer2').val(msg[0].telefoonnummer);
-                              $('#geslacht2').val(msg[0].geslacht);
-                              $('#bedrijf2').val(msg[0].bedrijf);
-
-                            });
-
-                          });
-                 </script>
 
          @stop
 

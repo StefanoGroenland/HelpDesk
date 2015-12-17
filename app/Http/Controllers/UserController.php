@@ -35,13 +35,13 @@ class UserController extends Controller
             return View::make('/dashboard', compact('bugs_send','projects_send'));
         }
     }
-    public function showMwMuteren(){
-        $medewerkers = User::where('bedrijf','=','moodles')->get();
-        return View::make('medewerkermuteren', compact('medewerkers'));
+    public function showMwMuteren($id){
+        $medewerker = User::find($id);
+        return View::make('medewerkermuteren', compact('medewerker'));
     }
-    public function showKlantMuteren(){
-        $klanten = User::where('bedrijf','!=', 'moodles')->get();
-        return View::make('klantmuteren' , compact('klanten'));
+    public function showKlantMuteren($id){
+        $klant = User::find($id);
+        return View::make('klantmuteren', compact('klant'));
     }
     public function showNewMedewerker(){
         $medewerkers = User::all();
@@ -53,8 +53,13 @@ class UserController extends Controller
     public function showProfiel(){
         return View::make('profiel');
     }
-    public function showProjectMuteren(){
-        return View::make('projectmuteren');
+    public function showKlantenOverzicht(){
+        $klanten = User::where('bedrijf','!=', 'moodles')->get();
+        return View::make('klanten' , compact('klanten'));
+    }
+    public function showMedewerkersOverzicht(){
+        $medewerkers = User::where('bedrijf','!=', 'moodles')->get();
+        return View::make('medewerkers' , compact('medewerkers'));
     }
     public function updateMedewerker(Request $request){
             $id = $request['id'];
@@ -71,7 +76,7 @@ class UserController extends Controller
             );
             User::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
-            return redirect('/medewerkermuteren');
+            return redirect('/medewerkers');
     }
     public function updateKlant(Request $request){
         $id = $request['id'];
@@ -89,7 +94,7 @@ class UserController extends Controller
         );
         User::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Klant '. $request['username']. ' veranderd.');
-        return redirect('/klantmuteren');
+        return redirect('/klanten');
     }
     public function getUpdateData(){
         $input = $_POST['input'];

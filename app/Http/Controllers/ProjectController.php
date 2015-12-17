@@ -14,10 +14,14 @@ use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Route, View;
 class ProjectController extends Controller
 {
-    public function showProjectMuteren(){
-        $projects = Project::all();
+    public function showProjectMuteren($id){
+        $project = Project::find($id);
         $klanten = Project::getUsers();
-        return View::make('projectmuteren', compact('projects', 'klanten'));
+        return View::make('projectmuteren', compact('project', 'klanten'));
+    }
+    public function showProjectenOverzicht(){
+        $projects = Project::all();
+        return View::make('projecten' , compact('projects'));
     }
     public function showNewProject(){
         $projects = Project::all();
@@ -121,7 +125,7 @@ class ProjectController extends Controller
         );
         Project::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Project '. $request['projectnaam']. ' veranderd.');
-        return redirect('/projectmuteren');
+        return redirect('/projecten');
     }
     public function getUpdateData(){
         $input = $_POST['input'];

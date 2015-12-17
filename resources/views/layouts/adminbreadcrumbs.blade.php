@@ -5,26 +5,26 @@
         </li>
         <li>
             <a href="{{URL::to('/bugmuteren')}}">
-               <i class="fa fa-bell"></i> Bug melden
+               <i class="fa fa-bullhorn"></i> Bug melden
             </a>
         </li>
         <li>
             <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
-               <i class="fa fa-briefcase"></i> Bug overzicht
+               <i class="fa fa-bug"></i> Bug overzicht
             </a>
         </li>
         <li>
-            <a href="{{URL::to('/projectmuteren')}}">
-               <i class="fa fa-pencil"></i> Project aanpassen
+            <a href="{{URL::to('/projecten')}}">
+               <i class="fa fa-briefcase"></i> Projecten
             </a>
         </li>
         <li>
-            <a href="{{URL::to('/medewerkermuteren')}}">
-               <i class="fa fa-pencil"></i> Medewerker aanpassen
+            <a href="{{URL::to('/medewerkers')}}">
+               <i class="fa fa-user"></i> Medewerkers
             </a>
         </li>
         <li>
-            <a href="{{URL::to('/klantmuteren')}}">
-               <i class="fa fa-pencil"></i> Klant aanpassen
+            <a href="{{URL::to('/klanten')}}">
+               <i class="fa fa-users"></i> Klanten
             </a>
         </li>

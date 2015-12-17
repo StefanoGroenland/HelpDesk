@@ -20,8 +20,6 @@
                          <i class="fa fa-clock-o"></i>
                          {{date('d-m-y - H:i')}}
                       </button>
-
-
                       <button type="submit" class="btn btn-default btn-xs">
                          <i class="fa fa-bug"></i>
                          Bugs :
@@ -37,7 +35,7 @@
 
 
                           <button type="submit" class="btn btn-default btn-xs">
-                             <i class="fa fa-users"></i>
+                             <i class="fa fa-user"></i>
                              Gebruikers :
                              {{count(\App\User::all())}}
                              Waarvan :
