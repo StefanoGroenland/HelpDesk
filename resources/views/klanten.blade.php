@@ -38,14 +38,18 @@
                               </div>
                             @endif
                           @endforeach
-
              <!-- /.container-fluid -->
             <div class="col-lg-12">
                   <div class="table-responsive">
                       <table class="table table-hover data_table" >
                           <thead>
-                          <th>Naam</th>
+                          <th>Voornaam</th>
+                          <th>Tussenvoegsel</th>
+                          <th>Achternaam</th>
+                          <th>Gebruikersnaam</th>
+                          <th>Geslacht</th>
                           <th>E-mail</th>
+                          <th>Telefoonnummer</th>
                           <th>Bedrijf</th>
                           <th></th>
                           <th></th>
@@ -53,8 +57,17 @@
                           <tbody>
                               @foreach($klanten as $klant)
                               <tr>
-                              <td>{{$klant->voornaam . ' ' . substr($klant->tussenvoegsel,0,5) . ' ' . $klant->achternaam}}</td>
+                              <td>{{$klant->voornaam}}</td>
+                              @if($klant->tussenvoegsel)
+                                <td>{{$klant->tussenvoegsel}}</td>
+                              @else
+                              geen
+                              @endif
+                              <td>{{$klant->achternaam}}</td>
+                              <td>{{$klant->username}}</td>
+                              <td>{{$klant->geslacht}}</td>
                               <td>{{$klant->email}}</td>
+                              <td>{{$klant->telefoonnummer}}</td>
                               <td>{{$klant->bedrijf}}</td>
                               <td>
                                  <a href="/klantmuteren/{{$klant->id}}" class="">
