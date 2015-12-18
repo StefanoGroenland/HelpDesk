@@ -165,14 +165,15 @@
                         <li class="text-left">
                         @foreach($afzenders as $afzender)
                             <div class="panel panel-default">
-                                <i class="fa fa-fw fa-group fa-2x"></i>
                                         {{--mw--}}
                                        @if($afzender->medewerker)
+                                       <i class="fa fa-fw fa-users fa-2x"></i>
                                       <span class="label label-warning">
                                         {{$afzender->medewerker->voornaam .' '.$afzender->medewerker->tussenvoegsel.' '. $afzender->medewerker->achternaam}}
                                       </span>
                                         @elseif($afzender->klant)
                                         {{--klant--}}
+                                        <i class="fa fa-fw fa-user fa-2x"></i>
                                       <span class="label label-info">
                                         {{$afzender->klant->voornaam .' '.$afzender->klant->tussenvoegsel.' '. $afzender->klant->achternaam}}
                                       </span>
