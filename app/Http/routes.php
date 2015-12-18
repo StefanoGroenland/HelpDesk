@@ -55,6 +55,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/updateBug/{id}',array('as' => 'updateBug', 'uses' => 'BugController@updateBug'));
     Route::post('/addBug', 'BugController@addBug');
 
+//    ChatController Routes
+    Route::post('/sendMessage', 'ChatController@sendMessage');
+
 });
 
 //unrestricted routes

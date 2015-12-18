@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Bug as Bug;
 use App\User as User;
+use App\Chat as Chat;
 use App\Project as Project;
 use App\Http\Controllers\Hash as Hash;
 use Illuminate\Support\Facades\Validator;
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Auth;
 class BugController extends Controller
 {
     public function showBugChat($id){
-        $bug = Bug::with('user')->find($id);
+        $bug = Bug::with('klant','user')->find($id);
+        $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
         $medewerkers = User::where('bedrijf' ,'=', 'moodles')->get();
-        return View::make('/bugchat', compact('bug', 'medewerkers'));
+        return View::make('/bugchat', compact('bug', 'medewerkers','afzenders'));
     }
 
     public function showBugmuteren(){
@@ -61,7 +63,8 @@ class BugController extends Controller
         );
         Bug::where('id', '=', $bug->id)->update($data);
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
-        return redirect()->action('BugController@showBugOverzicht', [Auth::user()->id]);
+//        return redirect()->action('BugController@showBugOverzicht', [Auth::user()->id]);
+        return redirect('/bugchat/'. $bug->id);
     }
 
     public function addBug( Request $request){

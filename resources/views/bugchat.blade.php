@@ -25,8 +25,18 @@
                 <ol class="breadcrumb">
                     @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
                 </ol>
-            </div>
-        </div>
+                 </div>
+             </div>
+            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+              @if(Session::has('alert-' . $msg))
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                    </div>
+                </div>
+              @endif
+           @endforeach
+
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-2">
@@ -152,44 +162,61 @@
 
                     <h3>Discussie<i class="fa fa-fw fa-weixin"></i></h3>
                     <ul class="list-unstyled">
-                        <!--linker persoon-->
                         <li class="text-left">
+                        @foreach($afzenders as $afzender)
                             <div class="panel panel-default">
-                                <i class="fa fa-fw fa-group fa-2x"></i><span class="label label-success">Stefano groenland - Ontwikkelaar</span> 16/11/2015 om 15:10
+                                <i class="fa fa-fw fa-group fa-2x"></i>
+                                        {{--mw--}}
+                                       @if($afzender->medewerker)
+                                      <span class="label label-warning">
+                                        {{$afzender->medewerker->voornaam .' '.$afzender->medewerker->tussenvoegsel.' '. $afzender->medewerker->achternaam}}
+                                      </span>
+                                        @elseif($afzender->klant)
+                                        {{--klant--}}
+                                      <span class="label label-info">
+                                        {{$afzender->klant->voornaam .' '.$afzender->klant->tussenvoegsel.' '. $afzender->klant->achternaam}}
+                                      </span>
+                                      @endif
+
+                                {{$afzender->created_at->format('d-m-y \o\m\ H:i')}}
                                 <div class="panel-body">
-                                    t ac vestibulum egestas, eros purus frin
+                                    {{$afzender->bericht}}
                                 </div>
                             </div>
+                            @endforeach
                         </li>
-                        <!--rechter persoon-->
-                        <li class="text-right">
-
-                            <div class="panel panel-default">
-                                16/11/2015 om 15:34 <span class="label label-warning">Sjaak - Klant</span><i class="fa fa-fw fa-user fa-2x"></i>
-                                <div class="panel-body">
-                                    feugiat convallis. Curabitur
-                                    at ligula faucibus, dapibus tortor ultricies, scelerisque justo.
-                                    Ut turpis dolor, viverra ut sem non
-                                    gula faucibus, dapibus tortor ultricies, scelerisque justo.
-                                    Ut turpis dolor, viverra ut sem non
-                                    gula faucibus, dapibus tortor ultricies, scelerisque justo.
-                                    Ut turpis dolor, viverra ut sem non
-                                </div>
-                            </div>
-                        </li>
-
                     </ul>
-                    <form>
+                    <form method="POST" action="/sendMessage">
+                    {!! csrf_field() !!}
                         <div class="form-group">
+                            <input type="hidden" name="afzender_id"        value="{{Auth::user()->id}}">
+                            @if(Auth::user()->bedrijf == 'moodles')
+                                <input type="hidden" name="klant_id"        value="0">
+                                <input type="hidden" name="medewerker_id"        value="{{Auth::user()->id}}">
+                            @elseif(Auth::user()->bedrijf != 'moodles')
+                                <input type="hidden" name="klant_id"        value="{{Auth::user()->id}}">
+                                <input type="hidden" name="medewerker_id"        value="0">
+                            @endif
+                            <input type="hidden" name="bug_id"          value="{{$bug->id}}">
+                            <input type="hidden" name="project_id"      value="{{$bug->project_id}}">
                             <label for="bericht">Bericht : </label>
-                            <textarea class="form-control" rows="6"></textarea>
+                            @if($bug->medewerker_id != Auth::user()->id && $bug->klant_id != Auth::user()->id)
+                            <span class="label label-danger">U bent niet de gekoppelde medewerker!</span>
+                            <textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
+                            </textarea>
+                            @else
+                            <textarea class="form-control" name="bericht" id="bericht" rows="6"></textarea>
+                            @endif
                         </div>
+                        @if($bug->medewerker_id != Auth::user()->id && $bug->klant_id != Auth::user()->id)
+                        <button type="submit" class="btn btn-success" disabled>
+                            <i class="fa fa-send"></i> Verstuur
+                        </button>
+                        @else
                         <button type="submit" class="btn btn-success">
-                            <i class="fa fa-send"></i>
+                            <i class="fa fa-send"></i> Verstuur
                         </button>
-                        <button type="reset" class="btn btn-danger">
-                            <i class="fa fa-trash"></i>
-                        </button>
+                        @endif
                     </form>
                 </div>
             </div>

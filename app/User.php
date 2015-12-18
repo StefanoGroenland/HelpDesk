@@ -58,6 +58,9 @@ class User extends Model implements AuthenticatableContract,
     public function project(){
         return $this->hasMany('App\Project','gebruiker_id');
     }
+    public function chat(){
+        return $this->hasMany('App\Chat','afzender_id','id');
+    }
 
     public static function getMedewerkers()
     {
