@@ -100,7 +100,7 @@
                                         @if(Auth::user()->bedrijf == 'moodles')
                                         <a href="/verwijderBug/{{$bug->id}}" class="">
                                             <button class="btn btn-danger btn-xs">
-                                                    <i class="fa fa-remove"></i>
+                                                    <i class="fa fa-trash"></i>
                                             </button>
                                         </a>
                                         @endif

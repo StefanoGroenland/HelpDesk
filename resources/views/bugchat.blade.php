@@ -188,7 +188,7 @@
                             <i class="fa fa-send"></i>
                         </button>
                         <button type="reset" class="btn btn-danger">
-                            <i class="fa fa-remove"></i>
+                            <i class="fa fa-trash"></i>
                         </button>
                     </form>
                 </div>

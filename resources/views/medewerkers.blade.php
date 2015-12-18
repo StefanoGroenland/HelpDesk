@@ -78,7 +78,7 @@
                                <td>
                                <a href="/verwijderGebruiker/{{$medewerker->id}}" class="">
                                    <button type="submit" class="btn btn-danger btn-xs">
-                                      <i class="glyphicon glyphicon-remove"></i>
+                                      <i class="glyphicon glyphicon-trash"></i>
                                    </button>
                                </a>
                                </td>
