@@ -26,8 +26,6 @@
                          Bugs :
                          {{count(\App\Bug::all())}}
                       </button>
-
-
                         <button type="submit" class="btn btn-default btn-xs disabled">
                            <i class="fa fa-briefcase"></i>
                            Projecten :

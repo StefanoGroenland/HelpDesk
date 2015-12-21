@@ -160,10 +160,11 @@
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
 
-                    <h3>Discussie<i class="fa fa-fw fa-weixin"></i>
-                        <a href="#" onclick="refresh_feed()">
-                            <i class="pull-right fa fa-refresh"></i>
-                        </a>
+                    <h3>Discussie
+                        <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
+                           <i class="fa fa-refresh fa-spin"></i>
+                           refresh feed
+                        </button>
 
                     </h3>
                     <ul class="list-unstyled" id="display">
@@ -227,7 +228,7 @@
                         @endif
                     </form>
                 </div>
-            </div>
+              </div>
             </div>
         </div>
     </div>
@@ -249,6 +250,9 @@
                       ("00" + d.getSeconds()).slice(-2)];
                 }
 
+                function scroll_to_bottom(){
+                    window.scrollTo(0,document.body.scrollHeight);
+                }
 
                 function refresh_feed(){
                 $.ajax({

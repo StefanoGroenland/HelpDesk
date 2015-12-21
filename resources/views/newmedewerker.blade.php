@@ -45,7 +45,6 @@
                <div class="panel panel-warning">
                  <div class="panel-heading">
                    <h3 class="panel-title">Nieuwe medewerker </h3>
-
                  </div>
                  <div class="panel-body">
                    <form method="POST" action="/addMedewerker" >
@@ -106,8 +105,6 @@
         @section('scripts')
         <script type="text/javascript">
             $("#zoekKnop").on("click",function(){
-
-
                     var email = $('#zoekmail').val();
                     $('#email2').val('');
                     $('#gebruikersnaam2').val('');
