@@ -161,11 +161,38 @@
                 <div class="col-lg-8">
 
                     <h3>Discussie<i class="fa fa-fw fa-weixin"></i>
+                        <a href="#" onclick="refresh_feed()">
+                            <i class="pull-right fa fa-refresh"></i>
+                        </a>
 
                     </h3>
                     <ul class="list-unstyled" id="display">
-                        <i class="fa fa-spinner fa-spin fa-4x"></i>
-                        Bezig met het afhandelen van uw aanvraag. Dit kan enkele seconden duren.
+                    <li class="text-left">
+                        @foreach($afzenders as $afzender)
+
+                                        {{--mw--}}
+                                       @if($afzender->medewerker)
+                                       <div class="panel-heading panel-warning">
+                                       <i class="fa fa-fw fa-users fa-2x"></i>
+                                      <span class="label label-warning">
+                                        {{$afzender->medewerker->voornaam.' '.$afzender->medewerker->tussenvoegsel.' '. $afzender->medewerker->achternaam}}
+                                      </span>
+                                        @elseif($afzender->klant)
+                                        <div class="panel-heading panel-info">
+                                        {{--klant--}}
+                                        <i class="fa fa-fw fa-user fa-2x"></i>
+                                      <span class="label label-info">
+                                        {{$afzender->klant->voornaam .' '.$afzender->klant->tussenvoegsel.' '. $afzender->klant->achternaam}}
+                                      </span>
+                                      @endif
+                                    <span class="pull-right label label-default"><i class="fa fa-clock-o"></i> {{$afzender->created_at->format('d-m-Y H:i:s')}}</span>
+
+                                <div class="panel-heading">
+                                    {{$afzender->bericht}}
+                                </div>
+                            </div>
+                            @endforeach
+                        </li>
                     </ul>
                     <form method="POST" action="/sendMessage">
                     {!! csrf_field() !!}
@@ -213,10 +240,13 @@
                 function convertDate(inputFormat) {
                   function pad(s) { return (s < 10) ? '0' + s : s; }
                   var d = new Date(inputFormat);
-                  return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-')+' '+
-                  [d.getHours(),
-                   d.getMinutes(),
-                   d.getSeconds()].join(':');
+                  return[
+                      ("00" + d.getDate()).slice(-2) + "-" +
+                      ("00" + (d.getMonth() + 1)).slice(-2) + "-" +
+                      d.getFullYear() + " " +
+                      ("00" + d.getHours()).slice(-2) + ":" +
+                      ("00" + d.getMinutes()).slice(-2) + ":" +
+                      ("00" + d.getSeconds()).slice(-2)];
                 }
 
 
@@ -236,8 +266,8 @@
                             if (elem.medewerker) {
                             div += '<div class="panel-heading panel-warning">';
                             div += '<i class="fa fa-fw fa-users fa-2x"></i>';
-                            div += '<span class="label label-warning">' + elem.medewerker.voornaam +' '+ elem.medewerker.tussenvoegsel +' '+ elem.medewerker.achternaam + '</span>';
-                            div +=  ' <span class="pull-right label label-default"><i class="fa fa-clock-o"></i> ' + convertDate(elem.created_at)+ '</span>' ;
+                            div += '<span class="label label-warning">'+ elem.medewerker.voornaam +' '+ elem.medewerker.tussenvoegsel +' '+ elem.medewerker.achternaam + '</span>';
+                            div += '<span class="pull-right label label-default"><i class="fa fa-clock-o"></i> ' + convertDate(elem.created_at)+ '</span>' ;
                             div += '<div class="panel-heading">';
                             div +=  elem.bericht;
                             div += '</div>';
@@ -261,7 +291,7 @@
                         $("#display").html(div);
                     }
                 });
-              }setInterval(function(){refresh_feed()}, 10000);
+              }setInterval(function(){check_feed_count()}, 300000);
 
                 </script>
         @endsection

@@ -49,7 +49,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 //    BugController Routes
     Route::get('/bugchat/{id}',array('as' => 'bugchat', 'uses' => 'BugController@showbugChat'));
-    Route::get('/refreshChat/{id}',array('as' => 'bugchat', 'uses' => 'BugController@refreshChat'));
     Route::get('/bugmuteren', array('as' => 'bugmuteren', 'uses' => 'BugController@showBugMuteren'));
     Route::get('/bugoverzicht/{id}', array('as' => 'bugoverzicht', 'uses' => 'BugController@showBugOverzicht'));
     Route::get('/verwijderBug/{id}', 'BugController@verwijderBug');
@@ -58,6 +57,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 //    ChatController Routes
     Route::post('/sendMessage', 'ChatController@sendMessage');
+    Route::get('/refreshChat/{id}',array('as' => 'bugchat', 'uses' => 'BugController@refreshChat'));
+    Route::get('/feedCount/{id}',array('as' => 'feed_count', 'uses' => 'BugController@feedCount'));
 
 });
 

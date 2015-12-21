@@ -18,14 +18,16 @@ class BugController extends Controller
 {
     public function showBugChat($id){
         $bug = Bug::with('klant','user')->find($id);
-//        $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
+        $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
         $medewerkers = User::where('bedrijf' ,'=', 'moodles')->get();
         return View::make('/bugchat', compact('bug', 'medewerkers','afzenders'));
     }
     public function refreshChat($id){
         return $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
     }
-
+    public function feedCount($id){
+        return $query = Chat::where('bug_id','=',$id)->get();
+    }
     public function showBugmuteren(){
         $user_id = Auth::user()->id;
         $projecten = Project::where('gebruiker_id', '=', $user_id)->get();
