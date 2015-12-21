@@ -18,9 +18,12 @@ class BugController extends Controller
 {
     public function showBugChat($id){
         $bug = Bug::with('klant','user')->find($id);
-        $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
+//        $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
         $medewerkers = User::where('bedrijf' ,'=', 'moodles')->get();
         return View::make('/bugchat', compact('bug', 'medewerkers','afzenders'));
+    }
+    public function refreshChat($id){
+        return $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
     }
 
     public function showBugmuteren(){
@@ -63,7 +66,6 @@ class BugController extends Controller
         );
         Bug::where('id', '=', $bug->id)->update($data);
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
-//        return redirect()->action('BugController@showBugOverzicht', [Auth::user()->id]);
         return redirect('/bugchat/'. $bug->id);
     }
 
@@ -79,7 +81,6 @@ class BugController extends Controller
             'klant_id' => 'required',
             'project_id' => 'required',
             'klant_id' => 'required',
-//            'medewerker_id' => 'required',
         ]);
         Bug::create([
             'titel'  => $request['titel'],
@@ -90,7 +91,6 @@ class BugController extends Controller
             'eind_datum'   => $request['eind_datum'],
             'beschrijving'   => $request['beschrijving'],
             'klant_id'   => Auth::user()->id,
-//            'medewerker_id'   => Auth::user()->id,
             'project_id'  => $request['project'],
         ]);
         $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');

@@ -160,32 +160,12 @@
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
 
-                    <h3>Discussie<i class="fa fa-fw fa-weixin"></i></h3>
-                    <ul class="list-unstyled">
-                        <li class="text-left">
-                        @foreach($afzenders as $afzender)
-                            <div class="panel panel-default">
-                                        {{--mw--}}
-                                       @if($afzender->medewerker)
-                                       <i class="fa fa-fw fa-users fa-2x"></i>
-                                      <span class="label label-warning">
-                                        {{$afzender->medewerker->voornaam .' '.$afzender->medewerker->tussenvoegsel.' '. $afzender->medewerker->achternaam}}
-                                      </span>
-                                        @elseif($afzender->klant)
-                                        {{--klant--}}
-                                        <i class="fa fa-fw fa-user fa-2x"></i>
-                                      <span class="label label-info">
-                                        {{$afzender->klant->voornaam .' '.$afzender->klant->tussenvoegsel.' '. $afzender->klant->achternaam}}
-                                      </span>
-                                      @endif
+                    <h3>Discussie<i class="fa fa-fw fa-weixin"></i>
 
-                                {{$afzender->created_at->format('d-m-y \o\m\ H:i')}}
-                                <div class="panel-body">
-                                    {{$afzender->bericht}}
-                                </div>
-                            </div>
-                            @endforeach
-                        </li>
+                    </h3>
+                    <ul class="list-unstyled" id="display">
+                        <i class="fa fa-spinner fa-spin fa-4x"></i>
+                        Bezig met het afhandelen van uw aanvraag. Dit kan enkele seconden duren.
                     </ul>
                     <form method="POST" action="/sendMessage">
                     {!! csrf_field() !!}
@@ -228,7 +208,63 @@
 {{--</div>--}}
 <!-- /#page-wrapper -->
 
-@extends('layouts.footer')
-</body>
+         @section('scripts')
+                <script type="text/javascript">
+                function convertDate(inputFormat) {
+                  function pad(s) { return (s < 10) ? '0' + s : s; }
+                  var d = new Date(inputFormat);
+                  return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-')+' '+
+                  [d.getHours(),
+                   d.getMinutes(),
+                   d.getSeconds()].join(':');
+                }
 
-</html>
+
+                function refresh_feed(){
+                $.ajax({
+                    url: '/refreshChat/'+ {{$bug->id}},
+                    data: {},
+                    type: 'GET',
+                    _token: "{{ csrf_token() }}",
+                    success: function (data) {
+                        var count = 0;
+                        var div = '<li class="text-left">';
+                        var div = '<input type="hidden" id="counted_rows" value="+ count +">';
+
+
+                        $.each(data, function(index, elem) {
+                            if (elem.medewerker) {
+                            div += '<div class="panel-heading panel-warning">';
+                            div += '<i class="fa fa-fw fa-users fa-2x"></i>';
+                            div += '<span class="label label-warning">' + elem.medewerker.voornaam +' '+ elem.medewerker.tussenvoegsel +' '+ elem.medewerker.achternaam + '</span>';
+                            div +=  ' <span class="pull-right label label-default"><i class="fa fa-clock-o"></i> ' + convertDate(elem.created_at)+ '</span>' ;
+                            div += '<div class="panel-heading">';
+                            div +=  elem.bericht;
+                            div += '</div>';
+                            div += '</div>';
+                            }
+                            else {
+                            div += '<div class="panel-heading panel-info">';
+                            div += '<i class="fa fa-fw fa-user fa-2x"></i>';
+                            div += '<span class="label label-info">' + elem.klant.voornaam +' '+ elem.klant.tussenvoegsel +' '+ elem.klant.achternaam + '</span>';
+                            div +=  ' <span class="pull-right label label-default"><i class="fa fa-clock-o"></i> ' + convertDate(elem.created_at)+ '</span>' ;
+                            div += '<div class="panel-heading">'
+                            div +=  elem.bericht;
+                            div += '</div>';
+                            div += '</div>';
+                            }
+                            count++;
+
+                        });
+
+                        div += '</li>';
+                        $("#display").html(div);
+                    }
+                });
+              }setInterval(function(){refresh_feed()}, 10000);
+
+                </script>
+        @endsection
+     @extends('layouts.footer')
+   </body>
+ </html>
