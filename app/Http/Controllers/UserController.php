@@ -51,7 +51,28 @@ class UserController extends Controller
         return View::make('newklant');
     }
     public function showProfiel(){
-        return View::make('profiel');
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        return View::make('profiel',compact('user'));
+    }
+    public function updateProfiel(Request $request){
+        $id = $request['id'];
+        $data = array(
+            'id'         => $request['id'],
+            'username'   => $request['username'],
+            'email'      => $request['email'],
+            'password'   => bcrypt($request['password']),
+            'voornaam'   => $request['voornaam'],
+            'tussenvoegsel'   => $request['tussenvoegsel'],
+            'achternaam' => $request['achternaam'],
+            'geslacht' => $request['geslacht'],
+            'telefoonnummer' => $request['telefoonnummer'],
+            'bedrijf' => $request['bedrijf'],
+            'profielfoto' => $request['profielfoto'],
+        );
+        User::where('id','=', $id)->update($data);
+        $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
+        return redirect('/profiel');
     }
     public function showKlantenOverzicht(){
         $klanten = User::where('bedrijf','!=', 'moodles')->get();

@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 //    global ones
     Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfiel'));
+    Route::put('/updateProfiel', array('as' => 'upd_profile', 'uses' => 'UserController@updateProfiel'));
     Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
     Route::put('/resetUserPassword', 'UserController@resetUserPassword');
 //    klant routes
