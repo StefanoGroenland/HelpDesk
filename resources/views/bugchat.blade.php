@@ -167,8 +167,30 @@
                         </button>
 
                     </h3>
+                    <ul class="list-unstyled" >
+                    <li class="text-left">
+
+                         <div class="panel-heading panel-success">
+                          <i class="fa fa-fw fa-info fa-2x"></i>
+                         <span class="label label-success">
+                           Automatisch bericht
+                         </span>
+                         <div class="panel-heading">
+                             Elke 5 minuten wordt de chat feed ververst. Mocht u handmatig willen verversen, Kunt u rechts boven op :
+                             <button class="btn btn-default btn-xs disabled">
+                                <i class="fa fa-refresh fa-spin"></i>
+                                refresh feed
+                             </button>
+                             drukken.
+                         </div>
+                         </div>
+                         </li>
+                         </ul>
+
+
                     <ul class="list-unstyled" id="display">
                     <li class="text-left">
+
                         @foreach($afzenders as $afzender)
 
                                         {{--mw--}}
@@ -193,6 +215,7 @@
                                 </div>
                             </div>
                             @endforeach
+
                         </li>
                     </ul>
                     <form method="POST" action="/sendMessage">
@@ -208,11 +231,28 @@
                             @endif
                             <input type="hidden" name="bug_id"          value="{{$bug->id}}">
                             <input type="hidden" name="project_id"      value="{{$bug->project_id}}">
-                            <label for="bericht">Bericht : </label>
+
                             @if($bug->medewerker_id != Auth::user()->id && $bug->klant_id != Auth::user()->id)
+                            <label for="bericht">Bericht : </label>
                             <span class="label label-danger">U bent niet de gekoppelde medewerker!</span>
                             <textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
                             </textarea>
+
+                            @elseif($bug->status == 'gesloten')
+                            <div class="panel-heading panel-success">
+                             <i class="fa fa-fw fa-info fa-2x"></i>
+                            <span class="label label-success">
+                              Automatisch bericht
+                            </span>
+                            <div class="panel-heading">
+                                De discussie is gesloten. Bedankt voor uw medewerking!
+                            </div>
+                            </div>
+                            <label for="bericht">Bericht : </label>
+                            <span class="label label-danger">De discussie is gesloten</span>
+                            <textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
+                            </textarea>
+
                             @else
                             <textarea class="form-control" name="bericht" id="bericht" rows="6"></textarea>
                             @endif
