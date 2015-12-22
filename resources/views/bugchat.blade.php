@@ -155,21 +155,17 @@
                     {{$bug->beschrijving}}
                 </p>
             </div>
-
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
-
                     <h3>Discussie
                         <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
                            <i class="fa fa-refresh fa-spin"></i>
                            refresh feed
                         </button>
-
                     </h3>
                     <ul class="list-unstyled" >
                     <li class="text-left">
-
                          <div class="panel-heading panel-success">
                           <i class="fa fa-fw fa-info fa-2x"></i>
                          <span class="label label-success">
@@ -186,11 +182,8 @@
                          </div>
                          </li>
                          </ul>
-
-
                     <ul class="list-unstyled" id="display">
                     <li class="text-left">
-
                         @foreach($afzenders as $afzender)
 
                                         {{--mw--}}
@@ -215,7 +208,6 @@
                                 </div>
                             </div>
                             @endforeach
-
                         </li>
                     </ul>
                     <form method="POST" action="/sendMessage">
@@ -275,7 +267,6 @@
 <!-- /.container-fluid -->
 {{--</div>--}}
 <!-- /#page-wrapper -->
-
          @section('scripts')
                 <script type="text/javascript">
                 function convertDate(inputFormat) {
