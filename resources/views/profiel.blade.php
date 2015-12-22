@@ -18,9 +18,7 @@
     @extends('layouts.top-links')
 
         <div id="page-wrapper">
-
             <div class="container-fluid">
-
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
@@ -44,7 +42,6 @@
                  @endforeach
                 <div class="row">
                     <div class="col-lg-6">
-
                       <div class="panel panel-green">
                         <div class="panel-heading">
                           <h3 class="panel-title">Profiel</h3>
@@ -61,7 +58,6 @@
                           </div>
                         </div>
                       </div>
-
                     </div>
                     <div class="col-lg-6">
                       <div class="panel panel-green">
@@ -114,27 +110,14 @@
                           </form>
                         </div>
                       </div>
-
                     </div>
-
                     </div>
-
-
-
-
-
-
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
-
     @extends('layouts.footer')
-
-</body>
-
+  </body>
 </html>
