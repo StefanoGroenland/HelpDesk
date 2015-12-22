@@ -9,11 +9,11 @@
 namespace App\Http\Controllers;
 use App\User as User;
 use App\Project as Project;
-use App\Http\Controllers\Hash as Hash;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Route, View;
+use Illuminate\Support\Facades\Hash as Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Bug as Bug;
 class UserController extends Controller
@@ -61,7 +61,7 @@ class UserController extends Controller
             'id'         => $request['id'],
             'username'   => $request['username'],
             'email'      => $request['email'],
-            'password'   => bcrypt($request['password']),
+            'password'   => Hash::make($request['password']),
             'voornaam'   => $request['voornaam'],
             'tussenvoegsel'   => $request['tussenvoegsel'],
             'achternaam' => $request['achternaam'],

@@ -79,7 +79,7 @@
                             </div>
                             <div class="form-group">
                               <label for="wachtwoord">Wachtwoord</label>
-                              <input type="password" class="form-control" required="true" name="password" value="{{$user->password}}">
+                              <input type="password" class="form-control" required="true" name="password" >
                             </div>
                               <div class="form-group">
                               <label for="voornaam">Voornaam</label>
