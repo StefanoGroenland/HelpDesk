@@ -21,6 +21,13 @@
                             <div class="col-lg-4 well">
                                 <img src="{{URL::asset('../assets/images/logo.png')}}" class="img-responsive center-block" alt="Responsive image">
                                 <div class="form-group">
+                                @if (count($errors))
+                                    <ul class="list-unstyled">
+                                        @foreach($errors->all() as $error)
+                                            <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                                     <label for="gebruikersnaam">Gebrukersnaan</label>
                                     <input type="text" class="form-control" id="username" name="username" placeholder="Gebrukersnaam" value="{{old('username')}}">
                                 </div>

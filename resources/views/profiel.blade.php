@@ -105,7 +105,6 @@
                               <label for="bedrijfsnaam">Telefoonnummer</label>
                               <input type="text" class="form-control" required="true" name="telefoonnummer" value="{{$user->telefoonnummer}}">
                             </div>
-
                             <button type="submit" class="btn btn-success"><span class="fa fa-check" aria-hidden="true"></span> Verander profiel</button>
                           </form>
                         </div>
