@@ -202,7 +202,7 @@
                                       <span class="label label-info">
                                         {{$afzender->klant->voornaam .' '.$afzender->klant->tussenvoegsel.' '. $afzender->klant->achternaam}}
                                       </span>
-                                      @endif
+                                      @endif 
                                     <span class="pull-right label label-default"><i class="fa fa-clock-o"></i> {{$afzender->created_at->format('d-m-Y H:i:s')}}</span>
 
                                 <div class="panel-heading">
