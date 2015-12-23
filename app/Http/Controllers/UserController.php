@@ -190,8 +190,7 @@ class UserController extends Controller
         'profielfoto' => 'assets/images/avatar.png',
     ]);
     $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
-    return redirect('newmedewerker');
-
+    return redirect('/newmedewerker');
 }
     public function addUser(Request $request){
 
@@ -220,8 +219,7 @@ class UserController extends Controller
             'profielfoto' => 'assets/images/avatar.png',
         ]);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
-        return redirect('newklant');
-
+        return redirect('/newklant');
     }
     public function verwijderGebruiker(){
         $sid = Route::current()->getParameter('id');

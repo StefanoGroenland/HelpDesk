@@ -53,7 +53,7 @@
                           <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
                             <img src="
                             @if(!$user->profielfoto)
-                            {{"/assets/images/avatar.png"}}
+                            {{"../assets/images/avatar.png"}}
                             @else
                             {{$user->profielfoto}}
                             @endif

@@ -47,7 +47,7 @@
             <li class="dropdown clearfix">
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img class="img-responsive img-circle pull-left " src="{{Auth::user()->profielfoto}}" style="margin-right:3px; vertical-align: top;!important; height: 26px;!important; width: 26px;!important;"/>
+                        <img class="img-responsive img-circle pull-left " alt="profile_img" src="{{'../'.Auth::user()->profielfoto}}" style="margin-right:3px; height: 26px;!important; width: 26px;!important;"/>
                         {{ucfirst(Auth::user()->username) .' '. Auth::user()->achternaam}}
                         <b class="caret"></b>
                     </a>
