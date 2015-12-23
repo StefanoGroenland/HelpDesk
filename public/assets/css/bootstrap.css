@@ -6398,11 +6398,8 @@ button.close {
     margin-right:3px;
     height: 35px;!important;
     width: 35px;!important;
-    border: solid 1px lightgrey;
+    /*border: solid 1px lightgrey;*/
 }
-
-
-
 
 @-ms-viewport {
   width: device-width;
