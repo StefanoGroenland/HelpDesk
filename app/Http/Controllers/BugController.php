@@ -61,10 +61,10 @@ class BugController extends Controller
     public function updateBug($id,Request $request){
         $bug = Bug::find($id);
         $data = array(
-            'prioriteit'  => $request['prioriteit'],
-            'soort'  => $request['soort'],
-            'status'  => $request['status'],
-            'medewerker_id'  => $request['medewerker'],
+            'prioriteit'        => $request['prioriteit'],
+            'soort'             => $request['soort'],
+            'status'            => $request['status'],
+            'medewerker_id'     => $request['medewerker'],
         );
         Bug::where('id', '=', $bug->id)->update($data);
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
@@ -72,29 +72,36 @@ class BugController extends Controller
     }
 
     public function addBug( Request $request){
-        Validator::make($request->all(),[
-            'titel' => 'required',
-            'start_datum' => 'required',
-            'eind_datum'    => 'required',
-            'prioriteit' => 'required',
-            'status'  => 'required',
-            'soort' => 'required',
-            'beschrijving' => 'required',
-            'klant_id' => 'required',
-            'project_id' => 'required',
-            'klant_id' => 'required',
-        ]);
-        Bug::create([
-            'titel'  => $request['titel'],
-            'prioriteit'  => $request['prioriteit'],
-            'soort'   => $request['soort'],
-            'status'   => 'open',
-            'start_datum'   => $request['start_datum'],
-            'eind_datum'   => $request['eind_datum'],
-            'beschrijving'   => $request['beschrijving'],
-            'klant_id'   => Auth::user()->id,
-            'project_id'  => $request['project'],
-        ]);
+
+        $data = array(
+            'titel'             => $request['titel'],
+            'prioriteit'        => $request['prioriteit'],
+            'soort'             => $request['soort'],
+            'status'            => 'open',
+            'start_datum'       => $request['start_datum'],
+            'eind_datum'        => $request['eind_datum'],
+            'beschrijving'      => $request['beschrijving'],
+            'klant_id'          => Auth::user()->id,
+            'project_id'        => $request['project'],
+        );
+
+        $rules = array(
+            'titel'          => 'required',
+            'prioriteit'     => 'required',
+            'soort'          => 'required',
+            'status'         => 'required',
+            'start_datum'    => 'required',
+            'eind_datum'     => 'required',
+            'beschrijving'   => 'required',
+            'klant_id'       => 'required',
+            'project_id'     => 'required',
+        );
+        $validator = Validator::make($data,$rules);
+        if($validator->fails()){
+            return redirect('/bugmuteren')->withErrors($validator);
+        }
+        User::create($data);
+
         $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
         return redirect('/bugmuteren');
 

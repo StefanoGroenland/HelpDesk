@@ -188,6 +188,7 @@ class UserController extends Controller
     public function addMedewerker(Request $request){
 
     $data = array(
+//        'created_at' => date('y-m-d - H:i:s'),
         'username'   => $request['username'],
         'email'      => $request['email'],
         'password'   => bcrypt($request['password']),
@@ -205,27 +206,15 @@ class UserController extends Controller
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
-            return redirect('/newmedewerker')->withErrors($validator)->withInput();
+            return redirect('/newmedewerker')->withErrors($validator);
         }
-        User::insert($data)->save();
+        User::create($data);
     $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
     return redirect('/newmedewerker');
 }
     public function addUser(Request $request){
 
-        Validator::make($request->all(),[
-            'username' => 'required|max:255|unique:gebruikers',
-            'email'    => 'required|max:255|unique:gebruikers',
-            'password' => 'required|min:6',
-            'bedrijf'  => 'required',
-            'voornaam' => 'required',
-            'tussenvoegsel' => 'required',
-            'achternaam' => 'required',
-            'telefoonnummer' => 'required',
-            'geslacht' => 'required',
-            'profielfoto' => 'required'
-        ]);
-        User::create([
+        $data = array(
             'username'   => $request['username'],
             'email'      => $request['email'],
             'password'   => bcrypt($request['password']),
@@ -236,7 +225,15 @@ class UserController extends Controller
             'telefoonnummer' => $request['telefoonnummer'],
             'geslacht' => $request['geslacht'],
             'profielfoto' => 'assets/images/avatar.png',
-        ]);
+        );
+        $rules = array(
+            'telefoonnummer' => 'numeric',
+        );
+        $validator = Validator::make($data,$rules);
+        if($validator->fails()){
+            return redirect('/newklant')->withErrors($validator);
+        }
+        User::create($data);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
         return redirect('/newklant');
     }

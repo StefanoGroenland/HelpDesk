@@ -46,9 +46,9 @@
                             <h3 class="panel-title">Bijlage</h3>
                         </div>
                         <div class="panel-body">
-                        <form method="POST" action="/addBug"  enctype="multipart/form-data">
+                        <form method="POST" action="/"  enctype="multipart/form-data">
                         {!! csrf_field() !!}
-                            <span id="multipleFileLabel" style="display:none">Multiple </span><input type="file" name="files" multiple="multiple"><br/>
+                            <span id="multixfiles" style="display:none">Multiple </span><input type="file" name="files" multiple="multiple"><br/>
                         </form>
                         </div>
                     </div>
