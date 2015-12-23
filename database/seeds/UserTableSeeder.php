@@ -12,17 +12,16 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('gebruikers')->insert([
-            'username' => str_random(10),
-            'password' => bcrypt('secret'),
-            'email' => str_random(10).'@gmail.com',
-            'bedrijf' => str_random(10),
-            'voornaam' => str_random(10),
-            'tussenvoegsel' => str_random(10),
-            'achternaam' => str_random(10),
-            'geslacht' => str_random(4),
-            'profielfoto' => str_random(4),
-            'telefoonnummer' => rand(1111111111,9999999999),
-
+            'username' => 'stefano',
+            'password' => Hash::make('moodles'),
+            'email' => 'stefano@moodles.nl',
+            'bedrijf' => 'moodles',
+            'voornaam' => 'stefano',
+            'tussenvoegsel' => '',
+            'achternaam' => 'groenland',
+            'geslacht' => 'man',
+            'profielfoto' => '',
+            'telefoonnummer' => '0628909213',
         ]);
     }
 }

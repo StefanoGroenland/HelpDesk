@@ -155,7 +155,6 @@ class UserController extends Controller
             'id'                    => $request['id'],
             'username'              => $request['username'],
             'email'                 => $request['email'],
-            'password'              => bcrypt($request['password']),
             'voornaam'              => $request['voornaam'],
             'tussenvoegsel'         => $request['tussenvoegsel'],
             'achternaam'            => $request['achternaam'],
