@@ -40,6 +40,13 @@
                      </div>
                    @endif
                  @endforeach
+                 @if (count($errors))
+                     <ul class="list-unstyled">
+                         @foreach($errors->all() as $error)
+                             <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                         @endforeach
+                     </ul>
+                 @endif
                 <div class="row">
                     <div class="col-lg-6">
                       <div class="panel panel-green">
@@ -105,16 +112,19 @@
                             <div class="form-group">
                             <label for="geslacht">Geslacht</label>
                               <select class="form-control" id="geslacht2" required="true" name="geslacht">
-                                <option value="{{$user->geslacht}}">{{$user->geslacht}}</option>
-                                <option value="man">Man</option>
-                                <option value="vrouw">Vrouw</option>
+                              <option value="man" @if($user->geslacht == 'man') selected @endif >Man</option>
+                              <option value="vrouw" @if($user->geslacht == 'vrouw') selected @endif >Vrouw</option>
                               </select>
                             </div>
                             <div class="form-group">
                               <label for="bedrijfsnaam">Bedrijfsnaam</label>
                               <input type="text" class="form-control" required="true" name="bedrijf" value="{{$user->bedrijf}}">
                             </div>
+                            @if($errors->has('telefoonnummer'))
+                            <div class="form-group has-error">
+                            @else
                             <div class="form-group">
+                            @endif
                               <label for="bedrijfsnaam">Telefoonnummer</label>
                               <input type="text" class="form-control" required="true" name="telefoonnummer" value="{{$user->telefoonnummer}}">
                             </div>

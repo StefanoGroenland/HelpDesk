@@ -39,7 +39,23 @@
                                      @endif
                                    @endforeach
             <div class="row">
-                <div class="col-lg-4"></div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Bijlage</h3>
+                        </div>
+                        <div class="panel-body">
+                        <form method="POST" action="/addBug"  enctype="multipart/form-data">
+                        {!! csrf_field() !!}
+                            <span id="multipleFileLabel" style="display:none">Multiple </span><input type="file" name="files" multiple="multiple"><br/>
+                        </form>
+                        </div>
+                    </div>
+
+
+
+                </div>
                 <div class="col-lg-4">
 
                     <div class="panel panel-success">
@@ -92,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4"></div>
+                <div class="col-lg-2"></div>
             </div>
         </div>
         <!-- /.container-fluid -->

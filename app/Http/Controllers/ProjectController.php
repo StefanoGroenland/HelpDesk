@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function addProject(Request $request){
 
         if(isset($_POST['radmaak'])){
-            Validator::make($request->all(),[
+            $data = Validator::make($request->all(),[
 //                projecten table
                 'titel' => 'required|max:255|unique:projecten',
                 'status'    => 'required',

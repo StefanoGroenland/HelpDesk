@@ -69,8 +69,15 @@ class UserController extends Controller
             'geslacht' => $request['geslacht'],
             'telefoonnummer' => $request['telefoonnummer'],
             'bedrijf' => $request['bedrijf'],
-            'profielfoto' => $request['profielfoto'],
         );
+        $rules = array(
+            'telefoonnummer' => 'numeric',
+        );
+        $validator = Validator::make($data,$rules);
+        if($validator->fails()){
+            return redirect('/profiel')->withErrors($validator);
+        }
+
         User::where('id','=', $id)->update($data);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
         return redirect('/profiel');
@@ -131,8 +138,16 @@ class UserController extends Controller
                 'geslacht' => $request['geslacht'],
                 'telefoonnummer' => $request['telefoonnummer'],
             );
+
+        $rules = array(
+            'telefoonnummer' => 'numeric',
+        );
+        $validator = Validator::make($data,$rules);
+        if($validator->fails()){
+            return redirect('/medewerkermuteren/'.$id)->withErrors($validator);
+        }
             User::where('id', '=', $id)->update($data);
-        $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
+            $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
             return redirect('/medewerkers');
     }
     public function updateKlant(Request $request){
@@ -149,6 +164,13 @@ class UserController extends Controller
             'telefoonnummer' => $request['telefoonnummer'],
             'bedrijf' => $request['bedrijf'],
         );
+        $rules = array(
+            'telefoonnummer' => 'numeric',
+        );
+        $validator = Validator::make($data,$rules);
+        if($validator->fails()){
+            return redirect('/klantmuteren/'.$id)->withErrors($validator);
+        }
         User::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Klant '. $request['username']. ' veranderd.');
         return redirect('/klanten');
@@ -165,19 +187,7 @@ class UserController extends Controller
     }
     public function addMedewerker(Request $request){
 
-    Validator::make($request->all(),[
-        'username' => 'required|max:255|unique:gebruikers',
-        'email'    => 'required|max:255|unique:gebruikers',
-        'password' => 'required|min:6',
-        'bedrijf'  => 'required',
-        'voornaam' => 'required',
-        'tussenvoegsel' => 'required',
-        'achternaam' => 'required',
-        'telefoonnummer' => 'required',
-        'geslacht' => 'required',
-        'profielfoto' => 'required'
-    ]);
-    User::create([
+    $data = array(
         'username'   => $request['username'],
         'email'      => $request['email'],
         'password'   => bcrypt($request['password']),
@@ -188,7 +198,16 @@ class UserController extends Controller
         'telefoonnummer' => $request['telefoonnummer'],
         'geslacht' => $request['geslacht'],
         'profielfoto' => 'assets/images/avatar.png',
-    ]);
+    );
+
+        $rules = array(
+            'telefoonnummer' => 'numeric',
+        );
+        $validator = Validator::make($data,$rules);
+        if($validator->fails()){
+            return redirect('/newmedewerker')->withErrors($validator)->withInput();
+        }
+        User::insert($data)->save();
     $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
     return redirect('/newmedewerker');
 }

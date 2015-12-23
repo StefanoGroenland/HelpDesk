@@ -47,7 +47,7 @@ class User extends Model implements AuthenticatableContract,
         'geslacht',
         'telefoonnummer',
         'achternaam',
-        'profielfoto'
+        'profielfoto',
     ];
     protected $guarded = ['id'];
 

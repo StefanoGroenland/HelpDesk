@@ -38,6 +38,13 @@
                               </div>
                             @endif
                           @endforeach
+                          @if (count($errors))
+                              <ul class="list-unstyled">
+                                  @foreach($errors->all() as $error)
+                                      <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                                  @endforeach
+                              </ul>
+                          @endif
           <div class="row">
                 <div class="col-lg-4"></div>
                 <div class="col-lg-4">
@@ -74,16 +81,19 @@
                                           <label for="achternaam">Bedrijf</label>
                                           <input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="{{$klant->bedrijf}}">
                                         </div>
-                                        <div class="form-group">
+                                        @if($errors->has('telefoonnummer'))
+                                          <div class="form-group has-error">
+                                          @else
+                                          <div class="form-group">
+                                          @endif
                                           <label for="telefoonnummer">Telefoonnummer</label>
                                           <input type="text" class="form-control" required="true" id="telefoonnummer2" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$klant->telefoonnummer}}">
                                         </div>
                                         <div class="form-group">
                                         <label for="geslacht">Geslacht</label>
                                           <select class="form-control" id="geslacht2" required="true" name="geslacht">
-                                            <option value="{{$klant->geslacht}}">{{$klant->geslacht}}</option>
-                                            <option value="man">Man</option>
-                                            <option value="vrouw">Vrouw</option>
+                                          <option value="man" @if($klant->geslacht == 'man') selected @endif >Man</option>
+                                          <option value="vrouw" @if($klant->geslacht == 'vrouw') selected @endif >Vrouw</option>
                                           </select>
                                         </div>
                                          <div class="row">
