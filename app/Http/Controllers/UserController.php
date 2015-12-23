@@ -77,19 +77,22 @@ class UserController extends Controller
     }
 
     public function upload(Request $request){
-
         $id = $request['id'];
         $file = array('profielfoto' => $request->file('profielfoto'));
 
-        $rules = array('profielfoto' => 'required',);
+        $rules = array('profielfoto' => 'required|mimes:jpeg,bmp,png,jpg',);
 
         $validator = Validator::make($file,$rules);
         if($validator->fails()){
-            $request->session()->flash('alert-warning', 'Validator failed!');
+            if($file){
+                $request->session()->flash('alert-warning', 'Geen foto !');
+            }
+            else{
+                $request->session()->flash('alert-warning', 'Verkeerd type bestand');
+            }
             return redirect('/profiel');
         }
         else{
-
             if($request->file('profielfoto')->isValid()){
 
                 $destinationPath = 'assets/uploads';
