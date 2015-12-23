@@ -13,6 +13,7 @@ use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Route, View;
+use Symfony\Component\Console\Input\Input as Input;
 use Illuminate\Support\Facades\Hash as Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Bug as Bug;
@@ -74,6 +75,41 @@ class UserController extends Controller
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
         return redirect('/profiel');
     }
+
+    public function upload(Request $request){
+
+        $id = $request['id'];
+        $file = array('profielfoto' => $request->file('profielfoto'));
+
+        $rules = array('profielfoto' => 'required',);
+
+        $validator = Validator::make($file,$rules);
+        if($validator->fails()){
+            $request->session()->flash('alert-warning', 'Validator failed!');
+            return redirect('/profiel');
+        }
+        else{
+
+            if($request->file('profielfoto')->isValid()){
+
+                $destinationPath = 'assets/uploads';
+                $extension = $request->file('profielfoto')->getClientOriginalExtension();
+                $fileName = rand(1111,9999).'.'.$extension;
+
+                $request->file('profielfoto')->move($destinationPath,$fileName);
+                $ava = $destinationPath .'/'. $fileName;
+                User::uploadPicture($id,$ava);
+
+                $request->session()->flash('alert-success', 'goed');
+                return redirect('/profiel');
+            }
+            else{
+                $request->session()->flash('alert-danger', 'fout');
+                return redirect('/profiel');
+            }
+        }
+    }
+
     public function showKlantenOverzicht(){
         $klanten = User::where('bedrijf','!=', 'moodles')->get();
         return View::make('klanten' , compact('klanten'));

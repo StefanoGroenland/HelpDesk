@@ -20,6 +20,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/updateProfiel', array('as' => 'upd_profile', 'uses' => 'UserController@updateProfiel'));
     Route::get('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
     Route::put('/resetUserPassword', 'UserController@resetUserPassword');
+    Route::put('/profiel/upload', 'UserController@upload');
+
 //    klant routes
     Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'UserController@showDashboard'));
     Route::get('/klantmuteren/{id}', array('as' => 'kmuteren', 'uses' =>'UserController@showKlantMuteren'));

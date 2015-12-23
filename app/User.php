@@ -87,4 +87,10 @@ class User extends Model implements AuthenticatableContract,
         DB::table('gebruikers')->where('id', '=',$id)->delete();
         return redirect('/medewerkermuteren');
     }
+
+    public static function uploadPicture($id,$img){
+        DB::table('gebruikers')
+            ->where('id' , $id)
+            ->update(['profielfoto' => $img]);
+    }
 }

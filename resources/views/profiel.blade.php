@@ -47,19 +47,31 @@
                           <h3 class="panel-title">Profiel</h3>
                         </div>
                         <div class="panel-body">
-                          <form method="POST" action="/updateProfiel">
+                          <form method="POST" action="/profiel/upload" files="true" enctype="multipart/form-data">
                           {!! csrf_field() !!}
                           <input type="hidden" name="_method" value="PUT">
                           <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
-                            <img src="assets/images/avatar.png" alt="gfxuser" class="img-circle center-block">
+                            <img src="
+                            @if(!$user->profielfoto)
+                            {{"/assets/images/avatar.png"}}
+                            @else
+                            {{$user->profielfoto}}
+                            @endif
+                            "
+                            alt="gfxuser" class="img-circle center-block">
                             <div class="form-group center-block">
                             <label class="center-block text-center" for="fotoinput">Kies uw foto</label>
                             <input class="center-block" type="file"  name="profielfoto" id="profielfoto">
                           </div>
+                          <button type="submit" class="btn btn-success"><span class="fa fa-check" aria-hidden="true"></span> Verander foto</button>
+                          </form>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-6">
+                    <form method="POST" action="/updateProfiel">
+                          {!! csrf_field() !!}
+                      <input type="hidden" name="_method" value="PUT">
                       <div class="panel panel-green">
                         <div class="panel-heading">
                           <h3 class="panel-title">Mijn gegevens</h3>
@@ -67,6 +79,7 @@
                         <div class="panel-body">
                             <div class="form-group">
                               <label for="email">Email address</label>
+                                <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
                               <input type="email" class="form-control" required="true" name="email" value="{{$user->email}}">
                             </div>
                             <div class="form-group">
