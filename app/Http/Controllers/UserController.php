@@ -175,6 +175,7 @@ class UserController extends Controller
         'achternaam' => 'required',
         'telefoonnummer' => 'required',
         'geslacht' => 'required',
+        'profielfoto' => 'required'
     ]);
     User::create([
         'username'   => $request['username'],
@@ -186,6 +187,7 @@ class UserController extends Controller
         'achternaam' => $request['achternaam'],
         'telefoonnummer' => $request['telefoonnummer'],
         'geslacht' => $request['geslacht'],
+        'profielfoto' => 'assets/images/avatar.png',
     ]);
     $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
     return redirect('newmedewerker');
@@ -203,6 +205,7 @@ class UserController extends Controller
             'achternaam' => 'required',
             'telefoonnummer' => 'required',
             'geslacht' => 'required',
+            'profielfoto' => 'required'
         ]);
         User::create([
             'username'   => $request['username'],
@@ -214,9 +217,10 @@ class UserController extends Controller
             'achternaam' => $request['achternaam'],
             'telefoonnummer' => $request['telefoonnummer'],
             'geslacht' => $request['geslacht'],
+            'profielfoto' => 'assets/images/avatar.png',
         ]);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
-        return redirect('newmedewerker');
+        return redirect('newklant');
 
     }
     public function verwijderGebruiker(){

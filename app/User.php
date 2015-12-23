@@ -85,7 +85,7 @@ class User extends Model implements AuthenticatableContract,
     }
     public static function verwijderGebruiker($id){
         DB::table('gebruikers')->where('id', '=',$id)->delete();
-        return redirect('/medewerkermuteren');
+        return redirect('/klanten');
     }
 
     public static function uploadPicture($id,$img){

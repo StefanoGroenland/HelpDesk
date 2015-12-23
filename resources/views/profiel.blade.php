@@ -58,12 +58,12 @@
                             {{$user->profielfoto}}
                             @endif
                             "
-                            alt="gfxuser" class="img-circle center-block">
+                            alt="gfxuser" class="img-responsive center-block">
                             <div class="form-group center-block">
                             <label class="center-block text-center" for="fotoinput">Kies uw foto</label>
                             <input class="center-block" type="file"  name="profielfoto" id="profielfoto">
                           </div>
-                          <button type="submit" class="btn btn-success"><span class="fa fa-check" aria-hidden="true"></span> Verander foto</button>
+                          <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander foto</button>
                           </form>
                         </div>
                       </div>
@@ -118,7 +118,7 @@
                               <label for="bedrijfsnaam">Telefoonnummer</label>
                               <input type="text" class="form-control" required="true" name="telefoonnummer" value="{{$user->telefoonnummer}}">
                             </div>
-                            <button type="submit" class="btn btn-success"><span class="fa fa-check" aria-hidden="true"></span> Verander profiel</button>
+                            <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander profiel</button>
                           </form>
                         </div>
                       </div>
