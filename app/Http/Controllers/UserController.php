@@ -85,10 +85,7 @@ class UserController extends Controller
         $validator = Validator::make($file,$rules);
         if($validator->fails()){
             if($file){
-                $request->session()->flash('alert-warning', 'Geen foto !');
-            }
-            else{
-                $request->session()->flash('alert-warning', 'Verkeerd type bestand');
+                $request->session()->flash('alert-danger', 'U heeft geen bestand / geen geldig bestand gekozen om te uploaden, voeg een foto toe.');
             }
             return redirect('/profiel');
         }
@@ -103,11 +100,11 @@ class UserController extends Controller
                 $ava = $destinationPath .'/'. $fileName;
                 User::uploadPicture($id,$ava);
 
-                $request->session()->flash('alert-success', 'goed');
+                $request->session()->flash('alert-success', 'Uw profiel foto is veranderd.');
                 return redirect('/profiel');
             }
             else{
-                $request->session()->flash('alert-danger', 'fout');
+                $request->session()->flash('alert-danger', 'Er is een fout opgetreden tijdens het uploaden van uw bestand.');
                 return redirect('/profiel');
             }
         }
