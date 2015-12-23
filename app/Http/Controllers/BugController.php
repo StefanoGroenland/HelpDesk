@@ -105,7 +105,7 @@ class BugController extends Controller
         if($validator->fails()){
             return redirect('/bugmuteren')->withErrors($validator);
         }
-        User::create($data);
+        Bug::create($data);
 
         $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
         return redirect('/bugmuteren');

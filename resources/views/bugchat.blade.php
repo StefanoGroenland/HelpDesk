@@ -189,20 +189,18 @@
                                         {{--mw--}}
                                        @if($afzender->medewerker)
                                        <div class="panel-heading panel-warning">
-                                       <img src="{{'../'.$afzender->medewerker->profielfoto}}" class="img-responsive img-circle pull-left" alt="medewerker_ava"
-                                        style="margin-right:3px; height: 35px;!important; width: 35px;!important; border: solid 1px lightgrey;"/>
+                                       <img src="{{'../'.$afzender->medewerker->profielfoto}}" class="img-responsive img-circle pull-left small_avatar" alt="medewerker_ava"/>
                                       <span class="label label-warning">
                                         {{$afzender->medewerker->voornaam.' '.$afzender->medewerker->tussenvoegsel.' '. $afzender->medewerker->achternaam}}
                                       </span>
                                         @elseif($afzender->klant)
                                         <div class="panel-heading panel-info">
                                         {{--klant--}}
-                                        <img src="{{'../'.$afzender->klant->profielfoto}}" class="img-responsive img-circle pull-left" alt="medewerker_ava"
-                                        style="margin-right:3px; height: 35px;!important; width: 35px;!important; border: solid 1px lightgrey;"/>
+                                        <img src="{{'../'.$afzender->klant->profielfoto}}" class="img-responsive img-circle pull-left small_avatar" alt="medewerker_ava"/>
                                       <span class="label label-info">
                                         {{$afzender->klant->voornaam .' '.$afzender->klant->tussenvoegsel.' '. $afzender->klant->achternaam}}
                                       </span>
-                                      @endif 
+                                      @endif
                                     <span class="pull-right label label-default"><i class="fa fa-clock-o"></i> {{$afzender->created_at->format('d-m-Y H:i:s')}}</span>
 
                                 <div class="panel-heading">
@@ -302,7 +300,8 @@
                         $.each(data, function(index, elem) {
                             if (elem.medewerker) {
                             div += '<div class="panel-heading panel-warning">';
-                            div += '<i class="fa fa-fw fa-users fa-2x"></i>';
+                            {{--<img src="{{'../'.$afzender->medewerker->profielfoto}}" class="img-responsive img-circle pull-left" alt="medewerker_ava"--}}
+                            div += '<img class="img-responsive img-circle pull-left small_avatar" alt="medewerker_ava" src=" '+ '../'+ elem.medewerker.profielfoto +' " />';
                             div += '<span class="label label-warning">'+ elem.medewerker.voornaam +' '+ elem.medewerker.tussenvoegsel +' '+ elem.medewerker.achternaam + '</span>';
                             div += '<span class="pull-right label label-default"><i class="fa fa-clock-o"></i> ' + convertDate(elem.created_at)+ '</span>' ;
                             div += '<div class="panel-heading">';
@@ -312,7 +311,7 @@
                             }
                             else {
                             div += '<div class="panel-heading panel-info">';
-                            div += '<i class="fa fa-fw fa-user fa-2x"></i>';
+                            div += '<img class="img-responsive img-circle pull-left small_avatar" alt="klant_ava" src=" '+ '../'+ elem.klant.profielfoto +' " />';
                             div += '<span class="label label-info">' + elem.klant.voornaam +' '+ elem.klant.tussenvoegsel +' '+ elem.klant.achternaam + '</span>';
                             div +=  ' <span class="pull-right label label-default"><i class="fa fa-clock-o"></i> ' + convertDate(elem.created_at)+ '</span>' ;
                             div += '<div class="panel-heading">'

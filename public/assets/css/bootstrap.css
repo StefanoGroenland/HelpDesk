@@ -6394,6 +6394,14 @@ button.close {
     text-align:center;
     opacity: 0.85;
 }
+.small_avatar{
+    margin-right:3px;
+    height: 35px;!important;
+    width: 35px;!important;
+    border: solid 1px lightgrey;
+}
+
+
 
 
 @-ms-viewport {
