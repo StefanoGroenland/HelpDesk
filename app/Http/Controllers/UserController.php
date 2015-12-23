@@ -125,18 +125,18 @@ class UserController extends Controller
         return View::make('medewerkers' , compact('medewerkers'));
     }
     public function updateMedewerker(Request $request){
-            $id = $request['id'];
-            $data = array(
-                'id'                => $request['id'],
-                'username'          => $request['username'],
-                'email'             => $request['email'],
-                'password'          => bcrypt($request['password']),
-                'voornaam'          => $request['voornaam'],
-                'tussenvoegsel'     => $request['tussenvoegsel'],
-                'achternaam'        => $request['achternaam'],
-                'geslacht'          => $request['geslacht'],
-                'telefoonnummer'    => $request['telefoonnummer'],
-            );
+        $id = $request['id'];
+        $data = array(
+            'id'                    => $request['id'],
+            'username'              => $request['username'],
+            'email'                 => $request['email'],
+            'password'              => bcrypt($request['password']),
+            'voornaam'              => $request['voornaam'],
+            'tussenvoegsel'         => $request['tussenvoegsel'],
+            'achternaam'            => $request['achternaam'],
+            'geslacht'              => $request['geslacht'],
+            'telefoonnummer'        => $request['telefoonnummer'],
+        );
 
         $rules = array(
             'telefoonnummer' => 'numeric',
