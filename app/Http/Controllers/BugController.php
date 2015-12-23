@@ -35,12 +35,17 @@ class BugController extends Controller
     }
 
     public function showBugOverzicht($id){
-        $bugs_related = $this->getRelatedBugs($id);
-        $bugs_all = Bug::with('klant','user')->orderBy('id','desc')->get();
-        $projects = Project::where('gebruiker_id','=', $id)->get();
-        $projects_all = Project::all();
-        $klanten = User::all();
-        return View::make('/bugoverzicht', compact('bugs_related', 'bugs_all', 'projects', 'projects_all', 'klanten'));
+        if($id == Auth::user()->id){
+            $bugs_related = $this->getRelatedBugs($id);
+            $bugs_all = Bug::with('klant','user')->orderBy('id','desc')->get();
+            $projects = Project::where('gebruiker_id','=', $id)->get();
+            $projects_all = Project::all();
+            $klanten = User::all();
+            return View::make('/bugoverzicht', compact('bugs_related', 'bugs_all', 'projects', 'projects_all', 'klanten'));
+        }else{
+            return redirect('/dashboard');
+        }
+
     }
 
     public function verwijderBug(){
@@ -86,15 +91,15 @@ class BugController extends Controller
         );
 
         $rules = array(
-            'titel'          => 'required',
-            'prioriteit'     => 'required',
-            'soort'          => 'required',
-            'status'         => 'required',
-            'start_datum'    => 'required',
-            'eind_datum'     => 'required',
-            'beschrijving'   => 'required',
-            'klant_id'       => 'required',
-            'project_id'     => 'required',
+            'titel'             => 'required',
+            'prioriteit'        => 'required',
+            'soort'             => 'required',
+            'status'            => 'required',
+            'start_datum'       => 'required',
+            'eind_datum'        => 'required',
+            'beschrijving'      => 'required',
+            'klant_id'          => 'required',
+            'project_id'        => 'required',
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){

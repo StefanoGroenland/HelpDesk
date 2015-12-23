@@ -13,7 +13,6 @@ use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Route, View;
-use Symfony\Component\Console\Input\Input as Input;
 use Illuminate\Support\Facades\Hash as Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Bug as Bug;
@@ -59,16 +58,16 @@ class UserController extends Controller
     public function updateProfiel(Request $request){
         $id = $request['id'];
         $data = array(
-            'id'         => $request['id'],
-            'username'   => $request['username'],
-            'email'      => $request['email'],
-            'password'   => Hash::make($request['password']),
-            'voornaam'   => $request['voornaam'],
-            'tussenvoegsel'   => $request['tussenvoegsel'],
-            'achternaam' => $request['achternaam'],
-            'geslacht' => $request['geslacht'],
-            'telefoonnummer' => $request['telefoonnummer'],
-            'bedrijf' => $request['bedrijf'],
+            'id'                    => $request['id'],
+            'username'              => $request['username'],
+            'email'                 => $request['email'],
+            'password'              => Hash::make($request['password']),
+            'voornaam'              => $request['voornaam'],
+            'tussenvoegsel'         => $request['tussenvoegsel'],
+            'achternaam'            => $request['achternaam'],
+            'geslacht'              => $request['geslacht'],
+            'telefoonnummer'        => $request['telefoonnummer'],
+            'bedrijf'               => $request['bedrijf'],
         );
         $rules = array(
             'telefoonnummer' => 'numeric',
@@ -128,15 +127,15 @@ class UserController extends Controller
     public function updateMedewerker(Request $request){
             $id = $request['id'];
             $data = array(
-                'id'         => $request['id'],
-                'username'   => $request['username'],
-                'email'      => $request['email'],
-                'password'   => bcrypt($request['password']),
-                'voornaam'   => $request['voornaam'],
-                'tussenvoegsel'   => $request['tussenvoegsel'],
-                'achternaam' => $request['achternaam'],
-                'geslacht' => $request['geslacht'],
-                'telefoonnummer' => $request['telefoonnummer'],
+                'id'                => $request['id'],
+                'username'          => $request['username'],
+                'email'             => $request['email'],
+                'password'          => bcrypt($request['password']),
+                'voornaam'          => $request['voornaam'],
+                'tussenvoegsel'     => $request['tussenvoegsel'],
+                'achternaam'        => $request['achternaam'],
+                'geslacht'          => $request['geslacht'],
+                'telefoonnummer'    => $request['telefoonnummer'],
             );
 
         $rules = array(
@@ -153,16 +152,16 @@ class UserController extends Controller
     public function updateKlant(Request $request){
         $id = $request['id'];
         $data = array(
-            'id'         => $request['id'],
-            'username'   => $request['username'],
-            'email'      => $request['email'],
-            'password'   => bcrypt($request['password']),
-            'voornaam'   => $request['voornaam'],
-            'tussenvoegsel'   => $request['tussenvoegsel'],
-            'achternaam' => $request['achternaam'],
-            'geslacht' => $request['geslacht'],
-            'telefoonnummer' => $request['telefoonnummer'],
-            'bedrijf' => $request['bedrijf'],
+            'id'                    => $request['id'],
+            'username'              => $request['username'],
+            'email'                 => $request['email'],
+            'password'              => bcrypt($request['password']),
+            'voornaam'              => $request['voornaam'],
+            'tussenvoegsel'         => $request['tussenvoegsel'],
+            'achternaam'            => $request['achternaam'],
+            'geslacht'              => $request['geslacht'],
+            'telefoonnummer'        => $request['telefoonnummer'],
+            'bedrijf'               => $request['bedrijf'],
         );
         $rules = array(
             'telefoonnummer' => 'numeric',
@@ -188,17 +187,16 @@ class UserController extends Controller
     public function addMedewerker(Request $request){
 
     $data = array(
-//        'created_at' => date('y-m-d - H:i:s'),
-        'username'   => $request['username'],
-        'email'      => $request['email'],
-        'password'   => bcrypt($request['password']),
-        'bedrijf'    => 'moodles',
-        'voornaam'   => $request['voornaam'],
-        'tussenvoegsel'   => $request['tussenvoegsel'],
-        'achternaam' => $request['achternaam'],
-        'telefoonnummer' => $request['telefoonnummer'],
-        'geslacht' => $request['geslacht'],
-        'profielfoto' => 'assets/images/avatar.png',
+        'username'                  => $request['username'],
+        'email'                     => $request['email'],
+        'password'                  => bcrypt($request['password']),
+        'bedrijf'                   => 'moodles',
+        'voornaam'                  => $request['voornaam'],
+        'tussenvoegsel'             => $request['tussenvoegsel'],
+        'achternaam'                => $request['achternaam'],
+        'telefoonnummer'            => $request['telefoonnummer'],
+        'geslacht'                  => $request['geslacht'],
+        'profielfoto'               => 'assets/images/avatar.png',
     );
 
         $rules = array(
@@ -215,16 +213,16 @@ class UserController extends Controller
     public function addUser(Request $request){
 
         $data = array(
-            'username'   => $request['username'],
-            'email'      => $request['email'],
-            'password'   => bcrypt($request['password']),
-            'bedrijf'    => $request['bedrijf'],
-            'voornaam'   => $request['voornaam'],
-            'tussenvoegsel'   => $request['tussenvoegsel'],
-            'achternaam' => $request['achternaam'],
-            'telefoonnummer' => $request['telefoonnummer'],
-            'geslacht' => $request['geslacht'],
-            'profielfoto' => 'assets/images/avatar.png',
+            'username'              => $request['username'],
+            'email'                 => $request['email'],
+            'password'              => bcrypt($request['password']),
+            'bedrijf'               => $request['bedrijf'],
+            'voornaam'              => $request['voornaam'],
+            'tussenvoegsel'         => $request['tussenvoegsel'],
+            'achternaam'            => $request['achternaam'],
+            'telefoonnummer'        => $request['telefoonnummer'],
+            'geslacht'              => $request['geslacht'],
+            'profielfoto'           => 'assets/images/avatar.png',
         );
         $rules = array(
             'telefoonnummer' => 'numeric',
