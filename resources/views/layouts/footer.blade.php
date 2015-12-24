@@ -5,6 +5,7 @@
      <link href="{{URL::asset('../assets/css/plugins/morris.css')}}" rel="stylesheet">
      <!-- Custom Fonts -->
      <link href="{{URL::asset('../assets/fonts/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+     <link href="{{URL::asset('../assets/css/dropzone.css')}}" rel="stylesheet" type="text/css">
 
      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
          <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,6 +22,7 @@
     <script src="{{URL::asset('../assets/js/plugins/morris/raphael.min.js')}}"></script>
     <script src="{{URL::asset('../assets/js/plugins/morris/morris.js')}}"></script>
     <script src="{{URL::asset('../assets/js/plugins/morris/morris-data.js')}}"></script>
+    <script src="{{URL::asset('../assets/js/dropzone.js')}}"></script>
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\BugAttachment;
 use App\Http\Requests;
 use App\Bug as Bug;
 use App\User as User;
@@ -45,7 +46,6 @@ class BugController extends Controller
         }else{
             return redirect('/dashboard');
         }
-
     }
 
     public function verwijderBug(){
@@ -75,6 +75,7 @@ class BugController extends Controller
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
         return redirect('/bugchat/'. $bug->id);
     }
+
 
     public function addBug( Request $request){
 
@@ -109,7 +110,7 @@ class BugController extends Controller
 
         $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
         return redirect('/bugmuteren');
-
-
     }
+
+
 }

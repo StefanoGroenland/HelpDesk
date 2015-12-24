@@ -50,5 +50,4 @@ class Bug extends Model
     public static function verwijderBug($id){
         return DB::table('bugs')->where('id', '=',$id)->delete();
     }
-
 }

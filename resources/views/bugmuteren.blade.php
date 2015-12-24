@@ -46,10 +46,11 @@
                             <h3 class="panel-title">Bijlage</h3>
                         </div>
                         <div class="panel-body">
-                        <form method="POST" action="/"  enctype="multipart/form-data">
+                        <form method="POST" action="/addBug" enctype="multipart/form-data">
                         {!! csrf_field() !!}
-                            <span id="multixfiles" style="display:none">Multiple </span><input type="file" name="files" multiple="multiple"><br/>
-                        </form>
+                            <input type="file" name="file" multiple><br/>
+                            <pre><i class="fa fa-info"></i> Houd <kbd>ctrl</kbd> ingedrukt om meerdere bestanden te kiezen</pre>
+
                         </div>
                     </div>
 
@@ -63,8 +64,6 @@
                             <h3 class="panel-title">Nieuwe bug</h3>
                         </div>
                         <div class="panel-body">
-                            <form method="POST" action="/addBug" >
-                             {!! csrf_field() !!}
                             <div class="form-group">
                                 <label for="bedrijfsnaam">Project</label>
                                 <input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel">
@@ -116,6 +115,10 @@
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
+
+@section('scripts')
+<script src="../assets/js/dropzone.js"></script>
+@endsection
 
 @extends('layouts.footer')
 

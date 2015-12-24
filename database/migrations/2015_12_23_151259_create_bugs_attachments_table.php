@@ -16,6 +16,7 @@ class CreateBugsAttachmentsTable extends Migration
         Schema::create('bugs_attachments', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->text('image');
             $table->integer('bug_id');
         });
     }
