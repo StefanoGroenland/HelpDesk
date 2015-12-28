@@ -114,11 +114,15 @@
                        <div class="panel-body">
                             <div id="message"></div>
                            <form id="upload" action="upload" enctype="multipart/form-data">
-                               <input type="file" name="file[]" multiple><br/>
+
                                <input type="hidden" name="id" value="{{$bug->id}}">
                                 {!! csrf_field() !!}
                                <pre><i class="fa fa-info"></i> Houd <kbd>ctrl</kbd> ingedrukt om <br>meerdere bestanden te kiezen</pre>
-                               <input type="submit" value="Upload" class="btn btn-success btn-xs center-block">
+                                <div class="row">
+                                <div class="col-lg-6"><input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple></div>
+                                <div class="col-lg-6"><input type="submit" value="Upload" class="btn btn-success btn-xs pull-right"></div>
+                                </div>
+
                            </form>
                        </div>
 
@@ -162,16 +166,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 well well-sm">
-                <h3>Omschrijving :</h3>
-                <p>
-                    {{$bug->beschrijving}}
-                </p>
-            </div>
+
 
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-lg-8">
+                <div class="col-lg-9">
+                <div class="col-lg-12 well well-sm">
+                                <h3>Omschrijving :</h3>
+                                <p>
+                                    {{$bug->beschrijving}}
+                                </p>
+                            </div>
                     <h3>Discussie
                         <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
                            <i class="fa fa-refresh fa-spin"></i>
@@ -317,11 +322,20 @@
                 var formdata = new FormData(form);
 
                 request.open('post','/upload');
-//                request.addEventListener("load", transferComplete);
+                request.addEventListener("load", transferComplete)
                 request.send(formdata);
                 });
 
-
+                function transferComplete(data){
+                response = JSON.parse(data.currentTarget.response);
+                    if(response.success){
+                        document.getElementById('message').className += "alert alert-info";
+                        document.getElementById('message').innerHTML = "Bestanden uploaden voltooid.";
+                    }else{
+                        document.getElementById('message').className += "alert alert-danger";
+                        document.getElementById('message').innerHTML = "Bestanden uploaden mislukt.";
+                    }
+                }
 
                 </script>
                 <script type="text/javascript">

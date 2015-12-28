@@ -126,14 +126,10 @@ class BugController extends Controller
                     $ava = $destinationPath .'/'. $filename;
                     Bug::uploadToDb($ava,$id);
                 }else{
-                    $request->session()->flash('alert-danger', 'Bug'. $request['titel']. ' toegevoegd.');
-                    return redirect('/bugmuteren');
+                    return \Response::json(array('success' => false));
                 }
             }
-            $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
-            return redirect('/bugmuteren');
+            return \Response::json(array('success' => true));
         }
-        $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
-        return redirect('/bugmuteren12');
     }
 }
