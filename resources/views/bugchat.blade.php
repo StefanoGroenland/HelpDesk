@@ -326,20 +326,22 @@
                 });
 
                 function transferComplete(data){
+                var something = '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
                 response = JSON.parse(data.currentTarget.response);
                     if(response.success){
-                        document.getElementById('message').className += "alert alert-info";
+                        document.getElementById('message').className += "alert alert-info ";
                         document.getElementById('message').innerHTML = "Bestanden uploaden voltooid.";
+                        $("#message").append(something);
+
                     }else{
-                        document.getElementById('message').className += "alert alert-danger";
+                        document.getElementById('message').className += "alert alert-danger ";
                         document.getElementById('message').innerHTML = "Bestanden uploaden mislukt.";
+                        $("#message").append(something);
                     }
                 }
-
                 </script>
+
                 <script type="text/javascript">
-
-
                 function convertDate(inputFormat) {
                   function pad(s) { return (s < 10) ? '0' + s : s; }
                   var d = new Date(inputFormat);
