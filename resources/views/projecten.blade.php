@@ -52,7 +52,6 @@
                                 <th>Soort</th>
                                 <th>Prioriteit</th>
                                 <th></th>
-                                <th></th>
                                 </thead>
                                 <tbody>
                                     @foreach($projects as $project)
@@ -82,8 +81,6 @@
                                                   <i class="glyphicon glyphicon-pencil"></i>
                                            </button>
                                       </a>
-                                      </td>
-                                        <td>
                                         <a href="/verwijderProject/{{$project->id}}" class="">
                                             <button type="submit" class="btn btn-danger btn-xs">
                                                <i class="glyphicon glyphicon-trash"></i>

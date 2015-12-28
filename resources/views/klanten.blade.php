@@ -52,7 +52,6 @@
                           <th>Telefoonnummer</th>
                           <th>Bedrijf</th>
                           <th></th>
-                          <th></th>
                           </thead>
                           <tbody>
                               @foreach($klanten as $klant)
@@ -75,8 +74,6 @@
                                           <i class="glyphicon glyphicon-pencil"></i>
                                    </button>
                                    </a>
-                              </td>
-                                <td>
                                 <a href="/verwijderGebruiker/{{$klant->id}}" class="">
                                     <button type="submit" class="btn btn-danger btn-xs">
                                        <i class="glyphicon glyphicon-trash"></i>
