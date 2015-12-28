@@ -115,11 +115,14 @@
                             <div id="message"></div>
                            <form id="upload" action="upload" enctype="multipart/form-data">
                                <input type="file" name="file[]" multiple><br/>
+                               <input type="hidden" name="id" value="{{$bug->id}}">
                                 {!! csrf_field() !!}
                                <pre><i class="fa fa-info"></i> Houd <kbd>ctrl</kbd> ingedrukt om <br>meerdere bestanden te kiezen</pre>
                                <input type="submit" value="Upload" class="btn btn-success btn-xs center-block">
                            </form>
                        </div>
+
+
                        @if($bug->prioriteit == 'laag')
                        <div class="panel panel-success">
                        @elseif($bug->prioriteit == 'gemiddeld')
@@ -175,7 +178,7 @@
                            refresh feed
                         </button>
 
-                            <button class="btn btn-success btn-xs pull-right">
+                            <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target=".bs-example-modal-lg">
                             Bijlages zien
                                <i class="glyphicon glyphicon-camera"></i>
                             </button>
@@ -283,6 +286,23 @@
             </div>
         </div>
     </div>
+    <!-- Large modal -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Titel</h4>
+          </div>
+          <div class="modal-body">
+          body
+          </div>
+          <div class="modal-footer">
+          footer
+          </div>
+        </div>
+      </div>
+    </div>
 <!-- /.container-fluid -->
 {{--</div>--}}
 <!-- /#page-wrapper -->
@@ -304,9 +324,15 @@
                 function transferComplete(data){
                     response = JSON.parse(data.currentTarget.response);
                     if(response.success){
-                        document.getElementById('message').className += "alert alert-info";
-                        document.getElementById('message').innerHTML = "Bestanden uploaden voltooid.";
+                            document.getElementById('message').className += "alert alert-info";
+                            document.getElementById('message').innerHTML = "Bestanden uploaden voltooid.";
+                    }else{
+                            document.getElementById('message').className += "alert alert-danger";
+                            document.getElementById('message').innerHTML = "Een of meerdere bestanden zijn niet verstuurd. Alleen extensies : <kbd>.jpg</kbd> <kbd>.jpeg</kbd>" +
+                             "                                                                                                               <kbd>.bmp</kbd> en <kbd>.png</kbd> zijn toegestaan";
                     }
+
+
                 }
 
 

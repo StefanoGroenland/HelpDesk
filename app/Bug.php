@@ -50,4 +50,11 @@ class Bug extends Model
     public static function verwijderBug($id){
         return DB::table('bugs')->where('id', '=',$id)->delete();
     }
+    public static function uploadToDb($file,$id){
+        return DB::table('bugs_attachments')->insert([
+            'bug_id' => $id,
+            'image' => $file,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+    }
 }

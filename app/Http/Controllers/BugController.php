@@ -114,12 +114,19 @@ class BugController extends Controller
 
     public function upload(Request $request){
         $files = $request->file('file');
+        $id = $request->get('id');
+        $mime = array('jpeg','bmp','png','jpg');
+
         if(!empty($files)){
             foreach($files as $file){
-                Storage::put($file->getClientOriginalName(),file_get_contents($file));
+                if(in_array($file->getClientOriginalExtension(), $mime)){
+                    Storage::put($file->getClientOriginalName(),file_get_contents($file));
+                    Bug::uploadToDb($file->getClientOriginalName(),$id);
+                }else{
+                    return \Response::json(array('success' => false));
+                }
             }
+            return \Response::json(array('success' => true));
         }
-        return \Response::json(array('success' => true));
     }
-
 }
