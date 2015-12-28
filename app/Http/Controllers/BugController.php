@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\BugAttachment;
 use App\Http\Requests;
 use App\Bug as Bug;
+use Storage;
 use App\User as User;
 use App\Chat as Chat;
 use App\Project as Project;
@@ -110,4 +111,15 @@ class BugController extends Controller
         $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
         return redirect('/bugmuteren');
     }
+
+    public function upload(Request $request){
+        $files = $request->file('file');
+        if(!empty($files)){
+            foreach($files as $file){
+                Storage::put($file->getClientOriginalName(),file_get_contents($file));
+            }
+        }
+        return \Response::json(array('success' => true));
+    }
+
 }

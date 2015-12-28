@@ -48,14 +48,10 @@
                         <div class="panel-body">
                         <form method="POST" action="/addBug" enctype="multipart/form-data">
                         {!! csrf_field() !!}
-                            <input type="file" name="file" multiple><br/>
+                            <input type="file" name="file[]" multiple><br/>
                             <pre><i class="fa fa-info"></i> Houd <kbd>ctrl</kbd> ingedrukt om meerdere bestanden te kiezen</pre>
-
                         </div>
                     </div>
-
-
-
                 </div>
                 <div class="col-lg-4">
 
@@ -117,7 +113,7 @@
 <!-- /#wrapper -->
 
 @section('scripts')
-<script src="../assets/js/dropzone.js"></script>
+
 @endsection
 
 @extends('layouts.footer')

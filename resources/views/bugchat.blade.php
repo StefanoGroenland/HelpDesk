@@ -109,7 +109,17 @@
                 </div>
                 @endif
                 <div class="row">
+
                     <div class="col-lg-12">
+                       <div class="panel-body">
+                            <div id="message"></div>
+                           <form id="upload" action="upload" enctype="multipart/form-data">
+                               <input type="file" name="file[]" multiple><br/>
+                                {!! csrf_field() !!}
+                               <pre><i class="fa fa-info"></i> Houd <kbd>ctrl</kbd> ingedrukt om <br>meerdere bestanden te kiezen</pre>
+                               <input type="submit" value="Upload" class="btn btn-success btn-xs center-block">
+                           </form>
+                       </div>
                        @if($bug->prioriteit == 'laag')
                        <div class="panel panel-success">
                        @elseif($bug->prioriteit == 'gemiddeld')
@@ -149,12 +159,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-10 well">
+            <div class="col-lg-9 well well-sm">
                 <h3>Omschrijving :</h3>
                 <p>
                     {{$bug->beschrijving}}
                 </p>
             </div>
+
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
@@ -163,6 +174,13 @@
                            <i class="fa fa-refresh fa-spin"></i>
                            refresh feed
                         </button>
+
+                            <button class="btn btn-success btn-xs pull-right">
+                            Bijlages zien
+                               <i class="glyphicon glyphicon-camera"></i>
+                            </button>
+
+
                     </h3>
                     <ul class="list-unstyled" >
                     <li class="text-left">
@@ -210,6 +228,7 @@
                             @endforeach
                         </li>
                     </ul>
+
                     <form method="POST" action="/sendMessage">
                     {!! csrf_field() !!}
                         <div class="form-group">
@@ -268,7 +287,29 @@
 {{--</div>--}}
 <!-- /#page-wrapper -->
          @section('scripts')
+
                 <script type="text/javascript">
+                var form = document.getElementById('upload');
+                var request = new XMLHttpRequest();
+
+                form.addEventListener('submit', function(e){
+                e.preventDefault();
+                var formdata = new FormData(form);
+
+                request.open('post','/upload');
+                request.addEventListener("load", transferComplete);
+                request.send(formdata);
+                });
+
+                function transferComplete(data){
+                    response = JSON.parse(data.currentTarget.response);
+                    if(response.success){
+                        document.getElementById('message').className += "alert alert-info";
+                        document.getElementById('message').innerHTML = "Bestanden uploaden voltooid.";
+                    }
+                }
+
+
                 function convertDate(inputFormat) {
                   function pad(s) { return (s < 10) ? '0' + s : s; }
                   var d = new Date(inputFormat);
@@ -279,10 +320,6 @@
                       ("00" + d.getHours()).slice(-2) + ":" +
                       ("00" + d.getMinutes()).slice(-2) + ":" +
                       ("00" + d.getSeconds()).slice(-2)];
-                }
-
-                function scroll_to_bottom(){
-                    window.scrollTo(0,document.body.scrollHeight);
                 }
 
                 function refresh_feed(){
