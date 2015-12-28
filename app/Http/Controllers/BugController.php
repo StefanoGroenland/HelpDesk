@@ -124,7 +124,7 @@ class BugController extends Controller
                     $destinationPath = 'assets/uploads/bug_attachments';
                     $file->move($destinationPath,$filename);
                     $ava = $destinationPath .'/'. $filename;
-                    Bug::uploadToDb($ava,$id);
+                    BugAttachment::uploadToDb($ava,$id);
                 }else{
                     return \Response::json(array('success' => false));
                 }

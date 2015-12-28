@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class BugAttachment extends Model
 {
@@ -24,12 +25,11 @@ class BugAttachment extends Model
     ];
     protected $guarded = ['id'];
 
-    public static function uploadPicture($id,$img){
-        return DB::table('bug_attachments')
-            ->insert([
-                'bug_id' => $id,
-                'image' => $img,
-            ]);
+    public static function uploadToDb($file,$id){
+        return DB::table('bugs_attachments')->insert([
+            'bug_id' => $id,
+            'image' => $file,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
     }
-
 }

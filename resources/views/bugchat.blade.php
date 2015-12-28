@@ -300,7 +300,7 @@
           <h4 class="modal-title">Titel</h4>
           </div>
           <div class="modal-body">
-          body
+          content body
           </div>
           <div class="modal-footer">
           footer
