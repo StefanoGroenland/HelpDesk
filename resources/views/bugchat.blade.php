@@ -317,23 +317,11 @@
                 var formdata = new FormData(form);
 
                 request.open('post','/upload');
-                request.addEventListener("load", transferComplete);
+//                request.addEventListener("load", transferComplete);
                 request.send(formdata);
                 });
 
-                function transferComplete(data){
-                    response = JSON.parse(data.currentTarget.response);
-                    if(response.success){
-                            document.getElementById('message').className += "alert alert-info";
-                            document.getElementById('message').innerHTML = "Bestanden uploaden voltooid.";
-                    }else{
-                            document.getElementById('message').className += "alert alert-danger";
-                            document.getElementById('message').innerHTML = "Een of meerdere bestanden zijn niet verstuurd. Alleen extensies : <kbd>.jpg</kbd> <kbd>.jpeg</kbd>" +
-                             "                                                                                                               <kbd>.bmp</kbd> en <kbd>.png</kbd> zijn toegestaan";
-                    }
 
-
-                }
 
                 </script>
                 <script type="text/javascript">

@@ -121,13 +121,19 @@ class BugController extends Controller
             foreach($files as $file){
                 if(in_array($file->getClientOriginalExtension(), $mime)){
                     $filename = str_random(10) . '.'. $file->getClientOriginalExtension();
-                    Storage::put($filename,file_get_contents($file));
-                    Bug::uploadToDb($filename,$id);
+                    $destinationPath = 'assets/uploads/bug_attachments';
+                    $file->move($destinationPath,$filename);
+                    $ava = $destinationPath .'/'. $filename;
+                    Bug::uploadToDb($ava,$id);
                 }else{
-                    return \Response::json(array('success' => false));
+                    $request->session()->flash('alert-danger', 'Bug'. $request['titel']. ' toegevoegd.');
+                    return redirect('/bugmuteren');
                 }
             }
-            return \Response::json(array('success' => true));
+            $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
+            return redirect('/bugmuteren');
         }
+        $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
+        return redirect('/bugmuteren12');
     }
 }
