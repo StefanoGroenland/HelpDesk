@@ -117,7 +117,6 @@ class BugController extends Controller
         $id = $request->get('id');
         $mime = array('jpeg','bmp','png','jpg');
 
-//        todo ;; zorgen dat er een str_random komt voor de filename.
         if(!empty($files)){
             foreach($files as $file){
                 if(in_array($file->getClientOriginalExtension(), $mime)){
