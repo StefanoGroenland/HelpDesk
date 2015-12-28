@@ -117,11 +117,13 @@ class BugController extends Controller
         $id = $request->get('id');
         $mime = array('jpeg','bmp','png','jpg');
 
+//        todo ;; zorgen dat er een str_random komt voor de filename.
         if(!empty($files)){
             foreach($files as $file){
                 if(in_array($file->getClientOriginalExtension(), $mime)){
-                    Storage::put($file->getClientOriginalName(),file_get_contents($file));
-                    Bug::uploadToDb($file->getClientOriginalName(),$id);
+                    $filename = str_random(10) . '.'. $file->getClientOriginalExtension();
+                    Storage::put($filename,file_get_contents($file));
+                    Bug::uploadToDb($filename,$id);
                 }else{
                     return \Response::json(array('success' => false));
                 }

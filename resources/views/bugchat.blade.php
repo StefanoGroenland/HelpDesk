@@ -335,6 +335,9 @@
 
                 }
 
+                </script>
+                <script type="text/javascript">
+
 
                 function convertDate(inputFormat) {
                   function pad(s) { return (s < 10) ? '0' + s : s; }
