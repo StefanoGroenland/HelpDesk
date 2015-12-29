@@ -62,7 +62,7 @@
                            @foreach($bugs_related as $bug)
                                 <tr>
                                     <td>{{$bug->id}}</td>
-                                    <td>{{substr($bug->titel,0,15)}}</td>
+                                    <td>{{substr($bug->titel,0,15)}}...</td>
                                     <td>{{$bug->status}}</td>
                                     <td>{{$bug->soort}}</td>
                                     <td>
