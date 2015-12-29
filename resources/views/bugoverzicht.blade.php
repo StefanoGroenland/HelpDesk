@@ -98,11 +98,9 @@
                                             </button>
                                         </a>
                                         @if(Auth::user()->bedrijf == 'moodles')
-                                        <a href="/verwijderBug/{{$bug->id}}" class="">
-                                            <button class="btn btn-danger btn-xs">
-                                                    <i class="fa fa-trash"></i>
-                                            </button>
-                                        </a>
+                                             <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$bug->id}}">
+                                               <i class="glyphicon glyphicon-trash"></i>
+                                             </button>
                                         @endif
                                     </td>
                                 </tr>
@@ -261,6 +259,32 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
+
+    @foreach($bugs_related as $key)
+                     <div class="modal fade" id="myModal{{$key->id}}" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                      <h4 class="modal-title">Verwijder verzoek</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>Weet u zeker dat u de bug : <strong>{{$key->id}}</strong> wilt verwijderen&hellip;</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+                                      <a href="/verwijderBug/{{$key->id}}" class="">
+                                          <button type="submit" class="btn btn-danger btn-xs">
+                                             {{--<i class="glyphicon glyphicon-trash"></i>--}}
+                                             Verwijder project
+                                          </button>
+                                      </a>
+                                    </div>
+                                  </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                              </div><!-- /.modal -->
+                              @endforeach
     <!-- /#wrapper -->
    @extends('layouts.footer')
 </body>

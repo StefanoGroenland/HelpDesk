@@ -308,6 +308,8 @@
                     <button onclick="changeImage({{json_encode($ba->image)}})" class="btn btn-success btn-xs">{{substr($ba->image,31,40)}}</button>
                     </li>
                 @endforeach
+                @else
+                <i class="pull-right fa fa-exclamation fa-3x"></i>
                 @endif
                 </ul>
             </div>
@@ -344,9 +346,7 @@
                     var image = document.getElementById('image');
                     image.src = '../'+img;
                 }
-
             </script>
-
 
                 <script type="text/javascript">
                 var form = document.getElementById('upload');

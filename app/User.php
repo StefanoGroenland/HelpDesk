@@ -84,8 +84,13 @@ class User extends Model implements AuthenticatableContract,
             ->get();
     }
     public static function verwijderGebruiker($id){
-        DB::table('gebruikers')->where('id', '=',$id)->delete();
-        return redirect('/klanten');
+        if(User::find($id)->bedrijf == 'moodles') {
+            DB::table('gebruikers')->where('id', '=', $id)->delete();
+            return redirect('/medewerkers');
+        }else {
+            DB::table('gebruikers')->where('id', '=', $id)->delete();
+            return redirect('/klanten');
+        }
     }
 
     public static function uploadPicture($id,$img){

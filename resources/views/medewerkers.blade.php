@@ -73,11 +73,9 @@
                                          <i class="glyphicon glyphicon-pencil"></i>
                                   </button>
                                </a>
-                             <a href="/verwijderGebruiker/{{$medewerker->id}}" class="">
-                                   <button type="submit" class="btn btn-danger btn-xs">
-                                      <i class="glyphicon glyphicon-trash"></i>
-                                   </button>
-                               </a>
+                               <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$medewerker->id}}">
+                                 <i class="glyphicon glyphicon-trash"></i>
+                               </button>
                                </td>
                              </tr>
                             @endforeach
@@ -96,6 +94,31 @@
         {{--@stop--}}
 
     </div>
+    @foreach($medewerkers as $key)
+                     <div class="modal fade" id="myModal{{$key->id}}" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                      <h4 class="modal-title">Verwijder verzoek</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>Weet u zeker dat u de medewerker : <strong>{{$key->voornaam}}</strong> wilt verwijderen&hellip;</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+                                      <a href="/verwijderGebruiker/{{$key->id}}" class="">
+                                          <button type="submit" class="btn btn-danger btn-xs">
+                                             {{--<i class="glyphicon glyphicon-trash"></i>--}}
+                                             Verwijder medewerker
+                                          </button>
+                                      </a>
+                                    </div>
+                                  </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                              </div><!-- /.modal -->
+                              @endforeach
     <!-- /#wrapper -->
 
     @extends('layouts.footer')

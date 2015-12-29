@@ -49,7 +49,7 @@ class Project extends Model
     public static function verwijderProject($id){
         DB::table('projecten')->where('id', '=',$id)->delete();
         DB::table('bugs')->where('project_id','=',$id)->delete();
-        return redirect('/projectmuteren');
+        return redirect('/projecten');
     }
 
     public static function getProjectOnSearch($inp){

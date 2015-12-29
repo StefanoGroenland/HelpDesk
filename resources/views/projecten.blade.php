@@ -81,11 +81,9 @@
                                                   <i class="glyphicon glyphicon-pencil"></i>
                                            </button>
                                       </a>
-                                        <a href="/verwijderProject/{{$project->id}}" class="">
-                                            <button type="submit" class="btn btn-danger btn-xs">
-                                               <i class="glyphicon glyphicon-trash"></i>
-                                            </button>
-                                        </a>
+                                      <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$project->id}}">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                      </button>
                                         </td>
                                       </tr>
                                       @endforeach
@@ -97,10 +95,36 @@
             </div>
             <!-- /.container-fluid -->
         </div>
+        @foreach($projects as $proj)
+        <div class="modal fade" id="myModal{{$proj->id}}" tabindex="-1" role="dialog">
+                   <div class="modal-dialog">
+                     <div class="modal-content">
+                       <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <h4 class="modal-title">Verwijder verzoek</h4>
+                       </div>
+                       <div class="modal-body">
+                         <p>Weet u zeker dat u het project : <strong>{{$proj->titel}}</strong> wilt verwijderen&hellip;</p>
+
+                       </div>
+                       <div class="modal-footer">
+                         <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
+                         <a href="/verwijderProject/{{$proj->id}}" class="">
+                             <button type="submit" class="btn btn-danger btn-xs">
+                                {{--<i class="glyphicon glyphicon-trash"></i>--}}
+                                Verwijder project
+                             </button>
+                         </a>
+                       </div>
+                     </div><!-- /.modal-content -->
+                   </div><!-- /.modal-dialog -->
+                 </div><!-- /.modal -->
+                 @endforeach
         <!-- /#page-wrapper -->
             {{--@section('scripts')--}}
               {{--@stop--}}
     </div>
+
     <!-- /#wrapper -->
 
     @extends('layouts.footer')
