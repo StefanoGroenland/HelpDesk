@@ -119,7 +119,12 @@
                                 {!! csrf_field() !!}
                                <pre><i class="fa fa-info"></i> Houd <kbd>ctrl</kbd> ingedrukt om meerdere bestanden te kiezen</pre>
                                 <div class="row">
-                                <div class="col-lg-6"><input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple></div>
+                                <div class="col-lg-6">
+                                {{--<input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>--}}
+                                <span class="btn btn-success btn-xs btn-file">
+                                     Kies <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>
+                                 </span>
+                                </div>
                                 <div class="col-lg-6"><input type="submit" value="Upload" class="btn btn-success btn-xs pull-right"></div>
                                 </div>
                            </form>

@@ -66,9 +66,12 @@
                             @endif
                             "
                             alt="gfxuser" class="img-responsive center-block">
-                            <div class="form-group center-block">
+                            <div class="form-group center-block text-center">
                             <label class="center-block text-center" for="fotoinput">Kies uw foto</label>
-                            <input class="center-block" type="file"  name="profielfoto" id="profielfoto">
+                            {{--<input class="center-block" type="file"  name="profielfoto" id="profielfoto">--}}
+                            <span class="btn btn-success btn-file text-center">
+                                Bestand kiezen <input type="file" name="profielfoto" id="profielfoto" style="color:transparent;" onchange="this.style.color = 'transparant';">
+                            </span>
                           </div>
                           <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander foto</button>
                           </form>
