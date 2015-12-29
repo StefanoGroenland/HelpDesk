@@ -296,13 +296,40 @@
         <div class="modal-content">
           <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Titel</h4>
+          <h4 class="modal-title">Bijlages voor Bug : #{{$bug->id}}</h4>
           </div>
           <div class="modal-body">
-          content body
+            <div class="row">
+            <div class="col-lg-3">
+                <ul class="list-unstyled center-block" id="images">
+                @if(count($bug_attachments) > 0)
+                @foreach($bug_attachments as $ba)
+                    <li name="{{$ba->image}}" style="padding-bottom: 5px;">
+                    <button onclick="changeImage({{json_encode($ba->image)}})" class="btn btn-success btn-xs">{{substr($ba->image,31,40)}}</button>
+                    </li>
+                @endforeach
+                @endif
+                </ul>
+            </div>
+            <div class="col-lg-9">
+            @if(count($bug_attachments) > 0)
+            <img id="image" src="{{'../'.$ba->image}}" class="img-responsive img-thumbnail center-block" alt="img_{{$ba->image}}">
+            @else
+            <h3 class="pull-left">Helaas, er zijn nog geen bijlages toegevoegd!</h3>
+            <p class="pull-left">
+            Om bijlages te toevoegen moet u dit venster sluiten, En in het linker gedeelte op de knop
+            <var>Bestanden kiezen</var> drukken.<br>
+            Om meerdere bestanden tegelijk te uploaden houd u de knop <kbd>ctrl</kbd> ingedrukt op uw toetsenbord.
+
+            <code>Let erop: u kunt alleen afbeeldingen uploaden.</code>
+
+            </p>
+            @endif
+            </div>
+            </div>
           </div>
           <div class="modal-footer">
-          footer
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" aria-label="Close"><span>sluiten</span></button>
           </div>
         </div>
       </div>
@@ -311,6 +338,14 @@
 {{--</div>--}}
 <!-- /#page-wrapper -->
          @section('scripts')
+            <script type="text/javascript">
+                function changeImage(img){
+                    var image = document.getElementById('image');
+                    image.src = '../'+img;
+                }
+
+            </script>
+
 
                 <script type="text/javascript">
                 var form = document.getElementById('upload');
