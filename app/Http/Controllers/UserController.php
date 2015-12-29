@@ -151,6 +151,10 @@ class UserController extends Controller
     }
     public function updateKlant(Request $request){
         $id = $request['id'];
+        if($request['bedrijf'] == 'moodles'){
+            $request->session()->flash('alert-danger', 'Er mogen geen klanten met \'moodles\' als bedrijf worden aangemaakt.');
+            return redirect('/klanten');
+        }
         $data = array(
             'id'                    => $request['id'],
             'username'              => $request['username'],
@@ -211,6 +215,10 @@ class UserController extends Controller
 }
     public function addUser(Request $request){
 
+        if($request['bedrijf'] == 'moodles'){
+            $request->session()->flash('alert-danger', 'Er mogen geen klanten met \'moodles\' als bedrijf worden aangemaakt.');
+            return redirect('/klanten');
+        }
         $data = array(
             'username'              => $request['username'],
             'email'                 => $request['email'],
