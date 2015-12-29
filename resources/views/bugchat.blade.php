@@ -119,10 +119,10 @@
                                 {!! csrf_field() !!}
                                <pre><i class="fa fa-info"></i> Houd <kbd>ctrl</kbd> ingedrukt om meerdere bestanden te kiezen</pre>
                                 <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
                                 {{--<input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>--}}
-                                <span class="btn btn-success btn-xs btn-file">
-                                     Kies <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>
+                                <span class="btn btn-success btn-xs btn-file pull-left">
+                                    Verkenner <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>
                                  </span>
                                 </div>
                                 <div class="col-lg-6"><input type="submit" value="Upload" class="btn btn-success btn-xs pull-right"></div>
@@ -325,7 +325,7 @@
             <h3 class="pull-left">Helaas, er zijn nog geen bijlages toegevoegd!</h3>
             <p class="pull-left">
             Om bijlages te toevoegen moet u dit venster sluiten, En in het linker gedeelte op de knop
-            <var>Bestanden kiezen</var> drukken.<br>
+            <var>Verkenner</var> drukken.<br>
             Om meerdere bestanden tegelijk te uploaden houd u de knop <kbd>ctrl</kbd> ingedrukt op uw toetsenbord.
 
             <code>Let erop: u kunt alleen afbeeldingen uploaden.</code>
