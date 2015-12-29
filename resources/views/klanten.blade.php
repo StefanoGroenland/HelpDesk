@@ -38,6 +38,7 @@
                               </div>
                             @endif
                           @endforeach
+
              <!-- /.container-fluid -->
             <div class="col-lg-12">
                   <div class="table-responsive">

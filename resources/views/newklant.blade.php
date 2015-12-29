@@ -38,6 +38,13 @@
                              </div>
                            @endif
                          @endforeach
+                          @if (count($errors))
+                              <ul class="list-unstyled">
+                                  @foreach($errors->all() as $error)
+                                      <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                                  @endforeach
+                              </ul>
+                          @endif
          <div class="row">
          <div class="col-lg-4"></div>
              <div class="col-lg-4">
@@ -78,7 +85,11 @@
                        <label for="achternaam">Bedrijf</label>
                        <input type="text" class="form-control" required="true" id="bedrijf" name="bedrijf" placeholder="Bedrijf">
                      </div>
-                     <div class="form-group">
+                    @if($errors->has('telefoonnummer'))
+                        <div class="form-group has-error">
+                        @else
+                        <div class="form-group">
+                        @endif
                         <label for="telefoonnummer">Telefoonnummer</label>
                         <input type="text" class="form-control" required="true" id="telefoonnummer" name="telefoonnummer" placeholder="Telefoonnummer">
                       </div>
