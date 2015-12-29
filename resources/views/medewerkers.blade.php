@@ -107,13 +107,15 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
-                                      <a href="/verwijderGebruiker/{{$key->id}}" class="">
-                                          <button type="submit" class="btn btn-danger btn-xs">
-                                             {{--<i class="glyphicon glyphicon-trash"></i>--}}
-                                             Verwijder medewerker
-                                          </button>
-                                      </a>
+                                      <button type="button" class="btn btn-default btn-xs pull-right" data-dismiss="modal">Close</button>
+                                      <form method="POST" action="/verwijderGebruiker/{{$key->id}}" >
+                                      {!! method_field('DELETE') !!}
+                                      {!! csrf_field() !!}
+                                      <button type="submit" class="btn btn-danger btn-xs pull-left">
+                                         {{--<i class="glyphicon glyphicon-trash"></i>--}}
+                                         Verwijder medewerker
+                                      </button>
+                                      </form>
                                     </div>
                                   </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->

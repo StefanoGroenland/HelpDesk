@@ -20,10 +20,13 @@ class BugController extends Controller
 {
     public function showBugChat($id){
         $bug = Bug::with('klant','user')->find($id);
-        $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
-        $medewerkers = User::where('bedrijf' ,'=', 'moodles')->get();
-        $bug_attachments = BugAttachment::where('bug_id','=',$id)->get();
-        return View::make('/bugchat', compact('bug', 'medewerkers','afzenders','bug_attachments'));
+        if(Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $bug->klant->id){
+            $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
+            $medewerkers = User::where('bedrijf' ,'=', 'moodles')->get();
+            $bug_attachments = BugAttachment::where('bug_id','=',$id)->get();
+            return View::make('/bugchat', compact('bug', 'medewerkers','afzenders','bug_attachments'));
+        }
+        return redirect('/dashboard');
     }
     public function refreshChat($id){
         return $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();

@@ -273,13 +273,15 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Close</button>
-                                      <a href="/verwijderBug/{{$key->id}}" class="">
-                                          <button type="submit" class="btn btn-danger btn-xs">
-                                             {{--<i class="glyphicon glyphicon-trash"></i>--}}
-                                             Verwijder project
-                                          </button>
-                                      </a>
+                                      <button type="button" class="btn btn-default btn-xs pull-right" data-dismiss="modal">Close</button>
+                                      <form method="POST" action="/verwijderBug/{{$key->id}}" >
+                                      {!! method_field('DELETE') !!}
+                                      {!! csrf_field() !!}
+                                      <button type="submit" class="btn btn-danger btn-xs pull-left">
+                                         {{--<i class="glyphicon glyphicon-trash"></i>--}}
+                                         Verwijder bug
+                                      </button>
+                                      </form>
                                     </div>
                                   </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
