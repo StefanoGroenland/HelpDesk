@@ -329,14 +329,25 @@
                 var something = '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
                 response = JSON.parse(data.currentTarget.response);
                     if(response.success){
-                        document.getElementById('message').className += "alert alert-info ";
-                        document.getElementById('message').innerHTML = "Bestanden uploaden voltooid.";
-                        $("#message").append(something);
-
+                        if ( document.getElementById("message").className.match(/(?:^|\s)alert aler-danger(?!\S)/) ){
+                            document.getElementById("message").className =
+                            document.getElementById("message").className.replace
+                            ( /(?:^|\s)alert alert-danger(?!\S)/g , '' )
+                        }else{
+                            document.getElementById('message').className += "alert alert-info";
+                            document.getElementById('message').innerHTML = "Bestanden uploaden voltooid.";
+                            $("#message").append(something);
+                        }
                     }else{
-                        document.getElementById('message').className += "alert alert-danger ";
-                        document.getElementById('message').innerHTML = "Bestanden uploaden mislukt.";
-                        $("#message").append(something);
+                        if( document.getElementById("message").className.match(/(?:^|\s)alert aler-danger(?!\S)/) ){
+                            document.getElementById("message").className =
+                            document.getElementById("message").className.replace
+                            ( /(?:^|\s)alert alert-info(?!\S)/g , '' )
+                        }else{
+                            document.getElementById('message').className += "alert alert-danger";
+                            document.getElementById('message').innerHTML = "Bestanden uploaden mislukt.";
+                            $("#message").append(something);
+                        }
                     }
                 }
                 </script>
