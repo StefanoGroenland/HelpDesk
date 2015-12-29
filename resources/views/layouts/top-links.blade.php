@@ -54,7 +54,7 @@
                         {{"../assets/images/avatar.png"}}
                         @endif
                         " style="margin-right:3px; height: 26px;!important; width: 26px;!important;"/>
-                        {{ucfirst(Auth::user()->username) .' '. Auth::user()->achternaam}}
+                        {{ucfirst(Auth::user()->voornaam) .' '. ucfirst(Auth::user()->achternaam)}}
                         <b class="caret"></b>
                     </a>
 

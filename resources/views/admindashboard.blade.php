@@ -221,7 +221,7 @@
                                         @endif
                                         </td>
                                         @if($bug->klant)
-                                        <td>{{$bug->klant->voornaam .' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
+                                        <td>{{ucfirst($bug->klant->voornaam) .' '. $bug->klant->tussenvoegsel .' '. ucfirst($bug->klant->achternaam)}}</td>
                                         @endif
                                         @if($bug->project)
                                             <td>{{$bug->project->projectnaam}}</td>

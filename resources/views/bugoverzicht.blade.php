@@ -80,14 +80,14 @@
                                     </td>
                                     <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                     @if($bug->klant)
-                                    <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
+                                    <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
                                     @endif
                                     {{--<td>{{$project->projectnaam}}</td>--}}
                                     @if($bug->project)
                                     <td>{{$bug->project->projectnaam}}</td>
                                     @endif
                                     @if($bug->user)
-                                    <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
+                                    <td>{{ucfirst($bug->user->voornaam) .' '.$bug->user->tussenvoegsel.' '. ucfirst($bug->user->achternaam)}}</td>
                                     @else
                                     <td>Geen</td>
                                     @endif
@@ -155,11 +155,11 @@
                                                     </td>
                                                     <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                                     @if($bug->klant)
-                                                    <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
+                                                    <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
                                                     @endif
                                                     <td>{{$project->projectnaam}}</td>
                                                     @if($bug->user)
-                                                    <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
+                                                    <td>{{ucfirst($bug->user->voornaam) .' '.$bug->user->tussenvoegsel.' '. ucfirst($bug->user->achternaam)}}</td>
                                                     @else
                                                     <td>Geen</td>
                                                     @endif
@@ -225,11 +225,11 @@
                                         </td>
                                         <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                         @if($bug->klant)
-                                        <td>{{$bug->klant->voornaam .' '.$bug->klant->tussenvoegsel.' '. $bug->klant->achternaam}}</td>
+                                        <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
                                         @endif
                                         <td>{{$bug->project->projectnaam}}</td>
                                         @if($bug->user)
-                                        <td>{{$bug->user->voornaam .' '.$bug->user->tussenvoegsel.' '. $bug->user->achternaam}}</td>
+                                        <td>{{ucfirst($bug->user->voornaam) .' '.$bug->user->tussenvoegsel.' '. ucfirst($bug->user->achternaam)}}</td>
                                         @else
                                         <td>Geen</td>
                                         @endif

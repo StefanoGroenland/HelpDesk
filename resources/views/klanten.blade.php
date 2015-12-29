@@ -57,13 +57,13 @@
                           <tbody>
                               @foreach($klanten as $klant)
                               <tr>
-                              <td>{{$klant->voornaam}}</td>
+                              <td>{{ucfirst($klant->voornaam)}}</td>
                               @if($klant->tussenvoegsel)
                                 <td>{{$klant->tussenvoegsel}}</td>
                               @else
-                              geen
+                              <td>geen</td>
                               @endif
-                              <td>{{$klant->achternaam}}</td>
+                              <td>{{ucfirst($klant->achternaam)}}</td>
                               <td>{{$klant->username}}</td>
                               <td>{{$klant->geslacht}}</td>
                               <td>{{$klant->email}}</td>

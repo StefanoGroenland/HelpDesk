@@ -29,6 +29,15 @@ class ProjectController extends Controller
     }
     public function addProject(Request $request){
 
+
+        if(isset($_POST['radmaak']) && is_numeric($request['telefoonnummer']) == false){
+            $request->session()->flash('alert-danger', 'Telefoonnummer moet numeriek zijn.');
+            return redirect('/newproject');
+        }elseif($request['bedrijf'] == 'moodles') {
+            $request->session()->flash('alert-danger', 'Klantaccount mag geen \'moodles\' bevatten als bedrijfsnaam.');
+            return redirect('/newproject');
+        }
+
         if(isset($_POST['radmaak'])){
             Validator::make($request->all(),[
 //                projecten table
@@ -105,13 +114,9 @@ class ProjectController extends Controller
                 ]);
             }
 
-            if(is_numeric($request['telefoonnummer']) == false){
-                $request->session()->flash('alert-danger', 'Telefoonnummer moet numeriek zijn.');
-                return redirect('/newproject');
-            }elseif($request['bedrijf'] == 'moodles') {
-                $request->session()->flash('alert-danger', 'Klantaccount mag geen \'moodles\' bevatten als bedrijfsnaam.');
-                return redirect('/newproject');
-            }
+
+        $request->session()->flash('alert-success', 'Project toegevoegd.');
+        return redirect('/newproject');
     }
     public function updateProject(Request $request){
         $id = $request['id'];

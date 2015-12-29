@@ -56,13 +56,13 @@
                          <tbody>
                              @foreach($medewerkers as $medewerker)
                              <tr>
-                             <td>{{$medewerker->voornaam}}</td>
+                             <td>{{ucfirst($medewerker->voornaam)}}</td>
                              @if($medewerker->tussenvoegsel)
                              <td>{{$medewerker->tussenvoegsel}}</td>
                              @else
                              <td>geen</td>
                              @endif
-                             <td>{{$medewerker->achternaam}}</td>
+                             <td>{{ucfirst($medewerker->achternaam)}}</td>
                              <td>{{$medewerker->username}}</td>
                              <td>{{$medewerker->geslacht}}</td>
                              <td>{{$medewerker->email}}</td>
