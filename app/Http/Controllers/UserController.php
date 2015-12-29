@@ -235,9 +235,9 @@ class UserController extends Controller
         return redirect('/newklant');
     }
     public function verwijderGebruiker(){
-        $sid = Route::current()->getParameter('id');
-        session()->flash('alert-danger', 'Gebruiker met id : '. $sid . ' verwijderd.');
-        return User::verwijderGebruiker($sid);
+            $sid = Route::current()->getParameter('id');
+            session()->flash('alert-danger', 'Gebruiker met id : ' . $sid . ' verwijderd.');
+            return User::verwijderGebruiker($sid);
     }
     public function resetUserPassword(Request $request){
         $email = $request->input('email');

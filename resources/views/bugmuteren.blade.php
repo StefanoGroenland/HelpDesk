@@ -39,22 +39,11 @@
                                      @endif
                                    @endforeach
             <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-4">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Bijlage</h3>
-                        </div>
-                        <div class="panel-body">
-                        <form method="POST" action="/addBug" enctype="multipart/form-data">
-                        {!! csrf_field() !!}
-                            <input type="file" name="file[]" multiple><br/>
-                            <pre><i class="fa fa-info"></i> Houd <kbd>ctrl</kbd> ingedrukt om meerdere bestanden te kiezen</pre>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4"></div>
 
+                <div class="col-lg-4">
+                    <form method="POST" action="/addBug" enctype="multipart/form-data">
+                        {!! csrf_field() !!}
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             <h3 class="panel-title">Nieuwe bug</h3>
@@ -103,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2"></div>
+                <div class="col-lg-4"></div>
             </div>
         </div>
         <!-- /.container-fluid -->

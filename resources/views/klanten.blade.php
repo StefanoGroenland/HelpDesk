@@ -104,7 +104,7 @@
                                   <a href="/verwijderGebruiker/{{$key->id}}" class="">
                                       <button type="submit" class="btn btn-danger btn-xs">
                                          {{--<i class="glyphicon glyphicon-trash"></i>--}}
-                                         Verwijder project
+                                         Verwijder klant
                                       </button>
                                   </a>
                                 </div>
