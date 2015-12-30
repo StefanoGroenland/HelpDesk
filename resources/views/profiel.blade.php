@@ -49,7 +49,7 @@
                  @endif
                 <div class="row">
                     <div class="col-lg-6">
-                      <div class="panel panel-green">
+                      <div class="panel panel-default">
                         <div class="panel-heading">
                           <h3 class="panel-title">Profiel</h3>
                         </div>
@@ -69,11 +69,11 @@
                             <div class="form-group center-block text-center">
                             <label class="center-block text-center" for="fotoinput">Kies uw foto</label>
                             {{--<input class="center-block" type="file"  name="profielfoto" id="profielfoto">--}}
-                            <span class="btn btn-success btn-file text-center">
-                                Verkenner<input type="file" name="profielfoto" id="profielfoto" style="color:transparent;" onchange="this.style.color = 'transparant';">
+                            <span class="btn btn-default btn-file text-center">
+                                <i class="fa fa-search" ></i> Verkenner<input type="file" name="profielfoto" id="profielfoto" style="color:transparent;" onchange="this.style.color = 'transparant';">
                             </span>
                           </div>
-                          <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander foto</button>
+                          <button type="submit" class="btn btn-default center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander foto</button>
                           </form>
                         </div>
                       </div>
@@ -82,7 +82,7 @@
                     <form method="POST" action="/updateProfiel">
                           {!! csrf_field() !!}
                       <input type="hidden" name="_method" value="PUT">
-                      <div class="panel panel-green">
+                      <div class="panel panel-default">
                         <div class="panel-heading">
                           <h3 class="panel-title">Mijn gegevens</h3>
                         </div>
@@ -135,7 +135,7 @@
                               <label for="bedrijfsnaam">Telefoonnummer</label>
                               <input type="text" class="form-control" required="true" name="telefoonnummer" value="{{$user->telefoonnummer}}">
                             </div>
-                            <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander profiel</button>
+                            <button type="submit" class="btn btn-default center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander profiel</button>
                           </form>
                         </div>
                       </div>

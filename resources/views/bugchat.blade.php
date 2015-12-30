@@ -122,7 +122,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                 {{--<input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>--}}
                                 <span class="btn btn-success btn-xs btn-file pull-left">
-                                    Verkenner <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>
+                                    <i class="glyphicon glyphicon-search" ></i> Verkenner <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>
                                  </span>
                                 </div>
                                 <div class="col-lg-6"><input type="submit" value="Upload" class="btn btn-success btn-xs pull-right"></div>

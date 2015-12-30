@@ -9,10 +9,12 @@
          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                      <!-- Brand and toggle get grouped for better mobile display -->
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-           <div class="navbar-header">
-                <a class="navbar-brand" href="{{URL::to('/admindashboard')}}">Moodles Helpdesk
-                </a>
-           </div>
+           {{--<div class="navbar-header">--}}
+                {{--<a class="navbar-brand" href="{{URL::to('/admindashboard')}}">Moodles Helpdesk--}}
+                {{--</a>--}}
+           {{--</div>--}}
+           <img class="img-responsive pull-left " alt="profile_img" src="../assets/images/logo.png" style="margin-left:10px; min-height: 50px;!important;max-height: 50px;!important min-width: 100px;!important; max-width: 100px;!important;"/>
+
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block text-center" style="color:#ffffff">
             <br>
