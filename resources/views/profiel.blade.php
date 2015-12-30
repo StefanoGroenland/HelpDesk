@@ -98,8 +98,12 @@
                             </div>
                             <div class="form-group">
                               <label for="wachtwoord">Wachtwoord</label>
-                              <input type="password" class="form-control" required="true" name="password" >
+                              <input type="password" class="form-control" name="password" >
                             </div>
+                            <div class="form-group">
+                               <label for="wachtwoord">Herhaal wachtwoord</label>
+                               <input type="password" class="form-control" name="password_confirmation" >
+                             </div>
                               <div class="form-group">
                               <label for="voornaam">Voornaam</label>
                               <input type="text" class="form-control" required="true" name="voornaam" value="{{$user->voornaam}}">

@@ -57,28 +57,46 @@ class UserController extends Controller
     }
     public function updateProfiel(Request $request){
         $id = $request['id'];
-        $data = array(
-            'id'                    => $request['id'],
-            'username'              => $request['username'],
-            'email'                 => $request['email'],
-            'password'              => Hash::make($request['password']),
-            'voornaam'              => $request['voornaam'],
-            'tussenvoegsel'         => $request['tussenvoegsel'],
-            'achternaam'            => $request['achternaam'],
-            'geslacht'              => $request['geslacht'],
-            'telefoonnummer'        => $request['telefoonnummer'],
-            'bedrijf'               => $request['bedrijf'],
-        );
+
+            $data = array(
+                'id'                    => $request['id'],
+                'username'              => $request['username'],
+                'email'                 => $request['email'],
+                'password'              => $request['password'],
+                'password_confirmation' => $request['password_confirmation'],
+                'voornaam'              => $request['voornaam'],
+                'tussenvoegsel'         => $request['tussenvoegsel'],
+                'achternaam'            => $request['achternaam'],
+                'geslacht'              => $request['geslacht'],
+                'telefoonnummer'        => $request['telefoonnummer'],
+                'bedrijf'               => $request['bedrijf'],
+            );
+
+        if(empty($data['password']) || empty($data['password_confirmation'])){
+            array_forget($data, 'password');
+            array_forget($data, 'password_confirmation');
+        }
+
         $rules = array(
             'telefoonnummer' => 'numeric',
+            'password' => 'min:4|confirmed',
+            'password_confirmation' => 'min:4',
         );
+
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
             return redirect('/profiel')->withErrors($validator);
         }
 
-        User::where('id','=', $id)->update($data);
-        $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
+        if(array_key_exists('password', $data)){
+            Hash::make($data['password']);
+        }else{
+            $request->session()->flash('alert-warning', 'Uw account is gewijziged, er zijn geen wijzigingen aan het wachtwoord doorgevoerd.');
+            return redirect('/profiel');
+        }
+        array_forget($data, 'password_confirmation');
+        User::where('id', '=', $id)->update($data);
+        $request->session()->flash('alert-success', 'Uw account is succesvol gewijigd.');
         return redirect('/profiel');
     }
 
