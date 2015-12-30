@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Chat as Chat;
 use DB;
 class Bug extends Model
 {
@@ -48,7 +49,16 @@ class Bug extends Model
        DB::table('bugs')->all();
     }
     public static function verwijderBug($id){
-        return DB::table('bugs')->where('id', '=',$id)->delete();
+        $bug_id = DB::table('bugs')->select(DB::raw('id'))->where('project_id','=',$id)->first();
+        $bug_id = $bug_id->id;
+        if($bug_id > 0){
+            Chat::deleteChatFeedPerBug($bug_id);
+            DB::table('bugs_attachments')->where('bug_id', '=',$bug_id)->delete();
+            return DB::table('bugs')->where('project_id', '=',$id)->delete();
+        }else {
+            return DB::table('bugs')->where('project_id', '=', $id)->delete();
+        }
+
     }
     public static function uploadToDb($file,$id){
         return DB::table('bugs_attachments')->insert([

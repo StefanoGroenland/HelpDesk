@@ -28,5 +28,8 @@ class Chat extends Model
             ]
         );
     }
+    public static function deleteChatFeedPerBug($id){
+        return DB::table('chats')->where('bug_id', '=',$id)->delete();
+    }
 
 }
