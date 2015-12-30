@@ -64,9 +64,21 @@
                        <label for="gebruikersnaam">Gebruikersnaam</label>
                        <input type="text" class="form-control" required="true" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam">
                      </div>
-                     <div class="form-group">
+                     @if($errors->has('password'))
+                       <div class="form-group has-error">
+                       @else
+                       <div class="form-group">
+                       @endif
                        <label for="wachtwoord">Wachtwoord</label>
                        <input type="password" class="form-control" required="true" id="wachtwoord" name="password" placeholder="Wachtwoord">
+                     </div>
+                     @if($errors->has('password'))
+                       <div class="form-group has-error">
+                       @else
+                       <div class="form-group">
+                       @endif
+                       <label for="wachtwoord">Herhaal wachtwoord</label>
+                       <input type="password" class="form-control" required="true" id="wachtwoord" name="password_confirmation" placeholder="Wachtwoord">
                      </div>
                        <div class="form-group">
                        <label for="voornaam">Voornaam</label>
