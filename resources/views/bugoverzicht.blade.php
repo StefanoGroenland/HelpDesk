@@ -201,9 +201,8 @@
                         <th style="width: 10%"></th>
                         </thead>
                         <tbody>
-                        {{-- */$i=0;/* --}}
                             @foreach($bugs_all as $bug)
-                                @if(count($bugs_all) > 0)
+                                @if($bug->project)
                                     @if($bug->project_id == $bug->project->id)
                                     <tr>
                                         <td>{{$bug->id}}</td>
@@ -242,8 +241,7 @@
                                         </td>
                                     </tr>
                                     @endif
-
-                                 @endif
+                                    @endif
                             @endforeach
 
                         </tbody>
