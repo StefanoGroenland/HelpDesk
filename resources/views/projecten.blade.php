@@ -104,8 +104,7 @@
                          <h4 class="modal-title">Verwijder verzoek</h4>
                        </div>
                        <div class="modal-body">
-                         <p>Weet u zeker dat u het project : <strong>{{$proj->titel}}</strong> wilt verwijderen&hellip;</p>
-
+                         <p>Weet u zeker dat u het project : <strong>{{$proj->titel}}</strong> met alle gekoppelde data wilt verwijderen&hellip;</p>
                        </div>
                        <div class="modal-footer">
                          <button type="button" class="btn btn-default btn-xs pull-right" data-dismiss="modal">Close</button>

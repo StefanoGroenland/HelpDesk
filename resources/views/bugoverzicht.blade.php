@@ -230,7 +230,7 @@
                                         @if($bug->user)
                                         <td>{{ucfirst($bug->user->voornaam) .' '.$bug->user->tussenvoegsel.' '. ucfirst($bug->user->achternaam)}}</td>
                                         @else
-                                        <td>Geen</td>
+                                        <td>geen</td>
                                         @endif
                                         <td>
                                             <a href="/bugchat/{{$bug->id}}" class="">
