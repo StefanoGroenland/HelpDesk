@@ -44,21 +44,19 @@ class Bug extends Model
     public function project(){
         return $this->belongsTo('App\Project', 'project_id', 'id');
     }
-
     public function getAllBugs(){
        DB::table('bugs')->all();
     }
     public static function verwijderBug($id){
         $bug_id = DB::table('bugs')->select(DB::raw('id'))->where('project_id','=',$id)->first();
-        $bug_id = $bug_id->id;
         if($bug_id > 0){
+            $bug_id = $bug_id->id;
             Chat::deleteChatFeedPerBug($bug_id);
             DB::table('bugs_attachments')->where('bug_id', '=',$bug_id)->delete();
             return DB::table('bugs')->where('project_id', '=',$id)->delete();
         }else {
             return DB::table('bugs')->where('project_id', '=', $id)->delete();
         }
-
     }
     public static function uploadToDb($file,$id){
         return DB::table('bugs_attachments')->insert([
