@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 col-md-6">
                         <div class="row">
                     <a href="{{URL::to('/newproject')}}">
                     <div class="col-lg-12 col-md-6">
@@ -55,7 +55,7 @@
                     </a>
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-md-6">
                     <div class="row">
                 <a href="{{URL::to('/newmedewerker')}}">
                 <div class="col-lg-12 col-md-6">

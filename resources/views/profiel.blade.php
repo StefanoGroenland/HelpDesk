@@ -133,7 +133,7 @@
                             <div class="form-group">
                             @endif
                               <label for="bedrijfsnaam">Telefoonnummer</label>
-                              <input type="text" class="form-control" required="true" name="telefoonnummer" value="{{$user->telefoonnummer}}">
+                              <input type="text" class="form-control" required="true" maxlength="11" name="telefoonnummer" value="{{$user->telefoonnummer}}">
                             </div>
                             <button type="submit" class="btn btn-default center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander profiel</button>
                           </form>

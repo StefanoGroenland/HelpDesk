@@ -56,28 +56,25 @@
                              </div>
                              <div class="form-group">
                                  <select class="form-control status2" id="status2" name="status" required="true">
-                                   <option value="{{$project->status}}">{{$project->status}}</option>
-                                   <option value="open">Open</option>
-                                   <option value="bezig">Bezig</option>
-                                   <option value="gesloten">Gesloten</option>
+                                   <option value="open" @if($project->status == 'open') selected @endif >Open</option>
+                                   <option value="bezig" @if($project->status == 'bezig') selected @endif >Bezig</option>
+                                   <option value="gesloten" @if($project->status == 'gesloten') selected @endif >Gesloten</option>
                                  </select>
                                </div>
                                <div class="form-group">
                                  <select class="form-control prioriteit2" id="prioriteit2" required="true" name="prioriteit">
-                                   <option value="{{$project->prioriteit}}">{{$project->prioriteit}}</option>
-                                   <option value="laag">Laag</option>
-                                   <option value="gemiddeld">Gemiddeld</option>
-                                   <option value="hoog">Hoog</option>
-                                   <option value="kritisch">Kritisch</option>
+                                   <option value="kritisch"  @if($project->prioriteit == 'kritisch') selected @endif >Kritisch</option>
+                                   <option value="hoog" @if($project->prioriteit == 'hoog') selected @endif >Hoog</option>
+                                   <option value="gemiddeld"  @if($project->prioriteit == 'gemiddeld') selected @endif >Gemiddeld</option>
+                                   <option value="laag" @if($project->prioriteit == 'laag') selected @endif >Laag</option>
                                  </select>
                                </div>
                                <div class="form-group">
                                 <select class="form-control soort2" id="soort2" required="true" name="soort">
-                                  <option value="{{$project->soort}}">{{$project->soort}}</option>
-                                  <option value="lay-out">Lay-out</option>
-                                  <option value="seo">SEO</option>
-                                  <option value="performance">Performance</option>
-                                  <option value="code">Code</option>
+                                  <option value="lay-out" @if($project->soort == 'lay-out') selected @endif >Lay-out</option>
+                                  <option value="seo" @if($project->soort == 'seo') selected @endif >SEO</option>
+                                  <option value="performance" @if($project->soort == 'performance') selected @endif >Performance</option>
+                                  <option value="code" @if($project->soort == 'code') selected @endif >Code</option>
                                 </select>
                               </div>
                               <div class="form-group">
@@ -94,7 +91,7 @@
                                 <input type="password" class="form-control wachtwoord2"  required="true"id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="{{$project->wachtwoord}}">
                               </div>
                               <div class="form-group">
-                                 <textarea class="form-control omschrijving2" rows="5" id="omschrijving2" name="omschrijvingproject" value="{{$project->omschrijvingproject}}" ></textarea>
+                                 <textarea class="form-control omschrijving2" rows="5" id="omschrijving2" name="omschrijvingproject" value="" >{{$project->omschrijvingproject}}</textarea>
                                </div>
                               <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
                             </div>

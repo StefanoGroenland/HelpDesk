@@ -131,7 +131,7 @@ class ProjectController extends Controller
         );
         Project::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Project '. $request['projectnaam']. ' veranderd.');
-        return redirect('/projectmuteren');
+        return redirect('/projecten');
     }
     public function getUpdateData(){
         $input = $_POST['input'];

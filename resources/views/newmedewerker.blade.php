@@ -98,7 +98,7 @@
                        <div class="form-group">
                        @endif
                         <label for="telefoonnummer">Telefoonnummer</label>
-                        <input type="text" class="form-control" required="true" id="telefoonnummer" name="telefoonnummer" placeholder="Telefoonnummer">
+                        <input type="text" class="form-control" required="true" id="telefoonnummer" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer">
                       </div>
                       <div class="form-group">
                       <label for="geslacht">Geslacht</label>
