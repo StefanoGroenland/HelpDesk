@@ -3,6 +3,7 @@
 @if (\Auth::guest())
 <body>
 @else
+
 <body>
         <!-- Navigation -->
         <div class="row">

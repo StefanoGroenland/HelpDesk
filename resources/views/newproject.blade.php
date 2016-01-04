@@ -163,7 +163,7 @@
                                      </select>
                                 </div>
                                 <div class="form-group">
-                                     <input type="text" class="form-control" id="telefoonnummer" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="">
+                                     <input type="text" class="form-control" id="telefoonnummer" maxlength="11" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="">
                                 </div>
                             </fieldset>
                             <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>

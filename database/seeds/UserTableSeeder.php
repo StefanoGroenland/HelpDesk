@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
     {
         DB::table('gebruikers')->insert([
             'username' => 'stefano',
-            'password' => Hash::make('moodles'),
+            'password' => Hash::make("moodles"),
             'email' => 'stefano@moodles.nl',
             'bedrijf' => 'moodles',
             'voornaam' => 'stefano',

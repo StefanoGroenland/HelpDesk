@@ -93,7 +93,11 @@
                        <label for="achternaam">Achternaam</label>
                        <input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam">
                      </div>
-                     <div class="form-group">
+                     @if($errors->has('bedrijf'))
+                       <div class="form-group has-error">
+                       @else
+                       <div class="form-group">
+                       @endif
                        <label for="achternaam">Bedrijf</label>
                        <input type="text" class="form-control" required="true" id="bedrijf" name="bedrijf" placeholder="Bedrijf">
                      </div>

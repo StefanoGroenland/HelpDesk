@@ -73,9 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //unrestricted routes
-Route::get('/', function () {
-    return view('auth/welcome');
-});
+Route::get('/', 'UserController@showWelcome');
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');

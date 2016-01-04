@@ -18,7 +18,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Bug as Bug;
 class UserController extends Controller
 {
-
+    public function showWelcome()
+    {
+        if (Auth::user()->id > 0) {
+            return $this->showDashboard();
+        } else {
+            return View::make('auth/welcome');
+        }
+    }
     public function showDashboard()
     {
         $klant_id = Auth::user()->id;
@@ -242,7 +249,7 @@ class UserController extends Controller
 
         if($request['bedrijf'] == 'moodles'){
             $request->session()->flash('alert-danger', 'Er mogen geen klanten met \'moodles\' als bedrijf worden aangemaakt.');
-            return redirect('/klanten');
+            return redirect('/newklant');
         }
         $data = array(
             'username'              => $request['username'],

@@ -64,6 +64,7 @@
                                         {{-- */$i=0;/* --}}
                                         {{-- */$x=0;/* --}}
                                         {{-- */$y=0;/* --}}
+                                        {{-- */$ont=0;/* --}}
                                        <div class="col-lg-2 col-md-6">
                                        @if($project->prioriteit == 'laag')
                                               <div class="panel panel-green">
@@ -76,7 +77,16 @@
                                           @endif
                                                <div class="panel-heading">
                                                    <div class="row">
-                                                   <div id='notificatie'><div>2</div></div>
+                                                   @foreach($bugs_send as $bug)
+                                                   @if($bug->medewerker_id < 1)
+                                                   @if($bug->project_id == $project->id)
+                                                   {{-- */$ont++;/* --}}
+                                                   @endif
+                                                   @endif
+                                                   @endforeach
+                                                   <div id='notificatie'><div>
+                                                       {{$ont}}
+                                                       </div></div>
                                                        <div class="col-xs-12 text-right">
                                                        @if($project->prioriteit == 'laag')
                                                            <span class="label label-success">{{$project->projectnaam}}</span>
@@ -89,6 +99,7 @@
                                                        @endif
                                                            <div><span class="badge">
                                                            @foreach($bugs_send as $bug)
+
                                                            @if($bug->status == 'open')
                                                                @if($bug->project_id == $project->id)
                                                                    {{-- */$i++/* --}}
