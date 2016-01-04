@@ -85,7 +85,7 @@
                                 <input type="datetime-local" required="true" name="eind_datum" class="form-control" id="einddatum">
                               </div>
                                <div class="form-group">
-                                  <textarea class="form-control" rows="5" id="beschrijving" required="true" name="beschrijving" value="" ></textarea>
+                                  <textarea class="form-control" rows="5" id="beschrijving" required="true" name="beschrijving"></textarea>
                                 </div>
                               <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
                             </form>

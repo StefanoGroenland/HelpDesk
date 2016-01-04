@@ -97,7 +97,7 @@
                                   <input type="password" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
                                 </div>
                             <div class="form-group">
-                               <textarea class="form-control" rows="5" id="omschrijvingproject" required="true" name="omschrijvingproject" value="" ></textarea>
+                               <textarea class="form-control" rows="5" id="omschrijvingproject" required="true" name="omschrijvingproject"></textarea>
                              </div>
 
 
@@ -183,7 +183,7 @@
         </div>
         <!-- /#page-wrapper -->
             @section('scripts')
-                     <script type="text/javascript">
+                                <script type="text/javascript">
                                             $("#radkoppel").on("click",function(){
                                                $('#fieldset-klant').prop('disabled',true)
                                                $('#gebruiker_id').prop('disabled',false)

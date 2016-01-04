@@ -177,9 +177,7 @@
                 <div class="col-lg-9">
                 <div class="col-lg-12 well well-sm">
                                 <h3>Omschrijving :</h3>
-                                <p>
-                                    {{$bug->beschrijving}}
-                                </p>
+                                <p style="white-space: pre-wrap;">{{$bug->beschrijving}}</p>
                             </div>
                     <h3>Discussie
                         <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">

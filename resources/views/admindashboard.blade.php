@@ -101,8 +101,10 @@
                         <div class="panel-heading">
                             <div class="row">
                                 @foreach($bugs as $bug)
-                                @if($bug->medewerker_id == 0)
+                                @if($bug->medewerker_id < 1)
+                                @if($bug->project_id == $project->id)
                                 {{-- */$ont++;/* --}}
+                                @endif
                                 @endif
                                 @if($bug->prioriteit == 'laag')
                                     @if($bug->project_id == $project->id)
