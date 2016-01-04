@@ -10,6 +10,7 @@ use App\Project as Project;
 use App\User as User;
 use Illuminate\Support\Facades\Hash as Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Route, View;
 class ProjectController extends Controller
@@ -93,7 +94,7 @@ class ProjectController extends Controller
                         'projectnaam' => $request['projectnaam'],
                         'projecturl' => $request['projecturl'],
                         'gebruikersnaam' => $request['gebruikersnaam'],
-                        'wachtwoord' => bcrypt($request['wachtwoord']),
+                        'wachtwoord' => Crypt::encrypt($request['wachtwoord']),
                         'omschrijvingproject' => $request['omschrijvingproject'],
                         'gebruiker_id' => $user->id,
                     ]);
@@ -121,7 +122,7 @@ class ProjectController extends Controller
                         'projectnaam' => $request['projectnaam'],
                         'projecturl' => $request['projecturl'],
                         'gebruikersnaam' => $request['gebruikersnaam'],
-                        'wachtwoord' => bcrypt($request['wachtwoord']),
+                        'wachtwoord' => Crypt::encrypt($request['wachtwoord']),
                         'omschrijvingproject' => $request['omschrijvingproject'],
                         'gebruiker_id' => $request['gebruiker_id'],
                     ]);
@@ -141,7 +142,7 @@ class ProjectController extends Controller
             'projectnaam'                   => $request['projectnaam'],
             'projecturl'                    => $request['projecturl'],
             'gebruikersnaam'                => $request['gebruikersnaam'],
-            'wachtwoord'                    => bcrypt($request['wachtwoord']),
+            'wachtwoord'                    => Crypt::encrypt($request['wachtwoord']),
             'omschrijvingproject'           => $request['omschrijvingproject'],
         );
         Project::where('id', '=', $id)->update($data);
