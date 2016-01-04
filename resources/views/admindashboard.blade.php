@@ -80,7 +80,7 @@
 
                 @if(count($projects) > 0)
                 @foreach($projects as $project)
-
+                {{-- */$ont=0;/* --}}
                  {{-- */$i=0;/* --}}
                  {{-- */$x=0;/* --}}
                  {{-- */$y=0;/* --}}
@@ -100,8 +100,10 @@
                    @endif
                         <div class="panel-heading">
                             <div class="row">
-                            <div id='notificatie'><div>2</div></div>
                                 @foreach($bugs as $bug)
+                                @if($bug->medewerker_id == 0)
+                                {{-- */$ont++;/* --}}
+                                @endif
                                 @if($bug->prioriteit == 'laag')
                                     @if($bug->project_id == $project->id)
                                     {{-- */$laag++;/* --}}
@@ -123,6 +125,9 @@
                                     @endif
                                 @endif
                                 @endforeach
+                                <div id='notificatie'><div>
+                                {{$ont}}
+                                </div></div>
                                 <div class="col-xs-12 text-right pull-right">
                                 <span style="border: solid #ffffff 1px;" class="label label-purple pull-left">{{$krit}}</span>
                                 @if($project->prioriteit == 'laag')
