@@ -38,6 +38,13 @@
                             </div>
                           @endif
                         @endforeach
+                        @if (count($errors))
+                            <ul class="list-unstyled">
+                                @foreach($errors->all() as $error)
+                                    <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                 <div class="row">
                 <div class="col-lg-2"></div>
                     <div class="col-lg-4">
@@ -129,7 +136,10 @@
                                       <input type="gebruikersnaam" class="form-control" id="username" required="true" name="username" placeholder="Gebruikersnaam" value="">
                                 </div>
                                 <div class="form-group">
-                                     <input type="password" class="form-control" id="password" required="true" name="password" placeholder="Wachtwoord" value="">
+                                     <input type="password" class="form-control" id="password" required="true" name="password" placeholder="Wachtwoord">
+                                </div>
+                                <div class="form-group">
+                                     <input type="password" class="form-control" id="password_confirmation" required="true" name="password_confirmation" placeholder="Herhaal wachtwoord" value="">
                                 </div>
                                 <div class="form-group">
                                      <input type="email" class="form-control" id="email" required="true" name="email" placeholder="E-mail" value="">
