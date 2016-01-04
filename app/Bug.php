@@ -49,13 +49,13 @@ class Bug extends Model
     }
     public static function verwijderBug($id){
         $bug_id = DB::table('bugs')->select(DB::raw('id'))->where('project_id','=',$id)->first();
-        if($bug_id > 0){
+        if($bug_id != null){
             $bug_id = $bug_id->id;
             Chat::deleteChatFeedPerBug($bug_id);
             DB::table('bugs_attachments')->where('bug_id', '=',$bug_id)->delete();
             return DB::table('bugs')->where('project_id', '=',$id)->delete();
         }else {
-            return DB::table('bugs')->where('project_id', '=', $id)->delete();
+            return DB::table('bugs')->where('id', '=',$id)->delete();
         }
     }
     public static function uploadToDb($file,$id){
