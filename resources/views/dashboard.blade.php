@@ -75,7 +75,7 @@
                                           @elseif($project->prioriteit == 'kritisch')
                                               <div class="panel panel-purple">
                                           @endif
-                                               <div class="panel-heading">
+                                               <div class="panel-heading" style="padding-left:10px;padding-right:10px;">
                                                    <div class="row">
                                                    @foreach($bugs_send as $bug)
                                                    @if($bug->medewerker_id < 1)

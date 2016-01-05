@@ -296,14 +296,14 @@ class UserController extends Controller
             session()->flash('alert-danger', 'Gebruiker met id : ' . $sid . ' verwijderd.');
             return User::verwijderGebruiker($sid);
     }
-    public function resetUserPassword(Request $request){
-        $email = $request->input('email');
-        $data = array(
-            'email'   => $request['email'],
-            'password'   => Hash::make($request['password']),
-        );
-        User::where('email', '=', $email)->update($data);
-        $request->session()->flash('alert-success',  $request['email']. ' veranderd.');
-        return redirect('/admindashboard');
-    }
+//    public function resetUserPassword(Request $request){
+//        $email = $request->input('email');
+//        $data = array(
+//            'email'   => $request['email'],
+//            'password'   => Hash::make($request['password']),
+//        );
+//        User::where('email', '=', $email)->update($data);
+//        $request->session()->flash('alert-success',  $request['email']. ' veranderd.');
+//        return redirect('/admindashboard');
+//    }
 }
