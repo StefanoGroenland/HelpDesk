@@ -30,7 +30,6 @@ class ProjectController extends Controller
     }
     public function addProject(Request $request){
 
-
         if(isset($_POST['radmaak']) && is_numeric($request['telefoonnummer']) == false){
             $request->session()->flash('alert-danger', 'Telefoonnummer moet numeriek zijn.');
             return redirect('/newproject');
@@ -41,6 +40,7 @@ class ProjectController extends Controller
             if (isset($_POST['radmaak'])) {
 
                 $valid = Validator::make($request->all(), [
+
                     'telefoonnummer'                => 'numeric',
                     'email'                         => 'required|unique:gebruikers',
                     'password'                      => 'required|confirmed|min:4',
