@@ -29,15 +29,22 @@
                     </ol>
                        </div>
                    </div>
-                                   @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                                     @if(Session::has('alert-' . $msg))
-                                       <div class="row">
-                                           <div class="col-lg-12">
-                                               <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-                                           </div>
-                                       </div>
-                                     @endif
-                                   @endforeach
+                   @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                     @if(Session::has('alert-' . $msg))
+                       <div class="row">
+                           <div class="col-lg-12">
+                               <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                           </div>
+                       </div>
+                     @endif
+                   @endforeach
+                   @if (count($errors))
+                       <ul class="list-unstyled">
+                           @foreach($errors->all() as $error)
+                               <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                           @endforeach
+                       </ul>
+                   @endif
             <div class="row">
                 <div class="col-lg-4"></div>
 
@@ -85,7 +92,7 @@
                                 <input type="datetime-local" required="true" name="eind_datum" class="form-control" id="einddatum">
                               </div>
                                <div class="form-group">
-                                  <textarea class="form-control" rows="5" id="beschrijving" required="true" name="beschrijving"></textarea>
+                                  <textarea class="form-control" rows="5" id="beschrijving"  name="beschrijving"></textarea>
                                 </div>
                               <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
                             </form>

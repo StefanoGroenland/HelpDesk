@@ -271,7 +271,6 @@
                             <textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
                             <h3>U bent niet gekoppeld aan deze discussie, en kunt daarom niet reageren.</h3>
                             </textarea>
-
                             @elseif($bug->status == 'gesloten')
                             <div class="panel-heading panel-success">
                              <i class="fa fa-fw fa-info fa-2x"></i>
@@ -285,13 +284,14 @@
                             <label for="bericht">Bericht : </label>
                             <span class="label label-danger">De discussie is gesloten</span>
                             <textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
+                            <h3>De discussie is gesloten</h3>
                             </textarea>
 
                             @else
                             <textarea class="form-control" name="bericht" id="bericht" rows="6"></textarea>
                             @endif
                         </div>
-                        @if($bug->medewerker_id != Auth::user()->id && $bug->klant_id != Auth::user()->id)
+                        @if($bug->medewerker_id != Auth::user()->id && $bug->klant_id != Auth::user()->id || $bug->status == 'gesloten')
                         <button type="submit" class="btn btn-danger disabled" disabled>
                             <i class="fa fa-send"></i> Verstuur
                         </button>
@@ -391,7 +391,7 @@
                             $("#message").append(something);
                         }
                     }else{
-                        if( document.getElementById("message").className.match(/(?:^|\s)alert aler-danger(?!\S)/) ){
+                        if( document.getElementById("message").className.match(/(?:^|\s)alert alert-danger(?!\S)/) ){
                             document.getElementById("message").className =
                             document.getElementById("message").className.replace
                             ( /(?:^|\s)alert alert-info(?!\S)/g , '' )
@@ -431,10 +431,10 @@
 
                         $.each(data, function(index, elem) {
                             if (elem.medewerker) {
-                            div += '<div class="panel-heading panel-warning">';
+                            div += '<div class="panel-heading panel-default">';
                             {{--<img src="{{'../'.$afzender->medewerker->profielfoto}}" class="img-responsive img-circle pull-left" alt="medewerker_ava"--}}
                             div += '<img class="img-responsive img-circle pull-left small_avatar" alt="medewerker_ava" src=" '+ '../'+ elem.medewerker.profielfoto +' " />';
-                            div += '<span class="label label-warning">'+ elem.medewerker.voornaam +' '+ elem.medewerker.tussenvoegsel +' '+ elem.medewerker.achternaam + '</span>';
+                            div += '<span class="label label-default">'+ elem.medewerker.voornaam +' '+ elem.medewerker.tussenvoegsel +' '+ elem.medewerker.achternaam + '</span>';
                             div += '<span class="pull-right label label-default"><i class="fa fa-clock-o"></i> ' + convertDate(elem.created_at)+ '</span>' ;
                             div += '<div class="panel-heading">';
                             div +=  elem.bericht;
