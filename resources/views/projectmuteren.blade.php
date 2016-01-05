@@ -108,7 +108,6 @@
                     {{--@stop--}}
     </div>
     <!-- /#wrapper -->
-
     @extends('layouts.footer')
 
 </body>

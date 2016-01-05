@@ -22,7 +22,11 @@
     <script src="{{URL::asset('../assets/js/plugins/morris/morris.js')}}"></script>
     <script src="{{URL::asset('../assets/js/plugins/morris/morris-data.js')}}"></script>
 
-
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>tinymce.init({
+            selector:'textarea',
+             menubar: false
+             });</script>
 
 
     {{--datatables--}}
@@ -51,4 +55,5 @@
 
                             } );
                 </script>
+
     @yield('scripts')

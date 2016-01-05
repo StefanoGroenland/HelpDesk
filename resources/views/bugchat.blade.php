@@ -232,7 +232,7 @@
                                     <span class="pull-right label label-default"><i class="fa fa-clock-o"></i> {{$afzender->created_at->format('d-m-Y H:i:s')}}</span>
 
                                 <div class="panel-heading">
-                                    {{$afzender->bericht}}
+                                    {!! $afzender->bericht !!}
                                 </div>
                             </div>
                             @endforeach
@@ -279,7 +279,7 @@
                             @endif
                         </div>
                         @if($bug->medewerker_id != Auth::user()->id && $bug->klant_id != Auth::user()->id)
-                        <button type="submit" class="btn btn-success" disabled>
+                        <button type="submit" class="btn btn-danger disabled" disabled>
                             <i class="fa fa-send"></i> Verstuur
                         </button>
                         @else
