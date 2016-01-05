@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -179,13 +178,15 @@
 
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Omschrijving van de bug :</h3>
-                            <p style="white-space: pre-wrap;">{!! $bug->beschrijving !!}</p>
+                        <h3>Bug details</h3>
+                            <p style="white-space: pre-wrap;"><strong>Bug titel </strong> {!! $bug->titel !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>Omschrijving </strong> {!! $bug->beschrijving !!}</p>
                     </div>
                     <div class="col-lg-6">
                     @if(Auth::user()->bedrijf == 'moodles')
-                        <h3>Omschrijving van het project :</h3>
-                            <p style="white-space: pre-wrap;">{!! $bug->project->omschrijvingproject !!}</p>
+                        <h3>Project details</h3>
+                            <p style="white-space: pre-wrap;"><strong>Projectnaam </strong> {!! $bug->project->projectnaam !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>Omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
                             @endif
                     </div>
                 </div>
@@ -227,9 +228,9 @@
 
                                         {{--mw--}}
                                        @if($afzender->medewerker)
-                                       <div class="panel-heading panel-warning">
+                                       <div class="panel-heading panel-default">
                                        <img src="{{'../'.$afzender->medewerker->profielfoto}}" class="img-responsive img-circle pull-left small_avatar" alt="medewerker_ava"/>
-                                      <span class="label label-warning">
+                                      <span class="label label-default">
                                         {{$afzender->medewerker->voornaam.' '.$afzender->medewerker->tussenvoegsel.' '. $afzender->medewerker->achternaam}}
                                       </span>
                                         @elseif($afzender->klant)

@@ -21,9 +21,11 @@ class BugController extends Controller
     public function showBugChat($id){
         $bug = Bug::with('klant','user','project')->find($id);
         if(Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $bug->klant->id){
-            $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
-            $medewerkers = User::where('bedrijf' ,'=', 'moodles')->get();
-            $bug_attachments = BugAttachment::where('bug_id','=',$id)->get();
+
+            $afzenders              = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
+            $medewerkers            = User::where('bedrijf' ,'=', 'moodles')->get();
+            $bug_attachments        = BugAttachment::where('bug_id','=',$id)->get();
+
             return View::make('/bugchat', compact('bug', 'medewerkers','afzenders','bug_attachments','project'));
         }
         return redirect('/dashboard');
@@ -35,18 +37,20 @@ class BugController extends Controller
         return $query = Chat::where('bug_id','=',$id)->get();
     }
     public function showBugmuteren(){
-        $user_id = Auth::user()->id;
-        $projecten = Project::where('gebruiker_id', '=', $user_id)->get();
+        $user_id                = Auth::user()->id;
+        $projecten              = Project::where('gebruiker_id', '=', $user_id)->get();
         return View::make('/bugmuteren' , compact('projecten'));
     }
 
     public function showBugOverzicht($id){
         if($id == Auth::user()->id){
-            $bugs_related = $this->getRelatedBugs($id);
-            $bugs_all = Bug::with('klant','user')->orderBy('id','desc')->get();
-            $projects = Project::where('gebruiker_id','=', $id)->get();
-            $projects_all = Project::all();
-            $klanten = User::all();
+
+            $bugs_related           = $this->getRelatedBugs($id);
+            $bugs_all               = Bug::with('klant','user')->orderBy('id','desc')->get();
+            $projects               = Project::where('gebruiker_id','=', $id)->get();
+            $projects_all           = Project::all();
+            $klanten                = User::all();
+
             return View::make('/bugoverzicht', compact('bugs_related', 'bugs_all', 'projects', 'projects_all', 'klanten'));
         }else{
             return redirect('/dashboard');

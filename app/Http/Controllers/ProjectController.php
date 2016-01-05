@@ -16,16 +16,16 @@ use Route, View;
 class ProjectController extends Controller
 {
     public function showProjectMuteren($id){
-        $project = Project::find($id);
+        $project    =   Project::find($id);
         return View::make('projectmuteren', compact('project'));
     }
     public function showProjectenOverzicht(){
-        $projects = Project::all();
+        $projects   =   Project::all();
         return View::make('projecten' , compact('projects'));
     }
     public function showNewProject(){
-        $projects = Project::all();
-        $klanten = Project::getUsers();
+        $projects   =   Project::all();
+        $klanten    =   Project::getUsers();
         return View::make('newproject', compact('projects', 'klanten'));
     }
     public function addProject(Request $request){

@@ -112,9 +112,9 @@ class UserController extends Controller
 
     public function upload(Request $request){
         $id = $request['id'];
-        $file = array('profielfoto' => $request->file('profielfoto'));
+        $file = array('profielfoto'     => $request->file('profielfoto'));
 
-        $rules = array('profielfoto' => 'required|mimes:jpeg,bmp,png,jpg',);
+        $rules = array('profielfoto'    => 'required|mimes:jpeg,bmp,png,jpg',);
 
         $validator = Validator::make($file,$rules);
         if($validator->fails()){
@@ -155,24 +155,24 @@ class UserController extends Controller
     public function updateMedewerker(Request $request){
         $id = $request['id'];
         $data = array(
-            'id'                    => $request['id'],
-            'username'              => $request['username'],
-            'email'                 => $request['email'],
-            'password'              => Hash::make($request['password']),
-            'voornaam'              => $request['voornaam'],
-            'tussenvoegsel'         => $request['tussenvoegsel'],
-            'achternaam'            => $request['achternaam'],
-            'geslacht'              => $request['geslacht'],
-            'telefoonnummer'        => $request['telefoonnummer'],
+            'id'                        => $request['id'],
+            'username'                  => $request['username'],
+            'email'                     => $request['email'],
+            'password'                  => Hash::make($request['password']),
+            'voornaam'                  => $request['voornaam'],
+            'tussenvoegsel'             => $request['tussenvoegsel'],
+            'achternaam'                => $request['achternaam'],
+            'geslacht'                  => $request['geslacht'],
+            'telefoonnummer'            => $request['telefoonnummer'],
         );
 
         $rules = array(
-            'telefoonnummer'        => 'numeric',
-            'username'              => 'required|min:4',
-            'username'              => 'required|min:4',
-            'password'              => 'required|min:4',
-            'voornaam'              => 'required|min:4',
-            'achternaam'            => 'required|min:4',
+            'telefoonnummer'            => 'numeric',
+            'username'                  => 'required|min:4',
+            'username'                  => 'required|min:4',
+            'password'                  => 'required|min:4',
+            'voornaam'                  => 'required|min:4',
+            'achternaam'                => 'required|min:4',
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
@@ -189,21 +189,21 @@ class UserController extends Controller
             return redirect('/klanten');
         }
         $data = array(
-            'id'                    => $request['id'],
-            'username'              => $request['username'],
-            'email'                 => $request['email'],
-            'voornaam'              => $request['voornaam'],
-            'tussenvoegsel'         => $request['tussenvoegsel'],
-            'achternaam'            => $request['achternaam'],
-            'geslacht'              => $request['geslacht'],
-            'telefoonnummer'        => $request['telefoonnummer'],
-            'bedrijf'               => $request['bedrijf'],
+            'id'                        => $request['id'],
+            'username'                  => $request['username'],
+            'email'                     => $request['email'],
+            'voornaam'                  => $request['voornaam'],
+            'tussenvoegsel'             => $request['tussenvoegsel'],
+            'achternaam'                => $request['achternaam'],
+            'geslacht'                  => $request['geslacht'],
+            'telefoonnummer'            => $request['telefoonnummer'],
+            'bedrijf'                   => $request['bedrijf'],
         );
         $rules = array(
-            'telefoonnummer'        => 'required|numeric|min:11',
-            'voornaam'              => 'required|min:4',
-            'achternaam'            => 'required|min:4',
-            'bedrijf'               => 'required|min:4',
+            'telefoonnummer'            => 'required|numeric|min:11',
+            'voornaam'                  => 'required|min:4',
+            'achternaam'                => 'required|min:4',
+            'bedrijf'                   => 'required|min:4',
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
@@ -258,27 +258,27 @@ class UserController extends Controller
 }
     public function addUser(Request $request){
 
-        if($request['bedrijf'] == 'moodles'){
+        if($request['bedrijf'] == 'moodles' || $request['bedrijf'] == 'Moodles'){
             $request->session()->flash('alert-danger', 'Er mogen geen klanten met \'moodles\' als bedrijf worden aangemaakt.');
             return redirect('/newklant');
         }
         $data = array(
-            'username'              => $request['username'],
-            'email'                 => $request['email'],
-            'password'              => $request['password'],
-            'password_confirmation' => $request['password_confirmation'],
-            'bedrijf'               => $request['bedrijf'],
-            'voornaam'              => $request['voornaam'],
-            'tussenvoegsel'         => $request['tussenvoegsel'],
-            'achternaam'            => $request['achternaam'],
-            'telefoonnummer'        => $request['telefoonnummer'],
-            'geslacht'              => $request['geslacht'],
-            'profielfoto'           => 'assets/images/avatar.png',
+            'username'                  => $request['username'],
+            'email'                     => $request['email'],
+            'password'                  => $request['password'],
+            'password_confirmation'     => $request['password_confirmation'],
+            'bedrijf'                   => $request['bedrijf'],
+            'voornaam'                  => $request['voornaam'],
+            'tussenvoegsel'             => $request['tussenvoegsel'],
+            'achternaam'                => $request['achternaam'],
+            'telefoonnummer'            => $request['telefoonnummer'],
+            'geslacht'                  => $request['geslacht'],
+            'profielfoto'               => 'assets/images/avatar.png',
         );
         $rules = array(
-            'telefoonnummer'        => 'required|numeric',
-            'password'              => 'required|min:4|confirmed',
-            'password_confirmation' => 'required|min:4',
+            'telefoonnummer'            => 'required|numeric',
+            'password'                  => 'required|min:4|confirmed',
+            'password_confirmation'     => 'required|min:4',
         );
 
         $validator = Validator::make($data,$rules);
