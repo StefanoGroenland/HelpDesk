@@ -45,7 +45,7 @@ class BugController extends Controller
         if($id == Auth::user()->id){
 
             $bugs_related           = $this->getRelatedBugs($id);
-            $bugs_all               = Bug::with('klant','user')->orderBy('id','desc')->get();
+            $bugs_all               = Bug::with('klant')->orderBy('id','desc')->get();
             $projects               = Project::where('gebruiker_id','=', $id)->get();
             $projects_all           = Project::all();
             $klanten                = User::all();

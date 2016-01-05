@@ -37,80 +37,7 @@
                           @endforeach
                 <!-- /.row -->
                 
-                <div class="row">
-                @if(Auth::user()->bedrijf == 'moodles')
-                    <div class="col-lg-12">
-                    <h3 class="page-header">
-                        Gekoppelde bugs <small>aan mij gekoppelde bugs</small>
-                    </h3>
-                    <div class="table-responsive">
-                    <table class="table table-hover data_table">
-                        <thead>
-                        <th style="width: 10%">Bug nummer</th>
-                        <th style="width: 10%">Bug titel</th>
-                        <th style="width: 10%">Status</th>
-                        <th style="width: 10%">Soort</th>
-                        <th style="width: 10%">Prioriteit</th>
-                        <th style="width: 10%">Deadline</th>
-                        <th style="width: 10%">Klant</th>
-                        <th style="width: 10%">Project</th>
-                        <th style="width: 10%">Medewerker</th>
-                        <th style="width: 10%"></th>
-                        </thead>
-                        <tbody>
 
-                           @foreach($bugs_related as $bug)
-                                <tr>
-                                    <td>{{$bug->id}}</td>
-                                    <td>{{substr($bug->titel,0,15)}}...</td>
-                                    <td>{{$bug->status}}</td>
-                                    <td>{{$bug->soort}}</td>
-                                    <td>
-                                    @if($bug->prioriteit == 'laag')
-                                    <span class="label label-success">Laag</span>
-                                    @elseif($bug->prioriteit == 'gemiddeld')
-                                    <span class="label label-warning">Gemmideld</span>
-                                    @elseif($bug->prioriteit == 'hoog')
-                                    <span class="label label-danger">Hoog</span>
-                                    @elseif($bug->prioriteit == 'kritisch')
-                                    <span class="label label-purple">Kritisch</span>
-                                    @else
-                                    <span class="label label-info">Geen prioriteit</span>
-                                    @endif
-                                    </td>
-                                    <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
-                                    @if($bug->klant)
-                                    <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
-                                    @endif
-                                    {{--<td>{{$project->projectnaam}}</td>--}}
-                                    @if($bug->project)
-                                    <td>{{$bug->project->projectnaam}}</td>
-                                    @endif
-                                    @if($bug->user)
-                                    <td>{{ucfirst($bug->user->voornaam) .' '.$bug->user->tussenvoegsel.' '. ucfirst($bug->user->achternaam)}}</td>
-                                    @else
-                                    <td>Geen</td>
-                                    @endif
-                                    <td>
-                                        <a href="/bugchat/{{$bug->id}}" class="">
-                                            <button type="submit" class="btn btn-success btn-xs">
-                                                <i class="glyphicon glyphicon-search"></i>
-                                            </button>
-                                        </a>
-                                        @if(Auth::user()->bedrijf == 'moodles')
-                                             <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$bug->id}}">
-                                               <i class="glyphicon glyphicon-trash"></i>
-                                             </button>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach
-                        </tbody>
-                      </table>
-                    </div>
-                    </div>
-                @endif
-             </div>
 
                 @foreach($projects as $project)
                                 <div class="row">
@@ -127,9 +54,7 @@
                                         <th style="width: 10%">Soort</th>
                                         <th style="width: 10%">Prioriteit</th>
                                         <th style="width: 10%">Deadline</th>
-                                        <th style="width: 10%">Klant</th>
                                         <th style="width: 10%">Project</th>
-                                        <th style="width: 10%">Medewerker</th>
                                         <th style="width: 10%"></th>
                                         </thead>
                                         <tbody>
@@ -154,17 +79,9 @@
                                                     @endif
                                                     </td>
                                                     <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
-                                                    @if($bug->klant)
-                                                    <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
-                                                    @endif
                                                     <td>{{$project->projectnaam}}</td>
-                                                    @if($bug->user)
-                                                    <td>{{ucfirst($bug->user->voornaam) .' '.$bug->user->tussenvoegsel.' '. ucfirst($bug->user->achternaam)}}</td>
-                                                    @else
-                                                    <td>Geen</td>
-                                                    @endif
                                                     <td>
-                                                        <a href="/bugchat/{{$bug->id}}" class="">
+                                                        <a href="/bugchat/{{$bug->id}}">
                                                             <button type="submit" class="btn btn-success btn-xs">
                                                                 <i class="glyphicon glyphicon-search"></i>
                                                             </button>
@@ -197,7 +114,6 @@
                         <th style="width: 10%">Deadline</th>
                         <th style="width: 10%">Klant</th>
                         <th style="width: 10%">Project</th>
-                        <th style="width: 10%">Medewerker</th>
                         <th style="width: 10%"></th>
                         </thead>
                         <tbody>
@@ -227,11 +143,6 @@
                                         <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
                                         @endif
                                         <td>{{$bug->project->projectnaam}}</td>
-                                        @if($bug->user)
-                                        <td>{{ucfirst($bug->user->voornaam) .' '.$bug->user->tussenvoegsel.' '. ucfirst($bug->user->achternaam)}}</td>
-                                        @else
-                                        <td>geen</td>
-                                        @endif
                                         <td>
                                             <a href="/bugchat/{{$bug->id}}" class="">
                                                 <button type="submit" class="btn btn-success btn-xs">
