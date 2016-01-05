@@ -97,7 +97,7 @@ class BugController extends Controller
         );
 
         $rules = array(
-            'titel'             => 'required',
+            'titel'             => 'required|min:4',
             'prioriteit'        => 'required',
             'soort'             => 'required',
             'status'            => 'required',

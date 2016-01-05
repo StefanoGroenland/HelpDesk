@@ -20,7 +20,7 @@ class UserController extends Controller
 {
     public function showWelcome()
     {
-        if (Auth::user()->id > 0) {
+        if (Auth::user()) {
             return $this->showDashboard();
         } else {
             return View::make('auth/welcome');
@@ -85,9 +85,12 @@ class UserController extends Controller
         }
 
         $rules = array(
-            'telefoonnummer' => 'numeric',
-            'password' => 'min:4|confirmed',
-            'password_confirmation' => 'min:4',
+            'telefoonnummer'            => 'numeric|min:11',
+            'password'                  => 'min:4|confirmed',
+            'password_confirmation'     => 'min:4',
+            'voornaam'                  => 'required|min:4',
+            'achternaam'                => 'required|min:4',
+            'bedrijf'                   => 'required|min:4',
         );
 
         $validator = Validator::make($data,$rules);
@@ -155,7 +158,7 @@ class UserController extends Controller
             'id'                    => $request['id'],
             'username'              => $request['username'],
             'email'                 => $request['email'],
-            'password'              => bcrypt($request['password']),
+            'password'              => Hash::make($request['password']),
             'voornaam'              => $request['voornaam'],
             'tussenvoegsel'         => $request['tussenvoegsel'],
             'achternaam'            => $request['achternaam'],
@@ -164,7 +167,12 @@ class UserController extends Controller
         );
 
         $rules = array(
-            'telefoonnummer' => 'numeric',
+            'telefoonnummer'        => 'numeric',
+            'username'              => 'required|min:4',
+            'username'              => 'required|min:4',
+            'password'              => 'required|min:4',
+            'voornaam'              => 'required|min:4',
+            'achternaam'            => 'required|min:4',
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
@@ -192,7 +200,10 @@ class UserController extends Controller
             'bedrijf'               => $request['bedrijf'],
         );
         $rules = array(
-            'telefoonnummer' => 'numeric',
+            'telefoonnummer'        => 'required|numeric|min:11',
+            'voornaam'              => 'required|min:4',
+            'achternaam'            => 'required|min:4',
+            'bedrijf'               => 'required|min:4',
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
@@ -229,9 +240,9 @@ class UserController extends Controller
         );
 
         $rules = array(
-            'telefoonnummer' => 'numeric',
-            'password' => 'required|min:4|confirmed',
-            'password_confirmation' => 'required|min:4',
+            'telefoonnummer'            => 'numeric',
+            'password'                  => 'required|min:4|confirmed',
+            'password_confirmation'     => 'required|min:4',
         );
 
         $validator = Validator::make($data,$rules);
@@ -265,8 +276,8 @@ class UserController extends Controller
             'profielfoto'           => 'assets/images/avatar.png',
         );
         $rules = array(
-            'telefoonnummer' => 'numeric',
-            'password' => 'required|min:4|confirmed',
+            'telefoonnummer'        => 'required|numeric',
+            'password'              => 'required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
         );
 
@@ -289,7 +300,7 @@ class UserController extends Controller
         $email = $request->input('email');
         $data = array(
             'email'   => $request['email'],
-            'password'   => bcrypt($request['password']),
+            'password'   => Hash::make($request['password']),
         );
         User::where('email', '=', $email)->update($data);
         $request->session()->flash('alert-success',  $request['email']. ' veranderd.');
