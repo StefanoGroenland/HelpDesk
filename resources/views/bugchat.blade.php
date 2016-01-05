@@ -257,6 +257,7 @@
                             <label for="bericht">Bericht : </label>
                             <span class="label label-danger">U bent niet de gekoppelde medewerker!</span>
                             <textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
+                            <h3>U bent niet gekoppeld aan deze discussie, en kunt daarom niet reageren.</h3>
                             </textarea>
 
                             @elseif($bug->status == 'gesloten')

@@ -84,6 +84,7 @@ class ProjectController extends Controller
                 if ($valid->fails()) {
                     return redirect('/newproject')->withErrors($valid);
                 } else {
+
                     $user = User::create([
                         'username'              => $request['username'],
                         'password'              => $request['password'],
@@ -112,30 +113,44 @@ class ProjectController extends Controller
             }
             elseif
                 (isset($_POST['radkoppel'])) {
-                    Validator::make($request->all(), [
-                        'titel' => 'required|max:255|unique:projecten',
-                        'status' => 'required',
-                        'prioriteit' => 'required',
-                        'soort' => 'required',
-                        'projectnaam' => 'required',
-                        'projecturl' => 'required',
-                        'gebruikersnaam' => 'required',
-                        'wachtwoord' => 'required',
-                        'omschrijvingproject' => 'required',
-                        'gebruiker_id' => 'required',
-                    ]);
-                    Project::create([
-                        'titel'                 => $request['titel'],
-                        'status'                => $request['status'],
-                        'prioriteit'            => $request['prioriteit'],
-                        'soort'                 => $request['soort'],
-                        'projectnaam'           => $request['projectnaam'],
-                        'projecturl'            => $request['projecturl'],
-                        'gebruikersnaam'        => $request['gebruikersnaam'],
-                        'wachtwoord'            => Crypt::encrypt($request['wachtwoord']),
-                        'omschrijvingproject'   => $request['omschrijvingproject'],
-                        'gebruiker_id'          => $request['gebruiker_id'],
-                    ]);
+                $rulez = array(
+                    'titel' => 'required|max:255|unique:projecten',
+                    'status' => 'required',
+                    'prioriteit' => 'required',
+                    'soort' => 'required',
+                    'projectnaam' => 'required|unique:projecten',
+                    'projecturl' => 'required',
+                    'gebruikersnaam' => 'required',
+                    'wachtwoord' => 'required',
+                    'omschrijvingproject' => 'required',
+                );
+                $validator = Validator::make($request->all(), $rulez, [
+                    'titel' => 'required|max:255|unique:projecten',
+                    'status' => 'required',
+                    'prioriteit' => 'required',
+                    'soort' => 'required',
+                    'projectnaam' => 'required',
+                    'projecturl' => 'required',
+                    'gebruikersnaam' => 'required',
+                    'wachtwoord' => 'required',
+                    'omschrijvingproject' => 'required',
+                ]);
+                if ($validator->fails()) {
+                    return redirect('/newproject')->withErrors($validator);
+                } else {
+                        Project::create([
+                            'titel' => $request['titel'],
+                            'status' => $request['status'],
+                            'prioriteit' => $request['prioriteit'],
+                            'soort' => $request['soort'],
+                            'projectnaam' => $request['projectnaam'],
+                            'projecturl' => $request['projecturl'],
+                            'gebruikersnaam' => $request['gebruikersnaam'],
+                            'wachtwoord' => Crypt::encrypt($request['wachtwoord']),
+                            'omschrijvingproject' => $request['omschrijvingproject'],
+                            'gebruiker_id' => $request['gebruiker_id'],
+                        ]);
+                    }
                 }
             }
         $request->session()->flash('alert-success', 'Project toegevoegd.');
