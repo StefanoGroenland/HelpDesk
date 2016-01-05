@@ -86,21 +86,6 @@
                                        <option value="gesloten" @if($bug->status == 'gesloten') selected @endif >Gesloten</option>
                                    </select>
                           </div>
-                            <div class="form-group">
-                                <label for="sel4">Koppel medewerker</label>
-                                <select class="form-control" id="medewerker" name="medewerker">
-                                    <option value="0">Geen</option>
-                                    @foreach($medewerkers as $mw)
-                                    <option value="{{$mw->id}}"
-                                    @if($bug->user)
-                                     @if($bug->user->id == $mw->id) selected @endif
-                                     @endif
-                                     >
-                                    {{$mw->voornaam .' '. $mw->achternaam }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                            </div>
                             <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander</button>
                         </form>
                         <br>
@@ -110,7 +95,7 @@
                 <div class="row">
 
                     <div class="col-lg-12">
-                       <div class="panel-body">
+
                             <div id="message"></div>
                            <form id="upload" action="upload" enctype="multipart/form-data">
 
@@ -127,7 +112,7 @@
                                 <div class="col-lg-6"><input type="submit" value="Upload" class="btn btn-success btn-xs pull-right"></div>
                                 </div>
                            </form>
-                       </div>
+                       <br>
 
 
                        @if($bug->prioriteit == 'laag')
@@ -265,13 +250,7 @@
                             <input type="hidden" name="bug_id"          value="{{$bug->id}}">
                             <input type="hidden" name="project_id"      value="{{$bug->project_id}}">
 
-                            @if($bug->medewerker_id != Auth::user()->id && $bug->klant_id != Auth::user()->id)
-                            <label for="bericht">Bericht : </label>
-                            <span class="label label-danger">U bent niet de gekoppelde medewerker!</span>
-                            <textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
-                            <h3>U bent niet gekoppeld aan deze discussie, en kunt daarom niet reageren.</h3>
-                            </textarea>
-                            @elseif($bug->status == 'gesloten')
+                            @if($bug->status == 'gesloten')
                             <div class="panel-heading panel-success">
                              <i class="fa fa-fw fa-info fa-2x"></i>
                             <span class="label label-success">
@@ -286,12 +265,11 @@
                             <textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
                             <h3>De discussie is gesloten</h3>
                             </textarea>
-
                             @else
                             <textarea class="form-control" name="bericht" id="bericht" rows="6"></textarea>
                             @endif
                         </div>
-                        @if($bug->medewerker_id != Auth::user()->id && $bug->klant_id != Auth::user()->id || $bug->status == 'gesloten')
+                        @if($bug->status == 'gesloten')
                         <button type="submit" class="btn btn-danger disabled" disabled>
                             <i class="fa fa-send"></i> Verstuur
                         </button>

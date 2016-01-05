@@ -78,7 +78,6 @@ class BugController extends Controller
             'prioriteit'        => $request['prioriteit'],
             'soort'             => $request['soort'],
             'status'            => $request['status'],
-            'medewerker_id'     => $request['medewerker'],
         );
         Bug::where('id', '=', $bug->id)->update($data);
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');

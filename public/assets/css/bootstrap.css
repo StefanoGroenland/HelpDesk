@@ -1295,6 +1295,13 @@ h6,
 p {
   margin: 0 0 10px;
 }
+.panel-heading > p {
+    margin: 0 50px 10px;
+}
+.panel-heading > h3{
+    margin-left:15px;
+}
+
 .lead {
   margin-bottom: 20px;
   font-size: 16px;
@@ -5324,7 +5331,8 @@ a.list-group-item-danger.active:focus {
   padding: 15px;
 }
 .panel-heading {
-  padding: 10px 15px;
+  padding-top:10px;
+  padding-bottom:10px;
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
