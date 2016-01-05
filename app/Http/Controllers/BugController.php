@@ -23,7 +23,6 @@ class BugController extends Controller
         if(Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $bug->klant->id){
 
             $afzenders              = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
-            $medewerkers            = User::where('bedrijf' ,'=', 'moodles')->get();
             $bug_attachments        = BugAttachment::where('bug_id','=',$id)->get();
 
             return View::make('/bugchat', compact('bug', 'medewerkers','afzenders','bug_attachments','project'));
@@ -65,12 +64,7 @@ class BugController extends Controller
     }
 
     public function getRelatedBugs($id){
-        if(Auth::user()->bedrijf == 'moodles'){
-            $bugs = Bug::where('medewerker_id','=', $id)->get();
-        }else{
-            $bugs = Bug::where('klant_id','=', $id)->get();
-        }
-        return $bugs;
+        return $bugs = Bug::where('klant_id','=', $id)->get();
     }
     public function updateBug($id,Request $request){
         $bug = Bug::find($id);

@@ -24,7 +24,6 @@ class CreateBugsTable extends Migration
             $table->text('beschrijving');
             $table->integer('klant_id');
             $table->integer('project_id');
-            $table->integer('medewerker_id');
         });
     }
     /**

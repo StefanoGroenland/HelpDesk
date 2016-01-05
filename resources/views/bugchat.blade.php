@@ -196,8 +196,8 @@
                          <span class="label label-success">
                            Automatisch bericht
                          </span>
-                         <div class="panel-heading">
-                             Elke 5 minuten wordt de chat feed ververst. Mocht u handmatig willen verversen, Kunt u rechts boven op :
+                         <div class="panel-heading" style="padding: 10px 50px 10px;">
+                            Elke 5 minuten wordt de chat feed ververst. Mocht u handmatig willen verversen,Kunt u rechts boven op :
                              <button class="btn btn-default btn-xs disabled">
                                 <i class="fa fa-refresh fa-spin"></i>
                                 refresh feed
