@@ -176,9 +176,20 @@
                 <div class="col-lg-2"></div>
                 <div class="col-lg-9">
                 <div class="col-lg-12 well well-sm">
-                                <h3>Omschrijving :</h3>
-                                <p style="white-space: pre-wrap;">{{$bug->beschrijving}}</p>
-                            </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Omschrijving van de bug :</h3>
+                            <p style="white-space: pre-wrap;">{!! $bug->beschrijving !!}</p>
+                    </div>
+                    <div class="col-lg-6">
+                    @if(Auth::user()->bedrijf == 'moodles')
+                        <h3>Omschrijving van het project :</h3>
+                            <p style="white-space: pre-wrap;">{!! $bug->project->omschrijvingproject !!}</p>
+                            @endif
+                    </div>
+                </div>
+               </div>
                     <h3>Discussie
                         <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
                            <i class="fa fa-refresh fa-spin"></i>

@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Auth;
 class BugController extends Controller
 {
     public function showBugChat($id){
-        $bug = Bug::with('klant','user')->find($id);
+        $bug = Bug::with('klant','user','project')->find($id);
         if(Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $bug->klant->id){
             $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
             $medewerkers = User::where('bedrijf' ,'=', 'moodles')->get();
             $bug_attachments = BugAttachment::where('bug_id','=',$id)->get();
-            return View::make('/bugchat', compact('bug', 'medewerkers','afzenders','bug_attachments'));
+            return View::make('/bugchat', compact('bug', 'medewerkers','afzenders','bug_attachments','project'));
         }
         return redirect('/dashboard');
     }
