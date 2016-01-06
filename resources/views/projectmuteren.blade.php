@@ -54,35 +54,15 @@
                                <input type="text" class="form-control titel2" id="titel2" required="true" name="titel" placeholder="Titel" value="{{$project->titel}}">
                                <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$project->id}}">
                              </div>
-                             <div class="form-group">
-                                 <select class="form-control status2" id="status2" name="status" required="true">
-                                   <option value="open" @if($project->status == 'open') selected @endif >Open</option>
-                                   <option value="bezig" @if($project->status == 'bezig') selected @endif >Bezig</option>
-                                   <option value="gesloten" @if($project->status == 'gesloten') selected @endif >Gesloten</option>
-                                 </select>
-                               </div>
-                               <div class="form-group">
-                                 <select class="form-control prioriteit2" id="prioriteit2" required="true" name="prioriteit">
-                                   <option value="kritisch"  @if($project->prioriteit == 'kritisch') selected @endif >Kritisch</option>
-                                   <option value="hoog" @if($project->prioriteit == 'hoog') selected @endif >Hoog</option>
-                                   <option value="gemiddeld"  @if($project->prioriteit == 'gemiddeld') selected @endif >Gemiddeld</option>
-                                   <option value="laag" @if($project->prioriteit == 'laag') selected @endif >Laag</option>
-                                 </select>
-                               </div>
-                               <div class="form-group">
-                                <select class="form-control soort2" id="soort2" required="true" name="soort">
-                                  <option value="lay-out" @if($project->soort == 'lay-out') selected @endif >Lay-out</option>
-                                  <option value="seo" @if($project->soort == 'seo') selected @endif >SEO</option>
-                                  <option value="performance" @if($project->soort == 'performance') selected @endif >Performance</option>
-                                  <option value="code" @if($project->soort == 'code') selected @endif >Code</option>
-                                </select>
-                              </div>
                               <div class="form-group">
                                 <input type="text" class="form-control projectnaam2" required="true" id="projectnaam2" name="projectnaam" placeholder="Projectnaam" value="{{$project->projectnaam}}">
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control projecturl2" required="true" id="projecturl2" name="projecturl" placeholder="Project URL" value="{{$project->projecturl}}">
+                                <input type="text" class="form-control projecturl2" required="true" id="projecturl2" name="projecturl" placeholder="Live URL" value="{{$project->liveurl}}">
                               </div>
+                              <div class="form-group">
+                                 <input type="text" class="form-control projecturl2" required="true" id="projecturl2" name="projecturl" placeholder="Development URL" value="{{$project->developmenturl}}">
+                               </div>
                                 <div class="form-group">
                                 <label for="bedrijfsnaam">Beheer account</label>
                                 <input type="text" class="form-control gebruikersnaam2" required="true" id="gebruikersnaam2" name="gebruikersnaam" placeholder="Gebruikersnaam" value="{{$project->gebruikersnaam}}">

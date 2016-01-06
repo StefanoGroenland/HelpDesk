@@ -20,12 +20,10 @@ class Project extends Model
      *
      * @var array
      */
-    protected $fillable = ['titel',
-        'status',
-        'prioriteit',
-        'soort',
+    protected $fillable = [
         'projectnaam',
-        'projecturl',
+        'liveurl',
+        'developmenturl',
         'gebruikersnaam',
         'wachtwoord',
         'telefoonnummer',
@@ -55,7 +53,7 @@ class Project extends Model
 
     public static function getProjectOnSearch($inp){
         return DB::table('projecten')
-            ->select(DB::raw('id,titel,status,prioriteit,soort,projectnaam,projecturl
+            ->select(DB::raw('id,titel,projectnaam,liveurl,developmenturl
             ,gebruikersnaam,wachtwoord
             ,gebruiker_id,omschrijvingproject'))
             ->where('projectnaam', '=', $inp)

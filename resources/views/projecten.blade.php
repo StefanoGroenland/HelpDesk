@@ -45,36 +45,18 @@
                             <table class="table table-hover data_table">
                                 <thead>
                                 <th>Project</th>
-                                <th>URL</th>
-                                <th>Titel</th>
+                                <th>Live url</th>
+                                <th>Development url</th>
                                 <th>Klantnummer</th>
-                                <th>Satus</th>
-                                <th>Soort</th>
-                                <th>Prioriteit</th>
                                 <th></th>
                                 </thead>
                                 <tbody>
                                     @foreach($projects as $project)
                                       <tr>
                                       <td>{{$project->projectnaam}}</td>
-                                      <td>{{$project->projecturl}}</td>
-                                      <td>{{$project->titel}}</td>
+                                      <td>{{$project->liveurl}}</td>
+                                      <td>{{$project->developmenturl}}</td>
                                       <td>{{$project->gebruiker_id}}</td>
-                                      <td>{{$project->status}}</td>
-                                      <td>{{$project->soort}}</td>
-                                      <td>
-                                      @if($project->prioriteit == 'laag')
-                                      <span class="label label-success">Laag</span>
-                                      @elseif($project->prioriteit == 'gemiddeld')
-                                      <span class="label label-warning">Gemmideld</span>
-                                      @elseif($project->prioriteit == 'hoog')
-                                      <span class="label label-danger">Hoog</span>
-                                      @elseif($project->prioriteit == 'kritisch')
-                                      <span class="label label-purple">Kritisch</span>
-                                      @else
-                                      <span class="label label-info">Geen prioriteit</span>
-                                      @endif
-                                      </td>
                                       <td>
                                       <a href="/projectmuteren/{{$project->id}}" class="">
                                            <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">

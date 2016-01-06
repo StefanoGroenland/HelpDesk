@@ -50,16 +50,13 @@ class ProjectController extends Controller
                     'bedrijf'                       => 'required|min:4',
                     'username'                      => 'required|min:4|unique:gebruikers',
                     'projectnaam'                   => 'required|min:4',
-                    'titel'                         => 'required|min:4',
                     'gebruikersnaam'                => 'required|min:4',
                     'wachtwoord'                    => 'required|min:4',
 
-                    'titel'                         => 'required|max:255|unique:projecten',
-                    'status'                        => 'required',
-                    'prioriteit'                    => 'required',
-                    'soort'                         => 'required',
+
                     'projectnaam'                   => 'required|unique:projecten',
-                    'projecturl'                    => 'required',
+                    'liveurl'                       => 'required',
+                    'developmenturl'                => 'required',
                     'gebruikersnaam'                => 'required',
                     'wachtwoord'                    => 'required',
                     'omschrijvingproject'           => 'required',
@@ -84,12 +81,9 @@ class ProjectController extends Controller
                         'profielfoto'               => 'assets/images/avatar.png',
                     ]);
                     Project::create([
-                        'titel'                     => $request['titel'],
-                        'status'                    => $request['status'],
-                        'prioriteit'                => $request['prioriteit'],
-                        'soort'                     => $request['soort'],
                         'projectnaam'               => $request['projectnaam'],
-                        'projecturl'                => $request['projecturl'],
+                        'liveurl'                   => $request['liveurl'],
+                        'developmenturl'            => $request['developmenturl'],
                         'gebruikersnaam'            => $request['gebruikersnaam'],
                         'wachtwoord'                => Crypt::encrypt($request['wachtwoord']),
                         'omschrijvingproject'       => $request['omschrijvingproject'],
@@ -101,12 +95,9 @@ class ProjectController extends Controller
                 (isset($_POST['radkoppel'])) {
 
                 $validator = Validator::make($request->all(), [
-                    'titel'                         => 'required|max:255|unique:projecten',
-                    'status'                        => 'required',
-                    'prioriteit'                    => 'required',
-                    'soort'                         => 'required',
                     'projectnaam'                   => 'required|unique:projecten',
-                    'projecturl'                    => 'required',
+                    'liveurl'                       => 'required|url',
+                    'developmenturl'                => 'required',
                     'gebruikersnaam'                => 'required',
                     'wachtwoord'                    => 'required',
                     'omschrijvingproject'           => 'required',
@@ -115,12 +106,9 @@ class ProjectController extends Controller
                     return redirect('/newproject')->withErrors($validator);
                 } else {
                         Project::create([
-                            'titel'                 => $request['titel'],
-                            'status'                => $request['status'],
-                            'prioriteit'            => $request['prioriteit'],
-                            'soort'                 => $request['soort'],
                             'projectnaam'           => $request['projectnaam'],
-                            'projecturl'            => $request['projecturl'],
+                            'liveurl'               => $request['liveurl'],
+                            'developmenturl'        => $request['developmenturl'],
                             'gebruikersnaam'        => $request['gebruikersnaam'],
                             'wachtwoord'            => Crypt::encrypt($request['wachtwoord']),
                             'omschrijvingproject'   => $request['omschrijvingproject'],
@@ -136,12 +124,12 @@ class ProjectController extends Controller
         $id = $request['id'];
         $data = array(
             'id'                                    => $request['id'],
-            'titel'                                 => $request['titel'],
             'status'                                => $request['status'],
             'prioriteit'                            => $request['prioriteit'],
             'soort'                                 => $request['soort'],
             'projectnaam'                           => $request['projectnaam'],
-            'projecturl'                            => $request['projecturl'],
+            'liveurl'                               => $request['liveurl'],
+            'developmenturl'                        => $request['developmenturl'],
             'gebruikersnaam'                        => $request['gebruikersnaam'],
             'wachtwoord'                            => Crypt::encrypt($request['wachtwoord']),
             'omschrijvingproject'                   => $request['omschrijvingproject'],

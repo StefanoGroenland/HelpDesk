@@ -46,8 +46,8 @@
                             </ul>
                         @endif
                 <div class="row">
-                <div class="col-lg-2"></div>
-                    <div class="col-lg-4">
+                {{--<div class="col-lg-2"></div>--}}
+                    <div class="col-lg-6">
 
                       <div class="panel panel-success">
                         <div class="panel-heading">
@@ -56,55 +56,32 @@
                         <div class="panel-body">
                           <form method="POST" action="/addProject" >
                              {!! csrf_field() !!}
-                          <div class="form-group">
-                              <label for="bedrijfsnaam">Project</label>
-                             <input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel">
-                           </div>
-                           <div class="form-group">
-                              <select class="form-control" id="status" name="status" required="true">
-                                <option value="open">Open</option>
-                                <option value="bezig">Bezig</option>
-                                <option value="gesloten">Gesloten</option>
-                              </select>
-                            </div>
                             <div class="form-group">
-                              <select class="form-control" id="prioriteit" required="true" name="prioriteit">
-                                <option value="laag">Laag</option>
-                                <option value="gemiddeld">Gemiddeld</option>
-                                <option value="hoog">Hoog</option>
-                                <option value="kritisch">Kritisch</option>
-                              </select>
-                            </div>
-                            <div class="form-group">
-                             <select class="form-control" id="soort" required="true" name="soort">
-                               <option value="lay-out">Lay-out</option>
-                               <option value="seo">SEO</option>
-                               <option value="performance">Performance</option>
-                               <option value="code">Code</option>
-                             </select>
-                           </div>
-                            <div class="form-group">
+                            <label for="sel4">Project gegevens</label>
                               <input type="text" class="form-control" id="projectnaam" required="true" name="projectnaam" placeholder="Projectnaam" value="">
                             </div>
                             <div class="form-group">
-                              <input type="text" class="form-control" id="projecturl" required="true" name="projecturl" placeholder="Project URL" value="">
+                              <input type="text" class="form-control" id="projecturl" required="true" name="liveurl" placeholder="Productie URL" value="">
                             </div>
                             <div class="form-group">
-                                    <label for="sel4">Beheer account</label>
+                              <input type="text" class="form-control" id="projecturl" required="true" name="developmenturl" placeholder="Development URL" value="">
+                            </div>
+                            <div class="form-group">
+                                    <label for="sel4">Beheer account</label><small> dit is het account waarmee wordt aangemeld op de admin panel van de website</small>
                                   <input type="text" class="form-control" id="gebruikersnaam" required="true" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
                                 </div>
                                  <div class="form-group">
                                   <input type="password" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
                                 </div>
                             <div class="form-group">
-                               <textarea class="form-control" rows="5" id="omschrijvingproject" name="omschrijvingproject"></textarea>
+                               <textarea class="form-control" rows="13" id="omschrijvingproject" name="omschrijvingproject"></textarea>
                              </div>
 
 
                            </div>
                          </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
 
                     <div class="panel panel-success">
                         <div class="panel-heading">
@@ -172,7 +149,7 @@
 
                     </form>
                     </div>
-                    <div class="col-lg-2"></div>
+                    {{--<div class="col-lg-2"></div>--}}
 
 
 
