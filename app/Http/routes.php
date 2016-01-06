@@ -59,11 +59,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/updateBug/{id}',array('as' => 'updateBug', 'uses' => 'BugController@updateBug'));
     });
 
-    Route::get('/bugmuteren', array('as' => 'bugmuteren', 'uses' => 'BugController@showBugMuteren'));
+    Route::get('/bugmuteren/{id?}', array('as' => 'bugmuteren', 'uses' => 'BugController@showBugMuteren'));
+
     Route::get('/bugchat/{id}',array('as' => 'bugchat', 'uses' => 'BugController@showbugChat'));
     Route::post('/addBug', 'BugController@addBug');
     Route::post('/upload', 'BugController@upload');
     Route::get('/bugoverzicht/{id}', array('as' => 'bugoverzicht', 'uses' => 'BugController@showBugOverzicht'));
+    Route::get('/bugs/{id}', array('as' => 'bugoverzicht', 'uses' => 'BugController@showBugOverzichtPerProject'));
 
 //    ChatController Routes
     Route::post('/sendMessage', 'ChatController@sendMessage');

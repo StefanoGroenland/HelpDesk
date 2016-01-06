@@ -57,15 +57,21 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label for="bedrijfsnaam">Project</label>
+                                <label for="bedrijfsnaam">Bug</label>
                                 <input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel">
                              </div>
                               <div class="form-group">
-                                <select class="form-control" name="project" required="true">
+                                @if($id && Auth::user()->bedrijf == 'moodles')
+                                    <select class="form-control" name="project" disabled required="true">
+                                    <option value="{{$id}}">{{$id}}</option>
+                                    </select>
+                                   @else
+                                   <select class="form-control" name="project" required="true">
                                   @foreach($projecten as $project)
-                                        <option value="{{$project->id}}">{{$project->titel}}</option>
+                                        <option value="{{$project->id}}">{{$project->projectnaam}}</option>
                                   @endforeach
-                                </select>
+                                  </select>
+                                  @endif
                                 </div>
                                 <div class="form-group">
                                 <select class="form-control" name="prioriteit" required="true">
@@ -86,10 +92,6 @@
                               <div class="form-group">
                               <label for="start_date">Startdatum</label>
                                 <input type="date" class="form-control" name="start_datum" required="true" value="{{date('Y-m-d')}}" id="start_datum">
-                              </div>
-                              <div class="form-group">
-                              <label for="end_date">Einddatum</label>
-                                <input type="datetime-local" required="true" name="eind_datum" class="form-control" id="einddatum">
                               </div>
                                <div class="form-group">
                                   <textarea class="form-control" rows="5" id="beschrijving"  name="beschrijving"></textarea>

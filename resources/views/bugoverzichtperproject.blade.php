@@ -39,72 +39,25 @@
 
 
 
-                @foreach($projects as $project)
-                                <div class="row">
-                                   <div class="col-lg-12">
-                                   <h3 class="page-header">
-                                       {{$project->projectnaam}} <small>alle bugs voor {{$project->projectnaam}}</small>
-                                   </h3>
-                                   <div class="table-responsive">
-                                    <table class="table table-hover data_table">
-                                        <thead>
-                                        <th style="width: 10%">Bug nummer</th>
-                                        <th style="width: 10%">Bug titel</th>
-                                        <th style="width: 10%">Status</th>
-                                        <th style="width: 10%">Soort</th>
-                                        <th style="width: 10%">Prioriteit</th>
-                                        <th style="width: 10%">Deadline</th>
-                                        <th style="width: 10%">Project</th>
-                                        <th style="width: 10%"></th>
-                                        </thead>
-                                        <tbody>
-                                           @foreach($bugs_all as $bug)
-                                           @if($bug->project_id == $project->id)
-                                                <tr>
-                                                    <td>{{$bug->id}}</td>
-                                                    <td>{{substr($bug->titel,0,15)}}...</td>
-                                                    <td>{{$bug->status}}</td>
-                                                    <td>{{$bug->soort}}</td>
-                                                    <td>
-                                                    @if($bug->prioriteit == 'laag')
-                                                    <span class="label label-success">Laag</span>
-                                                    @elseif($bug->prioriteit == 'gemiddeld')
-                                                    <span class="label label-warning">Gemmideld</span>
-                                                    @elseif($bug->prioriteit == 'hoog')
-                                                    <span class="label label-danger">Hoog</span>
-                                                    @elseif($bug->prioriteit == 'kritisch')
-                                                    <span class="label label-purple">Kritisch</span>
-                                                    @else
-                                                    <span class="label label-info">Geen prioriteit</span>
-                                                    @endif
-                                                    </td>
-                                                    <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
-                                                    <td>{{$project->projectnaam}}</td>
-                                                    <td>
-                                                        <a href="/bugchat/{{$bug->id}}">
-                                                            <button type="submit" class="btn btn-success btn-xs">
-                                                                <i class="glyphicon glyphicon-search"></i>
-                                                            </button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                @endif
-                                            @endforeach
-                                        </tbody>
-                                      </table>
-                                   </div>
-                                  </div>
-                                 </div>
-                @endforeach
-
-                @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
                     <div class="col-lg-12">
-                    <h3 class="page-header">
-                        Alle bugs <small>een lijst van alle bugs</small>
-                    </h3>
-                    <div class="table-responsive">
-                    <table class="table table-hover data_table">
+                        <h3 class="page-header">
+                            {{$project->projectnaam}} <small>alle bugs van dit project</small>
+                        </h3>
+                        <a href="/bugmuteren/{{$project->id}}" class="pull-left">
+                            <button type="submit" class="btn btn-info btn-xs">
+                               <i class="glyphicon glyphicon-plus"></i>
+                               Bugmelden
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                    <div class="row">
+                     <div class="col-lg-12">
+                     <br>
+                      <div class="table-responsive">
+                       <table class="table table-hover data_table">
                         <thead>
                         <th style="width: 10%">Bug nummer</th>
                         <th style="width: 10%">Bug titel</th>
@@ -117,9 +70,8 @@
                         <th style="width: 10%"></th>
                         </thead>
                         <tbody>
-                            @foreach($bugs_all as $bug)
-                                @if($bug->project)
-                                    @if($bug->project_id == $bug->project->id)
+                            @foreach($bugs as $bug)
+
                                     <tr>
                                         <td>{{$bug->id}}</td>
                                         <td>{{substr($bug->titel,0,15)}}...</td>
@@ -155,11 +107,8 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    @endif
-                                    @endif
+
                             @endforeach
-                            @else
-                            @endif
 
                         </tbody>
                       </table>
@@ -173,7 +122,7 @@
         <!-- /#page-wrapper -->
     </div>
 
-    @foreach($bugs_related as $key)
+    @foreach($bugs as $key)
                      <div class="modal fade" id="myModal{{$key->id}}" tabindex="-1" role="dialog">
                                 <div class="modal-dialog">
                                   <div class="modal-content">

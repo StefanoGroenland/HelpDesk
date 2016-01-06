@@ -74,6 +74,8 @@
                                               <div class="panel panel-red">
                                           @elseif($project->prioriteit == 'kritisch')
                                               <div class="panel panel-purple">
+                                              @else
+                                               <div class="panel panel-default">
                                           @endif
                                                <div class="panel-heading" style="padding-left:10px;padding-right:10px;">
                                                    <div class="row">
@@ -96,6 +98,8 @@
                                                            <span class="label label-danger">{{$project->projectnaam}}</span>
                                                        @elseif($project->prioriteit == 'kritisch')
                                                            <span class="label label-purple">{{$project->projectnaam}}</span>
+                                                           @else
+                                                           <span class="label label-default">{{$project->projectnaam}}</span>
                                                        @endif
                                                            <div><span class="badge">
                                                            @foreach($bugs_send as $bug)

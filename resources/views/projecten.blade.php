@@ -54,7 +54,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($projects as $project)
-                                      <tr data-href="/projectmuteren/{{$project->id}}">
+                                      <tr data-href="/bugs/{{$project->id}}">
                                       <td>{{$project->created_at->format('d-m-Y')}}</td>
                                       <td>{{$project->projectnaam}}</td>
                                       <td>{{$project->liveurl}}</td>
@@ -62,11 +62,11 @@
                                       <td>{{$project->gebruiker_id}}</td>
                                       <td>{!! substr($project->omschrijvingproject,0,90) !!}..</td>
                                       <td>
-                                      {{--<a href="/projectmuteren/{{$project->id}}" class="">--}}
-                                           {{--<button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">--}}
-                                                  {{--<i class="glyphicon glyphicon-pencil"></i>--}}
-                                           {{--</button>--}}
-                                      {{--</a>--}}
+                                      <a href="/projectmuteren/{{$project->id}}" class="">
+                                           <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
+                                                  <i class="glyphicon glyphicon-pencil"></i>
+                                           </button>
+                                      </a>
                                       <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$project->id}}">
                                         <i class="glyphicon glyphicon-trash"></i>
                                       </button>

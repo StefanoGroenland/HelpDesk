@@ -86,6 +86,10 @@
                                        <option value="gesloten" @if($bug->status == 'gesloten') selected @endif >Gesloten</option>
                                    </select>
                           </div>
+                          <div class="form-group">
+                            <label for="end_date">Einddatum</label>
+                              <input type="datetime-local"  name="eind_datum" class="form-control" id="einddatum">
+                            </div>
                             <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander</button>
                         </form>
                         <br>
@@ -135,7 +139,7 @@
                             <h6><strong>Aangemaakt</strong> :</h6>
                             <h6><strong>Gewijzigd</strong> :</h6>
                             <h6><strong>Deadline</strong> :</h6>
-                            <h6><strong>Klant nr.</strong> :</h6>
+                            <h6><strong>Gemeld door </strong> :</h6>
                             <h6><strong>Status</strong> :</h6>
                             <h6><strong>Soort</strong> :</h6>
                          </div>
@@ -143,7 +147,7 @@
                             <h6>{{$bug->created_at->format('d-m-y')}}</h6>
                             <h6>{{$bug->updated_at->format('d-m-y')}}</h6>
                             <h6>{{date('d-m-y',strtotime($bug->eind_datum))}}</h6>
-                            <h6>{{$bug->klant_id}}               </h6>
+                            <h6>{{$bug->klant->voornaam .' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</h6>
                             <h6>{{$bug->status}}                 </h6>
                             <h6>{{$bug->soort}}                  </h6>
                          </div>

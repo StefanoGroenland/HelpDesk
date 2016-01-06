@@ -35,22 +35,35 @@ class BugController extends Controller
     public function feedCount($id){
         return $query = Chat::where('bug_id','=',$id)->get();
     }
-    public function showBugmuteren(){
-        $user_id                = Auth::user()->id;
-        $projecten              = Project::where('gebruiker_id', '=', $user_id)->get();
-        return View::make('/bugmuteren' , compact('projecten'));
+    public function showBugMuteren($id = NULL){
+
+            $user_id = Auth::user()->id;
+            if(Auth::user()->bedrijf == 'moodles'){
+                $projecten = Project::all();
+            }else{
+                $projecten = Project::where('gebruiker_id', '=', $user_id)->get();
+            }
+            return View::make('/bugmuteren' , compact('projecten','id'));
     }
 
     public function showBugOverzicht($id){
-        if($id == Auth::user()->id){
+        if(Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $id){
 
             $bugs_related           = $this->getRelatedBugs($id);
             $bugs_all               = Bug::with('klant')->orderBy('id','desc')->get();
             $projects               = Project::where('gebruiker_id','=', $id)->get();
             $projects_all           = Project::all();
-            $klanten                = User::all();
-
             return View::make('/bugoverzicht', compact('bugs_related', 'bugs_all', 'projects', 'projects_all', 'klanten'));
+        }else{
+            return redirect('/dashboard');
+        }
+    }
+    public function showBugOverzichtPerProject($id)
+    {
+        if (Auth::user()->bedrijf == 'moodles'){
+            $bugs = Bug::where('project_id', '=', $id)->get();
+            $project = Project::find($id);
+            return View::make('/bugoverzichtperproject', compact('bugs', 'project'));
         }else{
             return redirect('/dashboard');
         }
@@ -72,6 +85,7 @@ class BugController extends Controller
             'prioriteit'        => $request['prioriteit'],
             'soort'             => $request['soort'],
             'status'            => $request['status'],
+            'eind_datum'            => $request['eind_datum'],
         );
         Bug::where('id', '=', $bug->id)->update($data);
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
@@ -79,7 +93,7 @@ class BugController extends Controller
     }
 
 
-    public function addBug( Request $request){
+    public function addBug(Request $request){
 
         $data = array(
             'titel'             => $request['titel'],

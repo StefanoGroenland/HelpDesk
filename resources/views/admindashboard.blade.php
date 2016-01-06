@@ -97,6 +97,8 @@
                        <div class="panel panel-red">
                    @elseif($project->prioriteit == 'kritisch')
                        <div class="panel panel-purple">
+                       @else
+                       <div class="panel panel-default" >
                    @endif
                         <div class="panel-heading" style="padding-left:10px;padding-right:10px;">
                             <div class="row">
@@ -140,6 +142,8 @@
                                     <span class="label label-danger">{{$project->projectnaam}}</span>
                                 @elseif($project->prioriteit == 'kritisch')
                                     <span class="label label-purple">{{$project->projectnaam}}</span>
+                                    @else
+                                    <span class="label label-default" >{{substr($project->projectnaam,0,30)}}..</span>
                                 @endif
                                     <div>
                                     <span style="border: solid #ffffff 1px;" class="label label-danger pull-left">{{$hoog}}</span><span class="badge">
@@ -177,7 +181,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="/bugoverzicht/{{Auth::user()->id}}">
+                        <a href="/bugs/{{$project->id}}">
                             <div class="panel-footer">
                                 <span class="pull-left">Bekijk</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
