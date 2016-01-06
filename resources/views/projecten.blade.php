@@ -44,25 +44,29 @@
                         <div class="table-responsive">
                             <table class="table table-hover data_table">
                                 <thead>
+                                <th>Aanmaak datum</th>
                                 <th>Project</th>
                                 <th>Live url</th>
                                 <th>Development url</th>
                                 <th>Klantnummer</th>
+                                <th>Omschrijving</th>
                                 <th></th>
                                 </thead>
                                 <tbody>
                                     @foreach($projects as $project)
-                                      <tr>
+                                      <tr data-href="/projectmuteren/{{$project->id}}">
+                                      <td>{{$project->created_at->format('d-m-Y')}}</td>
                                       <td>{{$project->projectnaam}}</td>
                                       <td>{{$project->liveurl}}</td>
                                       <td>{{$project->developmenturl}}</td>
                                       <td>{{$project->gebruiker_id}}</td>
+                                      <td>{!! substr($project->omschrijvingproject,0,90) !!}..</td>
                                       <td>
-                                      <a href="/projectmuteren/{{$project->id}}" class="">
-                                           <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
-                                                  <i class="glyphicon glyphicon-pencil"></i>
-                                           </button>
-                                      </a>
+                                      {{--<a href="/projectmuteren/{{$project->id}}" class="">--}}
+                                           {{--<button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">--}}
+                                                  {{--<i class="glyphicon glyphicon-pencil"></i>--}}
+                                           {{--</button>--}}
+                                      {{--</a>--}}
                                       <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$project->id}}">
                                         <i class="glyphicon glyphicon-trash"></i>
                                       </button>
@@ -109,7 +113,14 @@
     </div>
 
     <!-- /#wrapper -->
+    @section('scripts')
+    <script type="text/javascript">
+    $('tr[data-href]').on("click", function() {
+            document.location = $(this).data('href');
+        });
+    </script>
 
+    @endsection
     @extends('layouts.footer')
 
 </body>

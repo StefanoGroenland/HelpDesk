@@ -96,7 +96,7 @@ class ProjectController extends Controller
 
                 $validator = Validator::make($request->all(), [
                     'projectnaam'                   => 'required|unique:projecten',
-                    'liveurl'                       => 'required|url',
+                    'liveurl'                       => 'required',
                     'developmenturl'                => 'required',
                     'gebruikersnaam'                => 'required',
                     'wachtwoord'                    => 'required',
@@ -124,9 +124,6 @@ class ProjectController extends Controller
         $id = $request['id'];
         $data = array(
             'id'                                    => $request['id'],
-            'status'                                => $request['status'],
-            'prioriteit'                            => $request['prioriteit'],
-            'soort'                                 => $request['soort'],
             'projectnaam'                           => $request['projectnaam'],
             'liveurl'                               => $request['liveurl'],
             'developmenturl'                        => $request['developmenturl'],

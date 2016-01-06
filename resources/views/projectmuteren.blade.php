@@ -50,18 +50,16 @@
                                                {!! csrf_field() !!}
                                                <input type="hidden" name="_method" value="PUT">
                             <div class="form-group">
-                                <label for="bedrijfsnaam">Project</label>
-                               <input type="text" class="form-control titel2" id="titel2" required="true" name="titel" placeholder="Titel" value="{{$project->titel}}">
                                <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$project->id}}">
                              </div>
                               <div class="form-group">
                                 <input type="text" class="form-control projectnaam2" required="true" id="projectnaam2" name="projectnaam" placeholder="Projectnaam" value="{{$project->projectnaam}}">
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control projecturl2" required="true" id="projecturl2" name="projecturl" placeholder="Live URL" value="{{$project->liveurl}}">
+                                <input type="text" class="form-control projecturl2" required="true" id="liveurl2" name="liveurl" placeholder="Live URL" value="{{$project->liveurl}}">
                               </div>
                               <div class="form-group">
-                                 <input type="text" class="form-control projecturl2" required="true" id="projecturl2" name="projecturl" placeholder="Development URL" value="{{$project->developmenturl}}">
+                                 <input type="text" class="form-control projecturl2" required="true" id="developmenturl2" name="developmenturl" placeholder="Development URL" value="{{$project->developmenturl}}">
                                </div>
                                 <div class="form-group">
                                 <label for="bedrijfsnaam">Beheer account</label>
