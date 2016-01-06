@@ -45,7 +45,7 @@
                             {{$project->projectnaam}} <small>alle bugs van dit project</small>
                         </h3>
                         <a href="/bugmuteren/{{$project->id}}" class="pull-left">
-                            <button type="submit" class="btn btn-info btn-xs">
+                            <button type="submit" class="btn btn-success btn-xs">
                                <i class="glyphicon glyphicon-plus"></i>
                                Bugmelden
                             </button>

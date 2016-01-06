@@ -58,7 +58,7 @@
                           {!! csrf_field() !!}
                           <input type="hidden" name="_method" value="PUT">
                           <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
-                            <img src="
+                            <img width="100" height="100" src="
                             @if(!$user->profielfoto)
                             {{"../assets/images/avatar.png"}}
                             @else

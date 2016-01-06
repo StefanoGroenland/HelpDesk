@@ -31,31 +31,8 @@
                     </div>
                 </div>
                 <div class="row">
-                <div class="col-lg-2">
-                <img class="img-responsive" src="{{URL::asset('../assets/images/logo.png')}}" alt="...">
-                <a href="#">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <div class="row">
-                                                    <div class="col-xs-12 text-center">
-                                                        <i class="fa fa-plus fa-3x"></i>
-                                                    </div>
-                                                    </div>
-                                                <div class="row">
-                                                <a href="/bugmuteren">
-                                                <div class="col-xs-12 text-center">
-                                                    <h5>Bug melden</h5>
-                                                </div>
-                                                </a>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </a>
-                </div>
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                 <h4 class="page-header">
                 Mijn projecten
                 </h4>
@@ -77,6 +54,7 @@
                                               @else
                                                <div class="panel panel-default">
                                           @endif
+                                          <a href="/bugs/{{$project->id}}">
                                                <div class="panel-heading" style="padding-left:10px;padding-right:10px;">
                                                    <div class="row">
                                                    @foreach($bugs_send as $bug)
@@ -135,7 +113,6 @@
                                                        </div>
                                                    </div>
                                                </div>
-                                   <a href="/bugoverzicht/{{Auth::user()->id}}">
                                        <div class="panel-footer">
                                            <span class="pull-left">Bekijk</span>
                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -89,6 +89,7 @@
                  {{-- */$gem=0;/* --}}
                  {{-- */$laag=0;/* --}}
                 <div class="col-lg-2 col-md-6">
+
                 @if($project->prioriteit == 'laag')
                        <div class="panel panel-green">
                    @elseif($project->prioriteit == 'gemiddeld')
@@ -100,6 +101,7 @@
                        @else
                        <div class="panel panel-default" >
                    @endif
+                   <a href="/bugs/{{$project->id}}">
                         <div class="panel-heading" style="padding-left:10px;padding-right:10px;">
                             <div class="row">
                                 @foreach($bugs as $bug)
@@ -181,7 +183,6 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="/bugs/{{$project->id}}">
                             <div class="panel-footer">
                                 <span class="pull-left">Bekijk</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

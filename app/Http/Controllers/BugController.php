@@ -61,9 +61,10 @@ class BugController extends Controller
     }
     public function showBugOverzichtPerProject($id)
     {
-        if (Auth::user()->bedrijf == 'moodles'){
+        $project = Project::find($id);
+
+        if (Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $project->gebruiker_id){
             $bugs = Bug::where('project_id', '=', $id)->get();
-            $project = Project::find($id);
             return View::make('/bugoverzichtperproject', compact('bugs', 'project'));
         }else{
             return redirect('/dashboard');
