@@ -80,7 +80,7 @@ class ProjectController extends Controller
                         'telefoonnummer'            => $request['telefoonnummer'],
                         'profielfoto'               => 'assets/images/avatar.png',
                     ]);
-                    Project::create([
+                    $proj = Project::create([
                         'projectnaam'               => $request['projectnaam'],
                         'liveurl'                   => $request['liveurl'],
                         'developmenturl'            => $request['developmenturl'],
@@ -90,6 +90,8 @@ class ProjectController extends Controller
                         'gebruiker_id'              => $user->id,
                     ]);
                 }
+                $request->session()->flash('alert-success', 'Project toegevoegd.');
+                return redirect('/bugs/'.$proj->id);
             }
             elseif
                 (isset($_POST['radkoppel'])) {
@@ -105,7 +107,7 @@ class ProjectController extends Controller
                 if ($validator->fails()) {
                     return redirect('/newproject')->withErrors($validator);
                 } else {
-                        Project::create([
+                        $proj = Project::create([
                             'projectnaam'           => $request['projectnaam'],
                             'liveurl'               => $request['liveurl'],
                             'developmenturl'        => $request['developmenturl'],
@@ -118,7 +120,7 @@ class ProjectController extends Controller
                 }
             }
         $request->session()->flash('alert-success', 'Project toegevoegd.');
-        return redirect('/newproject');
+        return redirect('/bugs/'.$proj->id);
     }
     public function updateProject(Request $request){
         $id = $request['id'];
