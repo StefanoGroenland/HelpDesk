@@ -65,4 +65,10 @@ class Bug extends Model
             'created_at' => date('Y-m-d H:i:s')
         ]);
     }
+    public static function defineKlant($id){
+        return DB::table('projecten')->select(DB::raw('gebruiker_id'))->where('id','=',$id)->first();
+    }
+    public static function defineProject($id){
+        return DB::table('bugs')->select(DB::raw('project_id'))->where('id','=',$id)->first();
+    }
 }

@@ -19,9 +19,11 @@ use Illuminate\Support\Facades\Auth;
 class BugController extends Controller
 {
     public function showBugChat($id){
-        $bug = Bug::with('klant','user','project')->find($id);
-        if(Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $bug->klant->id){
 
+        $bug = Bug::with('klant','user','project')->find($id);
+
+
+        if(Auth::user()->bedrijf == 'moodles' || $bug->klant->id == $bug->project->gebruiker_id){
             $afzenders              = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
             $bug_attachments        = BugAttachment::where('bug_id','=',$id)->get();
 
@@ -35,7 +37,7 @@ class BugController extends Controller
     public function feedCount($id){
         return $query = Chat::where('bug_id','=',$id)->get();
     }
-    public function showBugMuteren($id = NULL){
+    public function showBugMuteren($id){
 
             $user_id = Auth::user()->id;
             if(Auth::user()->bedrijf == 'moodles'){
@@ -48,7 +50,6 @@ class BugController extends Controller
 
     public function showBugOverzicht($id){
         if(Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $id){
-
             $bugs_related           = $this->getRelatedBugs($id);
             $bugs_all               = Bug::with('klant')->orderBy('id','desc')->get();
             $projects               = Project::where('gebruiker_id','=', $id)->get();
@@ -71,9 +72,10 @@ class BugController extends Controller
 
     public function verwijderBug(){
         $sid = Route::current()->getParameter('id');
+        $pid = Bug::defineProject($sid);
         session()->flash('alert-danger', 'Bug met id : '. $sid . ' verwijderd.');
         Bug::verwijderBug($sid);
-        return redirect('/bugoverzicht/'. Auth::user()->id);
+        return redirect('/bugs/'.$pid->project_id);
     }
 
     public function getRelatedBugs($id){
@@ -85,7 +87,7 @@ class BugController extends Controller
             'prioriteit'        => $request['prioriteit'],
             'soort'             => $request['soort'],
             'status'            => $request['status'],
-            'eind_datum'            => $request['eind_datum'],
+            'eind_datum'        => $request['eind_datum'],
         );
         Bug::where('id', '=', $bug->id)->update($data);
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
@@ -95,15 +97,17 @@ class BugController extends Controller
 
     public function addBug(Request $request){
 
+        $posted_by = Bug::defineKlant($request['project']);
+        $pro_id = $request['project'];
+
         $data = array(
             'titel'             => $request['titel'],
             'prioriteit'        => $request['prioriteit'],
             'soort'             => $request['soort'],
             'status'            => 'open',
             'start_datum'       => $request['start_datum'],
-            'eind_datum'        => $request['eind_datum'],
             'beschrijving'      => $request['beschrijving'],
-            'klant_id'          => Auth::user()->id,
+            'klant_id'          => $posted_by->gebruiker_id,
             'project_id'        => $request['project'],
         );
 
@@ -113,18 +117,17 @@ class BugController extends Controller
             'soort'             => 'required',
             'status'            => 'required',
             'start_datum'       => 'required',
-            'eind_datum'        => 'required',
             'beschrijving'      => 'required',
             'klant_id'          => 'required',
             'project_id'        => 'required',
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
-            return redirect('/bugmuteren')->withErrors($validator);
+            return redirect('/bugmuteren/'.$pro_id)->withErrors($validator);
         }
         Bug::create($data);
         $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
-        return redirect('/bugmuteren');
+        return redirect('/bugs/'.$pro_id);
     }
 
     public function upload(Request $request){

@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/updateBug/{id}',array('as' => 'updateBug', 'uses' => 'BugController@updateBug'));
     });
 
-    Route::get('/bugmuteren/{id?}', array('as' => 'bugmuteren', 'uses' => 'BugController@showBugMuteren'));
+    Route::get('/bugmuteren/{id}', array('as' => 'bugmuteren', 'uses' => 'BugController@showBugMuteren'));
 
     Route::get('/bugchat/{id}',array('as' => 'bugchat', 'uses' => 'BugController@showbugChat'));
     Route::post('/addBug', 'BugController@addBug');

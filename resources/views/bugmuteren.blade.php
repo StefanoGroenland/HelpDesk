@@ -62,15 +62,15 @@
                              </div>
                               <div class="form-group">
                                 @if($id && Auth::user()->bedrijf == 'moodles')
-                                    <select class="form-control" name="project" disabled required="true">
+                                    <select class="form-control" name="project" required="true">
                                     <option value="{{$id}}">{{$id}}</option>
                                     </select>
                                    @else
-                                   <select class="form-control" name="project" required="true">
-                                  @foreach($projecten as $project)
-                                        <option value="{{$project->id}}">{{$project->projectnaam}}</option>
-                                  @endforeach
-                                  </select>
+                                   {{--<select class="form-control" name="project" required="true">--}}
+                                  {{--@foreach($projecten as $project)--}}
+                                        {{--<option value="{{$project->id}}">{{$project->projectnaam}}</option>--}}
+                                  {{--@endforeach--}}
+                                  {{--</select>--}}
                                   @endif
                                 </div>
                                 <div class="form-group">

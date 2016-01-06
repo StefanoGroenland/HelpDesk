@@ -72,7 +72,7 @@
                         <tbody>
                             @foreach($bugs as $bug)
 
-                                    <tr>
+                                    <tr data-href="/bugchat/{{$bug->id}}" >
                                         <td>{{$bug->id}}</td>
                                         <td>{{substr($bug->titel,0,15)}}...</td>
                                         <td>{{$bug->status}}</td>
@@ -105,6 +105,11 @@
                                                     <i class="glyphicon glyphicon-search"></i>
                                                 </button>
                                             </a>
+                                            @if(Auth::user()->bedrijf == 'moodles')
+                                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$bug->id}}">
+                                              <i class="glyphicon glyphicon-trash"></i>
+                                            </button>
+                                            @endif
                                         </td>
                                     </tr>
 
@@ -150,7 +155,18 @@
                               </div><!-- /.modal -->
                               @endforeach
     <!-- /#wrapper -->
+    @section('scripts')
+    <script type="text/javascript">
+       $('tr[data-href]').on("dblclick", function() {
+            document.location = $(this).data('href');
+        });
+        $('tr button[data-target]').on("click", function() {
+            document.location = $(this).data('target');
+        });
+    </script>
+    @endsection
    @extends('layouts.footer')
+
 </body>
 
 </html>

@@ -121,9 +121,6 @@
         $('tr button[data-target]').on("click", function() {
             document.location = $(this).data('target');
         });
-
-
-
     </script>
 
     @endsection
