@@ -106,7 +106,8 @@ return [
 
     'attributes' => [
         'username' => 'Gebruikersnaam',
-        'password' => 'Wachtwoord'
+        'password' => 'Wachtwoord',
+        'password_confirmation' => 'Herhaal wachtwoord'
     ],
 
 ];

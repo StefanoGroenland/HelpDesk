@@ -78,6 +78,14 @@
                                           <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="{{$klant->achternaam}}">
                                         </div>
                                         <div class="form-group">
+                                          <label for="achternaam">Wachtwoord</label>
+                                          <input type="password" class="form-control"  id="wachtwoord2" name="password" placeholder="Wachtwoord"  value="">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="achternaam">Herhaal wachtwoord</label>
+                                          <input type="password" class="form-control"  id="wachtwoord2" name="password_confirmation" placeholder="Herhaal wachtwoord"  value="">
+                                        </div>
+                                        <div class="form-group">
                                           <label for="achternaam">Bedrijf</label>
                                           <input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="{{$klant->bedrijf}}">
                                         </div>

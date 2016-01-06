@@ -99,8 +99,9 @@ class UserController extends Controller
         }
 
         if(array_key_exists('password', $data)){
-            Hash::make($data['password']);
+            $data['password'] = Hash::make($data['password']);
         }else{
+            User::where('id', '=', $id)->update($data);
             $request->session()->flash('alert-warning', 'Uw account is gewijziged, er zijn geen wijzigingen aan het wachtwoord doorgevoerd.');
             return redirect('/profiel');
         }
@@ -184,7 +185,7 @@ class UserController extends Controller
     }
     public function updateKlant(Request $request){
         $id = $request['id'];
-        if($request['bedrijf'] == 'moodles'){
+        if($request['bedrijf'] == 'moodles' || $request['bedrijf'] == 'Moodles'){
             $request->session()->flash('alert-danger', 'Er mogen geen klanten met \'moodles\' als bedrijf worden aangemaakt.');
             return redirect('/klanten');
         }
@@ -198,17 +199,36 @@ class UserController extends Controller
             'geslacht'                  => $request['geslacht'],
             'telefoonnummer'            => $request['telefoonnummer'],
             'bedrijf'                   => $request['bedrijf'],
+            'password'                  => $request['password'],
+            'password_confirmation'     => $request['password_confirmation'],
         );
+
+        if(empty($data['password']) || empty($data['password_confirmation'])){
+            array_forget($data, 'password');
+            array_forget($data, 'password_confirmation');
+        }
         $rules = array(
             'telefoonnummer'            => 'required|numeric|min:11',
             'voornaam'                  => 'required|min:4',
             'achternaam'                => 'required|min:4',
             'bedrijf'                   => 'required|min:4',
+            'password'                  => 'min:4|confirmed',
+            'password_confirmation'     => 'min:4',
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
             return redirect('/klantmuteren/'.$id)->withErrors($validator);
         }
+
+        if(array_key_exists('password', $data)){
+            $data['password'] = Hash::make($data['password']);
+        }else{
+            User::where('id', '=', $id)->update($data);
+            $request->session()->flash('alert-warning', 'Klant '. $request['username']. ' veranderd zonder wijzigingen aan het wachtwoord.');
+            return redirect('/klanten');
+        }
+        array_forget($data, 'password_confirmation');
+
         User::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Klant '. $request['username']. ' veranderd.');
         return redirect('/klanten');
