@@ -33,53 +33,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-2 col-md-6">
-                        <div class="row">
-                    <a href="{{URL::to('/newproject')}}">
-                    <div class="col-lg-12 col-md-6">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <i class="fa fa-plus fa-4x"></i>
-                                    </div>
-                                    </div>
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <h3>Project</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </a>
-                    </div>
-                </div>
-                {{--<div class="col-lg-2 col-md-6">--}}
-                    {{--<div class="row">--}}
-                {{--<a href="{{URL::to('/newmedewerker')}}">--}}
-                {{--<div class="col-lg-12 col-md-6">--}}
-                    {{--<div class="panel panel-warning">--}}
-                        {{--<div class="panel-heading">--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col-xs-12 text-center">--}}
-                                    {{--<i class="fa fa-plus fa-4x"></i>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col-xs-12 text-center">--}}
-                                    {{--<h3>Medewerker</h3>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--</a>--}}
-                {{--</div>--}}
-               {{--</div>--}}
-
                 @if(count($projects) > 0)
-                @foreach($projects as $project)
+                @foreach($projects as $pro)
                 {{-- */$ont=0;/* --}}
                  {{-- */$i=0;/* --}}
                  {{-- */$x=0;/* --}}
@@ -88,45 +43,68 @@
                  {{-- */$hoog=0;/* --}}
                  {{-- */$gem=0;/* --}}
                  {{-- */$laag=0;/* --}}
+                 {{-- */$crit = '';/* --}}
+                 {{-- */$high = '';/* --}}
+                 {{-- */$avg = '';/* --}}
+                 {{-- */$low = '';/* --}}
+                 {{-- */$panel_type = '';/* --}}
                 <div class="col-lg-2 col-md-6">
 
-                @if($project->prioriteit == 'laag')
-                       <div class="panel panel-green">
-                   @elseif($project->prioriteit == 'gemiddeld')
-                       <div class="panel panel-yellow">
-                   @elseif($project->prioriteit == 'hoog')
-                       <div class="panel panel-red">
-                   @elseif($project->prioriteit == 'kritisch')
-                       <div class="panel panel-purple">
+                @foreach($pro->bug as $bug)
+
+
+                @if($bug->prioriteit == 'kritisch' && $bug->status != 'gesloten')
+                {{-- */$crit='kritisch';/* --}}
+                @elseif($bug->prioriteit == 'hoog' && $bug->status != 'gesloten')
+                {{-- */$high='hoog';/* --}}
+                @elseif($bug->prioriteit == 'gemiddeld' && $bug->status != 'gesloten')
+                {{-- */$avg='gemiddeld';/* --}}
+                @elseif($bug->prioriteit == 'laag' && $bug->status != 'gesloten')
+                {{-- */$low='laag';/* --}}
+                @else
+                @endif
+                @endforeach
+
+
+                @if($crit == 'kritisch')
+                       {{-- */$panel_type='purple';/* --}}
+                   @elseif($high == 'hoog')
+                       {{-- */$panel_type='red';/* --}}
+                   @elseif($avg == 'gemiddeld')
+                       {{-- */$panel_type='yellow';/* --}}
+                   @elseif($low == 'laag')
+                       {{-- */$panel_type='green';/* --}}
                        @else
-                       <div class="panel panel-default" >
+                       {{-- */$panel_type='default';/* --}}
                    @endif
-                   <a href="/bugs/{{$project->id}}">
+
+                        <div class="panel panel-{{$panel_type}}">
                         <div class="panel-heading" style="padding-left:10px;padding-right:10px;">
+                        <a href="/bugs/{{$pro->id}}">
                             <div class="row">
                                 @foreach($bugs as $bug)
                                 @if($bug->medewerker_id < 1)
-                                @if($bug->project_id == $project->id)
+                                @if($bug->project_id == $pro->id)
                                 {{-- */$ont++;/* --}}
                                 @endif
                                 @endif
                                 @if($bug->prioriteit == 'laag')
-                                    @if($bug->project_id == $project->id)
+                                    @if($bug->project_id == $pro->id)
                                     {{-- */$laag++;/* --}}
                                     @endif
                                 @endif
                                 @if($bug->prioriteit == 'gemiddeld')
-                                    @if($bug->project_id == $project->id)
+                                    @if($bug->project_id == $pro->id)
                                     {{-- */$gem++;/* --}}
                                     @endif
                                 @endif
                                 @if($bug->prioriteit == 'hoog')
-                                    @if($bug->project_id == $project->id)
+                                    @if($bug->project_id == $pro->id)
                                     {{-- */$hoog++;/* --}}
                                     @endif
                                 @endif
                                 @if($bug->prioriteit == 'kritisch')
-                                    @if($bug->project_id == $project->id)
+                                    @if($bug->project_id == $pro->id)
                                     {{-- */$krit++;/* --}}
                                     @endif
                                 @endif
@@ -136,22 +114,13 @@
                                 </div></div>
                                 <div class="col-xs-12 text-right pull-right">
                                 <span style="border: solid #ffffff 1px;" class="label label-purple pull-left">{{$krit}}</span>
-                                @if($project->prioriteit == 'laag')
-                                    <span class="label label-success">{{$project->projectnaam}}</span>
-                                @elseif($project->prioriteit == 'gemiddeld')
-                                    <span class="label label-yellow">{{$project->projectnaam}}</span>
-                                @elseif($project->prioriteit == 'hoog')
-                                    <span class="label label-danger">{{$project->projectnaam}}</span>
-                                @elseif($project->prioriteit == 'kritisch')
-                                    <span class="label label-purple">{{$project->projectnaam}}</span>
-                                    @else
-                                    <span class="label label-default" >{{substr($project->projectnaam,0,30)}}..</span>
-                                @endif
+
+                                    <small><strong>{{substr($pro->projectnaam,0,15)}}..</strong></small>
                                     <div>
                                     <span style="border: solid #ffffff 1px;" class="label label-danger pull-left">{{$hoog}}</span><span class="badge">
                                     @foreach($bugs as $bug)
                                     @if($bug->status == 'open')
-                                        @if($bug->project_id == $project->id )
+                                        @if($bug->project_id == $pro->id )
                                             {{-- */$i++/* --}}
                                         @endif
                                     @endif
@@ -162,7 +131,7 @@
                                     <div><span class="badge">
                                     @foreach($bugs as $bug)
                                     @if($bug->status == 'bezig')
-                                        @if($bug->project_id == $project->id)
+                                        @if($bug->project_id == $pro->id)
                                             {{-- */$x++/* --}}
                                         @endif
                                     @endif
@@ -173,7 +142,7 @@
                                     <div><span class="badge">
                                     @foreach($bugs as $bug)
                                     @if($bug->status == 'gesloten')
-                                        @if($bug->project_id == $project->id)
+                                        @if($bug->project_id == $pro->id)
                                             {{-- */$y++/* --}}
                                         @endif
                                     @endif
@@ -182,14 +151,18 @@
                                     </span> Gesloten</div>
                                 </div>
                             </div>
+                            </a>
                         </div>
+                         <a href="/bugs/{{$pro->id}}">
                             <div class="panel-footer">
                                 <span class="pull-left">Bekijk</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
+
                     </div>
+
                     </div>
 
                 @endforeach
@@ -215,6 +188,11 @@
                                 @foreach($bugs as $bug)
 
                                     <tr>
+                                        {{--@if($bug->updated_at == '0000-00-00 00:00:00')--}}
+                                        {{--<td>{{$bug->created_at->format('d-m-y - H:i')}}</td>--}}
+                                        {{--@else--}}
+                                        {{--<td>{{$bug->updated_at->format('d-m-y - H:i')}}</td>--}}
+                                        {{--@endif--}}
                                         <td>{{$bug->created_at->format('d-m-y - H:i')}}</td>
                                         <td>{{$bug->status}}</td>
                                         @if($bug->eind_datum == '0000-00-00 00:00:00')

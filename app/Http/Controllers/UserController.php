@@ -31,7 +31,7 @@ class UserController extends Controller
         $klant_id = Auth::user()->id;
         $bugs = Bug::all();
         $bugs_send = Bug::where('klant_id' , '=', $klant_id)->get();
-        $projects = Project::all();
+        $projects = Project::with('bug')->get();
         $projects_send = Project::where('gebruiker_id', '=', $klant_id)->get();
         if(\Auth::guest()){
             return redirect('/');
@@ -85,8 +85,8 @@ class UserController extends Controller
         }
 
         $rules = array(
-            'email'                     => 'unique:gebruikers',
-            'username'                  => 'unique:gebruikers',
+            'email'                     => 'unique:gebruikers,email,'.$id,
+            'username'                  => 'unique:gebruikers,password,'.$id,
             'telefoonnummer'            => 'numeric|min:11',
             'password'                  => 'min:4|confirmed',
             'password_confirmation'     => 'min:4',
