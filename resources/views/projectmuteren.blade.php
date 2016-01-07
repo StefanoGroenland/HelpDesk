@@ -39,8 +39,7 @@
                           @endif
                         @endforeach
                 <div class="row">
-                <div class="col-lg-4"></div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-12">
                         <div class="panel panel-success">
                           <div class="panel-heading">
                             <h3 class="panel-title">Verander project</h3>
@@ -69,14 +68,13 @@
                                 <input type="text" class="form-control wachtwoord2"  required="true"id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="{{Crypt::decrypt($project->wachtwoord)}}">
                               </div>
                               <div class="form-group">
-                                 <textarea class="form-control omschrijving2" rows="5" id="omschrijving2" name="omschrijvingproject" value="" >{{$project->omschrijvingproject}}</textarea>
+                                 <textarea class="form-control omschrijving2" rows="8" id="omschrijving2" name="omschrijvingproject" value="" >{{$project->omschrijvingproject}}</textarea>
                                </div>
                               <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
                             </div>
                            </div>
                         </form>
                          </div>
-                    <div class="col-lg-4"></div>
                 </div>
             </div>
             <!-- /.container-fluid -->

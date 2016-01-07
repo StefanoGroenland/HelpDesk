@@ -46,9 +46,7 @@
                        </ul>
                    @endif
             <div class="row">
-                <div class="col-lg-4"></div>
-
-                <div class="col-lg-4">
+                <div class="col-lg-12">
                     <form method="POST" action="/addBug" enctype="multipart/form-data">
                         {!! csrf_field() !!}
                     <div class="panel panel-success">
@@ -66,11 +64,6 @@
                                     <option value="{{$id}}">{{$id}}</option>
                                     </select>
                                    @else
-                                   {{--<select class="form-control" name="project" required="true">--}}
-                                  {{--@foreach($projecten as $project)--}}
-                                        {{--<option value="{{$project->id}}">{{$project->projectnaam}}</option>--}}
-                                  {{--@endforeach--}}
-                                  {{--</select>--}}
                                   @endif
                                 </div>
                                 <div class="form-group">
@@ -94,14 +87,13 @@
                                 <input type="date" class="form-control" name="start_datum" required="true" value="{{date('Y-m-d')}}" id="start_datum">
                               </div>
                                <div class="form-group">
-                                  <textarea class="form-control" rows="5" id="beschrijving"  name="beschrijving"></textarea>
+                                  <textarea class="form-control" rows="7" id="beschrijving"  name="beschrijving"></textarea>
                                 </div>
                               <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4"></div>
             </div>
         </div>
         <!-- /.container-fluid -->

@@ -44,8 +44,7 @@
                              </ul>
                          @endif
          <div class="row">
-            <div class="col-lg-4"></div>
-             <div class="col-lg-4">
+             <div class="col-lg-12">
                  <div class="panel panel-warning">
                  <div class="panel-heading">
                    <h3 class="panel-title">Verander medewerker</h3>
@@ -101,7 +100,6 @@
                  </div>
                </div>
              </div>
-           <div class="col-lg-4"></div>
          </div>
      </div>
             <!-- /.container-fluid -->
