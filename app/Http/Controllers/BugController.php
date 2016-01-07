@@ -27,6 +27,7 @@ class BugController extends Controller
             $afzenders              = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
             $bug_attachments        = BugAttachment::where('bug_id','=',$id)->get();
 
+
             return View::make('/bugchat', compact('bug', 'medewerkers','afzenders','bug_attachments','project'));
         }
         return redirect('/dashboard');
@@ -134,7 +135,7 @@ class BugController extends Controller
     public function upload(Request $request){
         $files = $request->file('file');
         $id = $request->get('id');
-        $mime = array('jpeg','bmp','png','jpg');
+        $mime = array('jpeg','bmp','png','jpg','pdf','doc','docx','csv');
 
         if(!empty($files)){
             foreach($files as $file){
@@ -145,10 +146,12 @@ class BugController extends Controller
                     $ava = $destinationPath .'/'. $filename;
                     BugAttachment::uploadToDb($ava,$id);
                 }else{
-                    return \Response::json(array('success' => false));
+                    $request->session()->flash('alert-danger', 'Bestanden uploaden mislukt!');
+                    return redirect('/bugchat/'.$id);
                 }
             }
-            return \Response::json(array('success' => true));
+            $request->session()->flash('alert-info', 'Bestanden uploaden voltooid.');
+            return redirect('/bugchat/'.$id);
         }
     }
 }

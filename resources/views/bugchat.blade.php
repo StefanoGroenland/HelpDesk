@@ -42,15 +42,15 @@
                 <h3>Bug : # {{$bug->id}}
 
                 @if($bug->prioriteit == 'laag')
-                <span class="label label-success">Laag</span>
+                <span class="label label-success pull-right">Laag</span>
                 @elseif($bug->prioriteit == 'gemiddeld')
-                <span class="label label-warning">Gem.</span>
+                <span class="label label-warning pull-right">Gem.</span>
                 @elseif($bug->prioriteit == 'hoog')
-                <span class="label label-danger">Hoog</span>
+                <span class="label label-danger pull-right">Hoog</span>
                 @elseif($bug->prioriteit == 'kritisch')
-                <span class="label label-purple">Krit.</span>
+                <span class="label label-purple pull-right">Krit.</span>
                 @else
-                <span class="label label-info">Geen prioriteit</span>
+                <span class="label label-info pull-right">Geen prioriteit</span>
                 @endif
                 </h3>
 
@@ -101,7 +101,7 @@
                     <div class="col-lg-12">
 
                             <div id="message"></div>
-                           <form id="upload" action="upload" enctype="multipart/form-data">
+                           <form id="upload" method="POST" action="/upload" enctype="multipart/form-data">
 
                                <input type="hidden" name="id" value="{{$bug->id}}">
                                 {!! csrf_field() !!}
@@ -179,17 +179,35 @@
                             @endif
                     </div>
                 </div>
+                <hr>
+                <h4>Bijlages</h4>
+                <ul class="list-unstyled list-inline center-block">
+                @if(count($bug_attachments) > 0)
+                    @foreach($bug_attachments as $ba)
+                    <li>
+                      <a href="../{{$ba->image}}" target="_blank">
+                        @if(strpos($ba->image,'doc') || strpos($ba->image,'docx') )
+                            <img src="../assets/images/word_file.png" width="50" height="50" >
+                        @elseif(strpos($ba->image,'pdf') )
+                            <img src="../assets/images/pdf_file.png" width="50" height="50" >
+                        @elseif(strpos($ba->image,'csv') )
+                            <img src="../assets/images/excel_file.png" width="50" height="50" >
+                        @else
+                            <img src="../{{$ba->image}}" width="50" height="50" >
+                        @endif
+                      </a>
+                    </li>
+                    @endforeach
+                @else
+                Geen bijlages gevonden
+                @endif
+                </ul>
                </div>
                     <h3>Discussie
                         <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
                            <i class="fa fa-refresh fa-spin"></i>
                            refresh feed
                         </button>
-
-                            <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target=".bs-example-modal-lg">
-                            Bijlages zien
-                               <i class="glyphicon glyphicon-camera"></i>
-                            </button>
 
 
                     </h3>
@@ -288,103 +306,17 @@
             </div>
         </div>
     </div>
-    <!-- Large modal -->
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Bijlages voor Bug : #{{$bug->id}}</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-            <div class="col-lg-3">
-                <ul class="list-unstyled center-block" id="images">
-                @if(count($bug_attachments) > 0)
-                @foreach($bug_attachments as $ba)
-                    <li name="{{$ba->image}}" style="padding-bottom: 5px;">
-                    <button onclick="changeImage({{json_encode($ba->image)}})" class="btn btn-success btn-xs">{{substr($ba->image,31,40)}}</button>
-                    </li>
-                @endforeach
-                @else
-                <i class="pull-right fa fa-exclamation fa-3x"></i>
-                @endif
-                </ul>
-            </div>
-            <div class="col-lg-9">
-            @if(count($bug_attachments) > 0)
-            <img id="image" src="{{'../'.$ba->image}}" class="img-responsive img-thumbnail center-block" alt="img_{{$ba->image}}">
-            @else
-            <h3 class="pull-left">Helaas, er zijn nog geen bijlages toegevoegd!</h3>
-            <p class="pull-left">
-            Om bijlages te toevoegen moet u dit venster sluiten, En in het linker gedeelte op de knop
-            <var>Verkenner</var> drukken.<br>
-            Om meerdere bestanden tegelijk te uploaden houd u de knop <kbd>ctrl</kbd> ingedrukt op uw toetsenbord.
-
-            <code>Let erop: u kunt alleen afbeeldingen uploaden.</code>
-
-
-            </p>
-            @endif
-            </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" aria-label="Close"><span>sluiten</span></button>
-          </div>
-        </div>
-      </div>
-    </div>
 <!-- /.container-fluid -->
 {{--</div>--}}
 <!-- /#page-wrapper -->
          @section('scripts')
-            <script type="text/javascript">
-                function changeImage(img){
-                    var image = document.getElementById('image');
-                    image.src = '../'+img;
-                }
-            </script>
+            {{--<script type="text/javascript">--}}
+                {{--function changeImage(img){--}}
+                    {{--var image = document.getElementById('image');--}}
+                    {{--image.src = '../'+img;--}}
+                {{--}--}}
+            {{--</script>--}}
 
-                <script type="text/javascript">
-                var form = document.getElementById('upload');
-                var request = new XMLHttpRequest();
-
-                form.addEventListener('submit', function(e){
-                e.preventDefault();
-                var formdata = new FormData(form);
-
-                request.open('post','/upload');
-                request.addEventListener("load", transferComplete)
-                request.send(formdata);
-                });
-
-                function transferComplete(data){
-                var something = '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                response = JSON.parse(data.currentTarget.response);
-                    if(response.success){
-                        if ( document.getElementById("message").className.match(/(?:^|\s)alert aler-danger(?!\S)/) ){
-                            document.getElementById("message").className =
-                            document.getElementById("message").className.replace
-                            ( /(?:^|\s)alert alert-danger(?!\S)/g , '' )
-                        }else{
-                            document.getElementById('message').className += "alert alert-info";
-                            document.getElementById('message').innerHTML = "Bestanden uploaden voltooid.";
-                            $("#message").append(something);
-                        }
-                    }else{
-                        if( document.getElementById("message").className.match(/(?:^|\s)alert alert-danger(?!\S)/) ){
-                            document.getElementById("message").className =
-                            document.getElementById("message").className.replace
-                            ( /(?:^|\s)alert alert-info(?!\S)/g , '' )
-                        }else{
-                            document.getElementById('message').className += "alert alert-danger";
-                            document.getElementById('message').innerHTML = "Bestanden uploaden mislukt.";
-                            $("#message").append(something);
-                        }
-                    }
-                }
-                </script>
 
                 <script type="text/javascript">
                 function convertDate(inputFormat) {
