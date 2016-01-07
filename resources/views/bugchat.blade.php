@@ -41,16 +41,16 @@
             <div class="col-lg-2">
                 <h3>Bug : # {{$bug->id}}
 
-                @if($bug->prioriteit == 'laag')
+                @if($bug->prioriteit == 1)
                 <span class="label label-success pull-right">Laag</span>
-                @elseif($bug->prioriteit == 'gemiddeld')
+                @elseif($bug->prioriteit == 2)
                 <span class="label label-warning pull-right">Gem.</span>
-                @elseif($bug->prioriteit == 'hoog')
+                @elseif($bug->prioriteit == 3)
                 <span class="label label-danger pull-right">Hoog</span>
-                @elseif($bug->prioriteit == 'kritisch')
+                @elseif($bug->prioriteit == 4)
                 <span class="label label-purple pull-right">Krit.</span>
                 @else
-                <span class="label label-info pull-right">Geen prioriteit</span>
+                <span class="label label-info pull-right">Geen</span>
                 @endif
                 </h3>
 
@@ -63,10 +63,10 @@
                             <div class="form-group">
                                 <label for="sel1">Verander prioriteit</label>
                                 <select class="form-control" id="prioriteit" name="prioriteit">
-                                    <option value="kritisch"  @if($bug->prioriteit == 'kritisch') selected @endif >Kritisch</option>
-                                    <option value="hoog" @if($bug->prioriteit == 'hoog') selected @endif >Hoog</option>
-                                    <option value="gemiddeld"  @if($bug->prioriteit == 'gemiddeld') selected @endif >Gemiddeld</option>
-                                    <option value="laag" @if($bug->prioriteit == 'laag') selected @endif >Laag</option>
+                                    <option value="4"  @if($bug->prioriteit == 4) selected @endif >Kritisch</option>
+                                    <option value="3" @if($bug->prioriteit == 3) selected @endif >Hoog</option>
+                                    <option value="2"  @if($bug->prioriteit == 2) selected @endif >Gemiddeld</option>
+                                    <option value="1" @if($bug->prioriteit == 1) selected @endif >Laag</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -119,13 +119,13 @@
                        <br>
 
 
-                       @if($bug->prioriteit == 'laag')
+                       @if($bug->prioriteit == 1)
                        <div class="panel panel-success">
-                       @elseif($bug->prioriteit == 'gemiddeld')
+                       @elseif($bug->prioriteit == 2)
                        <div class="panel panel-yellow">
-                       @elseif($bug->prioriteit == 'hoog')
+                       @elseif($bug->prioriteit == 3)
                        <div class="panel panel-red">
-                       @elseif($bug->prioriteit == 'kritisch')
+                       @elseif($bug->prioriteit == 4)
                        <div class="panel panel-purple">
                        @else
                        <div class="panel panle-info">

@@ -52,14 +52,13 @@
 
                 @foreach($pro->bug as $bug)
 
-
-                @if($bug->prioriteit == 'kritisch' && $bug->status != 'gesloten')
+                @if($bug->prioriteit == 4 && $bug->status != 'gesloten')
                 {{-- */$crit='kritisch';/* --}}
-                @elseif($bug->prioriteit == 'hoog' && $bug->status != 'gesloten')
+                @elseif($bug->prioriteit == 3 && $bug->status != 'gesloten')
                 {{-- */$high='hoog';/* --}}
-                @elseif($bug->prioriteit == 'gemiddeld' && $bug->status != 'gesloten')
+                @elseif($bug->prioriteit == 2 && $bug->status != 'gesloten')
                 {{-- */$avg='gemiddeld';/* --}}
-                @elseif($bug->prioriteit == 'laag' && $bug->status != 'gesloten')
+                @elseif($bug->prioriteit == 1 && $bug->status != 'gesloten')
                 {{-- */$low='laag';/* --}}
                 @else
                 @endif
@@ -88,22 +87,22 @@
                                 {{-- */$ont++;/* --}}
                                 @endif
                                 @endif
-                                @if($bug->prioriteit == 'laag')
+                                @if($bug->prioriteit == 1)
                                     @if($bug->project_id == $pro->id)
                                     {{-- */$laag++;/* --}}
                                     @endif
                                 @endif
-                                @if($bug->prioriteit == 'gemiddeld')
+                                @if($bug->prioriteit == 2)
                                     @if($bug->project_id == $pro->id)
                                     {{-- */$gem++;/* --}}
                                     @endif
                                 @endif
-                                @if($bug->prioriteit == 'hoog')
+                                @if($bug->prioriteit == 3)
                                     @if($bug->project_id == $pro->id)
                                     {{-- */$hoog++;/* --}}
                                     @endif
                                 @endif
-                                @if($bug->prioriteit == 'kritisch')
+                                @if($bug->prioriteit == 4)
                                     @if($bug->project_id == $pro->id)
                                     {{-- */$krit++;/* --}}
                                     @endif
@@ -202,13 +201,13 @@
                                         @endif
                                         <td>{{$bug->titel}}</td>
                                         <td>
-                                        @if($bug->prioriteit == 'laag')
+                                        @if($bug->prioriteit == 1)
                                         <span class="label label-success">Laag</span>
-                                        @elseif($bug->prioriteit == 'gemiddeld')
+                                        @elseif($bug->prioriteit == 2)
                                         <span class="label label-warning">Gemmideld</span>
-                                        @elseif($bug->prioriteit == 'hoog')
+                                        @elseif($bug->prioriteit == 3)
                                         <span class="label label-danger">Hoog</span>
-                                        @elseif($bug->prioriteit == 'kritisch')
+                                        @elseif($bug->prioriteit == 4)
                                         <span class="label label-purple">Kritisch</span>
                                         @else
                                         <span class="label label-info">Geen prioriteit</span>

@@ -18,7 +18,7 @@ class CreateBugsTable extends Migration
             $table->date('start_datum');
             $table->datetime('eind_datum');
             $table->string('titel');
-            $table->enum('prioriteit',['laag','gemiddeld','hoog','kritisch']);
+            $table->enum('prioriteit',['1','2','3','4']);
             $table->string('status');
             $table->string('soort');
             $table->text('beschrijving');

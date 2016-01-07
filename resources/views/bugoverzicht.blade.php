@@ -66,13 +66,13 @@
                                                     <td>{{$bug->status}}</td>
                                                     <td>{{$bug->soort}}</td>
                                                     <td>
-                                                    @if($bug->prioriteit == 'laag')
+                                                    @if($bug->prioriteit == 1)
                                                     <span class="label label-success">Laag</span>
-                                                    @elseif($bug->prioriteit == 'gemiddeld')
+                                                    @elseif($bug->prioriteit == 2)
                                                     <span class="label label-warning">Gemmideld</span>
-                                                    @elseif($bug->prioriteit == 'hoog')
+                                                    @elseif($bug->prioriteit == 3)
                                                     <span class="label label-danger">Hoog</span>
-                                                    @elseif($bug->prioriteit == 'kritisch')
+                                                    @elseif($bug->prioriteit == 4)
                                                     <span class="label label-purple">Kritisch</span>
                                                     @else
                                                     <span class="label label-info">Geen prioriteit</span>
@@ -130,13 +130,13 @@
                                         <td>{{$bug->status}}</td>
                                         <td>{{$bug->soort}}</td>
                                         <td>
-                                        @if($bug->prioriteit == 'laag')
+                                        @if($bug->prioriteit == 1)
                                         <span class="label label-success">Laag</span>
-                                        @elseif($bug->prioriteit == 'gemiddeld')
+                                        @elseif($bug->prioriteit == 2)
                                         <span class="label label-warning">Gemmideld</span>
-                                        @elseif($bug->prioriteit == 'hoog')
+                                        @elseif($bug->prioriteit == 3)
                                         <span class="label label-danger">Hoog</span>
-                                        @elseif($bug->prioriteit == 'kritisch')
+                                        @elseif($bug->prioriteit == 4)
                                         <span class="label label-purple">Kritisch</span>
                                         @else
                                         <span class="label label-info">Geen prioriteit</span>

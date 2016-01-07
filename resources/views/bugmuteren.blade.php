@@ -68,10 +68,10 @@
                                 </div>
                                 <div class="form-group">
                                 <select class="form-control" name="prioriteit" required="true">
-                                   <option value="laag">Laag</option>
-                                   <option value="gemiddeld">Gemiddeld</option>
-                                   <option value="hoog">Hoog</option>
-                                   <option value="kritisch">Kritisch</option>
+                                   <option value="1">Laag</option>
+                                   <option value="2">Gemiddeld</option>
+                                   <option value="3">Hoog</option>
+                                   <option value="4">Kritisch</option>
                                 </select>
                                 </div>
                                 <div class="form-group">
