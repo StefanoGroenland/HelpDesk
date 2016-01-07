@@ -166,18 +166,22 @@
                 <div class="col-lg-12 well well-sm">
 
                 <div class="row">
+                @if(Auth::user()->bedrijf != 'moodles')
+                    <div class="col-lg-12">
+                    @else
                     <div class="col-lg-6">
+                    @endif
                         <h3>Bug details</h3>
                             <p style="white-space: pre-wrap;"><strong>Bug titel </strong> {!! $bug->titel !!}</p>
                             <p style="white-space: pre-wrap;"><strong>Omschrijving </strong> {!! $bug->beschrijving !!}</p>
                     </div>
-                    <div class="col-lg-6">
                     @if(Auth::user()->bedrijf == 'moodles')
+                    <div class="col-lg-6">
                         <h3>Project details</h3>
                             <p style="white-space: pre-wrap;"><strong>Projectnaam </strong> {!! $bug->project->projectnaam !!}</p>
                             <p style="white-space: pre-wrap;"><strong>Omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
-                            @endif
                     </div>
+                    @endif
                 </div>
                 <hr>
                 <h4>Bijlages</h4>

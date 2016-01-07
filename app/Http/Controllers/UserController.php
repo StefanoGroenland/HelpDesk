@@ -85,6 +85,8 @@ class UserController extends Controller
         }
 
         $rules = array(
+            'email'                     => 'unique:gebruikers',
+            'username'                  => 'unique:gebruikers',
             'telefoonnummer'            => 'numeric|min:11',
             'password'                  => 'min:4|confirmed',
             'password_confirmation'     => 'min:4',
@@ -168,6 +170,8 @@ class UserController extends Controller
         );
 
         $rules = array(
+            'email'                     => 'unique:gebruikers',
+            'username'                  => 'unique:gebruikers',
             'telefoonnummer'            => 'numeric',
             'username'                  => 'required|min:4',
             'username'                  => 'required|min:4',
@@ -208,6 +212,8 @@ class UserController extends Controller
             array_forget($data, 'password_confirmation');
         }
         $rules = array(
+            'email'                     => 'unique:gebruikers',
+            'username'                  => 'unique:gebruikers',
             'telefoonnummer'            => 'required|numeric|min:11',
             'voornaam'                  => 'required|min:4',
             'achternaam'                => 'required|min:4',
@@ -260,6 +266,8 @@ class UserController extends Controller
         );
 
         $rules = array(
+            'email'                     => 'unique:gebruikers',
+            'username'                  => 'unique:gebruikers',
             'telefoonnummer'            => 'numeric',
             'password'                  => 'required|min:4|confirmed',
             'password_confirmation'     => 'required|min:4',
@@ -267,14 +275,14 @@ class UserController extends Controller
 
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
-            return redirect('/newmedewerker')->withErrors($validator);
+            return redirect('/newmedewerker')->withErrors($validator)->withInput($data);
         }
 
             $data['password'] = Hash::make($data['password']);
             array_forget($data, 'password_confirmation');
             User::create($data);
             $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
-            return redirect('/newmedewerker');
+            return redirect('/medewerkers');
 }
     public function addUser(Request $request){
 
@@ -296,6 +304,8 @@ class UserController extends Controller
             'profielfoto'               => 'assets/images/avatar.png',
         );
         $rules = array(
+            'email'                     => 'unique:gebruikers',
+            'username'                  => 'unique:gebruikers',
             'telefoonnummer'            => 'required|numeric',
             'password'                  => 'required|min:4|confirmed',
             'password_confirmation'     => 'required|min:4',
@@ -303,13 +313,13 @@ class UserController extends Controller
 
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
-            return redirect('/newklant')->withErrors($validator);
+            return redirect('/newklant')->withErrors($validator)->withInput($data);
         }
         $data['password'] = Hash::make($data['password']);
         array_forget($data, 'password_confirmation');
         User::create($data);
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
-        return redirect('/newklant');
+        return redirect('/klanten');
     }
     public function verwijderGebruiker(){
             $sid = Route::current()->getParameter('id');
