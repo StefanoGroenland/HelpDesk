@@ -31,36 +31,37 @@ class UserController extends Controller
         $klant_id = Auth::user()->id;
         $bugs = Bug::all();
         $bugs_send = Bug::where('klant_id' , '=', $klant_id)->get();
-        $temp_projects = Project::with('bug')->get();
 
-        $projects = array();
 
-        foreach ($temp_projects as $project) {
-            $prio = 0;
-            foreach ($project->bug as $bug){
-                if ($bug->prioriteit > $prio && $bug->status != 'gesloten'){
-                    $prio = $bug->prioriteit;
-                }
-            }
-            $projects[$prio][] = $project;
-        }
-
-        krsort($projects);
-
-        $temp_projects = $projects;
-        $projects = array();
-        foreach($temp_projects as $priority){
-            foreach ($priority as $project){
-                $projects[] = $project;
-            }
-        }
-        $projects_send = Project::where('gebruiker_id', '=', $klant_id)->get();
         if(\Auth::guest()){
             return redirect('/');
         }
         else if(\Auth::user()->bedrijf == 'moodles'){
+            $temp_projects = Project::with('bug')->get();
+            $projects = array();
+
+            foreach ($temp_projects as $project) {
+                $prio = 0;
+                foreach ($project->bug as $bug){
+                    if ($bug->prioriteit > $prio && $bug->status != 'gesloten'){
+                        $prio = $bug->prioriteit;
+                    }
+                }
+                $projects[$prio][] = $project;
+            }
+
+            krsort($projects);
+            $temp_projects = $projects;
+            $projects = array();
+            foreach($temp_projects as $priority){
+                foreach ($priority as $project){
+                    $projects[] = $project;
+                }
+            }
+
             return View::make('/admindashboard', compact('bugs','projects'));
         }else{
+            $projects_send = Project::where('gebruiker_id','=',$klant_id)->get();
             return View::make('/dashboard', compact('bugs_send','projects_send'));
         }
     }

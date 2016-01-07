@@ -40,6 +40,7 @@
                           @endforeach
 
              <!-- /.container-fluid -->
+             <div class="row">
             <div class="col-lg-12">
                   <div class="table-responsive">
                       <table class="table table-hover data_table" >
@@ -85,6 +86,7 @@
                       </table>
                   </div>
               </div>
+            </div>
          </div>
 
 

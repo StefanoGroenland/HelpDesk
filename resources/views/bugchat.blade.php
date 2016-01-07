@@ -223,7 +223,7 @@
                            Automatisch bericht
                          </span>
                          <div class="panel-heading" style="padding: 10px 50px 10px;">
-                            Elke 5 minuten wordt de chat feed ververst. Mocht u handmatig willen verversen,Kunt u rechts boven op :
+                            Elke 5 minuten wordt de chat feed ververst. Mocht u handmatig willen verversen, Kunt u rechts boven op :
                              <button class="btn btn-default btn-xs disabled">
                                 <i class="fa fa-refresh fa-spin"></i>
                                 refresh feed
@@ -377,7 +377,7 @@
                         $("#display").html(div);
                     }
                 });
-              }setInterval(function(){check_feed_count()}, 300000);
+              }setInterval(function(){refresh_feed()}, 300000);
 
                 </script>
         @endsection

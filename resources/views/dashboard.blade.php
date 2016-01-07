@@ -37,25 +37,46 @@
                 Mijn projecten
                 </h4>
                 </div>
+
                        @foreach($projects_send as $project)
                                         {{-- */$i=0;/* --}}
                                         {{-- */$x=0;/* --}}
                                         {{-- */$y=0;/* --}}
                                         {{-- */$ont=0;/* --}}
+                                        {{-- */$crit = '';/* --}}
+                                        {{-- */$high = '';/* --}}
+                                        {{-- */$avg = '';/* --}}
+                                        {{-- */$low = '';/* --}}
+                                        {{-- */$panel_type = '';/* --}}
                                        <div class="col-lg-2 col-md-6">
-                                       @if($project->prioriteit == 'laag')
-                                              <div class="panel panel-green">
-                                          @elseif($project->prioriteit == 'gemiddeld')
-                                              <div class="panel panel-yellow">
-                                          @elseif($project->prioriteit == 'hoog')
-                                              <div class="panel panel-red">
-                                          @elseif($project->prioriteit == 'kritisch')
-                                              <div class="panel panel-purple">
-                                              @else
-                                               <div class="panel panel-default">
-                                          @endif
-                                          <a href="/bugs/{{$project->id}}">
+                                       @foreach($project->bug as $bug)
+
+                                         @if($bug->prioriteit == 4 && $bug->status != 'gesloten')
+                                         {{-- */$crit='kritisch';/* --}}
+                                         @elseif($bug->prioriteit == 3 && $bug->status != 'gesloten')
+                                         {{-- */$high='hoog';/* --}}
+                                         @elseif($bug->prioriteit == 2 && $bug->status != 'gesloten')
+                                         {{-- */$avg='gemiddeld';/* --}}
+                                         @elseif($bug->prioriteit == 1 && $bug->status != 'gesloten')
+                                         {{-- */$low='laag';/* --}}
+                                         @else
+                                         @endif
+                                       @endforeach
+                                                @if($crit == 'kritisch')
+                                                    {{-- */$panel_type='purple';/* --}}
+                                                @elseif($high == 'hoog')
+                                                    {{-- */$panel_type='red';/* --}}
+                                                @elseif($avg == 'gemiddeld')
+                                                    {{-- */$panel_type='yellow';/* --}}
+                                                @elseif($low == 'laag')
+                                                    {{-- */$panel_type='green';/* --}}
+                                                    @else
+                                                    {{-- */$panel_type='default';/* --}}
+                                                @endif
+
+                                                <div class="panel panel-{{$panel_type}}">
                                                <div class="panel-heading" style="padding-left:10px;padding-right:10px;">
+                                               <a href="/bugs/{{$project->id}}">
                                                    <div class="row">
                                                    @foreach($bugs_send as $bug)
                                                    @if($bug->medewerker_id < 1)
@@ -68,13 +89,13 @@
                                                        {{$ont}}
                                                        </div></div>
                                                        <div class="col-xs-12 text-right">
-                                                       @if($project->prioriteit == 'laag')
+                                                       @if($project->prioriteit == 1)
                                                            <span class="label label-success">{{$project->projectnaam}}</span>
-                                                       @elseif($project->prioriteit == 'gemiddeld')
+                                                       @elseif($project->prioriteit == 2)
                                                            <span class="label label-yellow">{{$project->projectnaam}}</span>
-                                                       @elseif($project->prioriteit == 'hoog')
+                                                       @elseif($project->prioriteit == 3)
                                                            <span class="label label-danger">{{$project->projectnaam}}</span>
-                                                       @elseif($project->prioriteit == 'kritisch')
+                                                       @elseif($project->prioriteit == 4)
                                                            <span class="label label-purple">{{$project->projectnaam}}</span>
                                                            @else
                                                            <span class="label label-default">{{$project->projectnaam}}</span>
@@ -112,7 +133,9 @@
                                                            </span> Gesloten</div>
                                                        </div>
                                                    </div>
+                                                   </a>
                                                </div>
+                                               <a href="/bugs/{{$project->id}}">
                                        <div class="panel-footer">
                                            <span class="pull-left">Bekijk</span>
                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -152,13 +175,13 @@
                                         <td>{{$bug->soort}}</td>
                                         <td>{{$bug->status}}</td>
                                         <td>
-                                        @if($bug->prioriteit == 'laag')
+                                        @if($bug->prioriteit == 1)
                                         <span class="label label-success">Laag</span>
-                                        @elseif($bug->prioriteit == 'gemiddeld')
+                                        @elseif($bug->prioriteit == 2)
                                         <span class="label label-warning">Gemmideld</span>
-                                        @elseif($bug->prioriteit == 'hoog')
+                                        @elseif($bug->prioriteit == 3)
                                         <span class="label label-danger">Hoog</span>
-                                        @elseif($bug->prioriteit == 'kritisch')
+                                        @elseif($bug->prioriteit == 4)
                                         <span class="label label-purple">Kritisch</span>
                                         @else
                                         <span class="label label-info">Geen prioriteit</span>
