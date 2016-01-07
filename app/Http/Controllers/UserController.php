@@ -36,9 +36,9 @@ class UserController extends Controller
         $projects = array();
 
         foreach ($temp_projects as $project) {
-            $prio = 1;
+            $prio = 0;
             foreach ($project->bug as $bug){
-                if ($bug->prioriteit > $prio){
+                if ($bug->prioriteit > $prio && $bug->status != 'gesloten'){
                     $prio = $bug->prioriteit;
                 }
             }
@@ -54,7 +54,6 @@ class UserController extends Controller
                 $projects[] = $project;
             }
         }
-
         $projects_send = Project::where('gebruiker_id', '=', $klant_id)->get();
         if(\Auth::guest()){
             return redirect('/');
