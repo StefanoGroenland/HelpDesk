@@ -82,35 +82,31 @@
                         <a href="/bugs/{{$pro->id}}">
                             <div class="row">
                                 @foreach($bugs as $bug)
-
-
-                                     @if($bug->last_client > 0)
-                                         @if($bug->project_id == $pro->id)
-                                         {{-- */$unread ++;/* --}}
-                                         @endif
-                                     @endif
-
-
-                                @if($bug->prioriteit == 1)
-                                    @if($bug->project_id == $pro->id)
-                                    {{-- */$laag++;/* --}}
+                                    @if($bug->last_client > 0)
+                                        @if($bug->project_id == $pro->id)
+                                        {{-- */$unread ++;/* --}}
+                                        @endif
                                     @endif
-                                @endif
-                                @if($bug->prioriteit == 2)
-                                    @if($bug->project_id == $pro->id)
-                                    {{-- */$gem++;/* --}}
+                                    @if($bug->prioriteit == 1)
+                                        @if($bug->project_id == $pro->id)
+                                        {{-- */$laag++;/* --}}
+                                        @endif
                                     @endif
-                                @endif
-                                @if($bug->prioriteit == 3)
-                                    @if($bug->project_id == $pro->id)
-                                    {{-- */$hoog++;/* --}}
+                                    @if($bug->prioriteit == 2)
+                                        @if($bug->project_id == $pro->id)
+                                        {{-- */$gem++;/* --}}
+                                        @endif
                                     @endif
-                                @endif
-                                @if($bug->prioriteit == 4)
-                                    @if($bug->project_id == $pro->id)
-                                    {{-- */$krit++;/* --}}
+                                    @if($bug->prioriteit == 3)
+                                        @if($bug->project_id == $pro->id)
+                                        {{-- */$hoog++;/* --}}
+                                        @endif
                                     @endif
-                                @endif
+                                    @if($bug->prioriteit == 4)
+                                        @if($bug->project_id == $pro->id)
+                                        {{-- */$krit++;/* --}}
+                                        @endif
+                                    @endif
                                 @endforeach
                                 <div id='notificatie'><div>
                                 {{$unread}}

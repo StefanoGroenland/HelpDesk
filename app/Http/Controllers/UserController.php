@@ -37,6 +37,8 @@ class UserController extends Controller
         }
         else if(\Auth::user()->bedrijf == 'moodles'){
             $temp_projects = Project::with('bug')->get();
+
+
             $projects = array();
 
             foreach ($temp_projects as $project) {
@@ -48,7 +50,6 @@ class UserController extends Controller
                 }
                 $projects[$prio][] = $project;
             }
-
             krsort($projects);
             $temp_projects = $projects;
             $projects = array();
@@ -57,12 +58,9 @@ class UserController extends Controller
                     $projects[] = $project;
                 }
             }
-
             return View::make('/admindashboard', compact('bugs','projects'));
         }else{
             $projects_send = Project::with('bug')->where('gebruiker_id','=',$klant_id)->get();
-
-
 
             $projects = array();
 
