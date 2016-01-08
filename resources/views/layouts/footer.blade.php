@@ -6,6 +6,11 @@
      <!-- Custom Fonts -->
      <link href="{{URL::asset('../assets/fonts/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
+
+
+     <link href="{{URL::asset('../assets/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
+
+
      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
          <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
          <!--[if lt IE 9]>

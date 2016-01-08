@@ -88,7 +88,8 @@
                           </div>
                           <div class="form-group">
                             <label for="end_date">Einddatum</label>
-                              <input type="datetime-local"  name="eind_datum" class="form-control" id="einddatum">
+                              {{--<input type="text"  name="eind_datum" class="form-control" id="einddatum">--}}
+                              <input type="text" name="eind_datum" class="form_datetime form-control date-picker" placeholder="Deadline" data-rule-maxlength="30">
                             </div>
                             <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander</button>
                         </form>
@@ -136,18 +137,26 @@
                          <div class="panel-body">
                          <div class="row">
                          <div class="col-lg-6 pull-left">
-                            <h6><strong>Aangemaakt</strong> :</h6>
-                            <h6><strong>Gewijzigd</strong> :</h6>
-                            <h6><strong>Deadline</strong> :</h6>
-                            <h6><strong>Gemeld door </strong> :</h6>
-                            <h6><strong>Status</strong> :</h6>
-                            <h6><strong>Soort</strong> :</h6>
+                            <h6><strong>Aangemaakt</strong></h6>
+                            <h6><strong>Gewijzigd</strong></h6>
+                            <h6><strong>Deadline</strong></h6>
+                            <h6><strong>Gemeld</strong></h6>
+                            <h6><strong>Status</strong></h6>
+                            <h6><strong>Soort</strong></h6>
                          </div>
                          <div class="col-lg-6 pull-right">
                             <h6>{{$bug->created_at->format('d-m-y')}}</h6>
+                            @if($bug->updated_at == '0000-00-00 00:00:00')
+                            <small>Niet geupdate</small><br>
+                            @else
                             <h6>{{$bug->updated_at->format('d-m-y')}}</h6>
+                            @endif
+                            @if($bug->eind_datum == '0000-00-00 00:00:00')
+                            <small>Geen deadline</small><br>
+                            @else
                             <h6>{{date('d-m-y',strtotime($bug->eind_datum))}}</h6>
-                            <h6>{{$bug->klant->voornaam .' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</h6>
+                            @endif
+                            <h6>{{$bug->klant->achternaam}}</h6>
                             <h6>{{$bug->status}}                 </h6>
                             <h6>{{$bug->soort}}                  </h6>
                          </div>
@@ -320,7 +329,17 @@
                     {{--image.src = '../'+img;--}}
                 {{--}--}}
             {{--</script>--}}
+            <script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
+            <script type="text/javascript" src="{{URL::asset('../assets/js/locales/bootstrap-datetimepicker.nl.js')}}" charset="UTF-8"></script>
 
+            <script type="text/javascript">
+                $(document).ready(function() {
+                       $(".form_datetime").datetimepicker({
+                       language: 'nl',
+                       weekStart: 1
+                       });
+                });
+            </script>
 
                 <script type="text/javascript">
                 function convertDate(inputFormat) {
@@ -380,6 +399,8 @@
               }setInterval(function(){refresh_feed()}, 300000);
 
                 </script>
+
+
         @endsection
      @extends('layouts.footer')
    </body>
