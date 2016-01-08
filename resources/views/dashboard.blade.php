@@ -38,7 +38,7 @@
                 </h4>
                 </div>
 
-                       @foreach($projects_send as $project)
+                       @foreach($projects as $project)
                                         {{-- */$i=0;/* --}}
                                         {{-- */$x=0;/* --}}
                                         {{-- */$y=0;/* --}}
@@ -49,6 +49,7 @@
                                         {{-- */$low = '';/* --}}
                                         {{-- */$panel_type = '';/* --}}
                                        <div class="col-lg-2 col-md-6">
+                                       @if($project->bug)
                                        @foreach($project->bug as $bug)
 
                                          @if($bug->prioriteit == 4 && $bug->status != 'gesloten')
@@ -62,6 +63,7 @@
                                          @else
                                          @endif
                                        @endforeach
+                                       @endif
                                                 @if($crit == 'kritisch')
                                                     {{-- */$panel_type='purple';/* --}}
                                                 @elseif($high == 'hoog')

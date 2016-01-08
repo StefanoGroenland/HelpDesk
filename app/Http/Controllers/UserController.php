@@ -60,8 +60,33 @@ class UserController extends Controller
 
             return View::make('/admindashboard', compact('bugs','projects'));
         }else{
-            $projects_send = Project::where('gebruiker_id','=',$klant_id)->get();
-            return View::make('/dashboard', compact('bugs_send','projects_send'));
+            $projects_send = Project::with('bug')->where('gebruiker_id','=',$klant_id)->get();
+
+
+
+            $projects = array();
+
+            foreach ($projects_send as $project) {
+                $prio = 0;
+                foreach ($project->bug as $bug){
+                    if ($bug->prioriteit > $prio && $bug->status != 'gesloten'){
+                        $prio = $bug->prioriteit;
+                    }
+                }
+                $projects[$prio][] = $project;
+            }
+
+            krsort($projects);
+            $projects_send = $projects;
+            $projects = array();
+            foreach($projects_send as $priority){
+                foreach ($priority as $project){
+                    $projects[] = $project;
+                }
+            }
+
+
+            return View::make('/dashboard', compact('bugs_send','projects'));
         }
     }
     public function showMwMuteren($id){
