@@ -183,14 +183,18 @@
                     <div class="col-lg-6">
                     @endif
                         <h3>Bug details</h3>
-                            <p style="white-space: pre-wrap;"><strong>Bug titel </strong> {!! $bug->titel !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>Omschrijving </strong> {!! $bug->beschrijving !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->beschrijving !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>start datum </strong> {{ $bug->start_datum }}</p>
+                            <p style="white-space: pre-wrap;"><strong>soort </strong> {{ $bug->soort }}</p>
                     </div>
                     @if(Auth::user()->bedrijf == 'moodles')
                     <div class="col-lg-6">
                         <h3>Project details</h3>
-                            <p style="white-space: pre-wrap;"><strong>Projectnaam </strong> {!! $bug->project->projectnaam !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>Omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {!! $bug->project->projectnaam !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>live URL: </strong> {!! $bug->project->liveurl !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>dev URL: </strong> {!! $bug->project->developmenturl !!}</p>
                     </div>
                     @endif
                 </div>
@@ -339,7 +343,7 @@
                        $(".form_datetime").datetimepicker({
                        language: 'nl',
                        weekStart: 1,
-                       format: 'd-m-yyyy hh:ii',
+                       format: 'd-m-yyyy hh:ii'
                        });
                 });
             </script>

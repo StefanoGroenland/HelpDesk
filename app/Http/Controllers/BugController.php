@@ -129,6 +129,10 @@ class BugController extends Controller
             'klant_id'          => 'required',
             'project_id'        => 'required',
         );
+
+        $data['start_datum'] = date('Y-m-d H:i',strtotime($data['start_datum']));
+
+
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
             return redirect('/bugmuteren/'.$pro_id)->withErrors($validator);

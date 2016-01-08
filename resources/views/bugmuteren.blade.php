@@ -84,8 +84,11 @@
                                 </div>
                               <div class="form-group">
                                <label for="end_date">Startdatum</label>
-                                 {{--<input type="text"  name="eind_datum" class="form-control" id="einddatum">--}}
-                                 <input type="text" name="start_datum" class="form_datetime form-control date-picker" placeholder="{{date('Y-m-d H:i')}}" data-rule-maxlength="30">
+
+                                   <input type="text" name="start_datum" class="form_datetime form-control date-picker" placeholder="{{date('d-m-Y H:i')}}" data-rule-maxlength="30">
+
+
+
                                </div>
                                <div class="form-group">
                                   <textarea class="form-control" rows="7" id="beschrijving"  name="beschrijving"></textarea>
@@ -104,14 +107,15 @@
 <!-- /#wrapper -->
 
 @section('scripts')
- <script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
+            <script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
             <script type="text/javascript" src="{{URL::asset('../assets/js/locales/bootstrap-datetimepicker.nl.js')}}" charset="UTF-8"></script>
 
             <script type="text/javascript">
                 $(document).ready(function() {
                        $(".form_datetime").datetimepicker({
                        language: 'nl',
-                       weekStart: 1
+                       weekStart: 1,
+                       format: 'd-m-yyyy hh:ii'
                        });
                 });
             </script>
