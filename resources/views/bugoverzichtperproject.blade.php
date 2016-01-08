@@ -99,7 +99,7 @@
                                         <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
                                         @endif
                                         <td>{{$bug->project->projectnaam}}</td>
-                                        <td>
+                                        <td class="text-right" >
                                             <a href="/bugchat/{{$bug->id}}" class="">
                                                 <button type="submit" class="btn btn-success btn-xs">
                                                     <i class="glyphicon glyphicon-search"></i>

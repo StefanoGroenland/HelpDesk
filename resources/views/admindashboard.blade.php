@@ -186,7 +186,7 @@
                                 @if(count($bugs) > 0)
                                 @foreach($bugs as $bug)
 
-                                    <tr>
+                                    <tr data-href="/bugchat/{{$bug->id}}">
                                         {{--@if($bug->updated_at == '0000-00-00 00:00:00')--}}
                                         {{--<td>{{$bug->created_at->format('d-m-y - H:i')}}</td>--}}
                                         {{--@else--}}
@@ -219,7 +219,7 @@
                                         @if($bug->project)
                                             <td>{{$bug->project->projectnaam}}</td>
                                         @endif
-                                        <td>
+                                        <td class="text-right" >
                                             <a href="/bugchat/{{$bug->id}}">
                                         <button type="submit" class="btn btn-success btn-xs">
                                             <i class="glyphicon glyphicon-search"></i>
@@ -249,6 +249,16 @@
         window.location.reload()
         }, 300000);
     </script>
+
+    <script type="text/javascript">
+       $('tr[data-href]').on("dblclick", function() {
+            document.location = $(this).data('href');
+        });
+        $('tr button[data-target]').on("click", function() {
+            document.location = $(this).data('target');
+        });
+    </script>
+
     @endsection
 
     @extends('layouts.footer')

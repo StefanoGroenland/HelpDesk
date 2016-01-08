@@ -45,19 +45,19 @@
                   <div class="table-responsive">
                       <table class="table table-hover data_table" >
                           <thead>
-                          <th>Voornaam</th>
-                          <th>Tussenvoegsel</th>
-                          <th>Achternaam</th>
-                          <th>Gebruikersnaam</th>
-                          <th>Geslacht</th>
-                          <th>E-mail</th>
-                          <th>Telefoonnummer</th>
-                          <th>Bedrijf</th>
-                          <th></th>
+                          <th style="width: 10%">Voornaam</th>
+                          <th style="width: 5%">Tussenvoegsel</th>
+                          <th style="width: 10%">Achternaam</th>
+                          <th style="width: 10%">Gebruikersnaam</th>
+                          <th style="width: 5%">Geslacht</th>
+                          <th style="width: 10%">E-mail</th>
+                          <th style="width: 10%">Telefoonnummer</th>
+                          <th style="width: 10%">Bedrijf</th>
+                          <th style="width: 10%"></th>
                           </thead>
                           <tbody>
                               @foreach($klanten as $klant)
-                              <tr>
+                              <tr data-href="/klantmuteren/{{$klant->id}}" >
                               <td>{{ucfirst($klant->voornaam)}}</td>
                               @if($klant->tussenvoegsel)
                                 <td>{{$klant->tussenvoegsel}}</td>
@@ -70,7 +70,7 @@
                               <td>{{$klant->email}}</td>
                               <td>{{$klant->telefoonnummer}}</td>
                               <td>{{$klant->bedrijf}}</td>
-                              <td>
+                              <td class="text-right">
                                  <a href="/klantmuteren/{{$klant->id}}" class="">
                                    <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$klant->email}}">
                                           <i class="glyphicon glyphicon-pencil"></i>
@@ -122,9 +122,15 @@
          <!-- /#page-wrapper -->
 
          @section('scripts')
-
-
-         @stop
+         <script type="text/javascript">
+            $('tr[data-href]').on("dblclick", function() {
+                 document.location = $(this).data('href');
+             });
+             $('tr button[data-target]').on("click", function() {
+                 document.location = $(this).data('target');
+             });
+         </script>
+         @endsection
 
      </div>
      <!-- /#wrapper -->

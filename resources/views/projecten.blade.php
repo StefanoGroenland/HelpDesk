@@ -44,13 +44,13 @@
                         <div class="table-responsive">
                             <table class="table table-hover data_table">
                                 <thead>
-                                <th>Aanmaak datum</th>
-                                <th>Project</th>
-                                <th>Live url</th>
-                                <th>Development url</th>
-                                <th>Klantnummer</th>
-                                <th>Omschrijving</th>
-                                <th></th>
+                                <th style="width: 10%">Aanmaak datum</th>
+                                <th style="width: 10%">Project</th>
+                                <th style="width: 10%">Live url</th>
+                                <th style="width: 10%">Development url</th>
+                                <th style="width: 5%">Klantnummer</th>
+                                <th style="width: 15%">Omschrijving</th>
+                                <th style="width: 8%"></th>
                                 </thead>
                                 <tbody>
                                     @foreach($projects as $project)
@@ -59,9 +59,9 @@
                                       <td>{{$project->projectnaam}}</td>
                                       <td>{{$project->liveurl}}</td>
                                       <td>{{$project->developmenturl}}</td>
-                                      <td>{{$project->gebruiker_id}}</td>
+                                      <td>{{$project->user->voornaam .' '. $project->user->tussenvoegsel .' '. $project->user->achternaam }}</td>
                                       <td>{!! substr($project->omschrijvingproject,0,90) !!}</td>
-                                      <td>
+                                      <td class="text-right" >
                                       <a href="/projectmuteren/{{$project->id}}" class="">
                                            <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
                                                   <i class="glyphicon glyphicon-pencil"></i>
@@ -93,7 +93,7 @@
                          <p>Weet u zeker dat u het project : <strong>{{$proj->titel}}</strong> met alle gekoppelde data wilt verwijderen&hellip;</p>
                        </div>
                        <div class="modal-footer">
-                         <button type="button" class="btn btn-default btn-xs pull-right" data-dismiss="modal">Close</button>
+                         <button type="button" class="btn btn-default btn-xs pull-right" data-dismiss="modal">Sluit</button>
                          <form method="POST" action="/verwijderProject/{{$proj->id}}" >
                          {!! method_field('DELETE') !!}
                          {!! csrf_field() !!}

@@ -44,18 +44,18 @@
                  <div class="table-responsive">
                      <table class="table table-hover data_table">
                          <thead>
-                         <th>Voornaam</th>
-                         <th>Tussenvoegsel</th>
-                         <th>Achternaam</th>
-                         <th>Gebruikersnaam</th>
-                         <th>Geslacht</th>
-                         <th>E-mail</th>
-                         <th>Telefoonummer</th>
-                         <th></th>
+                         <th style="width: 10%">Voornaam</th>
+                         <th style="width: 5%">Tussenvoegsel</th>
+                         <th style="width: 10%">Achternaam</th>
+                         <th style="width: 10%">Gebruikersnaam</th>
+                         <th style="width: 10%">Geslacht</th>
+                         <th style="width: 10%">E-mail</th>
+                         <th style="width: 10%">Telefoonummer</th>
+                         <th style="width: 10%"></th>
                          </thead>
                          <tbody>
                              @foreach($medewerkers as $medewerker)
-                             <tr>
+                             <tr data-href="/medewerkermuteren/{{$medewerker->id}}">
                              <td>{{ucfirst($medewerker->voornaam)}}</td>
                              @if($medewerker->tussenvoegsel)
                              <td>{{$medewerker->tussenvoegsel}}</td>
@@ -67,7 +67,7 @@
                              <td>{{$medewerker->geslacht}}</td>
                              <td>{{$medewerker->email}}</td>
                              <td>{{$medewerker->telefoonnummer}}</td>
-                             <td>
+                             <td class="text-right">
                                 <a href="/medewerkermuteren/{{$medewerker->id}}" class="">
                                   <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$medewerker->email}}">
                                          <i class="glyphicon glyphicon-pencil"></i>
@@ -90,8 +90,16 @@
         </div>
         <!-- /#page-wrapper -->
 
-        {{--@section('scripts')--}}
-        {{--@stop--}}
+        @section('scripts')
+        <script type="text/javascript">
+           $('tr[data-href]').on("dblclick", function() {
+                document.location = $(this).data('href');
+            });
+            $('tr button[data-target]').on("click", function() {
+                document.location = $(this).data('target');
+            });
+        </script>
+        @endsection
 
     </div>
     @foreach($medewerkers as $key)

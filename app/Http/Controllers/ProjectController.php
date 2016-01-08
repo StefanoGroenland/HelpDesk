@@ -20,7 +20,7 @@ class ProjectController extends Controller
         return View::make('projectmuteren', compact('project'));
     }
     public function showProjectenOverzicht(){
-        $projects   =   Project::all();
+        $projects   =   Project::with('user')->get();
         return View::make('projecten' , compact('projects'));
     }
     public function showNewProject(){

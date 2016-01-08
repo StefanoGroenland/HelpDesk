@@ -164,7 +164,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($bugs_send as $bug)
-                                    <tr>
+                                    <tr data-href="/bugchat/{{$bug->id}}">
                                         <td>{{$bug->created_at->format('d-m-y - H:i')}}</td>
                                         <td>{{date('d-m-y - H:i',strtotime($bug->start_datum))}}</td>
                                         @if($bug->eind_datum == '0000-00-00 00:00:00')
@@ -187,7 +187,7 @@
                                         <span class="label label-info">Geen prioriteit</span>
                                         @endif
                                         </td>
-                                        <td>
+                                        <td class="text-right">
                                             <a href="/bugchat/{{$bug->id}}">
                                         <button type="submit" class="btn btn-success btn-xs">
                                             <i class="glyphicon glyphicon-search"></i>
@@ -210,6 +210,16 @@
 <!--</div>-->
 
     <!-- /#wrapper -->
+    @section('scripts')
+    <script type="text/javascript">
+       $('tr[data-href]').on("dblclick", function() {
+            document.location = $(this).data('href');
+        });
+        $('tr button[data-target]').on("click", function() {
+            document.location = $(this).data('target');
+        });
+    </script>
+    @endsection
 
     @extends('layouts.footer')
 
