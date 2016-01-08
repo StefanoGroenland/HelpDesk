@@ -243,6 +243,13 @@
 <!--</div>-->
 
     <!-- /#wrapper -->
+    @section('scripts')
+    <script type="text/javascript">
+        setTimeout(function(){
+        window.location.reload()
+        }, 300000);
+    </script>
+    @endsection
 
     @extends('layouts.footer')
 
