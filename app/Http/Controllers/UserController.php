@@ -109,7 +109,7 @@ class UserController extends Controller
 
         $rules = array(
             'email'                     => 'unique:gebruikers,email,'.$id,
-            'username'                  => 'unique:gebruikers,password,'.$id,
+            'username'                  => 'unique:gebruikers,username,'.$id,
             'telefoonnummer'            => 'numeric|min:11',
             'password'                  => 'min:4|confirmed',
             'password_confirmation'     => 'min:4',
@@ -193,8 +193,8 @@ class UserController extends Controller
         );
 
         $rules = array(
-            'email'                     => 'unique:gebruikers',
-            'username'                  => 'unique:gebruikers',
+            'email'                     => 'unique:gebruikers,email,'.$id,
+            'username'                  => 'unique:gebruikers,username,'.$id,
             'telefoonnummer'            => 'numeric',
             'username'                  => 'required|min:4',
             'username'                  => 'required|min:4',
@@ -235,8 +235,8 @@ class UserController extends Controller
             array_forget($data, 'password_confirmation');
         }
         $rules = array(
-            'email'                     => 'unique:gebruikers',
-            'username'                  => 'unique:gebruikers',
+            'email'                     => 'unique:gebruikers,email,'.$id,
+            'username'                  => 'unique:gebruikers,username,'.$id,
             'telefoonnummer'            => 'required|numeric|min:11',
             'voornaam'                  => 'required|min:4',
             'achternaam'                => 'required|min:4',

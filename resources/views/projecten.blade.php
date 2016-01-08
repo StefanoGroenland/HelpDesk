@@ -60,7 +60,7 @@
                                       <td>{{$project->liveurl}}</td>
                                       <td>{{$project->developmenturl}}</td>
                                       <td>{{$project->gebruiker_id}}</td>
-                                      <td>{!! substr($project->omschrijvingproject,0,90) !!}..</td>
+                                      <td>{!! substr($project->omschrijvingproject,0,90) !!}</td>
                                       <td>
                                       <a href="/projectmuteren/{{$project->id}}" class="">
                                            <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
