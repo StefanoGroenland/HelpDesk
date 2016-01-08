@@ -59,12 +59,10 @@
                                 <input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel">
                              </div>
                               <div class="form-group">
-                                @if($id && Auth::user()->bedrijf == 'moodles')
                                     <select class="form-control" name="project" required="true">
                                     <option value="{{$id}}">{{$id}}</option>
                                     </select>
-                                   @else
-                                  @endif
+
                                 </div>
                                 <div class="form-group">
                                 <select class="form-control" name="prioriteit" required="true">

@@ -24,6 +24,8 @@ class CreateBugsTable extends Migration
             $table->text('beschrijving');
             $table->integer('klant_id');
             $table->integer('project_id');
+            $table->boolean('last_admin');
+            $table->boolean('last_client');
         });
     }
     /**

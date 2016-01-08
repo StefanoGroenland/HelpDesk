@@ -42,7 +42,7 @@
                                         {{-- */$i=0;/* --}}
                                         {{-- */$x=0;/* --}}
                                         {{-- */$y=0;/* --}}
-                                        {{-- */$ont=0;/* --}}
+                                        {{-- */$unread=0;/* --}}
                                         {{-- */$crit = '';/* --}}
                                         {{-- */$high = '';/* --}}
                                         {{-- */$avg = '';/* --}}
@@ -79,14 +79,14 @@
                                                <a href="/bugs/{{$project->id}}">
                                                    <div class="row">
                                                    @foreach($bugs_send as $bug)
-                                                   @if($bug->medewerker_id < 1)
-                                                   @if($bug->project_id == $project->id)
-                                                   {{-- */$ont++;/* --}}
-                                                   @endif
-                                                   @endif
+                                                        @if($bug->last_admin > 0)
+                                                            @if($bug->project_id == $project->id)
+                                                            {{-- */$unread ++;/* --}}
+                                                            @endif
+                                                        @endif
                                                    @endforeach
                                                    <div id='notificatie'><div>
-                                                       {{$ont}}
+                                                       {{$unread}}
                                                        </div></div>
                                                        <div class="col-xs-12 text-right">
                                                        @if($project->prioriteit == 1)

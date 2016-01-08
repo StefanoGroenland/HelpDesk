@@ -35,7 +35,7 @@
                 <div class="row">
                 @if(count($projects) > 0)
                 @foreach($projects as $pro)
-                {{-- */$ont=0;/* --}}
+                {{-- */$unread=0;/* --}}
                  {{-- */$i=0;/* --}}
                  {{-- */$x=0;/* --}}
                  {{-- */$y=0;/* --}}
@@ -82,11 +82,15 @@
                         <a href="/bugs/{{$pro->id}}">
                             <div class="row">
                                 @foreach($bugs as $bug)
-                                @if($bug->medewerker_id < 1)
-                                @if($bug->project_id == $pro->id)
-                                {{-- */$ont++;/* --}}
-                                @endif
-                                @endif
+
+
+                                     @if($bug->last_client > 0)
+                                         @if($bug->project_id == $pro->id)
+                                         {{-- */$unread ++;/* --}}
+                                         @endif
+                                     @endif
+
+
                                 @if($bug->prioriteit == 1)
                                     @if($bug->project_id == $pro->id)
                                     {{-- */$laag++;/* --}}
@@ -109,7 +113,7 @@
                                 @endif
                                 @endforeach
                                 <div id='notificatie'><div>
-                                {{$ont}}
+                                {{$unread}}
                                 </div></div>
                                 <div class="col-xs-12 text-right pull-right">
                                 <span style="border: solid #ffffff 1px;" class="label label-purple pull-left">{{$krit}}</span>

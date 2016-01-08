@@ -21,8 +21,6 @@ class CreateChatsTable extends Migration
             $table->integer('bug_id');
             $table->integer('project_id');
             $table->text('bericht');
-            $table->boolean('last_admin');
-            $table->boolean('last_client');
         });
     }
 

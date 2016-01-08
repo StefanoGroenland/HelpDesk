@@ -29,6 +29,8 @@ class Bug extends Model
         'klant_id',
         'project_id',
         'medewerker_id',
+        'last_admin',
+        'last_client',
     ];
     protected $guarded = ['id'];
 
@@ -39,7 +41,7 @@ class Bug extends Model
         return $this->belongsTo('App\User','klant_id','id');
     }
     public function chat(){
-        return $this->belongsTo('App\Chats','bug_id','id');
+        return $this->hasMany('App\Chat','bug_id','id');
     }
     public function project(){
         return $this->belongsTo('App\Project', 'project_id', 'id');
@@ -70,5 +72,14 @@ class Bug extends Model
     }
     public static function defineProject($id){
         return DB::table('bugs')->select(DB::raw('project_id'))->where('id','=',$id)->first();
+    }
+    public static function lastPerson($bug,$admin,$client){
+        return DB::table('bugs')
+            ->where('id','=',$bug)
+            ->update(
+                array(
+                    'last_admin' => $admin,
+                    'last_client' => $client
+                ));
     }
 }

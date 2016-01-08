@@ -32,4 +32,5 @@ class Chat extends Model
         return DB::table('chats')->where('bug_id', '=',$id)->delete();
     }
 
+
 }

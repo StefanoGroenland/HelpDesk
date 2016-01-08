@@ -29,9 +29,8 @@ class UserController extends Controller
     public function showDashboard()
     {
         $klant_id = Auth::user()->id;
-        $bugs = Bug::all();
-        $bugs_send = Bug::where('klant_id' , '=', $klant_id)->get();
-
+        $bugs = Bug::with('chat')->get();
+        $bugs_send = Bug::with('chat')->where('klant_id' , '=', $klant_id)->get();
 
         if(\Auth::guest()){
             return redirect('/');

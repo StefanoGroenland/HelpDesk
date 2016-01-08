@@ -21,6 +21,7 @@ class ChatController extends Controller
         $msg                =       $request['bericht'];
 
         Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
+
         return redirect('/bugchat/'. $bug_id);
     }
 

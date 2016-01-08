@@ -5,11 +5,6 @@
             </a>
         </li>
         <li>
-            <a href="{{URL::to('/bugmuteren')}}">
-               <i class="fa fa-bullhorn"></i> Bug melden
-            </a>
-        </li>
-        <li>
             <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
                <i class="fa fa-briefcase"></i> Overzicht verstuurde feedback
             </a>

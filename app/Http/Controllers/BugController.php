@@ -22,7 +22,11 @@ class BugController extends Controller
 
         $bug = Bug::with('klant','user','project')->find($id);
 
-
+        if(Auth::user()->bedrijf == 'moodles'){
+            Bug::lastPerson($id,1,0);
+        }else{
+            Bug::lastPerson($id,0,1);
+        }
         if(Auth::user()->bedrijf == 'moodles' || $bug->klant->id == $bug->project->gebruiker_id){
             $afzenders              = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
             $bug_attachments        = BugAttachment::where('bug_id','=',$id)->get();
@@ -33,6 +37,11 @@ class BugController extends Controller
         return redirect('/dashboard');
     }
     public function refreshChat($id){
+        if(Auth::user()->bedrijf == 'moodles'){
+            Bug::lastPerson($id,1,0);
+        }else{
+            Bug::lastPerson($id,0,1);
+        }
         return $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
     }
     public function feedCount($id){
@@ -96,6 +105,7 @@ class BugController extends Controller
         if($data['eind_datum'] == "1970-01-01 01:00"){
             array_forget($data,'eind_datum');
         }
+        Bug::lastPerson($bug,1,0);
 
         Bug::where('id', '=', $bug->id)->update($data);
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
@@ -108,16 +118,26 @@ class BugController extends Controller
         $posted_by = Bug::defineKlant($request['project']);
         $pro_id = $request['project'];
 
-        $data = array(
-            'titel'             => $request['titel'],
-            'prioriteit'        => $request['prioriteit'],
-            'soort'             => $request['soort'],
-            'status'            => 'open',
-            'start_datum'       => $request['start_datum'],
-            'beschrijving'      => $request['beschrijving'],
-            'klant_id'          => $posted_by->gebruiker_id,
-            'project_id'        => $request['project'],
-        );
+            $data = array(
+                'titel'             => $request['titel'],
+                'prioriteit'        => $request['prioriteit'],
+                'soort'             => $request['soort'],
+                'status'            => 'open',
+                'start_datum'       => $request['start_datum'],
+                'beschrijving'      => $request['beschrijving'],
+                'klant_id'          => $posted_by->gebruiker_id,
+                'project_id'        => $request['project'],
+            );
+
+        if(Auth::useR()->bedrijf == 'moodles' ){
+            $data['last_admin']     = 1;
+            $data['last_client']    = 0;
+        }else{
+            $data['last_admin']     = 0;
+            $data['last_client']    = 1;
+        }
+
+
 
         $rules = array(
             'titel'             => 'required|min:4',
