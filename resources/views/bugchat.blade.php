@@ -89,7 +89,9 @@
                           <div class="form-group">
                             <label for="end_date">Einddatum</label>
                               {{--<input type="text"  name="eind_datum" class="form-control" id="einddatum">--}}
-                              <input type="text" name="eind_datum" class="form_datetime form-control date-picker" placeholder="Deadline" data-rule-maxlength="30">
+                              <input type="text" name="eind_datum" class="form_datetime form-control date-picker" placeholder="@if($bug->eind_datum != '0000-00-00 00:00:00'){{date('d-m-Y H:i',strtotime($bug->eind_datum))}}
+                              @else {{date('d-m-Y H:i')}} @endif
+                              " data-rule-maxlength="30">
                             </div>
                             <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander</button>
                         </form>
@@ -157,8 +159,8 @@
                             <h6>{{date('d-m-y',strtotime($bug->eind_datum))}}</h6>
                             @endif
                             <h6>{{$bug->klant->achternaam}}</h6>
-                            <h6>{{$bug->status}}                 </h6>
-                            <h6>{{$bug->soort}}                  </h6>
+                            <h6>{{$bug->status}}</h6>
+                            <h6>{{$bug->soort}}</h6>
                          </div>
                          </div>
 
@@ -336,7 +338,8 @@
                 $(document).ready(function() {
                        $(".form_datetime").datetimepicker({
                        language: 'nl',
-                       weekStart: 1
+                       weekStart: 1,
+                       format: 'd-m-yyyy hh:ii',
                        });
                 });
             </script>

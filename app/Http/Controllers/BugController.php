@@ -91,6 +91,12 @@ class BugController extends Controller
             'status'            => $request['status'],
             'eind_datum'        => $request['eind_datum'],
         );
+        $data['eind_datum'] = date('Y-m-d H:i',strtotime($data['eind_datum']));
+
+        if($data['eind_datum'] == "1970-01-01 01:00"){
+            array_forget($data,'eind_datum');
+        }
+
         Bug::where('id', '=', $bug->id)->update($data);
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
         return redirect('/bugchat/'. $bug->id);
