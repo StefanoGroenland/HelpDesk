@@ -29,7 +29,7 @@
                                         @endforeach
                                     </ul>
                                 @endif
-                                    <label for="gebruikersnaam">Gebrukersnaan</label>
+                                    <label for="gebruikersnaam">Gebrukersnaam</label>
                                     <input type="text" class="form-control" id="username" name="username" placeholder="Gebrukersnaam" value="{{old('username')}}">
                                 </div>
                                 <div class="form-group">
