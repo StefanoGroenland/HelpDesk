@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Bug as Bug;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Chat as Chat;
 use Illuminate\Support\Facades\Auth;
+use App\BugAttachment as BugAttachment;
 
 class ChatController extends Controller
 {
@@ -19,10 +21,40 @@ class ChatController extends Controller
         $bug_id             =       $request['bug_id'];
         $project_id         =       $request['project_id'];
         $msg                =       $request['bericht'];
+        $msg_with           =       $request['bericht']. '<hr> -Bijlage(s) meeverzonden.';
 
-        Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
+        $files = $request->file('file');
 
-        return redirect('/bugchat/'. $bug_id);
+        $id = $request->get('bug_id');
+        $mime = array('jpeg','bmp','png','jpg','pdf','doc','docx','csv');
+
+        foreach($files as $file){
+            if($file !== null){
+                if(in_array($file->getClientOriginalExtension(), $mime)){
+                    $filename = str_random(10) . '.'. $file->getClientOriginalExtension();
+                    $destinationPath = 'assets/uploads/bug_attachments';
+                    $file->move($destinationPath,$filename);
+                    $ava = $destinationPath .'/'. $filename;
+                    BugAttachment::uploadToDb($ava,$id);
+                }else{
+                    $request->session()->flash('alert-danger', 'Bestand(en) uploaden mislukt! een of meerdere bestands types werden niet geaccepteerd.');
+                    Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
+                    return redirect('/bugchat/'.$id);
+                }
+            }else{
+                $request->session()->flash('alert-info', 'Geen bestand(en) gevonden.');
+                Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
+                return redirect('/bugchat/'.$id);
+            }
+        }
+        $request->session()->flash('alert-info', 'Bestand(en) uploaden voltooid.');
+        Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg_with);
+        if(Auth::user()->bedrijf){
+            Bug::lastPerson($bug_id,1,0);
+        }else{
+            Bug::lastPerson($bug_id,0,1);
+        }
+        return redirect('/bugchat/'.$id);
     }
 
 }

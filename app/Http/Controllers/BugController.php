@@ -129,7 +129,7 @@ class BugController extends Controller
                 'project_id'        => $request['project'],
             );
 
-        if(Auth::useR()->bedrijf == 'moodles' ){
+        if(Auth::user()->bedrijf == 'moodles' ){
             $data['last_admin']     = 1;
             $data['last_client']    = 0;
         }else{
@@ -167,21 +167,29 @@ class BugController extends Controller
         $id = $request->get('id');
         $mime = array('jpeg','bmp','png','jpg','pdf','doc','docx','csv');
 
-        if(!empty($files)){
             foreach($files as $file){
-                if(in_array($file->getClientOriginalExtension(), $mime)){
-                    $filename = str_random(10) . '.'. $file->getClientOriginalExtension();
-                    $destinationPath = 'assets/uploads/bug_attachments';
-                    $file->move($destinationPath,$filename);
-                    $ava = $destinationPath .'/'. $filename;
-                    BugAttachment::uploadToDb($ava,$id);
+                if($file !== null){
+                    if(in_array($file->getClientOriginalExtension(), $mime)){
+                        $filename = str_random(10) . '.'. $file->getClientOriginalExtension();
+                        $destinationPath = 'assets/uploads/bug_attachments';
+                        $file->move($destinationPath,$filename);
+                        $ava = $destinationPath .'/'. $filename;
+                        BugAttachment::uploadToDb($ava,$id);
+                    }else{
+                        $request->session()->flash('alert-danger', 'Bestand(en) uploaden mislukt! een of meerdere bestands types werden niet geaccepteerd.');
+                        return redirect('/bugchat/'.$id);
+                    }
                 }else{
-                    $request->session()->flash('alert-danger', 'Bestanden uploaden mislukt!');
+                    $request->session()->flash('alert-info', 'Geen bestand(en) gevonden.');
                     return redirect('/bugchat/'.$id);
                 }
             }
-            $request->session()->flash('alert-info', 'Bestanden uploaden voltooid.');
-            return redirect('/bugchat/'.$id);
+        $request->session()->flash('alert-info', 'Bestand(en) uploaden voltooid.');
+        if(Auth::user()->bedrijf){
+            Bug::lastPerson($id,1,0);
+        }else{
+            Bug::lastPerson($id,0,1);
         }
+        return redirect('/bugchat/'.$id);
     }
 }

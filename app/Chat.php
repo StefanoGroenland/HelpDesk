@@ -16,7 +16,7 @@ class Chat extends Model
     }
 
     public static function sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg){
-        return DB::table('chats')->insert(
+        DB::table('chats')->insert(
             [
                 'created_at' => date('y-m-d - H:i:s'),
                 'project_id' => $project_id,

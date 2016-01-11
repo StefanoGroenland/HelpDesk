@@ -105,7 +105,6 @@
 
                             <div id="message"></div>
                            <form id="upload" method="POST" action="/upload" enctype="multipart/form-data">
-
                                <input type="hidden" name="id" value="{{$bug->id}}">
                                 {!! csrf_field() !!}
                                <pre><i class="fa fa-info"></i> Houd <kbd>ctrl</kbd> ingedrukt om meerdere bestanden te kiezen</pre>
@@ -279,7 +278,7 @@
                         </li>
                     </ul>
 
-                    <form method="POST" action="/sendMessage">
+                    <form method="POST" action="/sendMessage" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                         <div class="form-group">
                             <input type="hidden" name="afzender_id"        value="{{Auth::user()->id}}">
@@ -317,7 +316,11 @@
                             <i class="fa fa-send"></i> Verstuur
                         </button>
                         @else
-                        <button type="submit" class="btn btn-success">
+                        <span class="btn btn-success btn-file pull-left">
+                            <i class="glyphicon glyphicon-search" ></i> Bijlages kiezen <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>
+                        </span>
+
+                        <button type="submit" style="margin-left:10px;" class="btn btn-success">
                             <i class="fa fa-send"></i> Verstuur
                         </button>
                         @endif
