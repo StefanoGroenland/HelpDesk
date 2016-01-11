@@ -343,7 +343,8 @@
                        $(".form_datetime").datetimepicker({
                        language: 'nl',
                        weekStart: 1,
-                       format: 'd-m-yyyy hh:ii'
+                       format: 'd-m-yyyy hh:ii',
+                       autoclose:true
                        });
                 });
             </script>
