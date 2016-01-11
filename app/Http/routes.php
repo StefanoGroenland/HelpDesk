@@ -85,3 +85,11 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::controllers([
     'wachtwoord' => 'Auth\PasswordController',
 ]);
+
+// Password reset link request routes...
+Route::get('auth/email', 'Auth\PasswordController@getEmail');
+Route::post('auth/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+Route::get('auth/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('auth/reset', 'Auth\PasswordController@postReset');
