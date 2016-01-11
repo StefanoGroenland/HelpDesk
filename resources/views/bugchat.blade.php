@@ -181,7 +181,7 @@
                     @else
                     <div class="col-lg-6">
                     @endif
-                        <h3>Bug details</h3>
+                        <h3>Bug details</h3><hr>
                             <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
                             <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->beschrijving !!}</p>
                             <p style="white-space: pre-wrap;"><strong>start datum </strong> {{ $bug->start_datum }}</p>
@@ -189,13 +189,13 @@
                     </div>
                     @if(Auth::user()->bedrijf == 'moodles')
                     <div class="col-lg-6">
-                        <h3>Project details</h3>
+                        <h3>Project details</h3><hr>
                             <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {!! $bug->project->projectnaam !!}</p>
                             <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
                             <p style="white-space: pre-wrap;"><strong>live URL: </strong> {!! $bug->project->liveurl !!}</p>
                             <p style="white-space: pre-wrap;"><strong>dev URL: </strong> {!! $bug->project->developmenturl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>Beheer loginnaam: </strong> {!! $bug->project->gebruikersnaam !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>Beheer wachtwoord: </strong> {!! \Crypt::decrypt($bug->project->wachtwoord) !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam: </strong> {!! $bug->project->gebruikersnaam !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord: </strong> {!! \Crypt::decrypt($bug->project->wachtwoord) !!}</p>
                     </div>
                     @endif
                 </div>
@@ -207,14 +207,15 @@
                     <li>
                       <a href="../{{$ba->image}}" target="_blank">
                         @if(strpos($ba->image,'doc') || strpos($ba->image,'docx') )
-                            <img src="../assets/images/word_file.png" width="50" height="50" >
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="{{$ba->created_at->format('d-m-Y H:i')}}"><img src="../assets/images/word_file.png" width="50" height="50" ></a>
                         @elseif(strpos($ba->image,'pdf') )
-                            <img src="../assets/images/pdf_file.png" width="50" height="50" >
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="{{$ba->created_at->format('d-m-Y H:i')}}"><img src="../assets/images/pdf_file.png" width="50" height="50" ></a>
                         @elseif(strpos($ba->image,'csv') )
-                            <img src="../assets/images/excel_file.png" width="50" height="50" >
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="{{$ba->created_at->format('d-m-Y H:i')}}"><img src="../assets/images/excel_file.png" width="50" height="50" ></a>
                         @else
-                            <img src="../{{$ba->image}}" width="50" height="50" >
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="{{$ba->created_at->format('d-m-Y H:i')}}"><img src="../{{$ba->image}}" width="50" height="50" ></a>
                         @endif
+                        <br><small></small>
                       </a>
                     </li>
                     @endforeach
@@ -228,8 +229,6 @@
                            <i class="fa fa-refresh fa-spin"></i>
                            refresh feed
                         </button>
-
-
                     </h3>
                     <ul class="list-unstyled" >
                     <li class="text-left">
@@ -352,6 +351,11 @@
                        autoclose:true
                        });
                 });
+            </script>
+            <script>
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip();
+            });
             </script>
 
                 <script type="text/javascript">
