@@ -36,8 +36,10 @@ class UserController extends Controller
             return redirect('/');
         }
         else if(\Auth::user()->bedrijf == 'moodles'){
-            $temp_projects = Project::with('bug')->get();
-
+//            $temp_projects = Project::has('bug','>',0)->get();
+            $temp_projects = Project::whereHas('bug', function($q){
+                $q->where('status','!=','gesloten');
+            })->get();
 
             $projects = array();
 
@@ -52,7 +54,9 @@ class UserController extends Controller
             }
             krsort($projects);
             $temp_projects = $projects;
+
             $projects = array();
+
             foreach($temp_projects as $priority){
                 foreach ($priority as $project){
                     $projects[] = $project;
