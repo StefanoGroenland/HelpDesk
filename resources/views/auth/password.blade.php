@@ -26,6 +26,12 @@
                                  @endforeach
                              </ul>
                          @endif
+                         @if(Session::has('status'))
+                         <ul class="list-unstyled">
+                             <li class="alert alert-success"><i class="fa fa-info"></i> {{Session::get('status')}}</li>
+                         </ul>
+                         @endif
+
                          <div class="form-group">
                              <label>E-mail</label>
                              <input class="form-control" type="email" name="email" placeholder="email" value="{{ old('email') }}">
