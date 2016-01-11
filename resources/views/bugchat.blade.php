@@ -195,6 +195,8 @@
                             <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
                             <p style="white-space: pre-wrap;"><strong>live URL: </strong> {!! $bug->project->liveurl !!}</p>
                             <p style="white-space: pre-wrap;"><strong>dev URL: </strong> {!! $bug->project->developmenturl !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>Beheer loginnaam: </strong> {!! $bug->project->gebruikersnaam !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>Beheer wachtwoord: </strong> {!! \Crypt::decrypt($bug->project->wachtwoord) !!}</p>
                     </div>
                     @endif
                 </div>
