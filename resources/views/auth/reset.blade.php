@@ -11,11 +11,15 @@
     <title>Moodles - Helpdesk</title>
 </head>
 
+<div class="container">
+<div class="col-lg-4"></div>
+<div class="col-lg-4 well">
 
 <form method="POST" action="/auth/reset">
     {!! csrf_field() !!}
     <input type="hidden" name="token" value="{{ $token }}">
-
+    <img src="{{URL::asset('../assets/images/logo.png')}}" class="img-responsive center-block" alt="Responsive image">
+                <div class="form-group">
     @if (count($errors))
         <ul class="list-unstyled">
             @foreach($errors->all() as $error)
@@ -23,28 +27,34 @@
             @endforeach
         </ul>
     @endif
-
-    <div>
+    <div class="form-group">
         Email
-        <input type="email" name="email" value="{{ old('email') }}">
+        <input class="form-control" type="email" name="email" value="{{ old('email') }}">
     </div>
-
-    <div>
-        Password
-        <input type="password" name="password">
+    <div class="form-group">
+        Nieuw wachtwoord
+        <input class="form-control" type="password" name="password">
     </div>
-
-    <div>
-        Confirm Password
-        <input type="password" name="password_confirmation">
+    <div class="form-group">
+        Herhaal wachtwoord
+        <input class="form-control" type="password" name="password_confirmation">
     </div>
-
     <div>
-        <button type="submit">
-            Reset Password
+        <button class="btn btn-success" type="submit">
+            Herstel wachtwoord
         </button>
+        </div>
+
     </div>
 </form>
+
+
+
+</div>
+<div class="col-lg-4"></div>
+
+
+</div>
 
 
      @extends('layouts.footer')

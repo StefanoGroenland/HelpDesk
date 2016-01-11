@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/updateProjectData', array('as' => 'updateData', 'uses' => 'ProjectController@getUpdateData'));
         Route::delete('/verwijderProject/{id}', 'ProjectController@verwijderProject');
         Route::post('/addProject', 'ProjectController@addProject');
-        Route::get('/projecten', 'PRojectController@showProjectenOverzicht');
+        Route::get('/projecten', 'ProjectController@showProjectenOverzicht');
 
         //    BugController Routes
         Route::delete('/verwijderBug/{id}', 'BugController@verwijderBug');
