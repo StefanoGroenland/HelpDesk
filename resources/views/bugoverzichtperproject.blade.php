@@ -42,12 +42,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            {{$project->projectnaam}} <small>alle bugs van dit project</small>
+                            {{$project->projectnaam}} <small>alle feedback van dit project</small>
                         </h3>
                         <a href="/bugmuteren/{{$project->id}}" class="pull-left">
                             <button type="submit" class="btn btn-success btn-xs">
                                <i class="glyphicon glyphicon-plus"></i>
-                               Bugmelden
+                               Feedback melden
                             </button>
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                        <table class="table table-hover data_table">
                         <thead>
                         <th style="width: 10%"><i class="fa fa-hashtag"></i></th>
-                        <th style="width: 10%">Bug titel</th>
+                        <th style="width: 10%">Feedback titel</th>
                         <th style="width: 10%">Status</th>
                         <th style="width: 10%">Soort</th>
                         <th style="width: 10%">Prioriteit</th>
@@ -142,7 +142,7 @@
                                       <h4 class="modal-title">Verwijder verzoek</h4>
                                     </div>
                                     <div class="modal-body">
-                                      <p>Weet u zeker dat u de bug : <strong>{{$key->id}}</strong> wilt verwijderen&hellip;</p>
+                                      <p>Weet u zeker dat u feedback met id : <strong>{{$key->id}}</strong> wilt verwijderen&hellip;</p>
 
                                     </div>
                                     <div class="modal-footer">
@@ -152,7 +152,7 @@
                                       {!! csrf_field() !!}
                                       <button type="submit" class="btn btn-danger btn-xs pull-left">
                                          {{--<i class="glyphicon glyphicon-trash"></i>--}}
-                                         Verwijder bug
+                                         Verwijder feedback
                                       </button>
                                       </form>
                                     </div>

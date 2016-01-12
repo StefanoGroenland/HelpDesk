@@ -111,13 +111,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                     <h3 class="page-header">
-                        Alle bugs <small>een lijst van alle bugs</small>
+                        Alle feedback <small>een lijst van alle feedback</small>
                     </h3>
                     <div class="table-responsive">
                     <table class="table table-hover data_table">
                         <thead>
                         <th style="width: 10%"><i class="fa fa-hashtag"></i></th>
-                        <th style="width: 10%">Bug titel</th>
+                        <th style="width: 10%">Feedback titel</th>
                         <th style="width: 10%">Status</th>
                         <th style="width: 10%">Soort</th>
                         <th style="width: 10%">Prioriteit</th>

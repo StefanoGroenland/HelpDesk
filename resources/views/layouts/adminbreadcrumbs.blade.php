@@ -5,7 +5,7 @@
         </li>
         <li>
             <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
-               <i class="fa fa-bug"></i> Bug overzicht
+               <i class="fa fa-bug"></i> Feedback overzicht
             </a>
         </li>
         <li class="pull-right">

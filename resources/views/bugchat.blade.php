@@ -119,52 +119,6 @@
                                 </div>
                            </form>
                        <br>
-
-
-                       @if($bug->prioriteit == 1)
-                       <div class="panel panel-success">
-                       @elseif($bug->prioriteit == 2)
-                       <div class="panel panel-yellow">
-                       @elseif($bug->prioriteit == 3)
-                       <div class="panel panel-red">
-                       @elseif($bug->prioriteit == 4)
-                       <div class="panel panel-purple">
-                       @else
-                       <div class="panel panle-info">
-                       @endif
-                         <div class="panel-heading">
-                           <h3 class="panel-title">{{$bug->titel}}</h3>
-                         </div>
-                         <div class="panel-body">
-                         <div class="row">
-                         <div class="col-lg-6 pull-left">
-                            <h6><strong>Aangemaakt</strong></h6>
-                            <h6><strong>Gewijzigd</strong></h6>
-                            <h6><strong>Deadline</strong></h6>
-                            <h6><strong>Gemeld</strong></h6>
-                            <h6><strong>Status</strong></h6>
-                            <h6><strong>Soort</strong></h6>
-                         </div>
-                         <div class="col-lg-6 pull-right">
-                            <h6>{{$bug->created_at->format('d-m-y')}}</h6>
-                            @if($bug->updated_at == '0000-00-00 00:00:00')
-                            <small>Niet geupdate</small><br>
-                            @else
-                            <h6>{{$bug->updated_at->format('d-m-y')}}</h6>
-                            @endif
-                            @if($bug->eind_datum == '0000-00-00 00:00:00')
-                            <small>Geen deadline</small><br>
-                            @else
-                            <h6>{{date('d-m-y',strtotime($bug->eind_datum))}}</h6>
-                            @endif
-                            <h6>{{$bug->klant->achternaam}}</h6>
-                            <h6>{{$bug->status}}</h6>
-                            <h6>{{$bug->soort}}</h6>
-                         </div>
-                         </div>
-
-                         </div>
-                       </div>
                     </div>
                 </div>
             </div>

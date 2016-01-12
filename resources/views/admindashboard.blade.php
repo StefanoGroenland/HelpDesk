@@ -169,14 +169,14 @@
                   </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4>Laatst gemelde bugs</h4>
+                        <h4>Laatst gemelde feedback</h4>
                         <div class="table-responsive">
                         <table class="table table-hover data_table">
                                 <thead>
                                 <th>Gepost op </th>
                                 <th>Status </th>
                                 <th>Deadline</th>
-                                <th>Bug</th>
+                                <th>Feedback</th>
                                 <th>Prioriteit</th>
                                 <th>Klant</th>
                                 <th>Project</th>

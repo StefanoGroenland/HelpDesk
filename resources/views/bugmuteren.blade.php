@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Bug melden <small>meld een bug</small>
+                        Feedback melden <small>hier kunt u feedback geven</small>
                         @include('layouts.header-controls')
                     </h1>
                     <ol class="breadcrumb">
@@ -51,11 +51,11 @@
                         {!! csrf_field() !!}
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Nieuwe bug</h3>
+                            <h3 class="panel-title">Nieuwe feedback</h3>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label for="bedrijfsnaam">Bug</label>
+                                <label for="bedrijfsnaam">Feedback</label>
                                 <input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel">
                              </div>
                               <div class="form-group">
@@ -89,9 +89,9 @@
 
                                </div>
                                <div class="form-group">
-                                  <textarea class="form-control" rows="7" id="beschrijving"  name="beschrijving"></textarea>
+                                  <textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving"></textarea>
                                 </div>
-                              <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
+                              <button data-toggle="tooltip" title="Heeft u de fout zo specifiek mogelijk beschreven? indien mogelijk met de locaties / manieren waardoor de fout onstaat?" type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verstuur</button>
                             </form>
                         </div>
                     </div>
