@@ -47,7 +47,7 @@
                    @endif
             <div class="row">
                 <div class="col-lg-12">
-                    <form method="POST" action="/addBug" enctype="multipart/form-data">
+                    <form method="POST" action="/addBug/{{$id}}" enctype="multipart/form-data">
                         {!! csrf_field() !!}
                     <div class="panel panel-success">
                         <div class="panel-heading">
@@ -58,12 +58,6 @@
                                 <label for="bedrijfsnaam">Feedback</label>
                                 <input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel">
                              </div>
-                              <div class="form-group">
-                                    <select class="form-control" name="project" required="true">
-                                    <option value="{{$id}}">{{$id}}</option>
-                                    </select>
-
-                                </div>
                                 <div class="form-group">
                                 <select class="form-control" name="prioriteit" required="true">
                                    <option value="1">Laag</option>
@@ -82,11 +76,7 @@
                                 </div>
                               <div class="form-group">
                                <label for="end_date">Startdatum</label>
-
                                    <input type="text" name="start_datum" class="form_datetime form-control date-picker" placeholder="{{date('d-m-Y H:i')}}" data-rule-maxlength="30">
-
-
-
                                </div>
                                <div class="form-group">
                                   <textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving"></textarea>

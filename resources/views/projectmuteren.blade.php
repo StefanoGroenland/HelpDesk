@@ -45,12 +45,9 @@
                             <h3 class="panel-title">Verander project</h3>
                           </div>
                           <div class="panel-body">
-                            <form method="POST" action="/updateProject">
+                            <form method="POST" action="/updateProject/{{$project->id}}">
                                                {!! csrf_field() !!}
                                                <input type="hidden" name="_method" value="PUT">
-                            <div class="form-group">
-                               <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$project->id}}">
-                             </div>
                               <div class="form-group">
                                 <input type="text" class="form-control projectnaam2" required="true" id="projectnaam2" name="projectnaam" placeholder="Projectnaam" value="{{$project->projectnaam}}">
                               </div>

@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
         //    ProjectController Routes
         Route::get('/newproject', array('as' => 'nieuwproject', 'uses' => 'ProjectController@showNewProject'));
         Route::get('/projectmuteren/{id}', array('as' => 'projectmuteren', 'uses' => 'ProjectController@showProjectMuteren'));
-        Route::put('/updateProject', array('as' => 'veranderPJ', 'uses' => 'ProjectController@updateProject'));
+        Route::put('/updateProject/{id}', array('as' => 'veranderPJ', 'uses' => 'ProjectController@updateProject'));
         Route::post('/updateProjectData', array('as' => 'updateData', 'uses' => 'ProjectController@getUpdateData'));
         Route::delete('/verwijderProject/{id}', 'ProjectController@verwijderProject');
         Route::post('/addProject', 'ProjectController@addProject');
@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/bugmuteren/{id}', array('as' => 'bugmuteren', 'uses' => 'BugController@showBugMuteren'));
 
     Route::get('/bugchat/{id}',array('as' => 'bugchat', 'uses' => 'BugController@showbugChat'));
-    Route::post('/addBug', 'BugController@addBug');
+    Route::post('/addBug/{id}', 'BugController@addBug');
     Route::post('/upload', 'BugController@upload');
     Route::get('/bugoverzicht/{id}', array('as' => 'bugoverzicht', 'uses' => 'BugController@showBugOverzicht'));
     Route::get('/bugs/{id}', array('as' => 'bugoverzicht', 'uses' => 'BugController@showBugOverzichtPerProject'));

@@ -123,9 +123,9 @@ class ProjectController extends Controller
         return redirect('/bugs/'.$proj->id);
     }
     public function updateProject(Request $request){
-        $id = $request['id'];
+        $id = Route::current()->getParameter('id');
         $data = array(
-            'id'                                    => $request['id'],
+            'id'                                    => $id,
             'projectnaam'                           => $request['projectnaam'],
             'liveurl'                               => $request['liveurl'],
             'developmenturl'                        => $request['developmenturl'],

@@ -114,11 +114,10 @@ class BugController extends Controller
 
 
     public function addBug(Request $request){
+        $pro_id = Route::current()->getParameter('id');
+        $posted_by = Bug::defineKlant($pro_id);
 
-        $posted_by = Bug::defineKlant($request['project']);
-        $pro_id = $request['project'];
-
-            $data = array(
+        $data = array(
                 'titel'             => $request['titel'],
                 'prioriteit'        => $request['prioriteit'],
                 'soort'             => $request['soort'],
@@ -126,7 +125,7 @@ class BugController extends Controller
                 'start_datum'       => $request['start_datum'],
                 'beschrijving'      => $request['beschrijving'],
                 'klant_id'          => $posted_by->gebruiker_id,
-                'project_id'        => $request['project'],
+                'project_id'        => $pro_id,
             );
 
         if(Auth::user()->bedrijf == 'moodles' ){
@@ -137,14 +136,12 @@ class BugController extends Controller
             $data['last_client']    = 1;
         }
 
-
-
         $rules = array(
             'titel'             => 'required|min:4',
             'prioriteit'        => 'required',
             'soort'             => 'required',
             'status'            => 'required',
-            'start_datum'       => 'required',
+            'start_datum'       => 'required|date',
             'beschrijving'      => 'required',
             'klant_id'          => 'required',
             'project_id'        => 'required',
@@ -158,7 +155,7 @@ class BugController extends Controller
             return redirect('/bugmuteren/'.$pro_id)->withErrors($validator);
         }
         Bug::create($data);
-        $request->session()->flash('alert-success', 'Bug'. $request['titel']. ' toegevoegd.');
+        $request->session()->flash('alert-success', 'Bug '. $request['titel']. ' toegevoegd.');
         return redirect('/bugs/'.$pro_id);
     }
 
