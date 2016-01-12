@@ -53,25 +53,25 @@
                           <h3 class="panel-title">Nieuw project 1/2</h3>
                         </div>
                         <div class="panel-body">
-                          <form method="POST" action="/addProject" >
+                          <form method="POST" action="/addProject">
                              {!! csrf_field() !!}
                             <div class="form-group">
                             <label for="sel4">Project gegevens</label>
                               <input type="text" class="form-control" id="projectnaam" required="true" name="projectnaam" placeholder="Projectnaam" value="">
                             </div>
                             <div class="form-group">
-                              <input type="text" class="form-control" id="projecturl" required="true" name="liveurl" placeholder="Productie URL" value="">
+                              <input data-toggle="tooltip" title="Live URL / Productie URL van ons is dit bijvoorbeeld helpdesk.moodles.nl" type="text" class="form-control" id="projecturl" required="true" name="liveurl" placeholder="Productie URL" value="">
                             </div>
                             <div class="form-group">
-                              <input type="text" class="form-control" id="projecturl" required="true" name="developmenturl" placeholder="Development URL" value="">
+                              <input data-toggle="tooltip" title="Development URL van ons is dit bijvoorbeeld dev.helpdesk.moodles.nl/admin Let op! : voeg de link toe naar het beheerpaneel" type="text" class="form-control" id="projecturl" required="true" name="developmenturl" placeholder="Development URL" value="">
                             </div>
                             <div class="form-group">
-                                    <label for="sel4">Beheer account</label>
-                                  <input data-toggle="tooltip" title="Met dit account moet toegang zijn op het beheerderspaneel van de website!" type="text" class="form-control" id="gebruikersnaam" required="true" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
-                                </div>
-                                 <div class="form-group">
-                                  <input data-toggle="tooltip" title="Wachtwoord voor bovenstaand Beheer account." type="password" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
-                                </div>
+                               <label for="sel4">Beheer account</label>
+                              <input data-toggle="tooltip" title="Met dit account moet toegang zijn op het beheerderspaneel van de website!" type="text" class="form-control" id="gebruikersnaam" required="true" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
+                            </div>
+                             <div class="form-group">
+                              <input data-toggle="tooltip" title="Wachtwoord voor bovenstaand Beheer account." type="password" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
+                            </div>
                             <div class="form-group">
                                <textarea class="form-control" rows="13" id="omschrijvingproject" name="omschrijvingproject"></textarea>
                              </div>

@@ -59,7 +59,7 @@
                       <div class="table-responsive">
                        <table class="table table-hover data_table">
                         <thead>
-                        <th style="width: 10%">Bug nummer</th>
+                        <th style="width: 10%"><i class="fa fa-hashtag"></i></th>
                         <th style="width: 10%">Bug titel</th>
                         <th style="width: 10%">Status</th>
                         <th style="width: 10%">Soort</th>

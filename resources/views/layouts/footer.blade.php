@@ -4,8 +4,8 @@
      <!-- Morris Charts CSS -->
      <link href="{{URL::asset('../assets/css/plugins/morris.css')}}" rel="stylesheet">
      <!-- Custom Fonts -->
-     <link href="{{URL::asset('../assets/fonts/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-
+     {{--<link href="{{URL::asset('../assets/fonts/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">--}}
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 
      <link href="{{URL::asset('../assets/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
@@ -24,7 +24,7 @@
     <script src="{{URL::asset('../assets/js/bootstrap.min.js')}}"></script>
 
 
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>tinymce.init({
             selector:'textarea',
              menubar: false
