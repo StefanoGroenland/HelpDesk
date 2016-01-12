@@ -66,11 +66,11 @@
                               <input type="text" class="form-control" id="projecturl" required="true" name="developmenturl" placeholder="Development URL" value="">
                             </div>
                             <div class="form-group">
-                                    <label for="sel4">Beheer account</label><small> dit is het account waarmee wordt aangemeld op de admin panel van de website</small>
-                                  <input type="text" class="form-control" id="gebruikersnaam" required="true" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
+                                    <label for="sel4">Beheer account</label>
+                                  <input data-toggle="tooltip" title="Met dit account moet toegang zijn op het beheerderspaneel van de website!" type="text" class="form-control" id="gebruikersnaam" required="true" name="gebruikersnaam" placeholder="Gebruikersnaam" value="">
                                 </div>
                                  <div class="form-group">
-                                  <input type="password" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
+                                  <input data-toggle="tooltip" title="Wachtwoord voor bovenstaand Beheer account." type="password" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="">
                                 </div>
                             <div class="form-group">
                                <textarea class="form-control" rows="13" id="omschrijvingproject" name="omschrijvingproject"></textarea>

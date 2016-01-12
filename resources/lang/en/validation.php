@@ -105,9 +105,11 @@ return [
     */
 
     'attributes' => [
-        'username' => 'Gebruikersnaam',
-        'password' => 'Wachtwoord',
-        'password_confirmation' => 'Herhaal wachtwoord'
+        'username'              => 'Gebruikersnaam',
+        'password'              => 'Wachtwoord',
+        'password_confirmation' => 'Herhaal wachtwoord',
+        'email'                 => 'E-mail',
+        'telefoonnummer'        => 'Telefoonnummer',
     ],
 
 ];

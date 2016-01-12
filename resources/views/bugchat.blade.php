@@ -196,7 +196,6 @@
                             <p style="white-space: pre-wrap;"><strong>dev URL: </strong> {!! $bug->project->developmenturl !!}</p>
                             <p style="white-space: pre-wrap;"><strong>beheer loginnaam: </strong> {!! $bug->project->gebruikersnaam !!}</p>
                             <p style="white-space: pre-wrap;"><strong>beheer wachtwoord: </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
-                            {{--<p style="white-space: pre-wrap;"><strong>beheer wachtwoord: </strong> {!! \Crypt::decrypt($bug->project->wachtwoord) !!}</p>--}}
                     </div>
                     @endif
                 </div>
