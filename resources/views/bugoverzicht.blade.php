@@ -156,7 +156,7 @@
                                         </td>
                                         @if($bug->eind_datum == '0000-00-00 00:00:00')
                                         <td>Geen eind datum.</td>
-                                        @else
+                                           @else
                                         <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                         @endif
                                         @if($bug->klant)
