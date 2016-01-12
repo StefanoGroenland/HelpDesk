@@ -15,6 +15,7 @@ class ChatController extends Controller
 {
     public function sendMessage(Request $request){
 
+
         $afzender_id        =       $request['afzender_id'];
         $klant_id           =       $request['klant_id'];
         $medewerker_id      =       $request['medewerker_id'];
@@ -23,38 +24,45 @@ class ChatController extends Controller
         $msg                =       $request['bericht'];
         $msg_with           =       $request['bericht']. '<hr> -Bijlage(s) meeverzonden.';
 
-        $files = $request->file('file');
+        if(!empty($msg)){
+            $files = $request->file('file');
 
-        $id = $request->get('bug_id');
-        $mime = array('jpeg','bmp','png','jpg','pdf','doc','docx','csv');
+            $id = $request->get('bug_id');
+            $mime = array('jpeg','bmp','png','jpg','pdf','doc','docx','csv');
 
-        foreach($files as $file){
-            if($file !== null){
-                if(in_array($file->getClientOriginalExtension(), $mime)){
-                    $filename = str_random(10) . '.'. $file->getClientOriginalExtension();
-                    $destinationPath = 'assets/uploads/bug_attachments';
-                    $file->move($destinationPath,$filename);
-                    $ava = $destinationPath .'/'. $filename;
-                    BugAttachment::uploadToDb($ava,$id);
+            foreach($files as $file){
+                if($file !== null){
+                    if(in_array($file->getClientOriginalExtension(), $mime)){
+                        $filename = str_random(10) . '.'. $file->getClientOriginalExtension();
+                        $destinationPath = 'assets/uploads/bug_attachments';
+                        $file->move($destinationPath,$filename);
+                        $ava = $destinationPath .'/'. $filename;
+                        BugAttachment::uploadToDb($ava,$id);
+                    }else{
+                        $request->session()->flash('alert-danger', 'Bestand(en) uploaden mislukt! een of meerdere bestands types werden niet geaccepteerd.');
+                        Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
+                        return redirect('/bugchat/'.$id);
+                    }
                 }else{
-                    $request->session()->flash('alert-danger', 'Bestand(en) uploaden mislukt! een of meerdere bestands types werden niet geaccepteerd.');
+                    $request->session()->flash('alert-info', 'Bericht zonder bijlages verstuurd.');
                     Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
                     return redirect('/bugchat/'.$id);
                 }
-            }else{
-                $request->session()->flash('alert-info', 'Geen bestand(en) gevonden.');
-                Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
-                return redirect('/bugchat/'.$id);
             }
-        }
-        $request->session()->flash('alert-info', 'Bestand(en) uploaden voltooid.');
-        Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg_with);
-        if(Auth::user()->bedrijf){
-            Bug::lastPerson($bug_id,1,0);
+            $request->session()->flash('alert-info', 'Bericht met bijlages verstuurd.');
+            Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg_with);
+            if(Auth::user()->bedrijf){
+                Bug::lastPerson($bug_id,1,0);
+            }else{
+                Bug::lastPerson($bug_id,0,1);
+            }
+            return redirect('/bugchat/'.$id);
         }else{
-            Bug::lastPerson($bug_id,0,1);
+            $request->session()->flash('alert-warning', 'Bericht verzenden mislukt, geen bericht content gevonden.');
+            return redirect('/bugchat/'.$bug_id);
         }
-        return redirect('/bugchat/'.$id);
+        $request->session()->flash('alert-alert', 'Er ging iets mis. Neem contact op met de systeembeheerder !');
+        return redirect('/bugchat/'.$bug_id);
     }
 
 }

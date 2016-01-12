@@ -195,7 +195,8 @@
                             <p style="white-space: pre-wrap;"><strong>live URL: </strong> {!! $bug->project->liveurl !!}</p>
                             <p style="white-space: pre-wrap;"><strong>dev URL: </strong> {!! $bug->project->developmenturl !!}</p>
                             <p style="white-space: pre-wrap;"><strong>beheer loginnaam: </strong> {!! $bug->project->gebruikersnaam !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord: </strong> {!! \Crypt::decrypt($bug->project->wachtwoord) !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord: </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
+                            {{--<p style="white-space: pre-wrap;"><strong>beheer wachtwoord: </strong> {!! \Crypt::decrypt($bug->project->wachtwoord) !!}</p>--}}
                     </div>
                     @endif
                 </div>
@@ -313,11 +314,11 @@
                             <i class="fa fa-send"></i> Verstuur
                         </button>
                         @else
-                        <span class="btn btn-success btn-file pull-left">
+                        <span data-toggle="tooltip" title="TIP : Houd de 'ctrl' toets ingedrukt om meerdere bestanden te kiezen." class="btn btn-success btn-file pull-left">
                             <i class="glyphicon glyphicon-search" ></i> Bijlages kiezen <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>
                         </span>
 
-                        <button type="submit" style="margin-left:10px;" class="btn btn-success">
+                        <button data-toggle="tooltip" title="U kunt ook bijlages mee versturen! Klik op 'Bijlages kiezen'!" type="submit" style="margin-left:10px;" class="btn btn-success">
                             <i class="fa fa-send"></i> Verstuur
                         </button>
                         @endif
