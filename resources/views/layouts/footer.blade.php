@@ -22,10 +22,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{{URL::asset('../assets/js/bootstrap.min.js')}}"></script>
-    <!-- Morris Charts JavaScript -->
-    <script src="{{URL::asset('../assets/js/plugins/morris/raphael.min.js')}}"></script>
-    <script src="{{URL::asset('../assets/js/plugins/morris/morris.js')}}"></script>
-    <script src="{{URL::asset('../assets/js/plugins/morris/morris-data.js')}}"></script>
+
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>tinymce.init({
@@ -33,6 +30,11 @@
              menubar: false
              });</script>
 
+                    <script>
+                        jQuery( document ).ready(function( $ ) {
+                           $('[data-toggle="tooltip"]').tooltip();
+                        });
+                    </script>
 
     {{--datatables--}}
         <script src="{{URL::asset('../assets/js/datatables.js')}}"></script>
@@ -60,5 +62,6 @@
 
                             } );
                 </script>
+
 
     @yield('scripts')

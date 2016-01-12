@@ -207,15 +207,14 @@
                     <li>
                       <a href="../{{$ba->image}}" target="_blank">
                         @if(strpos($ba->image,'doc') || strpos($ba->image,'docx') )
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="{{$ba->created_at->format('d-m-Y H:i')}}"><img src="../assets/images/word_file.png" width="50" height="50" ></a>
+                            <img data-toggle="tooltip" title="{{$ba->created_at->format('d-m-Y H:i')}}" src="../assets/images/word_file.png" width="50" height="50" >
                         @elseif(strpos($ba->image,'pdf') )
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="{{$ba->created_at->format('d-m-Y H:i')}}"><img src="../assets/images/pdf_file.png" width="50" height="50" ></a>
+                            <img data-toggle="tooltip" title="{{$ba->created_at->format('d-m-Y H:i')}}" src="../assets/images/pdf_file.png" width="50" height="50" >
                         @elseif(strpos($ba->image,'csv') )
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="{{$ba->created_at->format('d-m-Y H:i')}}"><img src="../assets/images/excel_file.png" width="50" height="50" ></a>
+                            <img data-toggle="tooltip" title="{{$ba->created_at->format('d-m-Y H:i')}}" src="../assets/images/excel_file.png" width="50" height="50" >
                         @else
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="{{$ba->created_at->format('d-m-Y H:i')}}"><img src="../{{$ba->image}}" width="50" height="50" ></a>
+                            <img data-toggle="tooltip" title="{{$ba->created_at->format('d-m-Y H:i')}}" src="../{{$ba->image}}" width="50" height="50" >
                         @endif
-                        <br><small></small>
                       </a>
                     </li>
                     @endforeach
@@ -251,7 +250,6 @@
                     <ul class="list-unstyled" id="display">
                     <li class="text-left">
                         @foreach($afzenders as $afzender)
-
                                         {{--mw--}}
                                        @if($afzender->medewerker)
                                        <div class="panel-heading panel-default">
@@ -351,11 +349,6 @@
                        autoclose:true
                        });
                 });
-            </script>
-            <script>
-            $(document).ready(function(){
-                $('[data-toggle="tooltip"]').tooltip();
-            });
             </script>
 
                 <script type="text/javascript">

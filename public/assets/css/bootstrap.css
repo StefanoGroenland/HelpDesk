@@ -5856,6 +5856,9 @@ button.close {
     width: 900px;
   }
 }
+table tr .mouseChanger:hover{
+    cursor: pointer;!important;
+}
 .tooltip {
   position: absolute;
   z-index: 1070;
