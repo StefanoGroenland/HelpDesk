@@ -72,7 +72,7 @@
                         <tbody>
                             @foreach($bugs as $bug)
 
-                                    <tr data-href="/bugchat/{{$bug->id}}" >
+                                    <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}" >
                                         @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0)
                                         <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
                                         @elseif(Auth::user()->bedrijf != 'moodles' && $bug->last_admin > 0)

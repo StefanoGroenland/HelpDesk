@@ -57,7 +57,7 @@
                           </thead>
                           <tbody>
                               @foreach($klanten as $klant)
-                              <tr data-href="/klantmuteren/{{$klant->id}}" >
+                              <tr style="cursor:pointer;!important;" data-href="/klantmuteren/{{$klant->id}}" >
                               <td>{{ucfirst($klant->voornaam)}}</td>
                               @if($klant->tussenvoegsel)
                                 <td>{{$klant->tussenvoegsel}}</td>

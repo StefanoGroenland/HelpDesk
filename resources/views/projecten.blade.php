@@ -54,7 +54,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($projects as $project)
-                                      <tr data-href="/bugs/{{$project->id}}">
+                                      <tr style="cursor:pointer;!important;" data-href="/bugs/{{$project->id}}">
                                       <td>{{$project->created_at->format('d-m-Y')}}</td>
                                       <td>{{$project->projectnaam}}</td>
                                       <td>{{$project->liveurl}}</td>

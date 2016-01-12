@@ -55,7 +55,7 @@
                          </thead>
                          <tbody>
                              @foreach($medewerkers as $medewerker)
-                             <tr data-href="/medewerkermuteren/{{$medewerker->id}}">
+                             <tr style="cursor:pointer;!important;" data-href="/medewerkermuteren/{{$medewerker->id}}">
                              <td>{{ucfirst($medewerker->voornaam)}}</td>
                              @if($medewerker->tussenvoegsel)
                              <td>{{$medewerker->tussenvoegsel}}</td>

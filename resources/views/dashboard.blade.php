@@ -166,7 +166,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($bugs_send as $bug)
-                                    <tr data-href="/bugchat/{{$bug->id}}">
+                                    <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
                                         <td>{{$bug->created_at->format('d-m-y - H:i')}}</td>
                                         <td>{{date('d-m-y - H:i',strtotime($bug->start_datum))}}</td>
                                         @if($bug->eind_datum == '0000-00-00 00:00:00')

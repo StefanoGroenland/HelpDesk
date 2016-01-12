@@ -186,7 +186,7 @@
                                 @if(count($bugs) > 0)
                                 @foreach($bugs as $bug)
 
-                                    <tr data-href="/bugchat/{{$bug->id}}">
+                                    <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
                                         {{--@if($bug->updated_at == '0000-00-00 00:00:00')--}}
                                         {{--<td>{{$bug->created_at->format('d-m-y - H:i')}}</td>--}}
                                         {{--@else--}}
