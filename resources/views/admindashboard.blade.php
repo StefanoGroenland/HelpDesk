@@ -196,13 +196,13 @@
                                         {{--@else--}}
                                         {{--<td>{{$bug->updated_at->format('d-m-y - H:i')}}</td>--}}
                                         {{--@endif--}}
-                                        <td>{{$bug->created_at->format('d-m-y - H:i')}}</td>
+                                        <td>{{$bug->created_at->format('d-m-Y - H:i')}}</td>
                                         <td>{{$bug->status}}</td>
-                                        <td>{{$bug->start_datum}}</td>
+                                        <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
                                         @if($bug->eind_datum == '0000-00-00 00:00:00')
                                         <td>Geen eind datum.</td>
                                         @else
-                                        <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
+                                        <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
                                         @endif
                                         <td>{{$bug->titel}}</td>
                                         <td>

@@ -67,6 +67,7 @@
                         <th style="width: 10%">Status</th>
                         <th style="width: 10%">Soort</th>
                         <th style="width: 10%">Prioriteit</th>
+                        <th style="width: 10%">Startdatum</th>
                         <th style="width: 10%">Deadline</th>
                         <th style="width: 10%">Gemeld door</th>
                         <th style="width: 10%">Project</th>
@@ -99,10 +100,11 @@
                                         <span class="label label-info">Geen prioriteit</span>
                                         @endif
                                         </td>
+                                        <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
                                         @if($bug->eind_datum == '0000-00-00 00:00:00')
                                         <td>Geen eind datum.</td>
                                         @else
-                                        <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
+                                        <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
                                         @endif
                                         @if($bug->klant)
                                         <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
