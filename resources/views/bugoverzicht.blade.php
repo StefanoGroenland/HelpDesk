@@ -1,4 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Moodles - Helpdesk</title>
+
+    <link rel="shortcut icon" type="image/ico" href="./favicon.ico" />
+</head>
 
     @extends('layouts.top-links')
         <div id="page-wrapper">
@@ -81,7 +95,7 @@
                                                     <td>{{date('d-m-y - H:i',strtotime($bug->eind_datum))}}</td>
                                                     @endif
                                                     <td>{{$project->projectnaam}}</td>
-                                                    <td>
+                                                    <td class="text-right">
                                                         <a href="/bugchat/{{$bug->id}}">
                                                             <button type="submit" class="btn btn-success btn-xs">
                                                                 <i class="glyphicon glyphicon-search"></i>
