@@ -153,11 +153,11 @@
                     @if(Auth::user()->bedrijf == 'moodles')
                     <div class="col-lg-6">
                         <h3>Project details</h3><hr>
-                            <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {!! $bug->project->projectnaam !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>
                             <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
                             <p style="white-space: pre-wrap;"><strong>live URL: </strong> {!! $bug->project->liveurl !!}</p>
                             <p style="white-space: pre-wrap;"><strong>dev URL: </strong> {!! $bug->project->developmenturl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam: </strong> {!! $bug->project->gebruikersnaam !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam: </strong> {{ $bug->project->gebruikersnaam }}</p>
                             <p style="white-space: pre-wrap;"><strong>beheer wachtwoord: </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
                     </div>
                     @endif
