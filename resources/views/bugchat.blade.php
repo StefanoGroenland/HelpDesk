@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Bug Discussie <small>Bug meldings gesprek</small>
+                    Feedback discussie <small>discussie pagina</small>
                     @include('layouts.header-controls')
                 </h1>
                 <ol class="breadcrumb">
@@ -43,8 +43,7 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-2">
-                <h3>Bug : # {{$bug->id}}
-
+                <h3><i class="fa fa-hashtag"></i>{{$bug->id}}
                 @if($bug->prioriteit == 1)
                 <span class="label label-success pull-right">Laag</span>
                 @elseif($bug->prioriteit == 2)
@@ -131,7 +130,7 @@
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-9">
-                <div class="col-lg-12 well well-sm">
+                <div class="col-lg-12">
 
                 <div class="row">
                 @if(Auth::user()->bedrijf != 'moodles')
@@ -139,6 +138,10 @@
                     @else
                     <div class="col-lg-6">
                     @endif
+                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseDetailsF" aria-expanded="false" aria-controls="collapseDetailsF">
+                      Feedback <i class="fa fa-info" ></i>
+                    </button>
+                    <div class="collapse" id="collapseDetailsF">
                         <h3>Feedback details</h3><hr>
                             <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
                             <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->beschrijving !!}</p>
@@ -150,15 +153,21 @@
                             <p><i class="fa fa-envelope-o"></i> {{' '.$bug->klant->email}}</p>
                             <p><i class="fa fa-mobile-phone fa-2x"></i> {{$bug->klant->telefoonnummer}}</p>
                     </div>
+                    </div>
                     @if(Auth::user()->bedrijf == 'moodles')
                     <div class="col-lg-6">
+                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseDetailsP" aria-expanded="false" aria-controls="collapseDetailsP">
+                      Project <i class="fa fa-info" ></i>
+                    </button>
+                    <div class="collapse" id="collapseDetailsP">
                         <h3>Project details</h3><hr>
                             <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>
                             <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>live URL: </strong> {!! $bug->project->liveurl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>dev URL: </strong> {!! $bug->project->developmenturl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam: </strong> {{ $bug->project->gebruikersnaam }}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord: </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
+                            <p style="white-space: pre-wrap;"><strong>live URL </strong> {!! $bug->project->liveurl !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>dev URL </strong> {!! $bug->project->developmenturl !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam </strong> {{ $bug->project->gebruikersnaam }}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
+                    </div>
                     </div>
                     @endif
                 </div>
@@ -185,6 +194,7 @@
                 Geen bijlages gevonden
                 @endif
                 </ul>
+                <hr>
                </div>
                     <h3>Discussie
                         <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
