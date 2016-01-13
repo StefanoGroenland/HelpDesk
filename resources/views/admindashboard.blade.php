@@ -178,6 +178,7 @@
                                 <thead>
                                 <th>Gepost op </th>
                                 <th>Status </th>
+                                <th>Startdatum</th>
                                 <th>Deadline</th>
                                 <th>Feedback</th>
                                 <th>Prioriteit</th>
@@ -197,6 +198,7 @@
                                         {{--@endif--}}
                                         <td>{{$bug->created_at->format('d-m-y - H:i')}}</td>
                                         <td>{{$bug->status}}</td>
+                                        <td>{{$bug->start_datum}}</td>
                                         @if($bug->eind_datum == '0000-00-00 00:00:00')
                                         <td>Geen eind datum.</td>
                                         @else
