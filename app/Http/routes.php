@@ -80,8 +80,8 @@ Route::get('/', 'UserController@showWelcome');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+//Route::get('auth/register', 'Auth\AuthController@getRegister');
+//Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::controllers([
     'wachtwoord' => 'Auth\PasswordController',
 ]);
