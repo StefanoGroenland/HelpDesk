@@ -5,19 +5,19 @@
 
 <body>
         <!-- Navigation -->
-        <div class="row">
+        <div class="row" style="margin-bottom: 20px;">
          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                      <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
            {{--<div class="navbar-header">--}}
                 {{--<a class="navbar-brand" href="{{URL::to('/admindashboard')}}">Moodles Helpdesk--}}
                 {{--</a>--}}
            {{--</div>--}}
            <a href="/dashboard">
-           <img class="img-responsive pull-left " alt="profile_img" src="../assets/images/logo.png" style="margin-left:10px; min-height: 50px;!important;max-height: 50px;!important min-width: 100px;!important; max-width: 100px;!important;"/>
+           <img class="img-responsive pull-left " alt="profile_img" src="../assets/images/logo.png" style="margin-left:10px;margin-bottom: 5px; min-height: 50px;!important;max-height: 50px;!important min-width: 200px;!important; max-width: 200px;!important;"/>
            </a>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block text-center" style="color:#ffffff;line-height: normal!important;">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block text-center hidden-xs" style="color:#ffffff;line-height: normal!important;">
             <br>
             @if(Auth::user()->bedrijf == 'moodles')
                       <button type="submit" class="btn btn-default btn-xs disabled">
@@ -45,7 +45,7 @@
                           </button>
                 @endif
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
         <ul class="nav navbar-right top-nav">
             <li class="dropdown clearfix">
 

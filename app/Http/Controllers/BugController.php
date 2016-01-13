@@ -22,6 +22,7 @@ class BugController extends Controller
 
         $bug = Bug::with('klant','user','project')->find($id);
 
+
         if(Auth::user()->bedrijf == 'moodles'){
             Bug::lastPerson($id,1,0);
         }else{
@@ -146,6 +147,10 @@ class BugController extends Controller
             'klant_id'          => 'required',
             'project_id'        => 'required',
         );
+        if($data['start_datum'] == '01-01-1970 00:00' || $data['start_datum'] == '31-12-1899 00:00'){
+            $request->session()->flash('alert-danger', 'Start datum moet correct worden ingevuld.');
+            return redirect('/bugmuteren/'.$pro_id);
+        }
 
         $data['start_datum'] = date('Y-m-d H:i',strtotime($data['start_datum']));
 
