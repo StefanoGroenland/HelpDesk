@@ -127,7 +127,6 @@
                         <th style="width: 10%"></th>
                         </thead>
                         <tbody>
-
                             @foreach($bugs_all as $bug)
                                 @if($bug->project)
                                     @if($bug->project_id == $bug->project->id)
