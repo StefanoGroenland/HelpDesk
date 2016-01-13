@@ -139,11 +139,16 @@
                     @else
                     <div class="col-lg-6">
                     @endif
-                        <h3>Bug details</h3><hr>
+                        <h3>Feedback details</h3><hr>
                             <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
                             <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->beschrijving !!}</p>
                             <p style="white-space: pre-wrap;"><strong>start datum </strong> {{ $bug->start_datum }}</p>
                             <p style="white-space: pre-wrap;"><strong>soort </strong> {{ $bug->soort }}</p>
+                            <hr>
+                            <h5>Contactpersoon</h5>
+                            <p><i class="fa fa-user"></i>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</p>
+                            <p><i class="fa fa-envelope-o"></i> {{' '.$bug->klant->email}}</p>
+                            <p><i class="fa fa-mobile-phone fa-2x"></i> {{$bug->klant->telefoonnummer}}</p>
                     </div>
                     @if(Auth::user()->bedrijf == 'moodles')
                     <div class="col-lg-6">
