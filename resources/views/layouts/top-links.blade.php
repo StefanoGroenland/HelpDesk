@@ -17,7 +17,7 @@
            <img class="img-responsive pull-left " alt="profile_img" src="../assets/images/logo.png" style="margin-left:10px; min-height: 50px;!important;max-height: 50px;!important min-width: 100px;!important; max-width: 100px;!important;"/>
            </a>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block text-center" style="color:#ffffff">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block text-center" style="color:#ffffff;line-height: normal!important;">
             <br>
             @if(Auth::user()->bedrijf == 'moodles')
                       <button type="submit" class="btn btn-default btn-xs disabled">
