@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Moodles - Helpdesk</title>
 
     @extends('layouts.top-links')
         <div id="page-wrapper">
@@ -61,12 +50,14 @@
                                            @foreach($bugs_all as $bug)
                                            @if($bug->project_id == $project->id)
                                                 <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
-                                                    @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0)
-                                                    <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-                                                    @elseif(Auth::user()->bedrijf != 'moodles' && $bug->last_admin > 0)
-                                                    <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
+                                                    @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0 && $bug->status != 'gesloten')
+                                                        <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
+                                                    @elseif(Auth::user()->bedrijf != 'moodles' && $bug->last_admin > 0 && $bug->status != 'gesloten')
+                                                        <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
+                                                    @elseif($bug->status == 'gesloten')
+                                                        <td>{{$bug->id}}</td>
                                                     @else
-                                                    <td>{{$bug->id}}</td>
+                                                        <td>{{$bug->id}}</td>
                                                     @endif
                                                     <td>{{substr($bug->titel,0,15)}}...</td>
                                                     <td>{{$bug->status}}</td>
@@ -131,12 +122,14 @@
                                 @if($bug->project)
                                     @if($bug->project_id == $bug->project->id)
                                         <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
-                                        @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0)
-                                        <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-                                        @elseif(Auth::user()->bedrijf != 'moodles' && $bug->last_admin > 0)
-                                        <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
+                                        @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0 && $bug->status != 'gesloten')
+                                            <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
+                                        @elseif(Auth::user()->bedrijf != 'moodles' && $bug->last_admin > 0 && $bug->status != 'gesloten')
+                                            <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
+                                        @elseif($bug->status == 'gesloten')
+                                            <td>{{$bug->id}}</td>
                                         @else
-                                        <td>{{$bug->id}}</td>
+                                            <td>{{$bug->id}}</td>
                                         @endif
                                         <td>{{substr($bug->titel,0,15)}}...</td>
                                         <td>{{$bug->status}}</td>
