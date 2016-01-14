@@ -138,38 +138,15 @@
                     @else
                     <div class="col-lg-6">
                     @endif
-                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseDetailsF" aria-expanded="false" aria-controls="collapseDetailsF">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#BugDetails">
                       Feedback <i class="fa fa-info" ></i>
                     </button>
-                    <div class="collapse" id="collapseDetailsF">
-                        <h3>Feedback details</h3><hr>
-                            <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->beschrijving !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>start datum </strong> {{ $bug->start_datum }}</p>
-                            <p style="white-space: pre-wrap;"><strong>soort </strong> {{ $bug->soort }}</p>
-                            @if(Auth::user()->bedrijf == 'moodles')
-                            <hr>
-                            <h5>Contactpersoon</h5>
-                            <p><i class="fa fa-user"></i>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</p>
-                            <p><i class="fa fa-envelope-o"></i> {{' '.$bug->klant->email}}</p>
-                            <p><i class="fa fa-mobile-phone fa-2x"></i> {{$bug->klant->telefoonnummer}}</p>
-                            @endif
-                    </div>
                     </div>
                     @if(Auth::user()->bedrijf == 'moodles')
                     <div class="col-lg-6">
-                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseDetailsP" aria-expanded="false" aria-controls="collapseDetailsP">
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#ProjectDetails">
                       Project <i class="fa fa-info" ></i>
                     </button>
-                    <div class="collapse" id="collapseDetailsP">
-                        <h3>Project details</h3><hr>
-                            <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>
-                            <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>live URL </strong> {!! $bug->project->liveurl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>dev URL </strong> {!! $bug->project->developmenturl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam </strong> {{ $bug->project->gebruikersnaam }}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
-                    </div>
                     </div>
                     @endif
                 </div>
@@ -302,6 +279,59 @@
             </div>
         </div>
     </div>
+                    <div class="modal fade" id="BugDetails" tabindex="-1" role="dialog">
+                       <div class="modal-dialog">
+                         <div class="modal-content">
+                           <div class="modal-header">
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                             <h4 class="modal-title">Feedback</h4>
+                           </div>
+                           <div class="modal-body">
+                                    <h3>Feedback details</h3><hr>
+                                        <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
+                                        <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->beschrijving !!}</p>
+                                        <p style="white-space: pre-wrap;"><strong>start datum </strong> {{ $bug->start_datum }}</p>
+                                        <p style="white-space: pre-wrap;"><strong>soort </strong> {{ $bug->soort }}</p>
+                                        @if(Auth::user()->bedrijf == 'moodles')
+                                        <hr>
+                                        <h5>Contactpersoon</h5>
+                                        <p><i class="fa fa-user"></i>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</p>
+                                        <p><i class="fa fa-envelope-o"></i> {{' '.$bug->klant->email}}</p>
+                                        <p><i class="fa fa-mobile-phone fa-2x"></i> {{$bug->klant->telefoonnummer}}</p>
+                                        @endif
+                            </div>
+                           <div class="modal-footer">
+                             <button type="button" class="btn btn-danger btn-xs pull-right" data-dismiss="modal">Sluit</button>
+                             </form>
+                           </div>
+                         </div><!-- /.modal-content -->
+                       </div><!-- /.modal-dialog -->
+                     </div><!-- /.modal -->
+                     <div class="modal fade" id="ProjectDetails" tabindex="-1" role="dialog">
+                       <div class="modal-dialog">
+                         <div class="modal-content">
+                           <div class="modal-header">
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                             <h4 class="modal-title">Project</h4>
+                           </div>
+                           <div class="modal-body">
+                                <h3>Project details</h3><hr>
+                            <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>
+                            <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>live URL </strong> {!! $bug->project->liveurl !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>dev URL </strong> {!! $bug->project->developmenturl !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam </strong> {{ $bug->project->gebruikersnaam }}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
+                          </div>
+
+                           <div class="modal-footer">
+                             <button type="button" class="btn btn-danger btn-xs pull-right" data-dismiss="modal">Sluit</button>
+                             </form>
+                           </div>
+                         </div><!-- /.modal-content -->
+                       </div><!-- /.modal-dialog -->
+                     </div><!-- /.modal -->
+
 <!-- /.container-fluid -->
 {{--</div>--}}
 <!-- /#page-wrapper -->
