@@ -117,7 +117,7 @@
                                                 </button>
                                             </a>
                                             @if(Auth::user()->bedrijf == 'moodles')
-                                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$bug->id}}">
+                                            <button type="button" class="btn btn-danger btn-xs deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
                                               <i class="glyphicon glyphicon-trash"></i>
                                             </button>
                                             @endif
@@ -167,15 +167,20 @@
                               @endforeach
     <!-- /#wrapper -->
     @section('scripts')
-    <script type="text/javascript">
-       $('tr[data-href]').on("dblclick", function() {
-            document.location = $(this).data('href');
-        });
-        $('tr button[data-target]').on("click", function() {
-            document.location = $(this).data('target');
-        });
-    </script>
-    @endsection
+     <script type="text/javascript">
+        $(document).ready(function() {
+              $('tr[data-href]').on("click", function(event) {
+                 window.location.href = $(this).data('href');
+             });
+             $('.deleteButton').on("click", function(event) {
+                 var modalId = $(this).data('modal-id');
+                 event.stopPropagation();
+                 jQuery.noConflict()
+                 $('#myModal'+modalId).modal('show');
+             });
+        })
+     </script>
+     @endsection
    @extends('layouts.footer')
 
 </body>

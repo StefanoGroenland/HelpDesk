@@ -110,6 +110,7 @@
                                 </div>
                                 </div>
                             @endforeach
+
 @else
                 @if(count($projects) > 0)
                                 @foreach($projects as $pro)

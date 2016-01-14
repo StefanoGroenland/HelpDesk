@@ -28,9 +28,12 @@
                         </h1>
                         {{--Breadcrumbs spot!--}}
                          <ol class="breadcrumb">
+                         @if(\Auth::user()->bedrijf == 'moodles')
+                         @include('layouts.adminbreadcrumbs')
+                         @else
                          @include('layouts.breadcrumbs')
+                         @endif
                          </ol>
-
                     </div>
                 </div>
                 <div class="row">
@@ -40,9 +43,7 @@
                 Mijn projecten
                 </h4>
                 </div>
-
                        @include('layouts.projectendashboard')
-
                 </div>
 
                 <div class="row">
@@ -57,16 +58,6 @@
 <!--</div>-->
 
     <!-- /#wrapper -->
-    @section('scripts')
-    <script type="text/javascript">
-       $('tr[data-href]').on("dblclick", function() {
-            document.location = $(this).data('href');
-        });
-        $('tr button[data-target]').on("click", function() {
-            document.location = $(this).data('target');
-        });
-    </script>
-    @endsection
 
     @extends('layouts.footer')
 

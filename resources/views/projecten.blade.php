@@ -70,9 +70,9 @@
                                                   <i class="glyphicon glyphicon-pencil"></i>
                                            </button>
                                       </a>
-                                      <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$project->id}}">
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                      </button>
+                                        <button type="button" class="btn btn-danger btn-xs deleteButton" data-toggle="modal" data-modal-id="{{$project->id}}" data-target="#myModal{{$project->id}}">
+                                          <i class="glyphicon glyphicon-trash"></i>
+                                        </button>
                                         </td>
                                       </tr>
                                       @endforeach
@@ -93,7 +93,7 @@
                          <h4 class="modal-title">Verwijder verzoek</h4>
                        </div>
                        <div class="modal-body">
-                         <p>Weet u zeker dat u het project : <strong>{{$proj->titel}}</strong> met alle gekoppelde data wilt verwijderen&hellip;</p>
+                         <p>Weet u zeker dat u het project : <strong>{{$proj->projectnaam}}</strong> met alle gekoppelde data wilt verwijderen&hellip;</p>
                        </div>
                        <div class="modal-footer">
                          <button type="button" class="btn btn-default btn-xs pull-right" data-dismiss="modal">Sluit</button>
@@ -108,7 +108,8 @@
                        </div>
                      </div><!-- /.modal-content -->
                    </div><!-- /.modal-dialog -->
-                 </div><!-- /.modal -->
+                 </div>
+                 <!-- /.modal -->
                  @endforeach
         <!-- /#page-wrapper -->
             {{--@section('scripts')--}}
@@ -118,12 +119,20 @@
     <!-- /#wrapper -->
     @section('scripts')
     <script type="text/javascript">
-       $('tr[data-href]').on("dblclick", function() {
-            document.location = $(this).data('href');
-        });
-        $('tr button[data-target]').on("click", function() {
-            document.location = $(this).data('target');
-        });
+       $(document).ready(function() {
+             $('tr[data-href]').on("click", function(event) {
+
+                window.location.href = $(this).data('href');
+            });
+            $('.deleteButton').on("click", function(event) {
+
+                var modalId = $(this).data('modal-id');
+                event.stopPropagation();
+                jQuery.noConflict()
+                $('#myModal'+modalId).modal('show');
+            });
+       })
+
     </script>
 
     @endsection

@@ -79,7 +79,7 @@
                                           <i class="glyphicon glyphicon-pencil"></i>
                                    </button>
                                    </a>
-                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$klant->id}}">
+                                <button type="button" class="btn btn-danger btn-xs deleteButton" data-toggle="modal" data-modal-id="{{$klant->id}}" data-target="#myModal{{$klant->id}}">
                                   <i class="glyphicon glyphicon-trash"></i>
                                 </button>
                                 </td>
@@ -123,17 +123,25 @@
                           @endforeach
 
          <!-- /#page-wrapper -->
+    @section('scripts')
+    <script type="text/javascript">
+       $(document).ready(function() {
+             $('tr[data-href]').on("click", function(event) {
 
-         @section('scripts')
-         <script type="text/javascript">
-            $('tr[data-href]').on("dblclick", function() {
-                 document.location = $(this).data('href');
-             });
-             $('tr button[data-target]').on("click", function() {
-                 document.location = $(this).data('target');
-             });
-         </script>
-         @endsection
+                window.location.href = $(this).data('href');
+            });
+            $('.deleteButton').on("click", function(event) {
+
+                var modalId = $(this).data('modal-id');
+                event.stopPropagation();
+                jQuery.noConflict()
+                $('#myModal'+modalId).modal('show');
+            });
+       })
+
+    </script>
+
+    @endsection
 
      </div>
      <!-- /#wrapper -->

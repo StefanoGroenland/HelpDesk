@@ -76,7 +76,7 @@
                                          <i class="glyphicon glyphicon-pencil"></i>
                                   </button>
                                </a>
-                               <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal{{$medewerker->id}}">
+                               <button type="button" class="btn btn-danger btn-xs deleteButton" data-toggle="modal" data-modal-id="{{$medewerker->id}}" data-target="#myModal{{$medewerker->id}}">
                                  <i class="glyphicon glyphicon-trash"></i>
                                </button>
                                </td>
@@ -92,17 +92,25 @@
 
         </div>
         <!-- /#page-wrapper -->
+    @section('scripts')
+    <script type="text/javascript">
+       $(document).ready(function() {
+             $('tr[data-href]').on("click", function(event) {
 
-        @section('scripts')
-        <script type="text/javascript">
-           $('tr[data-href]').on("dblclick", function() {
-                document.location = $(this).data('href');
+                window.location.href = $(this).data('href');
             });
-            $('tr button[data-target]').on("click", function() {
-                document.location = $(this).data('target');
+            $('.deleteButton').on("click", function(event) {
+
+                var modalId = $(this).data('modal-id');
+                event.stopPropagation();
+                jQuery.noConflict()
+                $('#myModal'+modalId).modal('show');
             });
-        </script>
-        @endsection
+       })
+
+    </script>
+
+    @endsection
 
     </div>
     @foreach($medewerkers as $key)
