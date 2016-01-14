@@ -29,7 +29,6 @@
             selector:'textarea',
              menubar: false
              });</script>
-
                     <script>
                         jQuery( document ).ready(function( $ ) {
                            $('[data-toggle="tooltip"]').tooltip();
