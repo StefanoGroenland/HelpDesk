@@ -30,24 +30,36 @@ class ProjectController extends Controller
     }
     public function addProject(Request $request){
 
-        if(isset($_POST['radmaak']) && is_numeric($request['telefoonnummer']) == false){
-            $request->session()->flash('alert-danger', 'Telefoonnummer moet numeriek zijn.');
-            return redirect('/newproject');
-        }elseif($request['bedrijf'] == 'moodles') {
-            $request->session()->flash('alert-danger', 'Klantaccount mag geen \'moodles\' bevatten als bedrijfsnaam.');
-            return redirect('/newproject');
-        }else {
             if (isset($_POST['radmaak'])) {
 
-                $valid = Validator::make($request->all(), [
+                $data = array(
+                    'projectnaam'                   => $request['projectnaam'],
+                    'liveurl'                       => $request['liveurl'],
+                    'developmenturl'                => $request['developmenturl'],
+                    'gebruikersnaam'                => $request['gebruikersnaam'],
+                    'wachtwoord'                    => $request['wachtwoord'],
+                    'omschrijvingproject'           => $request['omschrijvingproject'],
 
+                    'username'                      => $request['username'],
+                    'password'                      => $request['password'],
+                    'password_confirmation'         => $request['password_confirmation'],
+                    'email'                         => $request['email'],
+                    'bedrijf'                       => $request['bedrijf'],
+                    'voornaam'                      => $request['voornaam'],
+                    'tussenvoegsel'                 => $request['tussenvoegsel'],
+                    'achternaam'                    => $request['achternaam'],
+                    'geslacht'                      => $request['geslacht'],
+                    'telefoonnummer'                => $request['telefoonnummer'],
+                );
+
+                $rules = array(
                     'telefoonnummer'                => 'numeric',
                     'email'                         => 'required|unique:gebruikers',
                     'password'                      => 'required|confirmed|min:4',
                     'password_confirmation'         => 'required',
                     'voornaam'                      => 'required|min:4',
                     'achternaam'                    => 'required|min:4',
-                    'bedrijf'                       => 'required|min:4',
+                    'bedrijf'                       => 'required|not_in:moodles,Moodles',
                     'username'                      => 'required|min:4|unique:gebruikers',
                     'projectnaam'                   => 'required|min:4',
                     'gebruikersnaam'                => 'required|min:4',
@@ -60,12 +72,14 @@ class ProjectController extends Controller
                     'gebruikersnaam'                => 'required',
                     'wachtwoord'                    => 'required',
                     'omschrijvingproject'           => 'required',
-                ]);
-                $request['password'] = Hash::make($request['password']);
+                );
+
+
                 array_forget($request, 'password_confirmation');
 
+                $valid = Validator::make($data,$rules);
                 if ($valid->fails()) {
-                    return redirect('/newproject')->withErrors($valid);
+                    return redirect('/newproject')->withErrors($valid)->withInput($data);
                 } else {
 
                     $user = User::create([
@@ -90,22 +104,32 @@ class ProjectController extends Controller
                         'gebruiker_id'              => $user->id,
                     ]);
                 }
+                $request['password'] = Hash::make($request['password']);
                 $request->session()->flash('alert-success', 'Project toegevoegd.');
                 return redirect('/bugs/'.$proj->id);
             }
             elseif
                 (isset($_POST['radkoppel'])) {
-
-                $validator = Validator::make($request->all(), [
+                $data = array(
+                    'projectnaam'           => $request['projectnaam'],
+                    'liveurl'               => $request['liveurl'],
+                    'developmenturl'        => $request['developmenturl'],
+                    'gebruikersnaam'        => $request['gebruikersnaam'],
+                    'wachtwoord'            => Crypt::encrypt($request['wachtwoord']),
+                    'omschrijvingproject'   => $request['omschrijvingproject'],
+                    'gebruiker_id'          => $request['gebruiker_id'],
+                );
+                $rules = array(
                     'projectnaam'                   => 'required|unique:projecten',
                     'liveurl'                       => 'required',
                     'developmenturl'                => 'required',
                     'gebruikersnaam'                => 'required',
                     'wachtwoord'                    => 'required',
                     'omschrijvingproject'           => 'required',
-                ]);
+                );
+                $validator = Validator::make($data,$rules);
                 if ($validator->fails()) {
-                    return redirect('/newproject')->withErrors($validator);
+                    return redirect('/newproject')->withErrors($validator)->withInput($data);
                 } else {
                         $proj = Project::create([
                             'projectnaam'           => $request['projectnaam'],
@@ -118,7 +142,6 @@ class ProjectController extends Controller
                         ]);
                     }
                 }
-            }
         $request->session()->flash('alert-success', 'Project toegevoegd.');
         return redirect('/bugs/'.$proj->id);
     }
