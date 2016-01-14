@@ -303,6 +303,7 @@
                          </div><!-- /.modal-content -->
                        </div><!-- /.modal-dialog -->
                      </div><!-- /.modal -->
+                     @if(Auth::user()->bedrijf == 'moodles')
                      <div class="modal fade" id="ProjectDetails" tabindex="-1" role="dialog">
                        <div class="modal-dialog">
                          <div class="modal-content">
@@ -323,6 +324,7 @@
                          </div><!-- /.modal-content -->
                        </div><!-- /.modal-dialog -->
                      </div><!-- /.modal -->
+                     @endif
 
 <!-- /.container-fluid -->
 {{--</div>--}}

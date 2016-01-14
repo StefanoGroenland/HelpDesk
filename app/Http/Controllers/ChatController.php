@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail as Mail;
 use App\Chat as Chat;
 use Illuminate\Support\Facades\Auth;
 use App\BugAttachment as BugAttachment;
@@ -44,8 +45,53 @@ class ChatController extends Controller
                         return redirect('/bugchat/'.$id);
                     }
                 }else{
+
                     $request->session()->flash('alert-info', 'Bericht zonder bijlage verstuurd.');
                     Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
+                    if(Auth::user()->bedrijf){
+                        Bug::lastPerson($bug_id,1,0);
+                        $intel = array(
+                            //data om mee te nemen in de view
+                            'bug_id'            =>      $request['bug_id'],
+                            'volledige_naam'    =>      Auth::user()->voornaam .' '.
+                                                        Auth::user()->tussenvoegsel .' '.
+                                                        Auth::user()->achternaam,
+                            'bericht'           =>      $msg
+                        );
+
+                        Mail::send('emails.chatreply',$intel,function ($msg) use ($intel){
+                            $bug = Bug::with('klant')->find($intel['bug_id']);
+
+                            $msg->from('stefano@moodles.nl','MoodlesHelpdesk');
+                            $msg->to($bug->klant->email, $name = null);
+                            $msg->replyTo('no-reply@moodles.nl', $name = null);
+                            $msg->subject('Reactie op feedback discussie');
+                        });
+                    }else{
+                        Bug::lastPerson($bug_id,0,1);
+                        $bug = Bug::with('klant')->find($bug_id);
+                        $inet = array(
+                            //data om mee te nemen in de view
+                            'bug_id'            =>      $request['bug_id'],
+                            'volledige_naam'    =>      $bug->klant->voornaam .' '.
+                                                        $bug->klant->tussenvoegsel.' '.
+                                                        $bug->klant->achternaam,
+                            'bericht'           =>      $msg
+
+                        );
+                        Mail::send('emails.chatreply',$inet,function ($msg) use ($inet){
+                            $bug = Bug::with('klant')->find($inet['bug_id']);
+
+                            $msg->from( $bug->klant->email,
+                                $bug->klant->voornaam .' '.
+                                $bug->klant->tussenvoegsel .' '.
+                                $bug->klant->achternaam);
+
+                            $msg->to('stefano@moodles.nl', $name = null);
+                            $msg->replyTo($bug->klant->email, $name = null);
+                            $msg->subject('Reactie op feedback discussie');
+                        });
+                    }
                     return redirect('/bugchat/'.$id);
                 }
             }
@@ -69,8 +115,47 @@ class ChatController extends Controller
             Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg_with);
             if(Auth::user()->bedrijf){
                 Bug::lastPerson($bug_id,1,0);
+                $intel = array(
+                    //data om mee te nemen in de view
+                    'bug_id'            =>      $request['bug_id'],
+                    'volledige_naam'    =>      Auth::user()->voornaam .' '.
+                                                Auth::user()->tussenvoegsel .' '.
+                                                Auth::user()->achternaam,
+                    'message'           =>      $msg
+                );
+
+                Mail::send('emails.chatreply',$intel,function ($msg) use ($intel){
+                    $bug = Bug::with('klant')->find($intel['bug_id']);
+
+                    $msg->from('stefano@moodles.nl','MoodlesHelpdesk');
+                    $msg->to($bug->klant->email, $name = null);
+                    $msg->replyTo('no-reply@moodles.nl', $name = null);
+                    $msg->subject('Reactie op feedback discussie');
+                });
             }else{
                 Bug::lastPerson($bug_id,0,1);
+                $bug = Bug::with('klant')->find($bug_id);
+                $inet = array(
+                    //data om mee te nemen in de view
+                    'bug_id'            =>      $request['bug_id'],
+                    'volledige_naam'    =>      $bug->klant->voornaam .' '.
+                                                $bug->klant->tussenvoegsel.' '.
+                                                $bug->klant->achternaam,
+                    'message'           =>      $msg
+
+                );
+                Mail::send('emails.chatreply',$inet,function ($msg) use ($inet){
+                    $bug = Bug::with('klant')->find($inet['bug_id']);
+
+                    $msg->from( $bug->klant->email,
+                                $bug->klant->voornaam .' '.
+                                $bug->klant->tussenvoegsel .' '.
+                                $bug->klant->achternaam);
+
+                    $msg->to('stefano@moodles.nl', $name = null);
+                    $msg->replyTo($bug->klant->email, $name = null);
+                    $msg->subject('Reactie op feedback discussie');
+                });
             }
             return redirect('/bugchat/'.$id);
         }else{
@@ -80,5 +165,6 @@ class ChatController extends Controller
         $request->session()->flash('alert-alert', 'Er ging iets mis. Neem contact op met de systeembeheerder !');
         return redirect('/bugchat/'.$bug_id);
     }
+
 
 }
