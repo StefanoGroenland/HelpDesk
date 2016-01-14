@@ -9,7 +9,7 @@
 }
 </style>
 @section('onderwerp')
-Feedback gesloten
+ Er is nieuwe feedback geplaatst
 @endsection
 
 @section('bericht')
@@ -51,10 +51,8 @@ Feedback gesloten
     Zie project op Moodles Helpdesk.
 </button>
 </a>
-<br>
-<br>
 <h5 class="page-header">
-Met vriendelijke groet,<br><br>
+Met vriendelijke groet,<br>
 Moodles helpdesk
 </h5>
 @endsection
@@ -62,7 +60,7 @@ Moodles helpdesk
 
 
 @section('footer')
-<p class="text-center" style="opacity:0.4;font-size:10px;border-top:1px solid black;" >
+<p class="text-center" style="opacity:0.4;font-size:10px;" >
 Dit is een geautomatiseerd bericht die wordt verzonden zodra er feedback wordt geplaatst. </p>
 @endsection
 

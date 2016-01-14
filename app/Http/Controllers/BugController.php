@@ -126,7 +126,7 @@ class BugController extends Controller
                 $msg->from('helpdesk@moodles.nl','MoodlesHelpdesk');
                 $msg->to('stefano@moodles.nl', $name = null);
                 $msg->replyTo('no-reply@moodles.nl', $name = null);
-                $msg->subject('MH - Feedback gesloten');
+                $msg->subject('Feedback gesloten');
             });
         }
 
@@ -195,7 +195,7 @@ class BugController extends Controller
             $msg->from('helpdesk@moodles.nl','MoodlesHelpdesk');
             $msg->to('stefano@moodles.nl', $name = null);
             $msg->replyTo('no-reply@moodles.nl', $name = null);
-            $msg->subject('MH - Nieuwe feedback');
+            $msg->subject('Nieuwe feedback');
         });
         $request->session()->flash('alert-success', 'Bug '. $request['titel']. ' toegevoegd.');
         return redirect('/bugs/'.$pro_id);
