@@ -282,10 +282,6 @@
                     <div class="modal fade" id="BugDetails" tabindex="-1" role="dialog">
                        <div class="modal-dialog">
                          <div class="modal-content">
-                           <div class="modal-header">
-                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                             <h4 class="modal-title">Feedback</h4>
-                           </div>
                            <div class="modal-body">
                                     <h3>Feedback details</h3><hr>
                                         <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
@@ -310,10 +306,6 @@
                      <div class="modal fade" id="ProjectDetails" tabindex="-1" role="dialog">
                        <div class="modal-dialog">
                          <div class="modal-content">
-                           <div class="modal-header">
-                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                             <h4 class="modal-title">Project</h4>
-                           </div>
                            <div class="modal-body">
                                 <h3>Project details</h3><hr>
                             <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>
