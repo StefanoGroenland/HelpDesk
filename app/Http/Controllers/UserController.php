@@ -62,7 +62,7 @@ class UserController extends Controller
                     $projects[] = $project;
                 }
             }
-            return View::make('/admindashboard', compact('bugs','projects'));
+            return View::make('/dashboard', compact('bugs','projects'));
         }else{
             $projects_send = Project::with('bug')->where('gebruiker_id','=',$klant_id)->get();
 
