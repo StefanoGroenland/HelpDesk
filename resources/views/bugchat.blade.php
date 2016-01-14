@@ -266,7 +266,7 @@
                         </button>
                         @else
                         <span data-toggle="tooltip" title="TIP : Houd de 'ctrl' toets ingedrukt om meerdere bestanden te kiezen." class="btn btn-success btn-file pull-left">
-                            <i class="glyphicon glyphicon-search" ></i> Bijlages kiezen <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"   multiple>
+                            <i class="glyphicon glyphicon-search" ></i> Bijlage kiezen <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"  >
                         </span>
 
                         <button data-toggle="tooltip" title="U kunt ook bijlages mee versturen! Klik op 'Bijlages kiezen'!" type="submit" style="margin-left:10px;" class="btn btn-success">

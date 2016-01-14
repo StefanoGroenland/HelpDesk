@@ -22,7 +22,7 @@ class ChatController extends Controller
         $bug_id             =       $request['bug_id'];
         $project_id         =       $request['project_id'];
         $msg                =       $request['bericht'];
-        $msg_with           =       $request['bericht']. '<hr> -Bijlage(s) meeverzonden.';
+
 
         if(!empty($msg)){
             $files = $request->file('file');
@@ -39,17 +39,33 @@ class ChatController extends Controller
                         $ava = $destinationPath .'/'. $filename;
                         BugAttachment::uploadToDb($ava,$id);
                     }else{
-                        $request->session()->flash('alert-danger', 'Bestand(en) uploaden mislukt! een of meerdere bestands types werden niet geaccepteerd.');
+                        $request->session()->flash('alert-danger', 'Bestand uploaden mislukt! bestands type werd niet geaccepteerd.');
                         Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
                         return redirect('/bugchat/'.$id);
                     }
                 }else{
-                    $request->session()->flash('alert-info', 'Bericht zonder bijlages verstuurd.');
+                    $request->session()->flash('alert-info', 'Bericht zonder bijlage verstuurd.');
                     Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
                     return redirect('/bugchat/'.$id);
                 }
             }
-            $request->session()->flash('alert-info', 'Bericht met bijlages verstuurd.');
+            $request->session()->flash('alert-info', 'Bericht met bijlage verstuurd.');
+
+
+            if(strpos($ava,'doc') || strpos($ava,'docx')){
+                $ava = '<a href="../'.$ava.'" target="_blank"><img src="../assets/images/word_file.png" width="50" height="50" ></a>';
+            }
+            elseif(strpos($ava,'pdf')){
+                $ava = '<a href="../'.$ava.'" target="_blank"><img src="../assets/images/pdf_file.png" width="50" height="50"></a>';
+            }elseif(strpos($ava,'csv')){
+                $ava = '<a href="../'.$ava.'" target="_blank"><img src="../assets/images/excel_file.png" width="50" height="50"></a>';
+            }else{
+                $ava = '<a href="../'.$ava.'" target="_blank"><img src="../'.$ava.'" width="50" height="50"></a>';
+            }
+            $msg_with           =       $request['bericht'] . $ava;
+
+
+
             Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg_with);
             if(Auth::user()->bedrijf){
                 Bug::lastPerson($bug_id,1,0);
