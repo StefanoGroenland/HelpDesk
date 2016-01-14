@@ -96,10 +96,10 @@ class BugController extends Controller
     public function updateBug($id,Request $request){
         $bug = Bug::find($id);
         $data = array(
-            'prioriteit'        => $request['prioriteit'],
-            'soort'             => $request['soort'],
-            'status'            => $request['status'],
-            'eind_datum'        => $request['eind_datum'],
+            'prioriteit'            => $request['prioriteit'],
+            'soort'                 => $request['soort'],
+            'status'                => $request['status'],
+            'eind_datum'            => $request['eind_datum'],
         );
         $data['eind_datum'] = date('Y-m-d H:i',strtotime($data['eind_datum']));
 
@@ -109,6 +109,27 @@ class BugController extends Controller
         Bug::lastPerson($bug,1,0);
 
         Bug::where('id', '=', $bug->id)->update($data);
+        if($data['status'] == 'gesloten'){
+
+            $dat = array(
+                'status'            => $data['status'],
+                'soort'             => $data['soort'],
+                'prioriteit'        => $data['prioriteit'],
+                'id'                => $bug->id
+            );
+
+            $bug = Bug::with('klant')->find($bug->id);
+            $klantEmail = $bug->klant->email;
+
+            Mail::send('emails.bugclosed',$dat,function ($msg) use ($dat){
+
+                $msg->from('helpdesk@moodles.nl','MoodlesHelpdesk');
+                $msg->to('stefano@moodles.nl', $name = null);
+                $msg->replyTo('no-reply@moodles.nl', $name = null);
+                $msg->subject('MH - Feedback gesloten');
+            });
+        }
+
         $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
         return redirect('/bugchat/'. $bug->id);
     }
