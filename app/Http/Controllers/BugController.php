@@ -7,7 +7,7 @@ use App\BugAttachment;
 use App\Http\Requests;
 use App\Bug as Bug;
 use Storage;
-use App\User as User;
+use Illuminate\Support\Facades\Mail as Mail;
 use App\Chat as Chat;
 use App\Project as Project;
 use App\Http\Controllers\Hash as Hash;
@@ -160,6 +160,22 @@ class BugController extends Controller
             return redirect('/bugmuteren/'.$pro_id)->withErrors($validator);
         }
         Bug::create($data);
+        $dat = array(
+            'status'            => $data['status'],
+            'soort'            => $data['soort'],
+            'prioriteit'        => $data['prioriteit'],
+            'klant_id'          => $data['klant_id'],
+            'project_id'        => $data['project_id'],
+            'beschrijving'       => $data['beschrijving']
+
+        );
+        Mail::send('emails.newbug',$dat,function ($msg) use ($dat){
+
+            $msg->from('helpdesk@moodles.nl','MoodlesHelpdesk');
+            $msg->to('stefano@moodles.nl', $name = null);
+            $msg->replyTo('no-reply@moodles.nl', $name = null);
+            $msg->subject('MH - Nieuwe feedback');
+        });
         $request->session()->flash('alert-success', 'Bug '. $request['titel']. ' toegevoegd.');
         return redirect('/bugs/'.$pro_id);
     }
