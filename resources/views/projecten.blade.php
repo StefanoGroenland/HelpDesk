@@ -51,7 +51,7 @@
                                 <th style="width: 10%">Project</th>
                                 <th style="width: 10%">Live url</th>
                                 <th style="width: 10%">Development url</th>
-                                <th style="width: 5%">Klantnummer</th>
+                                <th style="width: 5%">Klant</th>
                                 <th style="width: 15%">Omschrijving</th>
                                 <th style="width: 8%"></th>
                                 </thead>

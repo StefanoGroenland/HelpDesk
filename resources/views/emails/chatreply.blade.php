@@ -11,8 +11,8 @@ U heeft reactie op een discussie
 
 
 <a style="text-decoration: none;" href="http://helpdesk.moodles.nl/bugchat/{{$bug_id}}">
-    <button class="btn btn-success center-block" >
-        Zie discussie op Moodles Helpdesk.
+    <button class="btn btn-success center-block btn-sm" >
+        Zie discussie.
     </button>
 </a>
 <h5 class="page-header">
