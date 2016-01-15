@@ -13,7 +13,9 @@ Feedback gesloten
 @endsection
 
 @section('bericht')
-<h4 class="page-header" >Beste klant,</h4>
+<h4 class="page-header" >Beste {{$volledige_naam}},</h4>
+
+<p>In onderstaand schema ziet u welke feedback melding door ons is verholpen.</p>
 
  <div class="table-responsive">
      <table class="table">
@@ -21,7 +23,7 @@ Feedback gesloten
          <th>Status</th>
          <th>Prioriteit</th>
          <th>Soort</th>
-         <th>Feedbacknummer</th>
+         <th>Feedback</th>
          </thead>
          <tbody>
             <tr>
@@ -38,13 +40,13 @@ Feedback gesloten
                 @endif
                 </td>
                 <td>{{$soort}}</td>
-                <td>{{$id}}</td>
+                <td>{{$bug->titel}}</td>
             </tr>
          </tbody>
      </table>
  </div>
 <a style="text-decoration: none;" href="http://helpdesk.moodles.nl/bugchat/{{$id}}">
-<button class="btn btn-success center-block" >
+<button class="btn btn-success center-block btn-sm" >
     Zie feedback op Moodles Helpdesk.
 </button>
 </a>

@@ -109,22 +109,23 @@ class BugController extends Controller
         Bug::lastPerson($bug,1,0);
 
         Bug::where('id', '=', $bug->id)->update($data);
+        $bug = Bug::with('klant')->find($id);
         if($data['status'] == 'gesloten'){
 
             $dat = array(
                 'status'            => $data['status'],
                 'soort'             => $data['soort'],
                 'prioriteit'        => $data['prioriteit'],
-                'id'                => $bug->id
+                'id'                => $bug->id,
+                'volledige_naam'    => $bug->klant->voornaam.' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam,
+                'bug'               => $bug
             );
 
-            $bug = Bug::with('klant')->find($bug->id);
-            $klantEmail = $bug->klant->email;
 
             Mail::send('emails.bugclosed',$dat,function ($msg) use ($dat){
-
+                $bug = Bug::with('klant')->find($dat['id']);
                 $msg->from('helpdesk@moodles.nl','MoodlesHelpdesk');
-                $msg->to('stefano@moodles.nl', $name = null);
+                $msg->to($bug->klant->email, $name = null);
                 $msg->replyTo('no-reply@moodles.nl', $name = null);
                 $msg->subject('Feedback gesloten');
             });
@@ -192,8 +193,8 @@ class BugController extends Controller
         );
         Mail::send('emails.newbug',$dat,function ($msg) use ($dat){
 
-            $msg->from('helpdesk@moodles.nl','MoodlesHelpdesk');
-            $msg->to('stefano@moodles.nl', $name = null);
+            $msg->from('helpdesk@moodles.nl','Moodles Helpdesk');
+            $msg->to('helpdesk@moodles.nl', 'Moodles Helpdesk');
             $msg->replyTo('no-reply@moodles.nl', $name = null);
             $msg->subject('Nieuwe feedback');
         });

@@ -62,7 +62,7 @@ class ChatController extends Controller
                         Mail::send('emails.chatreply',$intel,function ($msg) use ($intel){
                             $bug = Bug::with('klant')->find($intel['bug_id']);
 
-                            $msg->from('stefano@moodles.nl','MoodlesHelpdesk');
+                            $msg->from('helpdesk@moodles.nl','Moodles Helpdesk');
                             $msg->to($bug->klant->email,
                                 $bug->klant->voornaam .' '.
                                 $bug->klant->tussenvoegsel .' '.
@@ -89,7 +89,7 @@ class ChatController extends Controller
                                 $bug->klant->tussenvoegsel .' '.
                                 $bug->klant->achternaam);
 
-                            $msg->to('stefano@moodles.nl', $name = null);
+                            $msg->to('helpdesk@moodles.nl','Moodles Helpdesk');
                             $msg->replyTo($bug->klant->email, $name = null);
                             $msg->subject('Reactie op feedback discussie');
                         });
@@ -131,7 +131,7 @@ class ChatController extends Controller
                 Mail::send('emails.chatreply',$intel,function ($msg) use ($intel){
                     $bug = Bug::with('klant')->find($intel['bug_id']);
 
-                    $msg->from('stefano@moodles.nl','MoodlesHelpdesk');
+                    $msg->from('helpdesk@moodles.nl','Moodles Helpdesk');
                     $msg->to($bug->klant->email,
                         $bug->klant->voornaam .' '.
                         $bug->klant->tussenvoegsel .' '.
@@ -158,7 +158,7 @@ class ChatController extends Controller
                         $bug->klant->tussenvoegsel .' '.
                         $bug->klant->achternaam);
 
-                    $msg->to('stefano@moodles.nl', $name = null);
+                    $msg->to('helpdesk@moodles.nl', 'Moodles Helpdesk');
                     $msg->replyTo($bug->klant->email, $name = null);
                     $msg->subject('Reactie op feedback discussie');
                 });
