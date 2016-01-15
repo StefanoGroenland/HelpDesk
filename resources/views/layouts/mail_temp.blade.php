@@ -5,9 +5,7 @@
 {{--begin container--}}
 <div class="container">
     <div class="panel panel-default">
-
     <div class="panel-body">
-
         {{--begin row--}}
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2"></div>
@@ -27,10 +25,6 @@
     {{--endrow--}}
     </div>
 </div>
-
-
-
-
 </div>
 {{--end container--}}
 </body>

@@ -139,16 +139,15 @@
                     <div class="col-lg-6">
                     @endif
                     <button class="btn btn-default" type="button" data-toggle="modal" data-target="#BugDetails">
-                      Feedback <i class="fa fa-info" ></i>
+                       <i class="fa fa-info" ></i> Feedback
                     </button>
-                    </div>
                     @if(Auth::user()->bedrijf == 'moodles')
-                    <div class="col-lg-6">
                     <button class="btn btn-default" type="button" data-toggle="modal" data-target="#ProjectDetails">
-                      Project <i class="fa fa-info" ></i>
+                       <i class="fa fa-info" ></i> Project
                     </button>
-                    </div>
+
                     @endif
+                    </div>
                 </div>
                 <hr>
                 <h4>Bijlages</h4>
