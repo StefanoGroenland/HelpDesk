@@ -92,26 +92,6 @@
 
         </div>
         <!-- /#page-wrapper -->
-    @section('scripts')
-    <script type="text/javascript">
-       $(document).ready(function() {
-             $('tr[data-href]').on("click", function(event) {
-
-                window.location.href = $(this).data('href');
-            });
-            $('.deleteButton').on("click", function(event) {
-
-                var modalId = $(this).data('modal-id');
-                event.stopPropagation();
-                jQuery.noConflict()
-                $('#myModal'+modalId).modal('show');
-            });
-       })
-
-    </script>
-
-    @endsection
-
     </div>
     @foreach($medewerkers as $key)
                      <div class="modal fade" id="myModal{{$key->id}}" tabindex="-1" role="dialog">
@@ -143,6 +123,23 @@
     <!-- /#wrapper -->
 
     @extends('layouts.footer')
+        @section('scripts')
+             <script type="text/javascript">
+                $(document).ready(function() {
+                      $('.data_table').on("click",'tr[data-href]',  function() {
+                         window.location.href = $(this).data('href');
+                     });
+             $('.deleteButton').on("click", function(event) {
+
+                         var modalId = $(this).data('modal-id');
+                         event.stopPropagation();
+                         jQuery.noConflict()
+                         $('#myModal'+modalId).modal('show');
+                     });
+                })
+
+             </script>
+            @endsection
 
 </body>
 

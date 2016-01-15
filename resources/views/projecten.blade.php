@@ -120,8 +120,7 @@
     @section('scripts')
     <script type="text/javascript">
        $(document).ready(function() {
-             $('tr[data-href]').on("click", function(event) {
-
+             $('.data_table').on("click",'tr[data-href]',  function() {
                 window.location.href = $(this).data('href');
             });
             $('.deleteButton').on("click", function(event) {
@@ -134,7 +133,6 @@
        })
 
     </script>
-
     @endsection
     @extends('layouts.footer')
 

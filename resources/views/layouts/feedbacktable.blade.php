@@ -51,6 +51,14 @@
                             </table>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                       $('tr[data-href]').on("click", function() {
+                            document.location = $(this).data('href');
+                        });
+                        $('tr button[data-target]').on("click", function() {
+                            document.location = $(this).data('target');
+                        });
+                    </script>
                     @else
                     <div class="col-lg-12">
                                             <h4>Laatst gemelde feedback</h4>

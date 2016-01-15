@@ -124,24 +124,21 @@
 
          <!-- /#page-wrapper -->
     @section('scripts')
-    <script type="text/javascript">
-       $(document).ready(function() {
-             $('tr[data-href]').on("click", function(event) {
+         <script type="text/javascript">
+            $(document).ready(function() {
+                  $('.data_table').on("click",'tr[data-href]',  function() {
+                     window.location.href = $(this).data('href');
+                 });
+         $('.deleteButton').on("click", function(event) {
 
-                window.location.href = $(this).data('href');
-            });
-            $('.deleteButton').on("click", function(event) {
-
-                var modalId = $(this).data('modal-id');
-                event.stopPropagation();
-                jQuery.noConflict()
-                $('#myModal'+modalId).modal('show');
-            });
-       })
-
-    </script>
-
-    @endsection
+                     var modalId = $(this).data('modal-id');
+                     event.stopPropagation();
+                     jQuery.noConflict()
+                     $('#myModal'+modalId).modal('show');
+                 });
+            })
+         </script>
+        @endsection
 
      </div>
      <!-- /#wrapper -->
