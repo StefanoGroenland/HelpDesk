@@ -50,11 +50,13 @@ class ChatController extends Controller
                     Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
                     if(Auth::user()->bedrijf == 'moodles'){
                         Bug::lastPerson($bug_id,1,0);
+                        $bug = Bug::with('klant')->find($bug_id);
                         $intel = array(
                             //data om mee te nemen in de view
                             'bug_id'            =>      $request['bug_id'],
-                            'volledige_naam'    =>      'klant',
-                            'bericht'           =>      $msg
+                            'volledige_naam'    =>      $bug->klant->voornaam.' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam,
+                            'bericht'           =>      $msg,
+                            'bug'               =>      $bug
                         );
 
                         Mail::send('emails.chatreply',$intel,function ($msg) use ($intel){
@@ -70,11 +72,13 @@ class ChatController extends Controller
                         });
                     }else{
                         Bug::lastPerson($bug_id,0,1);
+                        $bug = Bug::with('klant')->find($bug_id);
                         $inet = array(
                             //data om mee te nemen in de view
                             'bug_id'            =>      $request['bug_id'],
                             'volledige_naam'    =>      'medewerker',
-                            'bericht'           =>      $msg
+                            'bericht'           =>      $msg,
+                            'bug'               =>      $bug
 
                         );
                         Mail::send('emails.chatreply',$inet,function ($msg) use ($inet){
@@ -115,11 +119,13 @@ class ChatController extends Controller
             $msg_with = $request['bericht'] . '<br><small>Deze reactie bevat een bijlage die alleen gezien kan worden op Moodles helpdesk.</small>';
             if(Auth::user()->bedrijf == 'moodles'){
                 Bug::lastPerson($bug_id,1,0);
+                $bug = Bug::with('klant')->find($bug_id);
                 $intel = array(
                     //data om mee te nemen in de view
                     'bug_id'            =>      $request['bug_id'],
-                    'volledige_naam'    =>      'klant',
-                    'bericht'           =>      $msg_with
+                    'volledige_naam'    =>      $bug->klant->voornaam.' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam,
+                    'bericht'           =>      $msg_with,
+                    'bug'               =>      $bug
                 );
 
                 Mail::send('emails.chatreply',$intel,function ($msg) use ($intel){
@@ -135,11 +141,13 @@ class ChatController extends Controller
                 });
             }else{
                 Bug::lastPerson($bug_id,0,1);
+                $bug = Bug::with('klant')->find($bug_id);
                 $inet = array(
                     //data om mee te nemen in de view
                     'bug_id'            =>      $request['bug_id'],
                     'volledige_naam'    =>      'medewerker',
-                    'bericht'           =>      $msg_with
+                    'bericht'           =>      $msg_with,
+                    'bug'               =>      $bug
 
                 );
                 Mail::send('emails.chatreply',$inet,function ($msg) use ($inet){

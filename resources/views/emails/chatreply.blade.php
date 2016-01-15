@@ -7,7 +7,27 @@ U heeft reactie op een discussie
 
 <h4 class="page-header" >Beste {{$volledige_naam}},</h4>
 
-<p>Het bericht : {!! $bericht !!} </p>
+<div class="table-responsive">
+     <table class="table">
+         <thead>
+         <th>Bug</th>
+         <th>Soort</th>
+         <th>Klant</th>
+         <th>Projectnummer</th>
+         </thead>
+         <tbody>
+            <tr>
+                <td>{{$bug->titel}}</td>
+                <td>{{$bug->soort}}</td>
+                <td>{{$bug->klant_id .' '. $bug->klant->voornaam .' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
+                <td>{{$bug->project_id}}</td>
+            </tr>
+         </tbody>
+     </table>
+ </div>
+
+<h4 class="page-header">Bericht</h4>
+<p>{!! $bericht !!} </p>
 
 
 <a style="text-decoration: none;" href="http://helpdesk.moodles.nl/bugchat/{{$bug_id}}">
