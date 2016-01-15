@@ -335,10 +335,7 @@ class UserController extends Controller
 }
     public function addUser(Request $request){
 
-        if($request['bedrijf'] == 'moodles' || $request['bedrijf'] == 'Moodles'){
-            $request->session()->flash('alert-danger', 'Er mogen geen klanten met \'moodles\' als bedrijf worden aangemaakt.');
-            return redirect('/newklant');
-        }
+
         $data = array(
             'username'                  => $request['username'],
             'email'                     => $request['email'],
@@ -356,6 +353,7 @@ class UserController extends Controller
             'email'                     => 'unique:gebruikers',
             'username'                  => 'unique:gebruikers',
             'telefoonnummer'            => 'required|numeric',
+            'bedrijf'                   => 'required|not_in:moodles,Moodles',
             'password'                  => 'required|min:4|confirmed',
             'password_confirmation'     => 'required|min:4',
         );

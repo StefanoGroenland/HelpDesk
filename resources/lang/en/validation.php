@@ -55,7 +55,7 @@ return [
         'string'  => ':attribute moet ten minste :min karakters bevatten.',
         'array'   => 'The :attribute must have at least :min items.',
     ],
-    'not_in'               => 'The selected :attribute is invalid.',
+    'not_in'               => ':attribute mag geen moodles bevatten.',
     'numeric'              => ':attribute moet numeriek zijn.',
     'regex'                => 'The :attribute format is invalid.',
     'required'             => ':attribute is verplicht',
@@ -110,6 +110,7 @@ return [
         'password_confirmation' => 'Herhaal wachtwoord',
         'email'                 => 'E-mail',
         'telefoonnummer'        => 'Telefoonnummer',
+        'bedrijf'               => 'Bedrijf'
     ],
 
 ];
