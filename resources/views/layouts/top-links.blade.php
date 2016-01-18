@@ -17,11 +17,11 @@
            <img class="img-responsive pull-left " alt="profile_img" src="../assets/images/logo.png" style="margin-left:10px;margin-bottom: 5px; min-height: 50px;!important;max-height: 50px;!important min-width: 200px;!important; max-width: 200px;!important;"/>
            </a>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block text-center hidden-xs" style="color:#ffffff;line-height: normal!important;">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block text-center hidden-xs " style="color:#ffffff;line-height: normal!important;">
             <br>
             @if(Auth::user()->bedrijf == 'moodles')
-                      <button type="submit" class="btn btn-default btn-xs disabled">
-                         <i class="fa fa-clock-o fa-spin"></i>
+                      <button type="submit" class="btn btn-default btn-xs disabled fix">
+                         <i class="fa fa-clock-o"></i>
                          {{date('d-m-y - H:i')}}
                       </button>
                       <button type="submit" class="btn btn-default btn-xs disabled">
