@@ -48,7 +48,7 @@
                             {{$project->projectnaam}} <small>alle feedback van dit project</small>
                         </h3>
                         <a href="/bugmuteren/{{$project->id}}" class="pull-left">
-                            <button type="submit" class="btn btn-success btn-xs">
+                            <button type="submit" class="btn btn-success">
                                <i class="glyphicon glyphicon-plus"></i>
                                Feedback toevoegen
                             </button>

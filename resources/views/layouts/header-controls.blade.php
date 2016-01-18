@@ -2,8 +2,8 @@
 <small class="pull-right">
           <ul class="list-inline list-unstyled">
             <li class="pull-right">
-               <a href="{{URL::to('/klanten')}}">
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-users"></i> Klanten</button>
+               <a href="{{URL::to('/medewerkers')}}">
+                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-users"></i> Medewerkers</button>
                </a>
             </li>
             <li class="pull-right">
@@ -13,7 +13,7 @@
             </li>
             <li class="pull-right">
                 <a href="{{URL::to('/klanten')}}">
-                   <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-users"></i> Klanten</button>
+                   <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-user"></i> Klanten</button>
                 </a>
             </li>
             <li class="pull-right">

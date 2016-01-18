@@ -24,7 +24,7 @@
          <div class="row">
              <div class="col-lg-12">
                  <h1 class="page-header">
-                     Medewerker aanpassen <small>Verander medewekers</small>
+                     Medewerker toevoegen <small>Hier kan een medewerker toegevoegd worden</small>
                      @include('layouts.header-controls')
                  </h1>
                     @if(Auth::user()->bedrijf != 'moodles')
@@ -120,7 +120,7 @@
                         </select>
                       </div>
                      <div class="row">
-                           <div class="col-lg-12"><button type="submit" class="btn btn-warning center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button></div>
+                           <div class="col-lg-12"><button type="submit" class="btn btn-default center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button></div>
                        </div>
                    </form>
                  </div>

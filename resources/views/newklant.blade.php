@@ -24,7 +24,7 @@
          <div class="row">
              <div class="col-lg-12">
                  <h1 class="page-header">
-                     Klant aanmaken <small>maak een nieuwe klant aan</small>
+                     Klant toevoegen <small>Hier kan een klant toegevoegd worden</small>
                      @include('layouts.header-controls')
                  </h1>
                     @if(Auth::user()->bedrijf != 'moodles')
@@ -128,7 +128,7 @@
                         </select>
                       </div>
                      <div class="row">
-                           <div class="col-lg-12"><button type="submit" class="btn btn-info center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak klant</button></div>
+                           <div class="col-lg-12"><button type="submit" class="btn btn-default center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button></div>
                        </div>
                    </form>
                  </div>
