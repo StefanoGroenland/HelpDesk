@@ -76,7 +76,7 @@
                               <input data-toggle="tooltip" title="Wachtwoord voor bovenstaand Beheer account." type="password" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="{{old('wachtwoord')}}">
                             </div>
                             <div class="form-group">
-                               <textarea class="form-control" rows="13" id="omschrijvingproject" name="omschrijvingproject"></textarea>
+                               <textarea class="form-control" rows="13" id="omschrijvingproject" name="omschrijvingproject">{{old('omschrijvingproject')}}</textarea>
                              </div>
 
 
@@ -114,16 +114,32 @@
                                       <label for="sel4">Nieuwe klant</label>
                                       <input type="gebruikersnaam" class="form-control" id="username" required="true" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
                                 </div>
+                                @if($errors->has('password'))
+                                <div class="form-group has-error">
+                                @else
                                 <div class="form-group">
+                                @endif
                                      <input type="password" class="form-control" id="password" required="true" name="password" placeholder="Wachtwoord">
                                 </div>
+                                @if($errors->has('password'))
+                                <div class="form-group has-error">
+                                @else
                                 <div class="form-group">
+                                @endif
                                      <input type="password" class="form-control" id="password_confirmation" required="true" name="password_confirmation" placeholder="Herhaal wachtwoord">
                                 </div>
+                                @if($errors->has('email'))
+                                <div class="form-group has-error">
+                                @else
                                 <div class="form-group">
+                                @endif
                                      <input type="email" class="form-control" id="email" required="true" name="email" placeholder="E-mail" value="{{old('email')}}">
                                 </div>
+                                @if($errors->has('bedrijf'))
+                                <div class="form-group has-error">
+                                @else
                                 <div class="form-group">
+                                @endif
                                      <input type="text" class="form-control" id="bedrijf"  name="bedrijf" placeholder="Bedrijf" value="{{old('bedrijf')}}">
                                 </div>
                                 <div class="form-group">
