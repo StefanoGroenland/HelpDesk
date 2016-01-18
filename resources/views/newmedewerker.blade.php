@@ -53,7 +53,7 @@
          <div class="row">
              <div class="col-lg-12">
 
-               <div class="panel panel-warning">
+               <div class="panel panel-default">
                  <div class="panel-heading">
                    <h3 class="panel-title">Nieuwe medewerker </h3>
                  </div>

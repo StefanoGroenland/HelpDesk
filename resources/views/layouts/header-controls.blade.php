@@ -11,12 +11,6 @@
                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-briefcase"></i> Projecten</button>
               </a>
             </li>
-
-            <li class="pull-right">
-                <a href="{{URL::to('/klanten')}}">
-                   <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-users"></i> Klanten</button>
-                </a>
-            </li>
             <li class="pull-right">
                 <a href="{{URL::to('/klanten')}}">
                    <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-users"></i> Klanten</button>
