@@ -34,12 +34,8 @@
                            $('[data-toggle="tooltip"]').tooltip();
 
                            $('input').on('click', function() {
-
                                $(this).tooltip('hide');
-
                            });
-
-
                         });
                     </script>
 

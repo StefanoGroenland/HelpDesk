@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Project aanpassen <small> hier kan een project gewijzigd worden </small>
+                            Project wijzigen <small> hier kan een project gewijzigd worden </small>
                             @include('layouts.header-controls')
                         </h1>
                         {{--breadcrumbs layout spot!--}}
@@ -45,7 +45,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-success">
                           <div class="panel-heading">
-                            <h3 class="panel-title">Verander project</h3>
+                            <h3 class="panel-title">Wijzig project</h3>
                           </div>
                           <div class="panel-body">
                             <form method="POST" action="/updateProject/{{$project->id}}">
@@ -70,7 +70,7 @@
                               <div class="form-group">
                                  <textarea class="form-control omschrijving2" rows="8" id="omschrijving2" name="omschrijvingproject" value="" >{{$project->omschrijvingproject}}</textarea>
                                </div>
-                              <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Verander</button>
+                              <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Opslaan</button>
                             </div>
                            </div>
                         </form>

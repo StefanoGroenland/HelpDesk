@@ -1,7 +1,7 @@
 @extends('layouts.mail_temp')
 
 @section('onderwerp')
-Wachtwoord herstel.
+Wachtwoord herstel
 @endsection
 
 @section('bericht')
