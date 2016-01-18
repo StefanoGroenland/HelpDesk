@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Feedback <small>feedback pagina waar bugs worden verdeeld/getoond</small>
+                            Feedback <small>feedback overzicht</small>
                             @include('layouts.header-controls')
                         </h1>
                             @if(Auth::user()->bedrijf != 'moodles')
@@ -119,9 +119,9 @@
                 @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
                     <div class="col-lg-12">
-                    <h3 class="page-header">
-                        Alle feedback <small>een lijst van alle feedback</small>
-                    </h3>
+                    {{--<h3 class="page-header">--}}
+                        {{--Alle feedback <small>een lijst van alle feedback</small>--}}
+                    {{--</h3>--}}
                     <div class="table-responsive">
                     <table class="table table-hover data_table">
                         <thead>

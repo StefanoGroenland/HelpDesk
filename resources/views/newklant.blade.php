@@ -60,74 +60,108 @@
                  <div class="panel-body">
                    <form method="POST" action="/addUser" >
                    {!! csrf_field() !!}
-                      @if($errors->has('email'))
-                       <div class="form-group has-error">
-                       @else
-                       <div class="form-group">
-                       @endif
-                       <label for="email">Email address</label>
-                       <input type="email" class="form-control" required="true" id="email" name="email" placeholder="Email" value="{{old('email')}}">
-                     </div>
-                      @if($errors->has('username'))
-                       <div class="form-group has-error">
-                       @else
-                       <div class="form-group">
-                       @endif
-                       <label for="gebruikersnaam">Gebruikersnaam</label>
-                       <input type="text" class="form-control" required="true" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
-                     </div>
-                      @if($errors->has('password'))
-                       <div class="form-group has-error">
-                       @else
-                       <div class="form-group">
-                       @endif
-                       <label for="wachtwoord">Wachtwoord</label>
-                       <input type="password" class="form-control" required="true" id="wachtwoord" name="password" placeholder="Wachtwoord">
-                     </div>
-                      @if($errors->has('password'))
+
+                   <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        @if($errors->has('email'))
                           <div class="form-group has-error">
                           @else
                           <div class="form-group">
                           @endif
-                         <label for="wachtwoord">Herhaal wachtwoord</label>
-                         <input type="password" class="form-control" required="true" id="wachtwoord" name="password_confirmation" placeholder="Wachtwoord">
-                       </div>
-                       <div class="form-group">
-                       <label for="voornaam">Voornaam</label>
-                       <input type="text" class="form-control" required="true" id="voornaam" name="voornaam" placeholder="Voornaam" value="{{old('voornaam')}}">
-                     </div>
-                     <div class="form-group">
-                        <label for="tussenvoegsel">Tussenvoegsel</label>
-                        <input type="text" class="form-control" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="{{old('tussenvoegsel')}}">
-                      </div>
-                     <div class="form-group">
-                       <label for="achternaam">Achternaam</label>
-                       <input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam" value="{{old('achternaam')}}">
-                     </div>
-                     @if($errors->has('bedrijf'))
-                       <div class="form-group has-error">
-                       @else
-                       <div class="form-group">
-                       @endif
-                       <label for="achternaam">Bedrijf</label>
-                       <input type="text" class="form-control" required="true" id="bedrijf" name="bedrijf" placeholder="Bedrijf" value="{{old('bedrijf')}}">
-                     </div>
-                    @if($errors->has('telefoonnummer'))
-                        <div class="form-group has-error">
-                        @else
+                          <label for="email">Email address</label>
+                          <input type="email" class="form-control" required="true" id="email" name="email" placeholder="Email" value="{{old('email')}}">
+                        </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        @if($errors->has('username'))
+                          <div class="form-group has-error">
+                          @else
+                          <div class="form-group">
+                          @endif
+                          <label for="gebruikersnaam">Gebruikersnaam</label>
+                          <input type="text" class="form-control" required="true" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
+                        </div>
+                        </div>
+                   </div>
+
+                   <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        @if($errors->has('password'))
+                          <div class="form-group has-error">
+                          @else
+                          <div class="form-group">
+                          @endif
+                          <label for="wachtwoord">Wachtwoord</label>
+                          <input type="password" class="form-control" required="true" id="wachtwoord" name="password" placeholder="Wachtwoord">
+                        </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        @if($errors->has('password'))
+                           <div class="form-group has-error">
+                           @else
+                           <div class="form-group">
+                           @endif
+                          <label for="wachtwoord">Herhaal wachtwoord</label>
+                          <input type="password" class="form-control" required="true" id="wachtwoord" name="password_confirmation" placeholder="Wachtwoord">
+                        </div>
+                        </div>
+                   </div>
+
+                   <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
-                        @endif
-                        <label for="telefoonnummer">Telefoonnummer</label>
-                        <input type="text" class="form-control" required="true" id="telefoonnummer" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer" value="{{old('telefoonnummer')}}">
-                      </div>
-                      <div class="form-group">
-                      <label for="geslacht">Geslacht</label>
-                        <select class="form-control" id="geslacht" required="true" name="geslacht">
-                          <option value="man">Man</option>
-                          <option value="vrouw">Vrouw</option>
-                        </select>
-                      </div>
-                     <div class="row">
+                          <label for="voornaam">Voornaam</label>
+                          <input type="text" class="form-control" required="true" id="voornaam" name="voornaam" placeholder="Voornaam" value="{{old('voornaam')}}">
+                        </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="tussenvoegsel">Tussenvoegsel</label>
+                          <input type="text" class="form-control" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="{{old('tussenvoegsel')}}">
+                        </div>
+                        </div>
+                   </div>
+
+                   <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label for="achternaam">Achternaam</label>
+                          <input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam" value="{{old('achternaam')}}">
+                        </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        @if($errors->has('bedrijf'))
+                          <div class="form-group has-error">
+                          @else
+                          <div class="form-group">
+                          @endif
+                          <label for="achternaam">Bedrijf</label>
+                          <input type="text" class="form-control" required="true" id="bedrijf" name="bedrijf" placeholder="Bedrijf" value="{{old('bedrijf')}}">
+                        </div>
+                        </div>
+                   </div>
+                   <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                         @if($errors->has('telefoonnummer'))
+                           <div class="form-group has-error">
+                           @else
+                           <div class="form-group">
+                           @endif
+                           <label for="telefoonnummer">Telefoonnummer</label>
+                           <input type="text" class="form-control" required="true" id="telefoonnummer" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer" value="{{old('telefoonnummer')}}">
+                         </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                        <label for="geslacht">Geslacht</label>
+                          <select class="form-control" id="geslacht" required="true" name="geslacht">
+                            <option value="man">Man</option>
+                            <option value="vrouw">Vrouw</option>
+                          </select>
+                        </div>
+                        </div>
+                   </div>
+                    <div class="row">
                            <div class="col-lg-12"><button type="submit" class="btn btn-default center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button></div>
                        </div>
                    </form>
