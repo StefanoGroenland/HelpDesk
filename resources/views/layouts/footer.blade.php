@@ -32,6 +32,14 @@
                     <script>
                         jQuery( document ).ready(function( $ ) {
                            $('[data-toggle="tooltip"]').tooltip();
+
+                           $('input').on('click', function() {
+
+                               $(this).tooltip('hide');
+
+                           });
+
+
                         });
                     </script>
 
@@ -58,6 +66,9 @@
                                             }
                                     }
                                 });
+
+
+
 
                             } );
                 </script>

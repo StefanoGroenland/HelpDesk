@@ -68,7 +68,6 @@ class ProjectController extends Controller
 
                     'projectnaam'                   => 'required|unique:projecten',
                     'liveurl'                       => 'required',
-                    'developmenturl'                => 'required',
                     'gebruikersnaam'                => 'required',
                     'wachtwoord'                    => 'required',
                     'omschrijvingproject'           => 'required',
@@ -122,7 +121,6 @@ class ProjectController extends Controller
                 $rules = array(
                     'projectnaam'                   => 'required|unique:projecten',
                     'liveurl'                       => 'required',
-                    'developmenturl'                => 'required',
                     'gebruikersnaam'                => 'required',
                     'wachtwoord'                    => 'required',
                     'omschrijvingproject'           => 'required',

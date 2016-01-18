@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Project aanmaken <small>Hier kan een project aangemaakt worden</small>
+                            Project toevoegen <small>Hier kan een project toegevoegd worden</small>
                             @include('layouts.header-controls')
                         </h1>
                         {{--breadcrumbs layout spot!--}}
@@ -50,9 +50,9 @@
                 <div class="row">
                     <div class="col-lg-6">
 
-                      <div class="panel panel-success">
+                      <div class="panel panel-default">
                         <div class="panel-heading">
-                          <h3 class="panel-title">Nieuw project 1/2</h3>
+                          <h3 class="panel-title">Project gegevens</h3>
                         </div>
                         <div class="panel-body">
                           <form method="POST" action="/addProject">
@@ -65,7 +65,7 @@
                               <input data-toggle="tooltip" title="Live URL / Productie URL van ons is dit bijvoorbeeld helpdesk.moodles.nl" type="text" class="form-control" id="projecturl" required="true" name="liveurl" placeholder="Productie URL" value="{{old('liveurl')}}">
                             </div>
                             <div class="form-group">
-                              <input data-toggle="tooltip" title="Development URL van ons is dit bijvoorbeeld dev.helpdesk.moodles.nl/admin Let op! : voeg de link toe naar het beheerpaneel" type="text" class="form-control" id="projecturl" required="true" name="developmenturl" placeholder="Development URL" value="{{old('developmenturl')}}">
+                              <input data-toggle="tooltip" title="Development URL van ons is dit bijvoorbeeld dev.helpdesk.moodles.nl/admin Let op! : voeg de link toe naar het beheerpaneel" type="text" class="form-control" id="projecturl" name="developmenturl" placeholder="Development URL" value="{{old('developmenturl')}}">
                             </div>
                             <div class="form-group">
                                <label for="sel4">Beheer account</label>
@@ -84,9 +84,9 @@
                     </div>
                     <div class="col-lg-6">
 
-                    <div class="panel panel-success">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                          <h3 class="panel-title">Nieuw project 2/2</h3>
+                          <h3 class="panel-title">Klant gegevens</h3>
                         </div>
                         <div class="panel-body">
 
@@ -95,7 +95,7 @@
                             <input type="radio" name="radkoppel" id="radkoppel" value="koppel_klant"> Koppel klant
                           </label>
                           <label class="radio-inline">
-                            <input type="radio" name="radmaak" id="radmaak" value="maak_klant" checked> Maak klant
+                            <input type="radio" name="radmaak" id="radmaak" value="maak_klant" checked> Nieuwe klant
                           </label>
                         </div>
 
@@ -165,7 +165,7 @@
                                      <input type="text" class="form-control" id="telefoonnummer" maxlength="11" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="{{old('telefoonnummer')}}">
                                 </div>
                             </fieldset>
-                            <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Maak</button>
+                            <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button>
                           </div>
                        </div>
 
