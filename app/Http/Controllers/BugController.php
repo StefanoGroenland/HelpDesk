@@ -157,8 +157,8 @@ class BugController extends Controller
         }else{
             $data['last_admin']     = 0;
             $data['last_client']    = 1;
-        }
 
+        }
         $rules = array(
             'titel'             => 'required|min:4',
             'prioriteit'        => 'required',
