@@ -184,6 +184,7 @@ class BugController extends Controller
         Bug::create($data);
         $dat = array(
             'status'            => $data['status'],
+            'titel'            => $data['titel'],
             'soort'            => $data['soort'],
             'prioriteit'        => $data['prioriteit'],
             'klant_id'          => $data['klant_id'],

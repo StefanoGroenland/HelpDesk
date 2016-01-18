@@ -19,6 +19,7 @@
  <div class="table-responsive">
      <table class="table">
          <thead>
+         <th>Titel</th>
          <th>Prioriteit</th>
          <th>Soort</th>
          <th>Klantnummer</th>
@@ -27,6 +28,7 @@
          </thead>
          <tbody>
             <tr>
+                <td>{{$titel}}</td>
                 <td>
                 @if($prioriteit == 1)
                 <span class="label label-success">Laag</span>
