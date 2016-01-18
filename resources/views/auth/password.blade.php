@@ -18,7 +18,7 @@
         <div class="col-lg-4"></div>
         <div class="col-lg-4 well">
             <img src="{{URL::asset('../assets/images/logo.png')}}" class="img-responsive center-block" alt="Responsive image">
-                <div class="form-group">
+                <div class="form-group" style="margin-top:10px;!important;">
                          @if (count($errors))
                              <ul class="list-unstyled">
                                  @foreach($errors->all() as $error)
@@ -33,7 +33,7 @@
                             @endif
                          <div class="form-group">
                              <label>E-mail</label>
-                             <input class="form-control" type="email" name="email" placeholder="email" value="{{ old('email') }}">
+                             <input class="form-control" type="email" name="email" placeholder="Hier uw e-mailadres" value="{{ old('email') }}">
                          </div>
                          <div>
                              <button class="btn btn-success" type="submit">

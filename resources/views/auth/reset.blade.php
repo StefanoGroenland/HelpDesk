@@ -27,7 +27,7 @@
             @endforeach
         </ul>
     @endif
-    <div class="form-group">
+    <div class="form-group" >
         Email
         <input class="form-control" type="email" name="email" value="{{ old('email') }}">
     </div>

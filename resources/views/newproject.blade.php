@@ -18,12 +18,11 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Project wijzigen <small>Hier kan een project aangemaakt worden</small>
+                            Project aanmaken <small>Hier kan een project aangemaakt worden</small>
                             @include('layouts.header-controls')
                         </h1>
                         {{--breadcrumbs layout spot!--}}
@@ -99,6 +98,7 @@
                             <input type="radio" name="radmaak" id="radmaak" value="maak_klant" checked> Maak klant
                           </label>
                         </div>
+
 
                         <div class="form-group" >
                             <label for="gebruiker_id">Koppel klant</label>

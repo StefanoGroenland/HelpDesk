@@ -4,7 +4,7 @@
 <body style="background-color:#f2f2f2;!important;" >
 {{--begin container--}}
 <div class="container">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="margin-top:40px;!important;" >
     <div class="panel-body">
         {{--begin row--}}
         <div class="row">
