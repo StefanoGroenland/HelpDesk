@@ -157,7 +157,11 @@
                                          <option value="vrouw" >Vrouw</option>
                                      </select>
                                 </div>
+                                @if($errors->has('telefoonnummer'))
+                                <div class="form-group has-error">
+                                @else
                                 <div class="form-group">
+                                @endif
                                      <input type="text" class="form-control" id="telefoonnummer" maxlength="11" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="{{old('telefoonnummer')}}">
                                 </div>
                             </fieldset>
