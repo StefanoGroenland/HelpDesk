@@ -106,11 +106,11 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-default btn-xs pull-right" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                       <form method="POST" action="/verwijderGebruiker/{{$key->id}}" >
                                       {!! method_field('DELETE') !!}
                                       {!! csrf_field() !!}
-                                      <button type="submit" class="btn btn-danger btn-xs pull-left">
+                                      <button type="submit" class="btn btn-danger pull-right">
                                          {{--<i class="glyphicon glyphicon-trash"></i>--}}
                                          Verwijder medewerker
                                       </button>
