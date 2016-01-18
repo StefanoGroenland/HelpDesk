@@ -27,13 +27,11 @@
                             @include('layouts.header-controls')
                         </h1>
                         {{--Breadcrumbs spot!--}}
-                         <ol class="breadcrumb">
-                         @if(\Auth::user()->bedrijf == 'moodles')
-                         @include('layouts.adminbreadcrumbs')
-                         @else
-                         @include('layouts.breadcrumbs')
-                         @endif
-                         </ol>
+                            @if(Auth::user()->bedrijf != 'moodles')
+                            <ol class="breadcrumb">
+                                @include('layouts.breadcrumbs')
+                            </ol>
+                            @endif
                     </div>
                 </div>
                 <div class="row">

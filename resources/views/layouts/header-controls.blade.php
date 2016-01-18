@@ -1,23 +1,41 @@
 @if(Auth::user()->bedrijf == 'moodles')
 <small class="pull-right">
-  <a href="../newproject" class="">
-      <button type="submit" class="btn btn-success btn-xs">
-         <i class="glyphicon glyphicon-plus"></i>
-         Project
-      </button>
-  </a>
-  <a href="../newmedewerker" class="">
-      <button type="submit" class="btn btn-warning btn-xs">
-         <i class="glyphicon glyphicon-plus"></i>
-         Medewerker
-      </button>
-  </a>
-  <a href="../newklant" class="">
-      <button type="submit" class="btn btn-info btn-xs">
-         <i class="glyphicon glyphicon-plus"></i>
-         Klant
-      </button>
-  </a>
+          <ul class="list-inline list-unstyled">
+            <li class="pull-right">
+               <a href="{{URL::to('/klanten')}}">
+                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-users"></i> Klanten</button>
+               </a>
+            </li>
+            <li class="pull-right">
+              <a href="{{URL::to('/projecten')}}">
+                 <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-briefcase"></i> Projecten</button>
+              </a>
+            </li>
+
+            <li class="pull-right">
+                <a href="{{URL::to('/klanten')}}">
+                   <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-users"></i> Klanten</button>
+                </a>
+            </li>
+            <li class="pull-right">
+                <a href="{{URL::to('/klanten')}}">
+                   <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-users"></i> Klanten</button>
+                </a>
+            </li>
+            <li class="pull-right">
+              <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
+                 <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-bug"></i> Feedback overzicht</button>
+              </a>
+          </li>
+          <li class="pull-right">
+                        <a href="{{URL::to('/dashboard')}}">
+                           <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-building"></i> Dashboard</button>
+                        </a>
+                    </li>
+          </ul>
+
+
+
 </small>
 @else
 

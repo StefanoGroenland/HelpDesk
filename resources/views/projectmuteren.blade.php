@@ -27,9 +27,11 @@
                             @include('layouts.header-controls')
                         </h1>
                         {{--breadcrumbs layout spot!--}}
-                        <ol class="breadcrumb">
-                               @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
-                           </ol>
+                            @if(Auth::user()->bedrijf != 'moodles')
+                            <ol class="breadcrumb">
+                                @include('layouts.breadcrumbs')
+                            </ol>
+                            @endif
                                         </div>
                                     </div>
                         @foreach (['danger', 'warning', 'success', 'info'] as $msg)

@@ -24,9 +24,11 @@
                             Feedback <small>feedback pagina waar bugs worden verdeeld/getoond</small>
                             @include('layouts.header-controls')
                         </h1>
-                        <ol class="breadcrumb">
-                           @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
-                        </ol>
+                            @if(Auth::user()->bedrijf != 'moodles')
+                            <ol class="breadcrumb">
+                                @include('layouts.breadcrumbs')
+                            </ol>
+                            @endif
                              </div>
                          </div>
                           @foreach (['danger', 'warning', 'success', 'info'] as $msg)

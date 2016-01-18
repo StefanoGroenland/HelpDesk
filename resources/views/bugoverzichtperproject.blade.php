@@ -24,9 +24,11 @@
                             Feedback <small>feedback pagina waar bugs worden verdeeld/getoond</small>
                             @include('layouts.header-controls')
                         </h1>
-                        <ol class="breadcrumb">
-                           @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
-                        </ol>
+                            @if(Auth::user()->bedrijf != 'moodles')
+                            <ol class="breadcrumb">
+                                @include('layouts.breadcrumbs')
+                            </ol>
+                            @endif
                              </div>
                          </div>
                           @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -40,8 +42,6 @@
                           @endforeach
                 <!-- /.row -->
 
-
-
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
@@ -50,7 +50,7 @@
                         <a href="/bugmuteren/{{$project->id}}" class="pull-left">
                             <button type="submit" class="btn btn-success btn-xs">
                                <i class="glyphicon glyphicon-plus"></i>
-                               Feedback melden
+                               Feedback toevoegen
                             </button>
                         </a>
                     </div>

@@ -27,9 +27,17 @@
                      Medewerkers <small> een overzicht van alle medewerkers.</small>
                      @include('layouts.header-controls')
                  </h1>
-                 <ol class="breadcrumb">
-                     @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
-                 </ol>
+                  <a href="../newmedewerker" class="pull-left" style="margin-bottom: 25px;!important;">
+                      <button type="submit" class="btn btn-warning btn-xs">
+                         <i class="glyphicon glyphicon-plus"></i>
+                         Medewerker toevoegen
+                      </button>
+                  </a>
+                  @if(Auth::user()->bedrijf != 'moodles')
+                  <ol class="breadcrumb">
+                      @include('layouts.breadcrumbs')
+                  </ol>
+                  @endif
              </div>
          </div>
                          @foreach (['danger', 'warning', 'success', 'info'] as $msg)

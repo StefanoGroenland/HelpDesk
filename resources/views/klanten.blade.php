@@ -27,9 +27,18 @@
                       Klanten<small> een overzicht van alle klanten.</small>
                       @include('layouts.header-controls')
                   </h1>
+
+                  <a href="../newklant" class="pull-left" style="margin-bottom: 25px;!important;">
+                      <button type="submit" class="btn btn-info btn-xs">
+                         <i class="glyphicon glyphicon-plus"></i>
+                         Klant toevoegen
+                      </button>
+                  </a>
+                  @if(Auth::user()->bedrijf != 'moodles')
                   <ol class="breadcrumb">
-                      @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
+                      @include('layouts.breadcrumbs')
                   </ol>
+                  @endif
               </div>
           </div>
                           @foreach (['danger', 'warning', 'success', 'info'] as $msg)

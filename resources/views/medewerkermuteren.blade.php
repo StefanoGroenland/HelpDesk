@@ -25,9 +25,11 @@
                      Medewerker aanpassen <small> hier kan een medewerker gewijzigd worden </small>
                      @include('layouts.header-controls')
                  </h1>
+                 @if(Auth::user()->bedrijf != 'moodles')
                  <ol class="breadcrumb">
-                     @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
+                     @include('layouts.breadcrumbs')
                  </ol>
+                 @endif
              </div>
          </div>
                          @foreach (['danger', 'warning', 'success', 'info'] as $msg)

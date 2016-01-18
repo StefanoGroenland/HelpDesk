@@ -26,10 +26,18 @@
                             Projecten <small> een overzicht van alle projecten.</small>
                             @include('layouts.header-controls')
                         </h1>
+                        <a href="../newproject" class="pull-left" style="margin-bottom: 25px;!important;">
+                              <button type="submit" class="btn btn-success btn-xs">
+                                 <i class="glyphicon glyphicon-plus"></i>
+                                 Project toevoegen
+                              </button>
+                          </a>
                         {{--breadcrumbs layout spot!--}}
-                        <ol class="breadcrumb">
-                               @include(Auth::user()->bedrijf == 'moodles' ? 'layouts.adminbreadcrumbs' : 'layouts.breadcrumbs')
-                           </ol>
+                            @if(Auth::user()->bedrijf != 'moodles')
+                            <ol class="breadcrumb">
+                                @include('layouts.breadcrumbs')
+                            </ol>
+                            @endif
                                         </div>
                                     </div>
                         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
