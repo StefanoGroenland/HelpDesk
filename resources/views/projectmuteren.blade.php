@@ -45,7 +45,7 @@
                         @endforeach
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="panel panel-success">
+                        <div class="panel panel-default">
                           <div class="panel-heading">
                             <h3 class="panel-title">Wijzig project</h3>
                           </div>
@@ -72,7 +72,7 @@
                               <div class="form-group">
                                  <textarea class="form-control omschrijving2" rows="8" id="omschrijving2" name="omschrijvingproject" value="" >{{$project->omschrijvingproject}}</textarea>
                                </div>
-                              <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Opslaan</button>
+                              <button type="submit" class="btn btn-default center-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Opslaan</button>
                             </div>
                            </div>
                         </form>

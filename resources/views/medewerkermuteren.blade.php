@@ -50,7 +50,7 @@
                          @endif
          <div class="row">
              <div class="col-lg-12">
-                 <div class="panel panel-warning">
+                 <div class="panel panel-default">
                  <div class="panel-heading">
                    <h3 class="panel-title">Verander medewerker</h3>
                  </div>
@@ -99,7 +99,7 @@
                        </select>
                      </div>
                       <div class="row">
-                        <div class="col-lg-12"><button type="submit" name="veranderGebruiker" class="btn btn-warning center-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Verander</button></div>
+                        <div class="col-lg-12"><button type="submit" name="veranderGebruiker" class="btn btn-default center-block"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Verander</button></div>
                       </div>
                    </form>
                  </div>
