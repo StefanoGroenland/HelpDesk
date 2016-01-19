@@ -2,7 +2,32 @@
 @if (\Auth::guest())
 <body>
 @else
-
+<style>
+.glyphicon-spin {
+    -webkit-animation: spin 6500ms infinite linear;
+    animation: spin 6500ms infinite linear;
+}
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+</style>
 <body>
         <!-- Navigation -->
         <div class="row" style="margin-bottom: 20px;">
@@ -21,7 +46,7 @@
             <br>
             @if(Auth::user()->bedrijf == 'moodles')
                       <button class="btn btn-default btn-xs disabled">
-                        <i class="fa fa-clock-o"></i>
+                        <i class="glyphicon glyphicon-time glyphicon-spin"></i>
                         {{date('d-m-y - H:i')}}
                       </button>
                       <button class="btn btn-default btn-xs disabled">

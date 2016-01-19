@@ -95,7 +95,7 @@
                                 <div class="form-group">
                                  <textarea class="form-control omschrijving2" rows="8" id="omschrijving2" name="omschrijvingproject" value="" >{{$project->omschrijvingproject}}</textarea>
                                </div>
-                              <button type="submit" class="btn btn-success center-block"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Opslaan</button>
+                              <button type="submit" class="btn btn-default center-block"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Opslaan</button>
                             </div>
                            </div>
                         </form>

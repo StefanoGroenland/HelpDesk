@@ -8,7 +8,7 @@ Wachtwoord herstel
 
 <h4 class="page-header" >Beste {{$user->voornaam}},</h4>
 
-<p>Onlangs is er een aanvraag ingediend om uw wachtwoord aan te resetten,<br>
+<p>Onlangs is er een aanvraag ingediend om uw wachtwoord te resetten,<br>
 Door op de knop : <a href="{{ url('auth/reset/'.$token) }}"><button class="btn btn-success btn-xs" >Herstel uw wachtwoord</button></a>
 te drukken.<br>
 </p>
