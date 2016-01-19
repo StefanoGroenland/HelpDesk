@@ -298,7 +298,7 @@
                                         @endif
                             </div>
                            <div class="modal-footer">
-                             <button type="button" class="btn btn-danger btn-xs pull-right" data-dismiss="modal">Sluit</button>
+                             <button type="button" class="btn btn-default btn-xs pull-left" data-dismiss="modal">Sluiten</button>
                              </form>
                            </div>
                          </div><!-- /.modal-content -->
@@ -319,7 +319,7 @@
                           </div>
 
                            <div class="modal-footer">
-                             <button type="button" class="btn btn-danger btn-xs pull-right" data-dismiss="modal">Sluit</button>
+                             <button type="button" class="btn btn-default btn-xs pull-left" data-dismiss="modal">Sluiten</button>
                              </form>
                            </div>
                          </div><!-- /.modal-content -->

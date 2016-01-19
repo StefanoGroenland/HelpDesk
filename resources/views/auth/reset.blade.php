@@ -27,16 +27,16 @@
             @endforeach
         </ul>
     @endif
-    <div class="form-group" >
-        Email
+    <div class="form-group" style="margin-top:10px;!important;">
+        <label>Email</label>
         <input class="form-control" type="email" name="email" value="{{ old('email') }}">
     </div>
     <div class="form-group">
-        Nieuw wachtwoord
+        <label>Nieuw wachtwoord</label>
         <input class="form-control" type="password" name="password">
     </div>
     <div class="form-group">
-        Herhaal wachtwoord
+        <label>Herhaal wachtwoord</label>
         <input class="form-control" type="password" name="password_confirmation">
     </div>
     <div>

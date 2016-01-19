@@ -19,7 +19,7 @@
                             <div class="col-lg-4"></div>
                             <div class="col-lg-4 well">
                                 <img src="{{URL::asset('../assets/images/logo.png')}}" class="img-responsive center-block" alt="Responsive image">
-                                <div class="form-group">
+                                <div class="form-group" style="margin-top:10px;!important;">
                                 @if (count($errors))
                                     <ul class="list-unstyled">
                                         @foreach($errors->all() as $error)
