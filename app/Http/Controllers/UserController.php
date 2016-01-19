@@ -93,11 +93,11 @@ class UserController extends Controller
     }
     public function showMwMuteren($id){
         $medewerker = User::find($id);
-        return View::make('medewerkermuteren', compact('medewerker'));
+        return View::make('medewerkerwijzigen', compact('medewerker'));
     }
     public function showKlantMuteren($id){
         $klant = User::find($id);
-        return View::make('klantmuteren', compact('klant'));
+        return View::make('klantwijzigen', compact('klant'));
     }
     public function showNewMedewerker(){
         $medewerkers = User::all();
@@ -230,7 +230,7 @@ class UserController extends Controller
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
-            return redirect('/medewerkermuteren/'.$id)->withErrors($validator);
+            return redirect('/medewerkerwijzigen/'.$id)->withErrors($validator);
         }
             User::where('id', '=', $id)->update($data);
             $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' veranderd.');
@@ -272,7 +272,7 @@ class UserController extends Controller
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
-            return redirect('/klantmuteren/'.$id)->withErrors($validator);
+            return redirect('/klantwijzigen/'.$id)->withErrors($validator);
         }
 
         if(array_key_exists('password', $data)){

@@ -69,7 +69,7 @@
                           </thead>
                           <tbody>
                               @foreach($klanten as $klant)
-                              <tr style="cursor:pointer;!important;" data-href="/klantmuteren/{{$klant->id}}" >
+                              <tr style="cursor:pointer;!important;" data-href="/klantwijzigen/{{$klant->id}}" >
                               <td>{{ucfirst($klant->voornaam)}}</td>
                               @if($klant->tussenvoegsel)
                                 <td>{{$klant->tussenvoegsel}}</td>
@@ -83,7 +83,7 @@
                               <td>{{$klant->telefoonnummer}}</td>
                               <td>{{$klant->bedrijf}}</td>
                               <td class="text-right">
-                                 <a href="/klantmuteren/{{$klant->id}}" class="">
+                                 <a href="/klantwijzigen/{{$klant->id}}" class="">
                                    <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$klant->email}}">
                                           <i class="glyphicon glyphicon-pencil"></i>
                                    </button>

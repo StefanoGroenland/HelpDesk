@@ -56,7 +56,7 @@ class BugController extends Controller
             }else{
                 $projecten = Project::where('gebruiker_id', '=', $user_id)->get();
             }
-            return View::make('/bugmuteren' , compact('projecten','id'));
+            return View::make('/feedbackmelden' , compact('projecten','id'));
     }
 
     public function showBugOverzicht($id){
@@ -171,7 +171,7 @@ class BugController extends Controller
         );
         if($data['start_datum'] == '01-01-1970 00:00' || $data['start_datum'] == '31-12-1899 00:00'){
             $request->session()->flash('alert-danger', 'Start datum moet correct worden ingevuld.');
-            return redirect('/bugmuteren/'.$pro_id);
+            return redirect('/feedbackmelden/'.$pro_id);
         }
 
         $data['start_datum'] = date('Y-m-d H:i',strtotime($data['start_datum']));
@@ -179,7 +179,7 @@ class BugController extends Controller
 
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
-            return redirect('/bugmuteren/'.$pro_id)->withErrors($validator);
+            return redirect('/feedbackmelden/'.$pro_id)->withErrors($validator);
         }
         Bug::create($data);
         $dat = array(

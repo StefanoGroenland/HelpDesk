@@ -51,7 +51,7 @@
                         <h3 class="page-header">
                             {{$project->projectnaam}} <small>alle feedback van dit project</small>
                         </h3>
-                        <a href="/bugmuteren/{{$project->id}}" class="pull-left">
+                        <a href="/feedbackmelden/{{$project->id}}" class="pull-left">
                             <button type="submit" class="btn btn-success">
                                <i class="glyphicon glyphicon-plus"></i>
                                Feedback toevoegen

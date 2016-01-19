@@ -73,7 +73,7 @@
                                       <td>{{$project->user->voornaam .' '. $project->user->tussenvoegsel .' '. $project->user->achternaam }}</td>
                                       <td>{!! substr($project->omschrijvingproject,0,90) !!}</td>
                                       <td class="text-right" >
-                                      <a href="/projectmuteren/{{$project->id}}" class="">
+                                      <a href="/projectwijzigen/{{$project->id}}" class="">
                                            <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
                                                   <i class="glyphicon glyphicon-pencil"></i>
                                            </button>

@@ -17,7 +17,7 @@ class ProjectController extends Controller
 {
     public function showProjectMuteren($id){
         $project    =   Project::find($id);
-        return View::make('projectmuteren', compact('project'));
+        return View::make('projectwijzigen', compact('project'));
     }
     public function showProjectenOverzicht(){
         $projects   =   Project::with('user')->get();
