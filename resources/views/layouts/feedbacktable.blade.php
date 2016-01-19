@@ -29,7 +29,7 @@
                                         @if($bug->prioriteit == 1)
                                         <span class="label label-success">Laag</span>
                                         @elseif($bug->prioriteit == 2)
-                                        <span class="label label-warning">Gemmideld</span>
+                                        <span class="label label-warning">Gemiddeld</span>
                                         @elseif($bug->prioriteit == 3)
                                         <span class="label label-danger">Hoog</span>
                                         @elseif($bug->prioriteit == 4)
@@ -98,7 +98,7 @@
                                                             @if($bug->prioriteit == 1)
                                                             <span class="label label-success">Laag</span>
                                                             @elseif($bug->prioriteit == 2)
-                                                            <span class="label label-warning">Gemmideld</span>
+                                                            <span class="label label-warning">Gemiddeld</span>
                                                             @elseif($bug->prioriteit == 3)
                                                             <span class="label label-danger">Hoog</span>
                                                             @elseif($bug->prioriteit == 4)
