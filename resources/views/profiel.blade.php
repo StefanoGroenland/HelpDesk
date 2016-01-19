@@ -74,7 +74,7 @@
                                 <i class="fa fa-search" ></i> Verkenner<input type="file" name="profielfoto" id="profielfoto" style="color:transparent;" onchange="this.style.color = 'transparant';">
                             </span>
                           </div>
-                          <button type="submit" class="btn btn-default center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander foto</button>
+                          <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Foto wijzigen</button>
                           </form>
                         </div>
                       </div>
@@ -177,7 +177,7 @@
                          </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
                         </div>
-                            <button type="submit" class="btn btn-default center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander profiel</button>
+                            <button type="submit" class="btn btn-success pull-right"><span class="fa fa-check" aria-hidden="true"></span> Verander profiel</button>
                           </form>
                         </div>
                       </div>

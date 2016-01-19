@@ -115,7 +115,7 @@
                         </div>
                      </div>
                     <div class="row">
-                        <div class="col-lg-12"><button type="submit" name="veranderGebruiker" class="btn btn-default center-block"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Opslaan</button></div>
+                        <div class="col-lg-12"><button type="submit" name="veranderGebruiker" class="btn btn-success pull-right"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Opslaan</button></div>
                       </div>
                    </form>
                  </div>
