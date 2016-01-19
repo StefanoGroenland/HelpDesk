@@ -20,22 +20,21 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block text-center hidden-xs " style="color:#ffffff;line-height: normal!important;">
             <br>
             @if(Auth::user()->bedrijf == 'moodles')
-                      <button type="submit" class="btn btn-default btn-xs disabled fix">
-                         <i class="fa fa-clock-o"></i>
-                         {{date('d-m-y - H:i')}}
+                      <button class="btn btn-default btn-xs disabled">
+                        <i class="fa fa-clock-o"></i>
+                        {{date('d-m-y - H:i')}}
                       </button>
-                      <button type="submit" class="btn btn-default btn-xs disabled">
+                      <button class="btn btn-default btn-xs disabled">
                          <i class="fa fa-bug"></i>
                          Bugs :
                          {{count(\App\Bug::all())}}
                       </button>
-                        <button type="submit" class="btn btn-default btn-xs disabled">
+                        <button class="btn btn-default btn-xs disabled">
                            <i class="fa fa-briefcase"></i>
                            Projecten :
                            {{count(\App\Project::all())}}
                         </button>
-
-                          <button type="submit" class="btn btn-default btn-xs disabled">
+                          <button class="btn btn-default btn-xs disabled">
                              <i class="fa fa-user"></i>
                              Gebruikers :
                              {{count(\App\User::all())}}
