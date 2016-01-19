@@ -67,7 +67,7 @@
                           @else
                           <div class="form-group">
                           @endif
-                            <label for="email">Email address</label>
+                            <label for="email">E-mail</label>
                             <input type="email" class="form-control" required="true" id="email" name="email" placeholder="Email" value="{{old('email')}}">
                           </div>
                         </div>

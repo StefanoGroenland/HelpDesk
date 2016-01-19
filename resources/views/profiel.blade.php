@@ -92,49 +92,42 @@
                         <div class="row">
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <div class="form-group">
-                            <label for="email">Email address</label>
+                            <label for="email">E-mail</label>
                               <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
                             <input type="email" class="form-control" required="true" name="email" value="{{$user->email}}">
                           </div>
                           </div>
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                          <div class="form-group">
-                            <label for="email">Email address</label>
-                              <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
-                            <input type="email" class="form-control" required="true" name="email" value="{{$user->email}}">
-                          </div>
-                          </div>
-                        </div>
-                        <div class="row">
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                            <div class="form-group">
                              <label for="gebruikersnaam">Gebruikersnaam</label>
                              <input type="text" class="form-control" required="true" name="username" value="{{$user->username}}">
                            </div>
                           </div>
+                        </div>
+                        <div class="row">
+
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <div class="form-group">
                             <label for="wachtwoord">Wachtwoord</label>
                             <input type="password" class="form-control" name="password" >
                           </div>
                           </div>
-                        </div>
-                        <div class="row">
+
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                           <div class="form-group">
                             <label for="wachtwoord">Herhaal wachtwoord</label>
                             <input type="password" class="form-control" name="password_confirmation" >
                           </div>
                           </div>
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          </div>
+                          <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                           <div class="form-group">
                             <label for="voornaam">Voornaam</label>
                             <input type="text" class="form-control" required="true" name="voornaam" value="{{$user->voornaam}}">
                           </div>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                           <div class="form-group">
                             <label for="voornaam">Tussenvoegsel</label>
                             <input type="text" class="form-control" name="tussenvoegsel" value="{{$user->tussenvoegsel}}">
