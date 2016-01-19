@@ -43,10 +43,7 @@
                 </div>
                        @include('layouts.projectendashboard')
                 </div>
-
-                <div class="row">
-                        @extends('layouts.feedbacktable')
-                </div>
+                       @include('layouts.feedbacktable')
               </div>
             </div>
             <!-- /.container-fluid -->

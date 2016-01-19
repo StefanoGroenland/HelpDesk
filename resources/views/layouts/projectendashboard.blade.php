@@ -55,15 +55,15 @@
                                                         </div></div>
                                                         <div class="col-xs-12 text-right">
                                                         @if($project->prioriteit == 1)
-                                                            <span class="label label-success">{{$project->projectnaam}}</span>
+                                                            <span class="label label-success">{{substr($project->projectnaam,0,20)}}..</span>
                                                         @elseif($project->prioriteit == 2)
-                                                            <span class="label label-yellow">{{$project->projectnaam}}</span>
+                                                            <span class="label label-yellow">{{substr($project->projectnaam,0,20)}}..</span>
                                                         @elseif($project->prioriteit == 3)
-                                                            <span class="label label-danger">{{$project->projectnaam}}</span>
+                                                            <span class="label label-danger">{{substr($project->projectnaam,0,20)}}..</span>
                                                         @elseif($project->prioriteit == 4)
-                                                            <span class="label label-purple">{{$project->projectnaam}}</span>
+                                                            <span class="label label-purple">{{substr($project->projectnaam,0,20)}}..</span>
                                                             @else
-                                                            <span class="label label-default">{{$project->projectnaam}}</span>
+                                                            <span class="label label-default">{{substr($project->projectnaam,0,20)}}..</span>
                                                         @endif
                                                             <div><span class="badge">
                                                             @foreach($bugs_send as $bug)
