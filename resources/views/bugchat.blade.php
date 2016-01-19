@@ -98,7 +98,7 @@
                               @else {{date('d-m-Y H:i')}} @endif
                               " data-rule-maxlength="30">
                             </div>
-                            <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Verander</button>
+                            <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
                         </form>
                         <br>
                     </div>

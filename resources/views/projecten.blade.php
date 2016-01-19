@@ -104,7 +104,7 @@
                          <p>Weet u zeker dat u het project : <strong>{{$proj->projectnaam}}</strong> met alle gekoppelde data wilt verwijderen&hellip;</p>
                        </div>
                        <div class="modal-footer">
-                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluit</button>
+                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
                          <form method="POST" action="/verwijderProject/{{$proj->id}}" >
                          {!! method_field('DELETE') !!}
                          {!! csrf_field() !!}

@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Mijn profiel <small>profiel wijzigen</small>
+                            Mijn profiel <small>hier kunt u uw eigen profiel wijzigen</small>
                             @include('layouts.header-controls')
                         </h1>
                             @if(Auth::user()->bedrijf != 'moodles')

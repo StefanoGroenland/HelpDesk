@@ -217,17 +217,17 @@
                                       <h4 class="modal-title">Verwijder verzoek</h4>
                                     </div>
                                     <div class="modal-body">
-                                      <p>Weet u zeker dat u de bug : <strong>{{$key->id}}</strong> wilt verwijderen&hellip;</p>
+                                      <p>Weet u zeker dat u <i class="fa fa-hashtag"></i><strong>{{$key->id}}</strong> wilt verwijderen&hellip;</p>
 
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
                                       <form method="POST" action="/verwijderBug/{{$key->id}}" >
                                       {!! method_field('DELETE') !!}
                                       {!! csrf_field() !!}
                                       <button type="submit" class="btn btn-danger pull-right">
                                          {{--<i class="glyphicon glyphicon-trash"></i>--}}
-                                         Verwijder bug
+                                         Verwijder feedback
                                       </button>
                                       </form>
                                     </div>

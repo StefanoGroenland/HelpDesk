@@ -106,7 +106,7 @@
                             <label for="gebruiker_id">Koppel klant</label>
                             <select class="form-control"  id="gebruiker_id" name="gebruiker_id" disabled>
                                 @foreach($klanten as $klant)
-                                <option value="{{$klant->id}}" >{{$klant->voornaam.' '.$klant->achternaam.' #'. $klant->id }}</option>
+                                <option value="{{$klant->id}}" >{{$klant->voornaam.' '.$klant->achternaam }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -180,18 +180,17 @@
         </div>
         <!-- /#page-wrapper -->
             @section('scripts')
-                                <script type="text/javascript">
-                                            $("#radkoppel").on("click",function(){
-                                               $('#fieldset-klant').prop('disabled',true)
-                                               $('#gebruiker_id').prop('disabled',false)
-                                               $('#radmaak').prop('checked',false)
-                                            });
-                                            $("#radmaak").on("click",function(){
-                                               $('#fieldset-klant').prop('disabled',false)
-                                               $('#gebruiker_id').prop('disabled',true)
-                                               $('#radkoppel').prop('checked',false)
-                                            });
-
+                    <script type="text/javascript">
+                           $("#radkoppel").on("click",function(){
+                              $('#fieldset-klant').prop('disabled',true)
+                              $('#gebruiker_id').prop('disabled',false)
+                              $('#radmaak').prop('checked',false)
+                           });
+                           $("#radmaak").on("click",function(){
+                              $('#fieldset-klant').prop('disabled',false)
+                              $('#gebruiker_id').prop('disabled',true)
+                              $('#radkoppel').prop('checked',false)
+                           });
                      </script>
                     @stop
     </div>

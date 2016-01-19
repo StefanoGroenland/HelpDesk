@@ -36,6 +36,9 @@
                            $('input').on('click', function() {
                                $(this).tooltip('hide');
                            });
+                           $('select').on('click', function() {
+                               $(this).tooltip('hide');
+                           });
                         });
                     </script>
 
