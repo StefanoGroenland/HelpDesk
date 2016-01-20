@@ -206,6 +206,13 @@ class UserController extends Controller
     }
     public function updateMedewerker(Request $request){
         $id = $request['id'];
+
+        if(isset($_POST['radman'])){
+            $geslacht = 'man';
+        }else{
+            $geslacht = 'vrouw';
+        }
+
         $data = array(
             'id'                        => $request['id'],
             'username'                  => $request['username'],
@@ -214,7 +221,7 @@ class UserController extends Controller
             'voornaam'                  => $request['voornaam'],
             'tussenvoegsel'             => $request['tussenvoegsel'],
             'achternaam'                => $request['achternaam'],
-            'geslacht'                  => $request['geslacht'],
+            'geslacht'                  => $geslacht,
             'telefoonnummer'            => $request['telefoonnummer'],
         );
 
@@ -238,9 +245,10 @@ class UserController extends Controller
     }
     public function updateKlant(Request $request){
         $id = $request['id'];
-        if($request['bedrijf'] == 'moodles' || $request['bedrijf'] == 'Moodles'){
-            $request->session()->flash('alert-danger', 'Er mogen geen klanten met \'moodles\' als bedrijf worden aangemaakt.');
-            return redirect('/klanten');
+        if(isset($_POST['radman'])){
+            $geslacht = 'man';
+        }else{
+            $geslacht = 'vrouw';
         }
         $data = array(
             'id'                        => $request['id'],
@@ -249,7 +257,7 @@ class UserController extends Controller
             'voornaam'                  => $request['voornaam'],
             'tussenvoegsel'             => $request['tussenvoegsel'],
             'achternaam'                => $request['achternaam'],
-            'geslacht'                  => $request['geslacht'],
+            'geslacht'                  => $geslacht,
             'telefoonnummer'            => $request['telefoonnummer'],
             'bedrijf'                   => $request['bedrijf'],
             'password'                  => $request['password'],
@@ -266,7 +274,7 @@ class UserController extends Controller
             'telefoonnummer'            => 'required|numeric|min:11',
             'voornaam'                  => 'required|min:4',
             'achternaam'                => 'required|min:4',
-            'bedrijf'                   => 'required|min:4',
+            'bedrijf'                   => 'required|not_in:moodles,Moodles',
             'password'                  => 'min:4|confirmed',
             'password_confirmation'     => 'min:4',
         );
@@ -300,6 +308,12 @@ class UserController extends Controller
     }
     public function addMedewerker(Request $request){
 
+        if(isset($_POST['radman'])){
+            $geslacht = 'man';
+        }else{
+            $geslacht = 'vrouw';
+        }
+
         $data = array(
             'username'                  => $request['username'],
             'email'                     => $request['email'],
@@ -310,7 +324,7 @@ class UserController extends Controller
             'tussenvoegsel'             => $request['tussenvoegsel'],
             'achternaam'                => $request['achternaam'],
             'telefoonnummer'            => $request['telefoonnummer'],
-            'geslacht'                  => $request['geslacht'],
+            'geslacht'                  => $geslacht,
             'profielfoto'               => 'assets/images/avatar.png',
         );
 
@@ -320,6 +334,7 @@ class UserController extends Controller
             'telefoonnummer'            => 'numeric',
             'password'                  => 'required|min:4|confirmed',
             'password_confirmation'     => 'required|min:4',
+            'geslacht'     => 'required',
         );
 
         $validator = Validator::make($data,$rules);
@@ -335,6 +350,11 @@ class UserController extends Controller
 }
     public function addUser(Request $request){
 
+        if(isset($_POST['radman'])){
+            $geslacht = 'man';
+        }else{
+            $geslacht = 'vrouw';
+        }
 
         $data = array(
             'username'                  => $request['username'],
@@ -346,7 +366,7 @@ class UserController extends Controller
             'tussenvoegsel'             => $request['tussenvoegsel'],
             'achternaam'                => $request['achternaam'],
             'telefoonnummer'            => $request['telefoonnummer'],
-            'geslacht'                  => $request['geslacht'],
+            'geslacht'                  => $geslacht,
             'profielfoto'               => 'assets/images/avatar.png',
         );
         $rules = array(
@@ -356,6 +376,7 @@ class UserController extends Controller
             'bedrijf'                   => 'required|not_in:moodles,Moodles',
             'password'                  => 'required|min:4|confirmed',
             'password_confirmation'     => 'required|min:4',
+            'geslacht'     => 'required',
         );
 
         $validator = Validator::make($data,$rules);

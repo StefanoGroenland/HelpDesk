@@ -30,8 +30,13 @@ class ProjectController extends Controller
     }
     public function addProject(Request $request){
 
-            if (isset($_POST['radmaak'])) {
+            if(isset($_POST['radman'])){
+                $geslacht = 'man';
+            }else{
+                $geslacht = 'vrouw';
+            }
 
+            if (isset($_POST['radmaak'])) {
                 $data = array(
                     'projectnaam'                   => $request['projectnaam'],
                     'liveurl'                       => $request['liveurl'],
@@ -48,7 +53,7 @@ class ProjectController extends Controller
                     'voornaam'                      => $request['voornaam'],
                     'tussenvoegsel'                 => $request['tussenvoegsel'],
                     'achternaam'                    => $request['achternaam'],
-                    'geslacht'                      => $request['geslacht'],
+                    'geslacht'                      => $geslacht,
                     'telefoonnummer'                => $request['telefoonnummer'],
                 );
 
@@ -64,6 +69,7 @@ class ProjectController extends Controller
                     'projectnaam'                   => 'required|min:4',
                     'gebruikersnaam'                => 'required|min:4',
                     'wachtwoord'                    => 'required|min:4',
+                    'geslacht'                      => 'required',
 
 
                     'projectnaam'                   => 'required|unique:projecten',
@@ -89,7 +95,7 @@ class ProjectController extends Controller
                         'voornaam'                  => $request['voornaam'],
                         'tussenvoegsel'             => $request['tussenvoegsel'],
                         'achternaam'                => $request['achternaam'],
-                        'geslacht'                  => $request['geslacht'],
+                        'geslacht'                  => $geslacht,
                         'telefoonnummer'            => $request['telefoonnummer'],
                         'profielfoto'               => 'assets/images/avatar.png',
                     ]);

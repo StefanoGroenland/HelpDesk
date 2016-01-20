@@ -103,10 +103,21 @@
                                            <input type="text" class="form-control" id="tussenvoegsel2" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="{{$klant->tussenvoegsel}}">
                                          </div>
                                          </div>
-                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                          <div class="form-group">
                                            <label for="achternaam">Achternaam</label>
                                            <input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="{{$klant->achternaam}}">
+                                         </div>
+                                         </div>
+                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                         <label for="achternaam">Geslacht</label>
+                                         <div class="form-group">
+                                           <label class="radio-inline">
+                                             <input type="radio" name="radman" id="radman" @if($klant->geslacht == 'man') checked @endif> Man
+                                           </label>
+                                           <label class="radio-inline">
+                                             <input type="radio" name="radvrouw" id="radvrouw" @if($klant->geslacht == 'vrouw') checked @endif> Vrouw
+                                           </label>
                                          </div>
                                          </div>
                                        </div>
@@ -128,18 +139,6 @@
                                          </div>
                                          </div>
                                        </div>
-                                         <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <div class="form-group">
-                                              <label for="geslacht">Geslacht</label>
-                                                <select class="form-control" id="geslacht2" required="true" name="geslacht">
-                                                <option value="man" @if($klant->geslacht == 'man') selected @endif >Man</option>
-                                                <option value="vrouw" @if($klant->geslacht == 'vrouw') selected @endif >Vrouw</option>
-                                                </select>
-                                              </div>
-                                            </div>
-                                         </div>
-
 
                                          <div class="row">
                                            <div class="col-lg-12"><button type="submit" name="veranderGebruiker" class="btn btn-success pull-right"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Opslaan</button></div>
@@ -161,7 +160,16 @@
 
      </div>
      <!-- /#wrapper -->
-
+        @section('scripts')
+        <script type="text/javascript">
+              $("#radvrouw").on("click",function(){
+                 $('#radman').prop('checked',false)
+              });
+              $("#radman").on("click",function(){
+                 $('#radvrouw').prop('checked',false)
+              });
+        </script>
+        @endsection
      @extends('layouts.footer')
 
  </body>

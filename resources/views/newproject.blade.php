@@ -154,10 +154,12 @@
                                      <input type="text" class="form-control" id="achternaam" required="true" name="achternaam" placeholder="Achternaam" value="{{old('achternaam')}}">
                                 </div>
                                 <div class="form-group">
-                                     <select class="form-control"  id="geslacht" name="geslacht">
-                                         <option value="man" >Man</option>
-                                         <option value="vrouw" >Vrouw</option>
-                                     </select>
+                                  <label class="radio-inline">
+                                    <input type="radio" name="radman" id="radman" checked> Man
+                                  </label>
+                                  <label class="radio-inline">
+                                    <input type="radio" name="radvrouw" id="radvrouw"> Vrouw
+                                  </label>
                                 </div>
                                 @if($errors->has('telefoonnummer'))
                                 <div class="form-group has-error">
@@ -190,6 +192,14 @@
                               $('#fieldset-klant').prop('disabled',false)
                               $('#gebruiker_id').prop('disabled',true)
                               $('#radkoppel').prop('checked',false)
+                           });
+                     </script>
+                     <script type="text/javascript">
+                           $("#radvrouw").on("click",function(){
+                              $('#radman').prop('checked',false)
+                           });
+                           $("#radman").on("click",function(){
+                              $('#radvrouw').prop('checked',false)
                            });
                      </script>
                     @stop

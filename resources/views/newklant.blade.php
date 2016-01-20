@@ -120,24 +120,38 @@
                           <input type="text" class="form-control" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="{{old('tussenvoegsel')}}">
                         </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                          <div class="form-group">
                            <label for="achternaam">Achternaam</label>
                            <input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam" value="{{old('achternaam')}}">
                          </div>
                          </div>
+                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <label for="achternaam">Geslacht</label>
+                            <div class="form-group">
+                              <label class="radio-inline">
+                                <input type="radio" name="radman" id="radman" checked> Man
+                              </label>
+                              <label class="radio-inline">
+                                <input type="radio" name="radvrouw" id="radvrouw" > Vrouw
+                              </label>
+                            </div>
+                         </div>
                    </div>
 
                    <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                         <div class="form-group">
-                         <label for="geslacht">Geslacht</label>
-                           <select class="form-control" id="geslacht" required="true" name="geslacht">
-                             <option value="man">Man</option>
-                             <option value="vrouw">Vrouw</option>
-                           </select>
+                         @if($errors->has('telefoonnummer'))
+                            <div class="form-group has-error">
+                            @else
+                            <div class="form-group">
+                            @endif
+                            <label for="telefoonnummer">Telefoonnummer</label>
+                            <input type="text" class="form-control" required="true" id="telefoonnummer" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer" value="{{old('telefoonnummer')}}">
+                          </div>
                          </div>
-                         </div>
+
+
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         @if($errors->has('bedrijf'))
                           <div class="form-group has-error">
@@ -149,18 +163,7 @@
                         </div>
                         </div>
                    </div>
-                   <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                         @if($errors->has('telefoonnummer'))
-                           <div class="form-group has-error">
-                           @else
-                           <div class="form-group">
-                           @endif
-                           <label for="telefoonnummer">Telefoonnummer</label>
-                           <input type="text" class="form-control" required="true" id="telefoonnummer" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer" value="{{old('telefoonnummer')}}">
-                         </div>
-                        </div>
-                   </div>
+
                     <div class="row">
                            <div class="col-lg-12"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button></div>
                        </div>
@@ -210,6 +213,17 @@
                       });
             });
         </script>
+
+        <script type="text/javascript">
+               $("#radvrouw").on("click",function(){
+                  $('#radman').prop('checked',false)
+               });
+               $("#radman").on("click",function(){
+                  $('#radvrouw').prop('checked',false)
+               });
+         </script>
+
+
         @stop
 
     </div>
