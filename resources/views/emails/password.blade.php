@@ -10,7 +10,7 @@ Wachtwoord herstel
 
 <p>Onlangs is er een aanvraag ingediend om uw wachtwoord te resetten,<br>
 Door op de knop : <a href="{{ url('auth/reset/'.$token) }}"><button class="btn btn-success btn-xs" >Herstel uw wachtwoord</button></a>
-te drukken.<br>
+te drukken. Kunt u uw wachtwoord aanpassen.<br>
 </p>
 
 

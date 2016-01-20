@@ -51,14 +51,22 @@
                             </table>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                       $('tr[data-href]').on("click", function() {
-                            document.location = $(this).data('href');
-                        });
-                        $('tr button[data-target]').on("click", function() {
-                            document.location = $(this).data('target');
-                        });
-                    </script>
+                    @section('scripts')
+                                <script type="text/javascript">
+                                   $(document).ready(function() {
+                                         $('.data_table').on("click",'tr[data-href]',  function() {
+                                            window.location.href = $(this).data('href');
+                                        });
+                                        $('.deleteButton').on("click", function(event) {
+
+                                            var modalId = $(this).data('modal-id');
+                                            event.stopPropagation();
+                                            jQuery.noConflict()
+                                            $('#myModal'+modalId).modal('show');
+                                        });
+                                   })
+                                </script>
+                    @endsection
                     @else
                     <div class="col-lg-12">
                                             <h4>Laatst gemelde feedback</h4>
@@ -128,14 +136,23 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <script type="text/javascript">
-                                                 $('tr[data-href]').on("click", function() {
-                                                      document.location = $(this).data('href');
-                                                  });
-                                                  $('tr button[data-target]').on("click", function() {
-                                                      document.location = $(this).data('target');
-                                                  });
-                                              </script>
+                                        @section('scripts')
+                                                    <script type="text/javascript">
+                                                       $(document).ready(function() {
+                                                             $('.data_table').on("click",'tr[data-href]',  function() {
+                                                                window.location.href = $(this).data('href');
+                                                            });
+                                                            $('.deleteButton').on("click", function(event) {
+
+                                                                var modalId = $(this).data('modal-id');
+                                                                event.stopPropagation();
+                                                                jQuery.noConflict()
+                                                                $('#myModal'+modalId).modal('show');
+                                                            });
+                                                       })
+
+                                                    </script>
+                                         @endsection
 
                                         @endif
 
