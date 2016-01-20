@@ -22,8 +22,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Project toevoegen <small>Hier kan een project toegevoegd worden</small>
-                            @include('layouts.header-controls')
+                            {{--Project toevoegen <small>hier kan een project toegevoegd worden</small>--}}
+                            {{--@include('layouts.header-controls')--}}
                         </h1>
                         {{--breadcrumbs layout spot!--}}
                             @if(Auth::user()->bedrijf != 'moodles')

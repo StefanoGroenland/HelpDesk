@@ -22,10 +22,10 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Project wijzigen <small> hier kan een project gewijzigd worden </small>
-                            @include('layouts.header-controls')
-                        </h1>
+                        {{--<h1 class="page-header">--}}
+                            {{--Project wijzigen <small> hier kan een project gewijzigd worden </small>--}}
+                            {{--@include('layouts.header-controls')--}}
+                        {{--</h1>--}}
                         {{--breadcrumbs layout spot!--}}
                             @if(Auth::user()->bedrijf != 'moodles')
                             <ol class="breadcrumb">

@@ -26,46 +26,46 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'UserController@showDashboard'));
 
     Route::group(['middleware' => 'isAdmin'], function(){
-        Route::get('/klantwijzigen/{id}', array('as' => 'kmuteren', 'uses' =>'UserController@showKlantMuteren'));
-        Route::get('/newklant', array('as' => 'klantmuteren', 'uses' =>'UserController@showNewKlant'));
+        Route::get('/klantwijzigen/{id}', array('as' => 'klantwijzigen', 'uses' =>'UserController@showKlantMuteren'));
+        Route::get('/newklant', array('as' => 'newklant', 'uses' =>'UserController@showNewKlant'));
         Route::post('/updateKlantData', array('as' => 'klantdata', 'uses' => 'UserController@getKlantData'));
         Route::put('/updateKlant', array('as' => 'veranderk', 'uses' => 'UserController@updateKlant'));
         Route::post('addUser', 'UserController@addUser');
-        Route::get('/klanten', 'UserController@showKlantenOverzicht');
+        Route::get('/klanten', array('as' => 'klanten', 'uses' => 'UserController@showKlantenOverzicht' ));
 
         //    medewerker routes
         Route::get('/admindashboard', array('as' => 'admindashboard', 'uses' => 'UserController@showDashboard'));
-        Route::get('/medewerkerwijzigen/{id}', array('as' => 'mwmuteren', 'uses' =>'UserController@showMwMuteren'));
-        Route::get('/newmedewerker', array('as' => 'newmw', 'uses' =>'UserController@showNewMedewerker'));
+        Route::get('/medewerkerwijzigen/{id}', array('as' => 'medewerkerwijzigen', 'uses' =>'UserController@showMwMuteren'));
+        Route::get('/newmedewerker', array('as' => 'newmedewerker', 'uses' =>'UserController@showNewMedewerker'));
         Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
         Route::post('/updateData', array('as' => 'updateData', 'uses' => 'UserController@getUpdateData'));
         Route::post('addMedewerker', 'UserController@addMedewerker');
-        Route::get('/medewerkers', 'UserController@showMedewerkersOverzicht');
+        Route::get('/medewerkers',array('as' => 'medewerkers', 'uses' =>  'UserController@showMedewerkersOverzicht'));
         Route::delete('/verwijderGebruiker/{id}', 'UserController@verwijderGebruiker');
         Route::put('/resetUserPassword', 'UserController@resetUserPassword');
 
 
         //    ProjectController Routes
-        Route::get('/newproject', array('as' => 'nieuwproject', 'uses' => 'ProjectController@showNewProject'));
-        Route::get('/projectwijzigen/{id}', array('as' => 'projectmuteren', 'uses' => 'ProjectController@showProjectMuteren'));
+        Route::get('/newproject', array('as' => 'newproject', 'uses' => 'ProjectController@showNewProject'));
+        Route::get('/projectwijzigen/{id}', array('as' => 'projectwijzigen', 'uses' => 'ProjectController@showProjectMuteren'));
         Route::put('/updateProject/{id}', array('as' => 'veranderPJ', 'uses' => 'ProjectController@updateProject'));
         Route::post('/updateProjectData', array('as' => 'updateData', 'uses' => 'ProjectController@getUpdateData'));
         Route::delete('/verwijderProject/{id}', 'ProjectController@verwijderProject');
         Route::post('/addProject', 'ProjectController@addProject');
-        Route::get('/projecten', 'ProjectController@showProjectenOverzicht');
+        Route::get('/projecten',array('as' => 'projecten', 'uses' => 'ProjectController@showProjectenOverzicht'));
 
         //    BugController Routes
         Route::delete('/verwijderBug/{id}', 'BugController@verwijderBug');
         Route::put('/updateBug/{id}',array('as' => 'updateBug', 'uses' => 'BugController@updateBug'));
     });
 
-    Route::get('/feedbackmelden/{id}', array('as' => 'bugmuteren', 'uses' => 'BugController@showBugMuteren'));
+    Route::get('/feedbackmelden/{id}', array('as' => 'feedbackmelden', 'uses' => 'BugController@showBugMuteren'));
 
     Route::get('/bugchat/{id}',array('as' => 'bugchat', 'uses' => 'BugController@showbugChat'));
     Route::post('/addBug/{id}', 'BugController@addBug');
     Route::post('/upload', 'BugController@upload');
     Route::get('/bugoverzicht/{id}', array('as' => 'bugoverzicht', 'uses' => 'BugController@showBugOverzicht'));
-    Route::get('/bugs/{id}', array('as' => 'bugoverzicht', 'uses' => 'BugController@showBugOverzichtPerProject'));
+    Route::get('/bugs/{id}', array('as' => 'bugs', 'uses' => 'BugController@showBugOverzichtPerProject'));
 
 //    ChatController Routes
     Route::post('/sendMessage', 'ChatController@sendMessage');

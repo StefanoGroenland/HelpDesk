@@ -24,10 +24,10 @@
           <!-- Page Heading -->
           <div class="row">
               <div class="col-lg-12">
-                  <h1 class="page-header">
-                      Klant wijzigen <small> hier kan een klant gewijzigd worden </small>
-                      @include('layouts.header-controls')
-                  </h1>
+                  {{--<h1 class="page-header">--}}
+                      {{--Klant wijzigen <small> hier kan een klant gewijzigd worden </small>--}}
+                      {{--@include('layouts.header-controls')--}}
+                  {{--</h1>--}}
                   @if(Auth::user()->bedrijf != 'moodles')
                   <ol class="breadcrumb">
                       @include('layouts.breadcrumbs')
@@ -113,10 +113,10 @@
                                          <label for="achternaam">Geslacht</label>
                                          <div class="form-group">
                                            <label class="radio-inline">
-                                             <input type="radio" name="radman" id="radman" @if($klant->geslacht == 'man') checked @endif> Man
+                                             <input type="radio" name="radman" id="radman" @if($medewerker->geslacht == 'man') checked @endif> Man
                                            </label>
                                            <label class="radio-inline">
-                                             <input type="radio" name="radvrouw" id="radvrouw" @if($klant->geslacht == 'vrouw') checked @endif> Vrouw
+                                             <input type="radio" name="radvrouw" id="radvrouw" @if($medewerker->geslacht == 'vrouw') checked @endif> Vrouw
                                            </label>
                                          </div>
                                          </div>

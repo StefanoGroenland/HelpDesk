@@ -89,6 +89,10 @@ class User extends Model implements AuthenticatableContract,
             return redirect('/medewerkers');
         }else {
             DB::table('gebruikers')->where('id', '=', $id)->delete();
+            $projecten = DB::table('projecten')->where('gebruiker_id','=',$id)->get();
+            foreach($projecten as $pro){
+                Project::verwijderProject($pro->id);
+            }
             return redirect('/klanten');
         }
     }
