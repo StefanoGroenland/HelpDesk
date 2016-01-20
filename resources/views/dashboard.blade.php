@@ -22,10 +22,10 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Dashboard <small>Overzicht</small>
-                            @include('layouts.header-controls')
-                        </h1>
+                        {{--<h1 class="page-header">--}}
+                            {{--Dashboard <small>Overzicht</small>--}}
+                            {{--@include('layouts.header-controls')--}}
+                        {{--</h1>--}}
                         {{--Breadcrumbs spot!--}}
                             @if(Auth::user()->bedrijf != 'moodles')
                             <ol class="breadcrumb">
