@@ -20,11 +20,6 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                    @if(Auth::user()->bedrijf != 'moodles')
-
-                        @else
-                            @include('layouts.header-controls')
-                        @endif
                             @if(Auth::user()->bedrijf != 'moodles')
                             <ol class="breadcrumb">
                                 @include('layouts.breadcrumbs')
