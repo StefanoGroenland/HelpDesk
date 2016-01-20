@@ -21,10 +21,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                     @if(Auth::user()->bedrijf != 'moodles')
-                        {{--<h1 class="page-header">--}}
-                            {{--Feedback <small>feedback overzicht</small>--}}
-                            {{--@include('layouts.header-controls')--}}
-                        {{--</h1>--}}
+
                         @else
                             @include('layouts.header-controls')
                         @endif

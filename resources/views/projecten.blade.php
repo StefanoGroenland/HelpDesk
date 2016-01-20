@@ -22,10 +22,6 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        {{--<h1 class="page-header">--}}
-                            {{--Projecten <small> een overzicht van alle projecten</small>--}}
-                            {{--@include('layouts.header-controls')--}}
-                        {{--</h1>--}}
                         <a href="../newproject" class="pull-left" style="margin-bottom: 25px;!important;">
                               <button type="submit" class="btn btn-success">
                                  <i class="glyphicon glyphicon-plus"></i>

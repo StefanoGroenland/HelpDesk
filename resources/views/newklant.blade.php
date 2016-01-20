@@ -23,10 +23,6 @@
          <!-- Page Heading -->
          <div class="row">
              <div class="col-lg-12">
-                 {{--<h1 class="page-header">--}}
-                     {{--Klant toevoegen <small>hier kan een klant toegevoegd worden</small>--}}
-                     {{--@include('layouts.header-controls')--}}
-                 {{--</h1>--}}
                     @if(Auth::user()->bedrijf != 'moodles')
                     <ol class="breadcrumb">
                         @include('layouts.breadcrumbs')

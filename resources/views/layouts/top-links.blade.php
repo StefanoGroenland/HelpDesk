@@ -41,7 +41,7 @@
            <a href="/dashboard">
            <img class="img-responsive pull-left " alt="profile_img" src="../assets/images/logo.png" style="margin-left:10px;margin-bottom: 5px; min-height: 50px;!important;max-height: 50px;!important min-width: 200px;!important; max-width: 200px;!important;"/>
            </a>
-           <h1 class="navbar-brand hidden-xs hidden-sm hidden-md" style="color:#ffffff; vertical-align: text-bottom;!important;font-size:30px;" >
+           <h4 class="navbar-brand hidden-xs hidden-sm hidden-md" style="color:#ffffff; vertical-align: text-bottom;!important;margin-bottom:0px;!important;" >
            @if(\Request::route()->getName() == 'dashboard')
                Dashboard <small> Overzicht</small>
            @elseif(\Request::route()->getName() == 'profiel')
@@ -53,7 +53,7 @@
            @elseif(\Request::route()->getName() == 'newproject')
                 Project toevoegen <small> hier kan een project toegevoegd worden</small>
            @elseif(\Request::route()->getName() == 'newmedewerker')
-                Medewerker toevoegen <small> hier kan een medewerker toegevoegd worden</small>
+                Medew. toevoegen <small> hier kan een medewerker toegevoegd worden</small>
            @elseif(\Request::route()->getName() == 'newklant')
                Klant toevoegen <small> hier kan een klant toegevoegd worden</small>
            @elseif(\Request::route()->getName() == 'medewerkerwijzigen')
@@ -75,7 +75,7 @@
             @else
                 Titel <small> nog niet toegevoegd</small>
            @endif
-           </h1>
+           </h4>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 center-block text-center hidden-xs hidden-sm hidden-md" style="color:#ffffff;line-height: normal!important;">
         @if(Auth::user()->bedrijf == 'moodles')
@@ -88,22 +88,22 @@
                           </li>
                           <li class="pull-right">
                               <a href="{{URL::to('/klanten')}}">
-                                 <button class="btn btn-default hidden-md hidden-sm hidden-xs"><i class="fa fa-user"></i> Klanten</button>
+                                 <button class="btn btn-default"><i class="fa fa-user"></i> Klanten</button>
                               </a>
                           </li>
                           <li class="pull-right">
                             <a href="{{URL::to('/projecten')}}">
-                               <button class="btn btn-default hidden-md hidden-sm hidden-xs"><i class="fa fa-briefcase"></i> Projecten</button>
+                               <button class="btn btn-default"><i class="fa fa-briefcase"></i> Projecten</button>
                             </a>
                           </li>
                           <li class="pull-right">
                             <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
-                               <button class="btn btn-default hidden-md hidden-sm hidden-xs"><i class="fa fa-bug"></i> Feedback overzicht</button>
+                               <button class="btn btn-default"><i class="fa fa-bug"></i> Feedback overzicht</button>
                             </a>
                         </li>
                         <li class="pull-right">
                                       <a href="{{URL::to('/dashboard')}}">
-                                         <button class="btn btn-default hidden-md hidden-sm hidden-xs"><i class="fa fa-building"></i> Dashboard</button>
+                                         <button class="btn btn-default"><i class="fa fa-building"></i> Dashboard</button>
                                       </a>
                                   </li>
                         </ul>

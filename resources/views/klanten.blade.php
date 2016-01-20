@@ -23,11 +23,6 @@
           <!-- Page Heading -->
           <div class="row">
               <div class="col-lg-12">
-                  {{--<h1 class="page-header">--}}
-                      {{--Klanten<small> een overzicht van alle klanten.</small>--}}
-                      {{--@include('layouts.header-controls')--}}
-                  {{--</h1>--}}
-
                   <a href="../newklant" class="pull-left" style="margin-bottom: 25px;!important;">
                       <button type="submit" class="btn btn-success">
                          <i class="glyphicon glyphicon-plus"></i>
