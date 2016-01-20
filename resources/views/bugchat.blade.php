@@ -152,29 +152,6 @@
                     </div>
                 </div>
                 <hr>
-                <h4>Bijlages</h4>
-                <ul class="list-unstyled list-inline center-block">
-                @if(count($bug_attachments) > 0)
-                    @foreach($bug_attachments as $ba)
-                    <li>
-                      <a href="../{{$ba->image}}" target="_blank">
-                        @if(strpos($ba->image,'doc') || strpos($ba->image,'docx') )
-                            <img data-toggle="tooltip" title="{{$ba->created_at->format('d-m-Y H:i')}}" src="../assets/images/word_file.png" width="50" height="50" >
-                        @elseif(strpos($ba->image,'pdf') )
-                            <img data-toggle="tooltip" title="{{$ba->created_at->format('d-m-Y H:i')}}" src="../assets/images/pdf_file.png" width="50" height="50" >
-                        @elseif(strpos($ba->image,'csv') )
-                            <img data-toggle="tooltip" title="{{$ba->created_at->format('d-m-Y H:i')}}" src="../assets/images/excel_file.png" width="50" height="50" >
-                        @else
-                            <img data-toggle="tooltip" title="{{$ba->created_at->format('d-m-Y H:i')}}" src="../{{$ba->image}}" width="50" height="50" >
-                        @endif
-                      </a>
-                    </li>
-                    @endforeach
-                @else
-                Geen bijlages gevonden
-                @endif
-                </ul>
-                <hr>
                </div>
                     <h3>Discussie
                         <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
