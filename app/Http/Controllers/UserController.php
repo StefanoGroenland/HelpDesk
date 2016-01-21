@@ -391,17 +391,8 @@ class UserController extends Controller
     }
     public function verwijderGebruiker(){
             $sid = Route::current()->getParameter('id');
-            session()->flash('alert-danger', 'Gebruiker met id : ' . $sid . ' verwijderd.');
+            $user = User::find($sid);
+            session()->flash('alert-success', 'Gebruiker ' . $user->voornaam . ' verwijderd.');
             return User::verwijderGebruiker($sid);
     }
-//    public function resetUserPassword(Request $request){
-//        $email = $request->input('email');
-//        $data = array(
-//            'email'   => $request['email'],
-//            'password'   => Hash::make($request['password']),
-//        );
-//        User::where('email', '=', $email)->update($data);
-//        $request->session()->flash('alert-success',  $request['email']. ' veranderd.');
-//        return redirect('/admindashboard');
-//    }
 }

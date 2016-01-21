@@ -14,8 +14,6 @@
          <link href="{{URL::asset('../assets/css/bootstrap.css')}}" rel="stylesheet">
           <!-- Custom CSS -->
          <link href="{{URL::asset('../assets/css/sb-admin.css')}}" rel="stylesheet">
-          <!-- Morris Charts CSS -->
-         <link href="{{URL::asset('../assets/css/plugins/morris.css')}}" rel="stylesheet">
           <!-- Custom Fonts -->
           {{--<link href="{{URL::asset('../assets/fonts/css/font-awesome.css')}}" rel="stylesheet" type="text/css">--}}
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

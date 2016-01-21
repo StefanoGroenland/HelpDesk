@@ -84,8 +84,9 @@ class BugController extends Controller
 
     public function verwijderBug(){
         $sid = Route::current()->getParameter('id');
+        $bug = Bug::find($sid);
         $pid = Bug::defineProject($sid);
-        session()->flash('alert-danger', 'Bug met id : '. $sid . ' verwijderd.');
+        session()->flash('alert-success', 'Feedback : '. $bug->titel . ' verwijderd.');
         Bug::verwijderBug($sid);
         return redirect('/bugs/'.$pid->project_id);
     }
@@ -131,7 +132,7 @@ class BugController extends Controller
             });
         }
 
-        $request->session()->flash('alert-success', 'Bug # '. $bug->id . ' veranderd.');
+        $request->session()->flash('alert-success', ''. $bug->titel . ' veranderd.');
         return redirect('/bugchat/'. $bug->id);
     }
 

@@ -46,7 +46,7 @@ class ChatController extends Controller
                     }
                 }else{
 
-                    $request->session()->flash('alert-info', 'Bericht zonder bijlage verstuurd.');
+                    $request->session()->flash('alert-warning', 'Bericht zonder bijlage verstuurd.');
                     Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
                     if(Auth::user()->bedrijf == 'moodles'){
                         Bug::lastPerson($bug_id,1,0);
@@ -97,7 +97,7 @@ class ChatController extends Controller
                     return redirect('/bugchat/'.$id);
                 }
             }
-            $request->session()->flash('alert-info', 'Bericht met bijlage verstuurd.');
+            $request->session()->flash('alert-success', 'Bericht met bijlage verstuurd.');
 
 
             if(strpos($ava,'doc') || strpos($ava,'docx')){
@@ -165,7 +165,7 @@ class ChatController extends Controller
             }
             return redirect('/bugchat/'.$id);
         }else{
-            $request->session()->flash('alert-warning', 'Bericht verzenden mislukt, geen bericht content gevonden.');
+            $request->session()->flash('alert-warning', 'Bericht verzenden mislukt, geen bericht gevonden.');
             return redirect('/bugchat/'.$bug_id);
         }
         $request->session()->flash('alert-alert', 'Er ging iets mis. Neem contact op met de systeembeheerder !');
