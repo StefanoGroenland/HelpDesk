@@ -1,14 +1,4 @@
-    <link href="{{URL::asset('../assets/css/bootstrap.css')}}" rel="stylesheet">
-     <!-- Custom CSS -->
-     <link href="{{URL::asset('../assets/css/sb-admin.css')}}" rel="stylesheet">
-     <!-- Morris Charts CSS -->
-     <link href="{{URL::asset('../assets/css/plugins/morris.css')}}" rel="stylesheet">
-     <!-- Custom Fonts -->
-     {{--<link href="{{URL::asset('../assets/fonts/css/font-awesome.css')}}" rel="stylesheet" type="text/css">--}}
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-
-     <link href="{{URL::asset('../assets/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
 
 
      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -44,7 +34,7 @@
 
     {{--datatables--}}
         <script src="{{URL::asset('../assets/js/datatables.js')}}"></script>
-        <link href="{{URL::asset('../assets/css/datatables.min.css')}}" rel="stylesheet" type="text/css">
+
 
         <script type="text/javascript">
                             $(document).ready( function () {
