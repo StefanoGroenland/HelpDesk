@@ -204,12 +204,22 @@
                         @if($bug->status == 'gesloten')
 
                         @elseif($bug->status != 'gesloten')
-                        <button data-toggle="tooltip" title="U kunt ook bijlages mee versturen! Klik op 'Bijlages kiezen'!" type="submit" style="margin-left:10px;" class="btn btn-success pull-right sendButton">
-                            <i class="fa fa-send"></i> Verstuur
-                        </button>
-                        <span data-toggle="tooltip" title="Hier kunt u een bestand kiezen als bijlage" class="btn btn-success btn-file pull-right">
-                            <i class="glyphicon glyphicon-search" ></i> Bijlage kiezen <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"  >
-                        </span>
+                        <div class="row">
+                        <div class="col-lg-8"></div>
+                        <div class="col-lg-4">
+                            <button data-toggle="tooltip" title="U kunt ook bijlages mee versturen! Klik op 'Bijlages kiezen'!" type="submit" style="margin-left:10px;" class="btn btn-success pull-right sendButton">
+                                <i class="fa fa-send"></i> Verstuur
+                            </button>
+                            <div class="input-group">
+                              <span class="input-group-btn">
+                                <span class="btn btn-success" data-toggle="tooltip" title="Hier kunt u een bestand kiezen als bijlage" onclick="$(this).parent().find('input[type=file]').click();"><i class="fa fa-search" ></i> Bijlage kiezen</span>
+                                <input name="file[]" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());" style="display: none;" type="file">
+                              </span>
+                              <span class="form-control"></span>
+                            </div>
+                        </div>
+                       </div>
+
                         @else
                         @endif
                     </form>
@@ -293,7 +303,7 @@
                             if($this.hasClass('sendButton')){
                                 $this.text('Verstuur')
                             }else{
-                                $this.text('Bericht wordt verstuurd.');
+                                $this.html("<i class='fa fa-spinner fa-spin' ></i>Versturen..");
                                 $this.attr("disabled", true);
                                 e.preventDefault();
                                 setTimeout(function(){

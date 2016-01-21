@@ -41,7 +41,7 @@
                           <h3 class="panel-title">Profiel</h3>
                         </div>
                         <div class="panel-body">
-                          <form method="POST" action="/profiel/upload" files="true" enctype="multipart/form-data">
+                          <form method="POST" class="formulier" action="/profiel/upload" files="true" enctype="multipart/form-data">
                           {!! csrf_field() !!}
                           <input type="hidden" name="_method" value="PUT">
                           <input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
@@ -53,15 +53,17 @@
                             @endif
                             "
                             alt="gfxuser" class="img-responsive center-block">
-                            <div class="form-group center-block text-center">
-                            <label class="center-block text-center" for="fotoinput">Kies uw foto</label>
-                            {{--<input class="center-block" type="file"  name="profielfoto" id="profielfoto">--}}
-                            <span class="btn btn-default btn-file text-center">
-                                <i class="fa fa-search" ></i> Verkenner<input type="file" name="profielfoto" id="profielfoto" style="color:transparent;" onchange="this.style.color = 'transparant';">
+                          <button  type="submit" style="margin-left:10px;" class="btn btn-success pull-right sendButton">
+                              <i class="fa fa-check"></i> Foto wijzigen
+                          </button>
+                          <div class="input-group">
+                            <span class="input-group-btn">
+                              <span class="btn btn-success" data-toggle="tooltip" title="Kies een foto" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
+                              <input name="profielfoto" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());" style="display: none;" type="file">
                             </span>
+                            <span class="form-control"></span>
                           </div>
-                          <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Foto wijzigen</button>
-                          </form>
+                        </form>
                         </div>
                       </div>
                     </div>
@@ -168,6 +170,28 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
+    @section('scripts')
+    <script type="text/javascript">
+    $('.sendButton').click(function(e){
+         var $this = $(this);
+         var form = $('.formulier');
+         $this.toggleClass('sendButton');
+         if($this.hasClass('sendButton')){
+             $this.text('Verstuur')
+         }else{
+             $this.html("<i class='fa fa-spinner fa-spin' ></i>Versturen..");
+             $this.attr("disabled", true);
+             e.preventDefault();
+             setTimeout(function(){
+                 form.submit()
+             },2000);
+         }
+    })
+    </script>
+
+
+    @endsection
     @extends('layouts.footer')
+
   </body>
 </html>
