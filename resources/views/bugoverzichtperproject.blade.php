@@ -132,7 +132,7 @@
                                       <h4 class="modal-title">Verwijder verzoek</h4>
                                     </div>
                                     <div class="modal-body">
-                                      <p>Weet u zeker dat u feedback met id : <strong>{{$key->id}}</strong> wilt verwijderen&hellip;</p>
+                                      <p>Weet u zeker dat u  <i class="fa fa-hashtag"></i><strong>{{$key->id}}</strong> wilt verwijderen&hellip;</p>
 
                                     </div>
                                     <div class="modal-footer">

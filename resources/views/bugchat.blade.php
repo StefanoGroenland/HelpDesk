@@ -168,7 +168,7 @@
                         </li>
                     </ul>
 
-                    <form method="POST" action="/sendMessage" enctype="multipart/form-data">
+                    <form method="POST" class="formulier" action="/sendMessage" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                         <div class="form-group">
                             <input type="hidden" name="afzender_id"        value="{{Auth::user()->id}}">
@@ -202,18 +202,15 @@
                             @endif
                         </div>
                         @if($bug->status == 'gesloten')
-                        <button type="submit" class="btn btn-danger disabled" disabled>
+
+                        @elseif($bug->status != 'gesloten')
+                        <button data-toggle="tooltip" title="U kunt ook bijlages mee versturen! Klik op 'Bijlages kiezen'!" type="submit" style="margin-left:10px;" class="btn btn-success pull-right sendButton">
                             <i class="fa fa-send"></i> Verstuur
                         </button>
-                        @else
-
-
-                        <button data-toggle="tooltip" title="U kunt ook bijlages mee versturen! Klik op 'Bijlages kiezen'!" type="submit" style="margin-left:10px;" class="btn btn-success pull-right">
-                            <i class="fa fa-send"></i> Verstuur
-                        </button>
-                        <span data-toggle="tooltip" title="TIP : Houd de 'ctrl' toets ingedrukt om meerdere bestanden te kiezen." class="btn btn-success btn-file pull-right">
+                        <span data-toggle="tooltip" title="Hier kunt u een bestand kiezen als bijlage" class="btn btn-success btn-file pull-right">
                             <i class="glyphicon glyphicon-search" ></i> Bijlage kiezen <input type="file" name="file[]" style="color:transparent;" onchange="this.style.color = 'transparant';"  >
                         </span>
+                        @else
                         @endif
                     </form>
                 </div>
@@ -289,6 +286,21 @@
                        format: 'd-m-yyyy hh:ii',
                        autoclose:true
                        });
+                       $('.sendButton').click(function(e){
+                            var $this = $(this);
+                            var form = $('.formulier');
+                            $this.toggleClass('sendButton');
+                            if($this.hasClass('sendButton')){
+                                $this.text('Verstuur')
+                            }else{
+                                $this.text('Bericht wordt verstuurd.');
+                                $this.attr("disabled", true);
+                                e.preventDefault();
+                                setTimeout(function(){
+                                    form.submit()
+                                },2000);
+                            }
+                       })
                 });
             </script>
 
