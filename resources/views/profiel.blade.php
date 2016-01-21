@@ -35,7 +35,7 @@
                      </ul>
                  @endif
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                       <div class="panel panel-default">
                         <div class="panel-heading">
                           <h3 class="panel-title">Profiel</h3>
@@ -67,7 +67,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-8">
                     <form method="POST" action="/updateProfiel">
                           {!! csrf_field() !!}
                       <input type="hidden" name="_method" value="PUT">

@@ -16,6 +16,7 @@ use Route, View;
 use Illuminate\Support\Facades\Hash as Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Bug as Bug;
+use Image as Image;
 class UserController extends Controller
 {
     public function showWelcome()
@@ -184,7 +185,12 @@ class UserController extends Controller
 
                 $request->file('profielfoto')->move($destinationPath,$fileName);
                 $ava = $destinationPath .'/'. $fileName;
-                User::uploadPicture($id,$ava);
+
+                $img = Image::make($ava)->resize(75,75)->save();
+
+
+                $final = $destinationPath.'/'.$img->basename;
+                User::uploadPicture($id,$final);
 
                 $request->session()->flash('alert-success', 'Uw profiel foto is veranderd.');
                 return redirect('/profiel');
