@@ -99,10 +99,10 @@
                                          <label for="achternaam">Geslacht</label>
                                          <div class="form-group">
                                            <label class="radio-inline">
-                                             <input type="radio" name="radman" id="radman" @if($medewerker->geslacht == 'man') checked @endif> Man
+                                             <input type="radio" name="radman" id="radman" @if($klant->geslacht == 'man') checked @endif> Man
                                            </label>
                                            <label class="radio-inline">
-                                             <input type="radio" name="radvrouw" id="radvrouw" @if($medewerker->geslacht == 'vrouw') checked @endif> Vrouw
+                                             <input type="radio" name="radvrouw" id="radvrouw" @if($klant->geslacht == 'vrouw') checked @endif> Vrouw
                                            </label>
                                          </div>
                                          </div>

@@ -40,8 +40,8 @@
                                         </td>
                                         <td class="text-right">
                                             <a href="/bugchat/{{$bug->id}}">
-                                        <button type="submit" class="btn btn-success btn-xs">
-                                            <i class="glyphicon glyphicon-search"></i>
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fa fa-comment-o"></i>
                                         </button>
                                             </a>
                                         </td>
@@ -123,13 +123,12 @@
                                                             @endif
                                                             <td class="text-right" >
                                                                 <a href="/bugchat/{{$bug->id}}">
-                                                            <button type="submit" class="btn btn-success btn-xs">
-                                                                <i class="glyphicon glyphicon-search"></i>
+                                                            <button type="submit" class="btn btn-success">
+                                                                <i class="fa fa-comment-o"></i>
                                                             </button>
                                                                </a>
                                                             </td>
                                                         </tr>
-
                                                         @endforeach
                                                         @endif
                                                     </tbody>

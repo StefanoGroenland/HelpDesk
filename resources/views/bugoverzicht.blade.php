@@ -86,8 +86,8 @@
                                                     <td>{{$project->projectnaam}}</td>
                                                     <td class="text-right">
                                                         <a href="/bugchat/{{$bug->id}}">
-                                                            <button type="submit" class="btn btn-success btn-xs">
-                                                                <i class="glyphicon glyphicon-search"></i>
+                                                            <button type="submit" class="btn btn-success">
+                                                                <i class="fa fa-comment-o"></i>
                                                             </button>
                                                         </a>
                                                     </td>
@@ -160,12 +160,12 @@
                                         <td>{{$bug->project->projectnaam}}</td>
                                         <td class="text-right" >
                                             <a href="/bugchat/{{$bug->id}}" class="">
-                                                <button type="submit" class="btn btn-success btn-xs">
-                                                    <i class="glyphicon glyphicon-search"></i>
+                                                <button type="submit" class="btn btn-success">
+                                                    <i class="fa fa-comment-o"></i>
                                                 </button>
                                             </a>
                                             @if(Auth::user()->bedrijf == 'moodles')
-                                            <button type="button" class="btn btn-danger btn-xs deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
+                                            <button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
                                               <i class="glyphicon glyphicon-trash"></i>
                                             </button>
                                             @endif

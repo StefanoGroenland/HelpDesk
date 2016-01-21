@@ -59,11 +59,11 @@
                                       <td>{!! substr($project->omschrijvingproject,0,90) !!}</td>
                                       <td class="text-right" >
                                       <a href="/projectwijzigen/{{$project->id}}" class="">
-                                           <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
+                                           <button class="btn btn-success wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
                                                   <i class="glyphicon glyphicon-pencil"></i>
                                            </button>
                                       </a>
-                                        <button type="button" class="btn btn-danger btn-xs deleteButton" data-toggle="modal" data-modal-id="{{$project->id}}" data-target="#myModal{{$project->id}}">
+                                        <button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$project->id}}" data-target="#myModal{{$project->id}}">
                                           <i class="glyphicon glyphicon-trash"></i>
                                         </button>
                                         </td>

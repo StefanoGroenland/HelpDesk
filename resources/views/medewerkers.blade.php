@@ -65,11 +65,11 @@
                              <td>{{$medewerker->telefoonnummer}}</td>
                              <td class="text-right">
                                 <a href="/medewerkerwijzigen/{{$medewerker->id}}" class="">
-                                  <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$medewerker->email}}">
+                                  <button class="btn btn-success wijzigKnop2" name="zoekProject" type="button" data-project="{{$medewerker->email}}">
                                          <i class="glyphicon glyphicon-pencil"></i>
                                   </button>
                                </a>
-                               <button type="button" class="btn btn-danger btn-xs deleteButton" data-toggle="modal" data-modal-id="{{$medewerker->id}}" data-target="#myModal{{$medewerker->id}}">
+                               <button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$medewerker->id}}" data-target="#myModal{{$medewerker->id}}">
                                  <i class="glyphicon glyphicon-trash"></i>
                                </button>
                                </td>

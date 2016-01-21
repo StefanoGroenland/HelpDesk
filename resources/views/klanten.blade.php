@@ -68,11 +68,11 @@
                               <td>{{$klant->bedrijf}}</td>
                               <td class="text-right">
                                  <a href="/klantwijzigen/{{$klant->id}}" class="">
-                                   <button class="btn btn-success btn-xs wijzigKnop2" name="zoekProject" type="button" data-project="{{$klant->email}}">
+                                   <button class="btn btn-success wijzigKnop2" name="zoekProject" type="button" data-project="{{$klant->email}}">
                                           <i class="glyphicon glyphicon-pencil"></i>
                                    </button>
                                    </a>
-                                <button type="button" class="btn btn-danger btn-xs deleteButton" data-toggle="modal" data-modal-id="{{$klant->id}}" data-target="#myModal{{$klant->id}}">
+                                <button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$klant->id}}" data-target="#myModal{{$klant->id}}">
                                   <i class="glyphicon glyphicon-trash"></i>
                                 </button>
                                 </td>
