@@ -142,7 +142,7 @@ class UserController extends Controller
             'password_confirmation'     => 'min:4',
             'voornaam'                  => 'required|min:4',
             'achternaam'                => 'required|min:4',
-            'bedrijf'                   => 'required|min:4',
+            'bedrijf'                   => 'required|min:4|not_in:moodles,Moodles',
         );
 
         $validator = Validator::make($data,$rules);
