@@ -54,17 +54,9 @@
                                                         {{$unread}}
                                                         </div></div>
                                                         <div class="col-xs-12 text-right">
-                                                        @if($project->prioriteit == 1)
-                                                            <span class="label label-success">{{substr($project->projectnaam,0,20)}}..</span>
-                                                        @elseif($project->prioriteit == 2)
-                                                            <span class="label label-yellow">{{substr($project->projectnaam,0,20)}}..</span>
-                                                        @elseif($project->prioriteit == 3)
-                                                            <span class="label label-danger">{{substr($project->projectnaam,0,20)}}..</span>
-                                                        @elseif($project->prioriteit == 4)
-                                                            <span class="label label-purple">{{substr($project->projectnaam,0,20)}}..</span>
-                                                            @else
-                                                            <span class="label label-default">{{substr($project->projectnaam,0,20)}}..</span>
-                                                        @endif
+
+                                                            <span class="label">{{substr($project->projectnaam,0,20)}}..</span>
+
                                                             <div><span class="badge">
                                                             @foreach($bugs_send as $bug)
 
