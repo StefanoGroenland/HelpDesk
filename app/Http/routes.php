@@ -33,8 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('addUser', 'UserController@addUser');
         Route::get('/klanten', array('as' => 'klanten', 'uses' => 'UserController@showKlantenOverzicht' ));
 
-        //    medewerker routes
-        Route::get('/admindashboard', array('as' => 'admindashboard', 'uses' => 'UserController@showDashboard'));
+//            medewerker routes
         Route::get('/medewerkerwijzigen/{id}', array('as' => 'medewerkerwijzigen', 'uses' =>'UserController@showMwMuteren'));
         Route::get('/newmedewerker', array('as' => 'newmedewerker', 'uses' =>'UserController@showNewMedewerker'));
         Route::put('/updateMedewerker', array('as' => 'veranderMw', 'uses' => 'UserController@updateMedewerker'));
