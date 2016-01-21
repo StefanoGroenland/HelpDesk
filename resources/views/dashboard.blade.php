@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@extends('layouts.header')
+@include('layouts.header')
 
     @extends('layouts.top-links')
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" >
 
             <div class="container-fluid">
                 <!-- Page Heading -->

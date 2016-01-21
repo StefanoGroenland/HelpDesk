@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@extends('layouts.header')
+@include('layouts.header')
 
      @extends('layouts.top-links')
 
