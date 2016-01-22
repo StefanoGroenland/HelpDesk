@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Crypt;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Route, View;
 use Illuminate\Support\Facades\Mail as Mail;
+use Illuminate\Support\Facades\Hash as Hash;
 class ProjectController extends Controller
 {
     public function showProjectMuteren($id){
@@ -86,7 +87,7 @@ class ProjectController extends Controller
                 if ($valid->fails()) {
                     return redirect('/newproject')->withErrors($valid)->withInput($data);
                 } else {
-                    $data['password'] = Crypt::encrypt($request['password']);
+                    $data['password'] = Hash::make($request['password']);
                     $user = User::create($data);
 
                     $proj = Project::create([
@@ -105,7 +106,7 @@ class ProjectController extends Controller
                                             $klant->tussenvoegsel .' '.
                                             $klant->achternaam,
                     'username'          => $klant->username,
-                    'password'          => Crypt::decrypt($klant->password),
+                    'password'          => $request['password'],
                     'bedrijf'           => $klant->bedrijf,
                     'email'             => $klant->email,
                     'id'                => $user->id,

@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Hash as Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Bug as Bug;
 use Image as Image;
-use Illuminate\Support\Facades\Crypt as Crypt;
 use Illuminate\Support\Facades\Mail as Mail;
 class UserController extends Controller
 {
@@ -404,7 +403,7 @@ class UserController extends Controller
             return redirect('/newklant')->withErrors($validator)->withInput($data);
         }
         array_forget($data, 'password_confirmation');
-        $data['password'] = Crypt::encrypt($request['password']);
+        $data['password'] = Hash::make($request['password']);
         $user = User::create($data);
 
         $klant = User::find($user->id);
@@ -413,7 +412,7 @@ class UserController extends Controller
                 $klant->tussenvoegsel .' '.
                 $klant->achternaam,
             'username'          => $klant->username,
-            'password'          => Crypt::decrypt($klant->password),
+            'password'          => $request['password'],
             'bedrijf'           => $klant->bedrijf,
             'email'             => $klant->email,
             'id'                => $user->id,
