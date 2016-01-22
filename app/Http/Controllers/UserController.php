@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Hash as Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Bug as Bug;
 use Image as Image;
+use Illuminate\Support\Facades\Crypt as Crypt;
+use Illuminate\Support\Facades\Mail as Mail;
 class UserController extends Controller
 {
     public function showWelcome()
@@ -382,16 +384,36 @@ class UserController extends Controller
             'bedrijf'                   => 'required|not_in:moodles,Moodles',
             'password'                  => 'required|min:4|confirmed',
             'password_confirmation'     => 'required|min:4',
-            'geslacht'     => 'required',
+            'geslacht'                  => 'required',
         );
 
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
             return redirect('/newklant')->withErrors($validator)->withInput($data);
         }
-        $data['password'] = Hash::make($data['password']);
         array_forget($data, 'password_confirmation');
-        User::create($data);
+        $data['password'] = Crypt::encrypt($request['password']);
+        $user = User::create($data);
+
+        $klant = User::find($user->id);
+        $dat = array(
+            'volledige_naam'    => $klant->voornaam.' '.
+                $klant->tussenvoegsel .' '.
+                $klant->achternaam,
+            'username'          => $klant->username,
+            'password'          => Crypt::decrypt($klant->password),
+            'bedrijf'           => $klant->bedrijf,
+            'email'             => $klant->email,
+            'id'                => $user->id,
+            'user'              => $user
+        );
+        Mail::send('emails.newklant',$dat,function ($msg) use ($dat){
+            $klant = User::find($dat['id']);
+            $msg->from('helpdesk@moodles.nl','Moodles Helpdesk');
+            $msg->to($klant->email, $name = null);
+            $msg->replyTo('no-reply@moodles.nl', $name = null);
+            $msg->subject('Uw account gegevens');
+        });
         $request->session()->flash('alert-success', 'Gebruiker '. $request['username']. ' toegevoegd.');
         return redirect('/klanten');
     }
