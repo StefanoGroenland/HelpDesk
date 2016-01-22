@@ -135,17 +135,29 @@ class UserController extends Controller
             array_forget($data, 'password');
             array_forget($data, 'password_confirmation');
         }
+        if(Auth::user()->bedrijf == 'moodles'){
+            $rules = array(
+                'email'                     => 'unique:gebruikers,email,'.$id,
+                'username'                  => 'unique:gebruikers,username,'.$id,
+                'telefoonnummer'            => 'numeric|min:11',
+                'password'                  => 'min:4|confirmed',
+                'password_confirmation'     => 'min:4',
+                'voornaam'                  => 'required|min:4',
+                'achternaam'                => 'required|min:4',
+            );
+        }else{
+            $rules = array(
+                'email'                     => 'unique:gebruikers,email,'.$id,
+                'username'                  => 'unique:gebruikers,username,'.$id,
+                'telefoonnummer'            => 'numeric|min:11',
+                'password'                  => 'min:4|confirmed',
+                'password_confirmation'     => 'min:4',
+                'voornaam'                  => 'required|min:4',
+                'achternaam'                => 'required|min:4',
+                'bedrijf'                   => 'required|min:4|not_in:moodles,Moodles',
+            );
+        }
 
-        $rules = array(
-            'email'                     => 'unique:gebruikers,email,'.$id,
-            'username'                  => 'unique:gebruikers,username,'.$id,
-            'telefoonnummer'            => 'numeric|min:11',
-            'password'                  => 'min:4|confirmed',
-            'password_confirmation'     => 'min:4',
-            'voornaam'                  => 'required|min:4',
-            'achternaam'                => 'required|min:4',
-            'bedrijf'                   => 'required|min:4|not_in:moodles,Moodles',
-        );
 
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
