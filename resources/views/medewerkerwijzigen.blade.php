@@ -98,7 +98,7 @@
                            <div class="form-group">
                            @endif
                           <label for="telefoonnummer">Telefoonnummer</label>
-                          <input type="text" class="form-control" required="true" id="telefoonnummer2" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$medewerker->telefoonnummer}}">
+                          <input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$medewerker->telefoonnummer}}">
                         </div>
                         </div>
 
