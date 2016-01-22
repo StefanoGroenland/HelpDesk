@@ -8,11 +8,11 @@ use App\Http\Requests;
 
 use App\Project as Project;
 use App\User as User;
-use Illuminate\Support\Facades\Hash as Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Crypt;
 use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 use Route, View;
+use Illuminate\Support\Facades\Mail as Mail;
 class ProjectController extends Controller
 {
     public function showProjectMuteren($id){
@@ -86,19 +86,9 @@ class ProjectController extends Controller
                 if ($valid->fails()) {
                     return redirect('/newproject')->withErrors($valid)->withInput($data);
                 } else {
+                    $data['password'] = Crypt::encrypt($request['password']);
+                    $user = User::create($data);
 
-                    $user = User::create([
-                        'username'                  => $request['username'],
-                        'password'                  => $request['password'],
-                        'email'                     => $request['email'],
-                        'bedrijf'                   => $request['bedrijf'],
-                        'voornaam'                  => $request['voornaam'],
-                        'tussenvoegsel'             => $request['tussenvoegsel'],
-                        'achternaam'                => $request['achternaam'],
-                        'geslacht'                  => $geslacht,
-                        'telefoonnummer'            => $request['telefoonnummer'],
-                        'profielfoto'               => 'assets/images/avatar.png',
-                    ]);
                     $proj = Project::create([
                         'projectnaam'               => $request['projectnaam'],
                         'liveurl'                   => $request['liveurl'],
@@ -109,7 +99,25 @@ class ProjectController extends Controller
                         'gebruiker_id'              => $user->id,
                     ]);
                 }
-                $request['password'] = Hash::make($request['password']);
+                $klant = User::find($user->id);
+                $dat = array(
+                    'volledige_naam'    => $klant->voornaam.' '.
+                                            $klant->tussenvoegsel .' '.
+                                            $klant->achternaam,
+                    'username'          => $klant->username,
+                    'password'          => Crypt::decrypt($klant->password),
+                    'bedrijf'           => $klant->bedrijf,
+                    'email'             => $klant->email,
+                    'id'                => $user->id,
+                    'user'              => $user
+                );
+                Mail::send('emails.newklant',$dat,function ($msg) use ($dat){
+                    $klant = User::find($dat['id']);
+                    $msg->from('helpdesk@moodles.nl','Moodles Helpdesk');
+                    $msg->to($klant->email, $name = null);
+                    $msg->replyTo('no-reply@moodles.nl', $name = null);
+                    $msg->subject('Uw account gegevens');
+                });
                 $request->session()->flash('alert-success', 'Project toegevoegd.');
                 return redirect('/bugs/'.$proj->id);
             }
