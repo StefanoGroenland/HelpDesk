@@ -14,8 +14,8 @@
     <script src="{{URL::asset('../assets/js/bootstrap.min.js')}}"></script>
 
 
-    {{--<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>--}}
-    <script src="{{URL::asset('../assets/js/tinymce.js')}}"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    {{--<script src="{{URL::asset('../assets/js/tinymce.js')}}"></script>--}}
     <script>tinymce.init({
             selector:'textarea',
              menubar: false
