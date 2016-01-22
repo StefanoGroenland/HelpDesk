@@ -55,7 +55,7 @@
                                                         </div></div>
                                                         <div class="col-xs-12 text-right">
 
-                                                            <span class="label">{{substr($project->projectnaam,0,20)}}..</span>
+                                                            <span class="label label-{{$panel_type}}">{{substr($project->projectnaam,0,20)}}..</span>
 
                                                             <div><span class="badge">
                                                             @foreach($bugs_send as $bug)
