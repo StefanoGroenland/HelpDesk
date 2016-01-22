@@ -158,7 +158,7 @@
                          </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
                         </div>
-                            <button type="submit" class="btn btn-success pull-right"><span class="fa fa-check" aria-hidden="true"></span> Verander profiel</button>
+                            <button type="submit" class="btn btn-success pull-right"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
                           </form>
                         </div>
                       </div>

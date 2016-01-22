@@ -26,7 +26,6 @@
                 </div>
               @endif
            @endforeach
-
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-2">
