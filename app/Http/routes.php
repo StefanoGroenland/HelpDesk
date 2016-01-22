@@ -72,7 +72,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/feedCount/{id}',array('as' => 'feed_count', 'uses' => 'BugController@feedCount'));
 
 });
-
+Route::get('/404', function(){
+   return View::make('errors/404');
+});
 //unrestricted routes
 Route::get('/', 'UserController@showWelcome');
 

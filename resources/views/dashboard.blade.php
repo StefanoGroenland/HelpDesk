@@ -23,7 +23,11 @@
 
                 <div class="col-lg-12">
                 <h4 class="page-header">
-                Mijn projecten
+                @if(Auth::user()->bedrijf == 'moodles')
+                    Projecten
+                @else
+                    Mijn projecten
+                @endif
                 </h4>
                 </div>
                        @include('layouts.projectendashboard')
