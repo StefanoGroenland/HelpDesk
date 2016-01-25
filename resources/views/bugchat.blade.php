@@ -8,15 +8,7 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                @if(Auth::user()->bedrijf != 'moodles')
-                <ol class="breadcrumb">
-                    @include('layouts.breadcrumbs')
-                </ol>
-                @endif
-                 </div>
-             </div>
+
             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
               @if(Session::has('alert-' . $msg))
                 <div class="row">
@@ -245,7 +237,7 @@
                                         @endif
                             </div>
                            <div class="modal-footer">
-                             <button type="button" class="btn btn-default btn-xs pull-left" data-dismiss="modal">Sluiten</button>
+                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
                              </form>
                            </div>
                          </div><!-- /.modal-content -->
@@ -266,7 +258,7 @@
                           </div>
 
                            <div class="modal-footer">
-                             <button type="button" class="btn btn-default btn-xs pull-left" data-dismiss="modal">Sluiten</button>
+                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
                              </form>
                            </div>
                          </div><!-- /.modal-content -->

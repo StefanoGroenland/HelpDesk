@@ -18,11 +18,6 @@
                          Klant toevoegen
                       </button>
                   </a>
-                  @if(Auth::user()->bedrijf != 'moodles')
-                  <ol class="breadcrumb">
-                      @include('layouts.breadcrumbs')
-                  </ol>
-                  @endif
               </div>
           </div>
                           @foreach (['danger', 'warning', 'success', 'info'] as $msg)

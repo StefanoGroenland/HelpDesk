@@ -10,15 +10,6 @@
             <div class="container-fluid">
 
          <!-- Page Heading -->
-         <div class="row">
-             <div class="col-lg-12">
-                    @if(Auth::user()->bedrijf != 'moodles')
-                    <ol class="breadcrumb">
-                        @include('layouts.breadcrumbs')
-                    </ol>
-                    @endif
-             </div>
-         </div>
                          @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                            @if(Session::has('alert-' . $msg))
                              <div class="row">
