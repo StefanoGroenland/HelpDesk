@@ -173,17 +173,39 @@
                          <div class="modal-content">
                            <div class="modal-body">
                                     <h3>Feedback details</h3><hr>
-                                        <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
-                                        <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->beschrijving !!}</p>
-                                        <p style="white-space: pre-wrap;"><strong>start datum </strong> {{ $bug->start_datum }}</p>
-                                        <p style="white-space: pre-wrap;"><strong>soort </strong> {{ $bug->soort }}</p>
-                                        @if(Auth::user()->bedrijf == 'moodles')
-                                        <hr>
-                                        <h5>Contactpersoon</h5>
-                                        <p><i class="fa fa-user"></i>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</p>
-                                        <p><i class="fa fa-envelope-o"></i> {{' '.$bug->klant->email}}</p>
-                                        <p><i class="fa fa-mobile-phone fa-2x"></i> {{$bug->klant->telefoonnummer}}</p>
-                                        @endif
+
+                                    <table class="table table-hover table-bordered">
+                                      <tr>
+                                        <td><strong>Feedback titel</strong></td>
+                                        <td>{!! $bug->titel !!}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong>Omschrijving</strong></td>
+                                        <td>{!! $bug->beschrijving !!}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong>Start datum</strong></td>
+                                        <td>{{ $bug->start_datum }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong>Soort</strong></td>
+                                        <td>{{ $bug->soort }}</td>
+                                      </tr>
+                                      @if(Auth::user()->bedrijf == 'moodles')
+                                      <tr>
+                                        <td><strong><i class="fa fa-user"></i></strong></td>
+                                        <td>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong><i class="fa fa-envelope-o"></i></strong></td>
+                                        <td>{{' '.$bug->klant->email}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong><i class="fa fa-mobile-phone fa-2x"></i></strong></td>
+                                        <td>{{$bug->klant->telefoonnummer}}</td>
+                                      </tr>
+                                      @endif
+                                    </table>
                             </div>
                            <div class="modal-footer">
                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
@@ -198,12 +220,42 @@
                          <div class="modal-content">
                            <div class="modal-body">
                                 <h3>Project details</h3><hr>
-                            <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>
-                            <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>live URL </strong> {!! $bug->project->liveurl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>dev URL </strong> {!! $bug->project->developmenturl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam </strong> {{ $bug->project->gebruikersnaam }}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
+
+
+                                    <table class="table table-hover table-bordered">
+
+                                      <tr>
+                                        <td><strong>Projectnaam</strong></td>
+                                        <td>{{ $bug->project->projectnaam }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong>Omschrijving</strong></td>
+                                        <td>{!! $bug->project->omschrijvingproject !!}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong>Live URL</strong></td>
+                                        <td>{!! $bug->project->liveurl !!}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong>Development URL</strong></td>
+                                        <td>{!! $bug->project->developmenturl !!}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong>Beheer loginnaam</strong></td>
+                                        <td>{{ $bug->project->gebruikersnaam }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td><strong>Beheer wachtwoord</strong></td>
+                                        <td> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></td>
+                                      </tr>
+                                    </table>
+
+                            {{--<p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>--}}
+                            {{--<p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>--}}
+                            {{--<p style="white-space: pre-wrap;"><strong>live URL </strong> {!! $bug->project->liveurl !!}</p>--}}
+                            {{--<p style="white-space: pre-wrap;"><strong>dev URL </strong> {!! $bug->project->developmenturl !!}</p>--}}
+                            {{--<p style="white-space: pre-wrap;"><strong>beheer loginnaam </strong> {{ $bug->project->gebruikersnaam }}</p>--}}
+                            {{--<p style="white-space: pre-wrap;"><strong>beheer wachtwoord </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>--}}
                           </div>
 
                            <div class="modal-footer">
