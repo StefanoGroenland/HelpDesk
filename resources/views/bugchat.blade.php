@@ -58,7 +58,6 @@
                     </div>
                 </div>
                 <hr>
-               </div>
                     <h3>Discussie
                         <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
                            <i class="fa fa-refresh fa-spin"></i>
