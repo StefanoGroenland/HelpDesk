@@ -32,6 +32,7 @@
                 </div>
                        @include('layouts.projectendashboard')
                 </div>
+                <div class="row">
                        @include('layouts.feedbacktable')
               </div>
             </div>

@@ -102,8 +102,10 @@
                                 </div>
                                 </div>
                             @endforeach
+                            </div>
 
 @else
+ <div class="col-lg-12">
                 @if(count($projects) > 0)
                                 @foreach($projects as $pro)
                                 {{-- */$unread=0;/* --}}
@@ -235,6 +237,6 @@
 
                                     </div>
 
-                                @endforeach
+                                </div>@endforeach
                                   @endif
 @endif
