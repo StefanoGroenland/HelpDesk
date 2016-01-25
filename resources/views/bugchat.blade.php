@@ -19,45 +19,180 @@
               @endif
            @endforeach
         <!-- /.row -->
+        <div class="row">
+
+            @if(Auth::user()->bedrijf == 'moodles')
+            <div class="col-lg-2">
+                <h3><i class="fa fa-hashtag"></i>{{$bug->id}}
+                @if($bug->prioriteit == 1)
+                <span class="label label-success pull-right">Laag</span>
+                @elseif($bug->prioriteit == 2)
+                <span class="label label-warning pull-right">Gem.</span>
+                @elseif($bug->prioriteit == 3)
+                <span class="label label-danger pull-right">Hoog</span>
+                @elseif($bug->prioriteit == 4)
+                <span class="label label-purple pull-right">Krit.</span>
+                @else
+                <span class="label label-info pull-right">Geen</span>
+                @endif
+                </h3>
+                @endif
+
+                {{--controls--}}
+                @if(Auth::user()->bedrijf == 'moodles')
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" action="/updateBug/{{$bug->id}}">
+                           {!! csrf_field() !!}
+                           <input type="hidden" name="_method" value="PUT">
+                            <div class="form-group">
+                                <label for="sel1">Verander prioriteit</label>
+                                <select class="form-control" id="prioriteit" name="prioriteit">
+                                    <option value="4"  @if($bug->prioriteit == 4) selected @endif >Kritisch</option>
+                                    <option value="3" @if($bug->prioriteit == 3) selected @endif >Hoog</option>
+                                    <option value="2"  @if($bug->prioriteit == 2) selected @endif >Gemiddeld</option>
+                                    <option value="1" @if($bug->prioriteit == 1) selected @endif >Laag</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sel2">Verander soort</label>
+                                <select class="form-control" id="soort" name="soort">
+                                    <option value="lay-out" @if($bug->soort == 'lay-out') selected @endif >Lay-out</option>
+                                    <option value="seo" @if($bug->soort == 'seo') selected @endif >SEO</option>
+                                    <option value="performance" @if($bug->soort == 'performance') selected @endif >Performance</option>
+                                    <option value="code" @if($bug->soort == 'code') selected @endif >Code</option>
+                                </select>
+                            </div>
+                         <div class="form-group">
+                                <label for="sel3">Verander status</label>
+                                   <select class="form-control" id="status" name="status">
+                                       <option value="open" @if($bug->status == 'open') selected @endif >Open</option>
+                                       <option value="bezig" @if($bug->status == 'bezig') selected @endif >Bezig</option>
+                                       <option value="gesloten" @if($bug->status == 'gesloten') selected @endif >Gesloten</option>
+                                   </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="end_date">Einddatum</label>
+                              {{--<input type="text"  name="eind_datum" class="form-control" id="einddatum">--}}
+                              <input type="text" name="eind_datum" class="form_datetime form-control date-picker" placeholder="@if($bug->eind_datum != '0000-00-00 00:00:00'){{date('d-m-Y H:i',strtotime($bug->eind_datum))}}
+                              @else {{date('d-m-Y H:i')}} @endif
+                              " data-rule-maxlength="30">
+                            </div>
+                            <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
+                        </form>
+                        <br>
+                    </div>
+                </div>
+                @endif
+                {{--endcontrol--}}
+
+            </div>
+
 
             <div class="row">
+
+
+                <div class="col-lg-2"></div>
+                <div class="col-lg-9">
                 <div class="col-lg-12">
 
                 <div class="row">
                 @if(Auth::user()->bedrijf != 'moodles')
                     <div class="col-lg-12">
-                    @else
-                    <div class="col-lg-6">
-                    @endif
                     <h3><i class="fa fa-hashtag"></i>{{$bug->id}}
-                                    @if($bug->prioriteit == 1)
-                                    <span class="label label-success ">Laag</span>
-                                    @elseif($bug->prioriteit == 2)
-                                    <span class="label label-warning ">Gem.</span>
-                                    @elseif($bug->prioriteit == 3)
-                                    <span class="label label-danger ">Hoog</span>
-                                    @elseif($bug->prioriteit == 4)
-                                    <span class="label label-purple ">Krit.</span>
-                                    @else
-                                    <span class="label label-info">Geen</span>
-                                    @endif
-                                    </h3>
-                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#BugDetails">
-                       <i class="fa fa-info" ></i> Feedback
-                    </button>
-                    @if(Auth::user()->bedrijf == 'moodles')
-                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#ProjectDetails">
-                       <i class="fa fa-info" ></i> Project
-                    </button>
-                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#AdminControls">
-                       <i class="fa fa-gears" ></i> Wijzigen
-                    </button>
-
+                    @if($bug->prioriteit == 1)
+                    <span class="label label-success ">Laag</span>
+                    @elseif($bug->prioriteit == 2)
+                    <span class="label label-warning ">Gem.</span>
+                    @elseif($bug->prioriteit == 3)
+                    <span class="label label-danger ">Hoog</span>
+                    @elseif($bug->prioriteit == 4)
+                    <span class="label label-purple ">Krit.</span>
+                    @else
+                    <span class="label label-info ">Geen</span>
                     @endif
+                    </h3>
+                    @endif
+                    <div class="row">
+                    @if(Auth::user()->bedrijf == 'moodles')
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    @else
+                    <div class="col-lg-12"></div>
+                    @endif
+                        <table class="table table-bordered table-responsive table-hover">
+                            <tr>
+                                <td><strong>Feedback titel</strong></td>
+                                <td>{!! $bug->titel !!}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Omschrijving</strong></td>
+                                <td>{!! $bug->titel !!}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Start datum</strong></td>
+                                <td>{{ $bug->start_datum }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Soort</strong></td>
+                                <td>{{ $bug->soort }}</td>
+                            </tr>
+                            @if(Auth::user()->bedrijf == 'moodles')
+                            <tr>
+                                <td><strong><i class="fa fa-user"></i></strong></td>
+                                <td>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong><i class="fa fa-envelope-o"></i></strong></td>
+                                <td>{{' '.$bug->klant->email}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong><i class="fa fa-mobile-phone fa-2x"></i></strong></td>
+                                <td>{{$bug->klant->telefoonnummer}}</td>
+                            </tr>
+                            @endif
+                        </table>
+                    </div>
+                     @if(Auth::user()->bedrijf == 'moodles')
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <table class="table table-bordered table-responsive table-hover">
+                        <tr>
+                            <td><strong>Project naam</strong></td>
+                            <td>{{ $bug->project->projectnaam }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Omschrijving</strong></td>
+                            <td>{!! $bug->project->omschrijvingproject !!}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Live URL</strong></td>
+                            <td>{!! $bug->project->liveurl !!}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Development URL</strong></td>
+                            <td>{!! $bug->project->developmenturl !!}</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Beheer loginnaam</strong></td>
+                            <td>{{ $bug->project->gebruikersnaam }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Beheer wachtwoord</strong></td>
+                            <td><i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></td>
+                        </tr>
+
+
+                    </table>
+
+                    </div>
+                     @endif
+
+
 
                     </div>
                 </div>
                 <hr>
+               </div>
                     <h3>Discussie
                         <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
                            <i class="fa fa-refresh fa-spin"></i>
@@ -166,6 +301,8 @@
                         @endif
                     </form>
                 </div>
+              </div>
+            </div>
         </div>
     </div>
                     <div class="modal fade" id="BugDetails" tabindex="-1" role="dialog">
@@ -173,39 +310,17 @@
                          <div class="modal-content">
                            <div class="modal-body">
                                     <h3>Feedback details</h3><hr>
-
-                                    <table class="table table-hover table-bordered">
-                                      <tr>
-                                        <td><strong>Feedback titel</strong></td>
-                                        <td>{!! $bug->titel !!}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong>Omschrijving</strong></td>
-                                        <td>{!! $bug->beschrijving !!}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong>Start datum</strong></td>
-                                        <td>{{ $bug->start_datum }}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong>Soort</strong></td>
-                                        <td>{{ $bug->soort }}</td>
-                                      </tr>
-                                      @if(Auth::user()->bedrijf == 'moodles')
-                                      <tr>
-                                        <td><strong><i class="fa fa-user"></i></strong></td>
-                                        <td>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong><i class="fa fa-envelope-o"></i></strong></td>
-                                        <td>{{' '.$bug->klant->email}}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong><i class="fa fa-mobile-phone fa-2x"></i></strong></td>
-                                        <td>{{$bug->klant->telefoonnummer}}</td>
-                                      </tr>
-                                      @endif
-                                    </table>
+                                        <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
+                                        <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->titel !!}</p>
+                                        <p style="white-space: pre-wrap;"><strong>start datum </strong> {{ $bug->start_datum }}</p>
+                                        <p style="white-space: pre-wrap;"><strong>soort </strong> {{ $bug->soort }}</p>
+                                        @if(Auth::user()->bedrijf == 'moodles')
+                                        <hr>
+                                        <h5>Contactpersoon</h5>
+                                        <p><i class="fa fa-user"></i>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</p>
+                                        <p><i class="fa fa-envelope-o"></i> {{' '.$bug->klant->email}}</p>
+                                        <p><i class="fa fa-mobile-phone fa-2x"></i> {{$bug->klant->telefoonnummer}}</p>
+                                        @endif
                             </div>
                            <div class="modal-footer">
                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
@@ -220,42 +335,12 @@
                          <div class="modal-content">
                            <div class="modal-body">
                                 <h3>Project details</h3><hr>
-
-
-                                    <table class="table table-hover table-bordered">
-
-                                      <tr>
-                                        <td><strong>Projectnaam</strong></td>
-                                        <td>{{ $bug->project->projectnaam }}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong>Omschrijving</strong></td>
-                                        <td>{!! $bug->project->omschrijvingproject !!}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong>Live URL</strong></td>
-                                        <td>{!! $bug->project->liveurl !!}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong>Development URL</strong></td>
-                                        <td>{!! $bug->project->developmenturl !!}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong>Beheer loginnaam</strong></td>
-                                        <td>{{ $bug->project->gebruikersnaam }}</td>
-                                      </tr>
-                                      <tr>
-                                        <td><strong>Beheer wachtwoord</strong></td>
-                                        <td> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></td>
-                                      </tr>
-                                    </table>
-
-                            {{--<p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>--}}
-                            {{--<p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>--}}
-                            {{--<p style="white-space: pre-wrap;"><strong>live URL </strong> {!! $bug->project->liveurl !!}</p>--}}
-                            {{--<p style="white-space: pre-wrap;"><strong>dev URL </strong> {!! $bug->project->developmenturl !!}</p>--}}
-                            {{--<p style="white-space: pre-wrap;"><strong>beheer loginnaam </strong> {{ $bug->project->gebruikersnaam }}</p>--}}
-                            {{--<p style="white-space: pre-wrap;"><strong>beheer wachtwoord </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>--}}
+                            <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>
+                            <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>live URL </strong> {!! $bug->project->liveurl !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>dev URL </strong> {!! $bug->project->developmenturl !!}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam </strong> {{ $bug->project->gebruikersnaam }}</p>
+                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
                           </div>
 
                            <div class="modal-footer">
@@ -266,70 +351,6 @@
                        </div><!-- /.modal-dialog -->
                      </div><!-- /.modal -->
                      @endif
-
-
-                    @if(Auth::user()->bedrijf == 'moodles')
-                     <div class="modal fade" id="AdminControls" tabindex="-1" role="dialog">
-                       <div class="modal-dialog">
-                         <div class="modal-content">
-                           <div class="modal-body">
-                           <h3>Wijzig feedback</h3><hr>
-                                <form method="POST" action="/updateBug/{{$bug->id}}">
-                                  {!! csrf_field() !!}
-                                  <input type="hidden" name="_method" value="PUT">
-                                       <div class="form-group">
-                                           <label for="sel1">Verander prioriteit</label>
-                                           <select class="form-control" id="prioriteit" name="prioriteit">
-                                               <option value="4"  @if($bug->prioriteit == 4) selected @endif >Kritisch</option>
-                                               <option value="3" @if($bug->prioriteit == 3) selected @endif >Hoog</option>
-                                               <option value="2"  @if($bug->prioriteit == 2) selected @endif >Gemiddeld</option>
-                                               <option value="1" @if($bug->prioriteit == 1) selected @endif >Laag</option>
-                                           </select>
-                                       </div>
-                                       <div class="form-group">
-                                           <label for="sel2">Verander soort</label>
-                                           <select class="form-control" id="soort" name="soort">
-                                               <option value="lay-out" @if($bug->soort == 'lay-out') selected @endif >Lay-out</option>
-                                               <option value="seo" @if($bug->soort == 'seo') selected @endif >SEO</option>
-                                               <option value="performance" @if($bug->soort == 'performance') selected @endif >Performance</option>
-                                               <option value="code" @if($bug->soort == 'code') selected @endif >Code</option>
-                                           </select>
-                                       </div>
-
-                                       <div class="form-group">
-                                             <label for="sel3">Verander status</label>
-                                                <select class="form-control" id="status" name="status">
-                                                    <option value="open" @if($bug->status == 'open') selected @endif >Open</option>
-                                                    <option value="bezig" @if($bug->status == 'bezig') selected @endif >Bezig</option>
-                                                    <option value="gesloten" @if($bug->status == 'gesloten') selected @endif >Gesloten</option>
-                                                </select>
-                                       </div>
-
-
-                                       <div class="form-group">
-                                       <label for="end_date">Einddatum</label>
-                                         {{--<input type="text"  name="eind_datum" class="form-control" id="einddatum">--}}
-                                         <input type="text" name="eind_datum" class="form_datetime form-control date-picker" placeholder="@if($bug->eind_datum != '0000-00-00 00:00:00'){{date('d-m-Y H:i',strtotime($bug->eind_datum))}}
-                                         @else {{date('d-m-Y H:i')}} @endif
-                                         " data-rule-maxlength="30">
-                                       </div>
-
-                          </div>
-
-                           <div class="modal-footer">
-                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
-                              <button type="submit" class="btn btn-success pull-right"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
-
-                           </div>
-                           </form>
-                         </div><!-- /.modal-content -->
-                       </div><!-- /.modal-dialog -->
-                     </div><!-- /.modal -->
-                     @endif
-
-
-
-
 
 <!-- /.container-fluid -->
 {{--</div>--}}
