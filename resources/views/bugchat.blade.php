@@ -119,14 +119,14 @@
                     @else
                     <div class="col-lg-12"></div>
                     @endif
-                        <table class="table table-bordered table-responsive table-hover">
+                        <table class="table table-bordered table-responsive">
                             <tr>
                                 <td><strong>Feedback titel</strong></td>
-                                <td>{!! $bug->titel !!}</td>
+                                <td>{{ $bug->titel }}</td>
                             </tr>
                             <tr>
                                 <td><strong>Omschrijving</strong></td>
-                                <td>{!! $bug->titel !!}</td>
+                                <td>{!! $bug->beschrijving !!}</td>
                             </tr>
                             <tr>
                                 <td><strong>Start datum</strong></td>
@@ -154,7 +154,7 @@
                     </div>
                      @if(Auth::user()->bedrijf == 'moodles')
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <table class="table table-bordered table-responsive table-hover">
+                    <table class="table table-bordered table-responsive">
                         <tr>
                             <td><strong>Project naam</strong></td>
                             <td>{{ $bug->project->projectnaam }}</td>
