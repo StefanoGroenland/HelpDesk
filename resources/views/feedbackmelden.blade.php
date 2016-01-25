@@ -44,12 +44,13 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                    <label for="bedrijfsnaam">Categorie</label>
+                                    <label for="bedrijfsnaam">Prioriteit</label>
                                     <select data-toggle="tooltip" title="Wat voor prioriteit geeft u voor de fout?" class="form-control" name="prioriteit" required="true">
-                                       <option value="1">Laag</option>
-                                       <option value="2">Gemiddeld</option>
-                                       <option value="3">Hoog</option>
-                                       <option value="4">Kritisch</option>
+
+                                       <option value="1" @if(old('prioriteit') == 1) selected @endif>Laag</option>
+                                       <option value="2" @if(old('prioriteit') == 2) selected @endif>Gemiddeld</option>
+                                       <option value="3" @if(old('prioriteit') == 3) selected @endif>Hoog</option>
+                                       <option value="4" @if(old('prioriteit') == 4) selected @endif>Kritisch</option>
                                     </select>
                                     </div>
                                 </div>
@@ -57,17 +58,21 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                    <label for="bedrijfsnaam">Prioriteit</label>
+                                    <label for="bedrijfsnaam">Categorie</label>
                                         <select data-toggle="tooltip" title="In wat voor categorie valt de fout te herkennen?" class="form-control" name="soort" required="true">
-                                          <option value="lay-out">Lay-out</option>
-                                          <option value="seo">SEO</option>
-                                          <option value="performance">Performance</option>
-                                          <option value="code">Code</option>
+                                          <option value="lay-out" @if(old('soort') == 'lay-out') selected @endif>Lay-out</option>
+                                          <option value="seo" @if(old('soort') == 'seo') selected @endif>SEO</option>
+                                          <option value="performance" @if(old('soort') == 'performance') selected @endif>Performance</option>
+                                          <option value="code" @if(old('soort') == 'code') selected @endif>Code</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                 @if(old('start_datum') == "" && old('titel'))
+                                 <div class="form-group has-error">
+                                 @else
                                  <div class="form-group">
+                                 @endif
                                  <label for="end_date">Startdatum</label>
                                      <input data-toggle="tooltip" title="Wanneer heeft de fout zich als eerst voorgedaan?" type="text" name="start_datum" class="form_datetime form-control date-picker" placeholder="{{date('d-m-Y H:i')}}" data-rule-maxlength="30">
                                  </div>
