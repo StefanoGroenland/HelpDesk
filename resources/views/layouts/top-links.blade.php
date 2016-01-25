@@ -34,7 +34,8 @@
     padding-left:5px;!important;
     padding-top:10px;!important;
 }
-.navbar-nav > li > a > .navbar-btn{
+strong{
+    font-size:20px;
 }
 
 
@@ -51,7 +52,7 @@
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="#"><img src="http://helpdesk.moodles.nl/assets/images/logo.png" style="max-height: 24px;" ></a>
+               <a class="navbar-brand" href="/dashboard"><img src="http://helpdesk.moodles.nl/assets/images/logo.png" style="max-height: 24px;" ></a>
              </div>
 
              <!-- Collect the nav links, forms, and other content for toggling -->
@@ -89,7 +90,7 @@
                             @elseif(\Request::route()->getName() == 'medewerkers')
                                 <strong style="color:white;">Medewerkers</strong> <small> een overzicht van alle medewerkers</small>
                              @else
-                                <strong style="color:white;">Titel</strong> <small> nog niet toegevoegd</small>
+                                <strong style="color:white;">Dashboard</strong> <small> Overzicht</small>
                             @endif
                  <span class="sr-only"></span></a></li>
 
