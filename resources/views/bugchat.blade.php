@@ -130,14 +130,14 @@
                             </tr>
                             <tr>
                                 <td><strong>Start datum</strong></td>
-                                <td>{{ $bug->start_datum }}</td>
+                                <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
                             </tr>
                             <tr>
                                 <td><strong>Eind datum</strong></td>
                                 @if($bug->eind_datum == '0000-00-00 00:00:00')
                                     <td>Geen deadline</td>
                                 @else
-                                    <td>{{ $bug->eind_datum }}</td>
+                                    <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
                                 @endif
                             </tr>
                             <tr>
