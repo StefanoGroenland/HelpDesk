@@ -39,7 +39,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="bedrijfsnaam">Feedback</label>
-                                        <input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel">
+                                        <input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel" value="{{old('titel')}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

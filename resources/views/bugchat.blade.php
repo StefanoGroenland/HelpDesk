@@ -133,6 +133,14 @@
                                 <td>{{ $bug->start_datum }}</td>
                             </tr>
                             <tr>
+                                <td><strong>Eind datum</strong></td>
+                                @if($bug->eind_datum == '0000-00-00 00:00:00')
+                                    <td>Geen deadline</td>
+                                @else
+                                    <td>{{ $bug->eind_datum }}</td>
+                                @endif
+                            </tr>
+                            <tr>
                                 <td><strong>Soort</strong></td>
                                 <td>{{ $bug->soort }}</td>
                             </tr>
@@ -230,7 +238,7 @@
                                         @elseif($afzender->klant)
                                         <div class="panel-heading panel-info">
                                         {{--klant--}}
-                                        <img src="{{'../'.$afzender->klant->profielfoto}}" class="img-responsive img-circle pull-left small_avatar" alt="medewerker_ava"/>
+                                        <img src="{{'../'.$afzender->klant->profielfoto}}" class="img-responsive img-circle pull-left small_avatar" alt="klant_ava"/>
                                       <span class="label label-info">
                                         {{$afzender->klant->voornaam .' '.$afzender->klant->tussenvoegsel.' '. $afzender->klant->achternaam}}
                                       </span>
@@ -305,53 +313,6 @@
             </div>
         </div>
     </div>
-                    <div class="modal fade" id="BugDetails" tabindex="-1" role="dialog">
-                       <div class="modal-dialog">
-                         <div class="modal-content">
-                           <div class="modal-body">
-                                    <h3>Feedback details</h3><hr>
-                                        <p style="white-space: pre-wrap;"><strong>bug titel </strong> {!! $bug->titel !!}</p>
-                                        <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->titel !!}</p>
-                                        <p style="white-space: pre-wrap;"><strong>start datum </strong> {{ $bug->start_datum }}</p>
-                                        <p style="white-space: pre-wrap;"><strong>soort </strong> {{ $bug->soort }}</p>
-                                        @if(Auth::user()->bedrijf == 'moodles')
-                                        <hr>
-                                        <h5>Contactpersoon</h5>
-                                        <p><i class="fa fa-user"></i>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</p>
-                                        <p><i class="fa fa-envelope-o"></i> {{' '.$bug->klant->email}}</p>
-                                        <p><i class="fa fa-mobile-phone fa-2x"></i> {{$bug->klant->telefoonnummer}}</p>
-                                        @endif
-                            </div>
-                           <div class="modal-footer">
-                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
-                             </form>
-                           </div>
-                         </div><!-- /.modal-content -->
-                       </div><!-- /.modal-dialog -->
-                     </div><!-- /.modal -->
-                     @if(Auth::user()->bedrijf == 'moodles')
-                     <div class="modal fade" id="ProjectDetails" tabindex="-1" role="dialog">
-                       <div class="modal-dialog">
-                         <div class="modal-content">
-                           <div class="modal-body">
-                                <h3>Project details</h3><hr>
-                            <p style="white-space: pre-wrap;"><strong>projectnaam </strong> {{ $bug->project->projectnaam }}</p>
-                            <p style="white-space: pre-wrap;"><strong>omschrijving </strong> {!! $bug->project->omschrijvingproject !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>live URL </strong> {!! $bug->project->liveurl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>dev URL </strong> {!! $bug->project->developmenturl !!}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer loginnaam </strong> {{ $bug->project->gebruikersnaam }}</p>
-                            <p style="white-space: pre-wrap;"><strong>beheer wachtwoord </strong> <i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></p>
-                          </div>
-
-                           <div class="modal-footer">
-                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
-                             </form>
-                           </div>
-                         </div><!-- /.modal-content -->
-                       </div><!-- /.modal-dialog -->
-                     </div><!-- /.modal -->
-                     @endif
-
 <!-- /.container-fluid -->
 {{--</div>--}}
 <!-- /#page-wrapper -->

@@ -165,16 +165,15 @@ class BugController extends Controller
             'prioriteit'        => 'required',
             'soort'             => 'required',
             'status'            => 'required',
-            'start_datum'       => 'required|date',
+            'start_datum'       => 'required',
             'beschrijving'      => 'required',
             'klant_id'          => 'required',
             'project_id'        => 'required',
         );
-        if($data['start_datum'] == '01-01-1970 00:00' || $data['start_datum'] == '31-12-1899 00:00'){
+        if($data['start_datum'] == '1970-01-01 00:00:00' || $data['start_datum'] == '1899-31-12 00:00:00' || $data['start_datum'] == ''){
             $request->session()->flash('alert-danger', 'Start datum moet correct worden ingevuld.');
-            return redirect('/feedbackmelden/'.$pro_id);
+            return redirect('/feedbackmelden/'.$pro_id)->withInput($data);
         }
-
         $data['start_datum'] = date('Y-m-d H:i',strtotime($data['start_datum']));
 
 
