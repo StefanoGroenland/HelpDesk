@@ -34,7 +34,7 @@
     padding-left:5px;!important;
     padding-top:10px;!important;
 }
-strong{
+.str strong{
     font-size:20px;
 }
 
@@ -57,7 +57,7 @@ strong{
 
              <!-- Collect the nav links, forms, and other content for toggling -->
              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-               <ul class="nav navbar-nav">
+               <ul class="nav navbar-nav str">
                  <li><a href="#" style="padding-top:20px;!important;">
                  @if(\Request::route()->getName() == 'dashboard')
                                 <strong style="color:white;" >Dashboard</strong> <small> Overzicht</small>
