@@ -31,6 +31,7 @@
                              <button class="btn btn-success" type="submit">
                                  Herstel wachtwoord
                              </button>
+                              <a class="pull-right" href="/">Ga terug</a>
                          </div>
                 </div>
 

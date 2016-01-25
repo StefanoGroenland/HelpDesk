@@ -19,73 +19,8 @@
               @endif
            @endforeach
         <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-2">
-                <h3><i class="fa fa-hashtag"></i>{{$bug->id}}
-                @if($bug->prioriteit == 1)
-                <span class="label label-success pull-right">Laag</span>
-                @elseif($bug->prioriteit == 2)
-                <span class="label label-warning pull-right">Gem.</span>
-                @elseif($bug->prioriteit == 3)
-                <span class="label label-danger pull-right">Hoog</span>
-                @elseif($bug->prioriteit == 4)
-                <span class="label label-purple pull-right">Krit.</span>
-                @else
-                <span class="label label-info pull-right">Geen</span>
-                @endif
-                </h3>
-
-                @if(Auth::user()->bedrijf == 'moodles')
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form method="POST" action="/updateBug/{{$bug->id}}">
-                           {!! csrf_field() !!}
-                           <input type="hidden" name="_method" value="PUT">
-                            <div class="form-group">
-                                <label for="sel1">Verander prioriteit</label>
-                                <select class="form-control" id="prioriteit" name="prioriteit">
-                                    <option value="4"  @if($bug->prioriteit == 4) selected @endif >Kritisch</option>
-                                    <option value="3" @if($bug->prioriteit == 3) selected @endif >Hoog</option>
-                                    <option value="2"  @if($bug->prioriteit == 2) selected @endif >Gemiddeld</option>
-                                    <option value="1" @if($bug->prioriteit == 1) selected @endif >Laag</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="sel2">Verander soort</label>
-                                <select class="form-control" id="soort" name="soort">
-                                    <option value="lay-out" @if($bug->soort == 'lay-out') selected @endif >Lay-out</option>
-                                    <option value="seo" @if($bug->soort == 'seo') selected @endif >SEO</option>
-                                    <option value="performance" @if($bug->soort == 'performance') selected @endif >Performance</option>
-                                    <option value="code" @if($bug->soort == 'code') selected @endif >Code</option>
-                                </select>
-                            </div>
-                         <div class="form-group">
-                                <label for="sel3">Verander status</label>
-                                   <select class="form-control" id="status" name="status">
-                                       <option value="open" @if($bug->status == 'open') selected @endif >Open</option>
-                                       <option value="bezig" @if($bug->status == 'bezig') selected @endif >Bezig</option>
-                                       <option value="gesloten" @if($bug->status == 'gesloten') selected @endif >Gesloten</option>
-                                   </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="end_date">Einddatum</label>
-                              {{--<input type="text"  name="eind_datum" class="form-control" id="einddatum">--}}
-                              <input type="text" name="eind_datum" class="form_datetime form-control date-picker" placeholder="@if($bug->eind_datum != '0000-00-00 00:00:00'){{date('d-m-Y H:i',strtotime($bug->eind_datum))}}
-                              @else {{date('d-m-Y H:i')}} @endif
-                              " data-rule-maxlength="30">
-                            </div>
-                            <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
-                        </form>
-                        <br>
-                    </div>
-                </div>
-                @endif
-            </div>
-
 
             <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-9">
                 <div class="col-lg-12">
 
                 <div class="row">
@@ -94,6 +29,19 @@
                     @else
                     <div class="col-lg-6">
                     @endif
+                    <h3><i class="fa fa-hashtag"></i>{{$bug->id}}
+                                    @if($bug->prioriteit == 1)
+                                    <span class="label label-success ">Laag</span>
+                                    @elseif($bug->prioriteit == 2)
+                                    <span class="label label-warning ">Gem.</span>
+                                    @elseif($bug->prioriteit == 3)
+                                    <span class="label label-danger ">Hoog</span>
+                                    @elseif($bug->prioriteit == 4)
+                                    <span class="label label-purple ">Krit.</span>
+                                    @else
+                                    <span class="label label-info">Geen</span>
+                                    @endif
+                                    </h3>
                     <button class="btn btn-default" type="button" data-toggle="modal" data-target="#BugDetails">
                        <i class="fa fa-info" ></i> Feedback
                     </button>
@@ -101,8 +49,12 @@
                     <button class="btn btn-default" type="button" data-toggle="modal" data-target="#ProjectDetails">
                        <i class="fa fa-info" ></i> Project
                     </button>
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#AdminControls">
+                       <i class="fa fa-gears" ></i> Wijzigen
+                    </button>
 
                     @endif
+
                     </div>
                 </div>
                 <hr>
@@ -215,8 +167,6 @@
                         @endif
                     </form>
                 </div>
-              </div>
-            </div>
         </div>
     </div>
                     <div class="modal fade" id="BugDetails" tabindex="-1" role="dialog">
@@ -265,6 +215,70 @@
                        </div><!-- /.modal-dialog -->
                      </div><!-- /.modal -->
                      @endif
+
+
+                    @if(Auth::user()->bedrijf == 'moodles')
+                     <div class="modal fade" id="AdminControls" tabindex="-1" role="dialog">
+                       <div class="modal-dialog">
+                         <div class="modal-content">
+                           <div class="modal-body">
+                           <h3>Wijzig feedback</h3><hr>
+                                <form method="POST" action="/updateBug/{{$bug->id}}">
+                                  {!! csrf_field() !!}
+                                  <input type="hidden" name="_method" value="PUT">
+                                       <div class="form-group">
+                                           <label for="sel1">Verander prioriteit</label>
+                                           <select class="form-control" id="prioriteit" name="prioriteit">
+                                               <option value="4"  @if($bug->prioriteit == 4) selected @endif >Kritisch</option>
+                                               <option value="3" @if($bug->prioriteit == 3) selected @endif >Hoog</option>
+                                               <option value="2"  @if($bug->prioriteit == 2) selected @endif >Gemiddeld</option>
+                                               <option value="1" @if($bug->prioriteit == 1) selected @endif >Laag</option>
+                                           </select>
+                                       </div>
+                                       <div class="form-group">
+                                           <label for="sel2">Verander soort</label>
+                                           <select class="form-control" id="soort" name="soort">
+                                               <option value="lay-out" @if($bug->soort == 'lay-out') selected @endif >Lay-out</option>
+                                               <option value="seo" @if($bug->soort == 'seo') selected @endif >SEO</option>
+                                               <option value="performance" @if($bug->soort == 'performance') selected @endif >Performance</option>
+                                               <option value="code" @if($bug->soort == 'code') selected @endif >Code</option>
+                                           </select>
+                                       </div>
+
+                                       <div class="form-group">
+                                             <label for="sel3">Verander status</label>
+                                                <select class="form-control" id="status" name="status">
+                                                    <option value="open" @if($bug->status == 'open') selected @endif >Open</option>
+                                                    <option value="bezig" @if($bug->status == 'bezig') selected @endif >Bezig</option>
+                                                    <option value="gesloten" @if($bug->status == 'gesloten') selected @endif >Gesloten</option>
+                                                </select>
+                                       </div>
+
+
+                                       <div class="form-group">
+                                       <label for="end_date">Einddatum</label>
+                                         {{--<input type="text"  name="eind_datum" class="form-control" id="einddatum">--}}
+                                         <input type="text" name="eind_datum" class="form_datetime form-control date-picker" placeholder="@if($bug->eind_datum != '0000-00-00 00:00:00'){{date('d-m-Y H:i',strtotime($bug->eind_datum))}}
+                                         @else {{date('d-m-Y H:i')}} @endif
+                                         " data-rule-maxlength="30">
+                                       </div>
+
+                          </div>
+
+                           <div class="modal-footer">
+                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
+                              <button type="submit" class="btn btn-success pull-right"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
+
+                           </div>
+                           </form>
+                         </div><!-- /.modal-content -->
+                       </div><!-- /.modal-dialog -->
+                     </div><!-- /.modal -->
+                     @endif
+
+
+
+
 
 <!-- /.container-fluid -->
 {{--</div>--}}
