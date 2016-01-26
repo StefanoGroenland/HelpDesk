@@ -81,7 +81,7 @@
                             <label for="gebruiker_id">Koppel klant</label>
                             <select class="form-control"  id="gebruiker_id" name="gebruiker_id" disabled>
                                 @foreach($klanten as $klant)
-                                <option value="{{$klant->id}}" >{{$klant->voornaam.' '.$klant->achternaam }}</option>
+                                <option value="{{$klant->id}}" >{{$klant->bedrijf }}</option>
                                 @endforeach
                             </select>
                         </div>
