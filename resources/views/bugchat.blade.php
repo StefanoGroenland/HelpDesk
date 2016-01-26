@@ -121,19 +121,19 @@
                     @endif
                         <table class="table table-bordered table-responsive">
                             <tr>
-                                <td><strong>Feedback titel</strong></td>
+                                <td><strong>feedback titel</strong></td>
                                 <td>{{ $bug->titel }}</td>
                             </tr>
                             <tr>
-                                <td><strong>Omschrijving</strong></td>
+                                <td><strong>omschrijving</strong></td>
                                 <td>{!! $bug->beschrijving !!}</td>
                             </tr>
                             <tr>
-                                <td><strong>Start datum</strong></td>
+                                <td><strong>start datum</strong></td>
                                 <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
                             </tr>
                             <tr>
-                                <td><strong>Eind datum</strong></td>
+                                <td><strong>eind datum</strong></td>
                                 @if($bug->eind_datum == '0000-00-00 00:00:00')
                                     <td>Geen deadline</td>
                                 @else
@@ -141,7 +141,7 @@
                                 @endif
                             </tr>
                             <tr>
-                                <td><strong>Soort</strong></td>
+                                <td><strong>soort</strong></td>
                                 <td>{{ $bug->soort }}</td>
                             </tr>
                             @if(Auth::user()->bedrijf == 'moodles')
@@ -164,28 +164,28 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <table class="table table-bordered table-responsive">
                         <tr>
-                            <td><strong>Project naam</strong></td>
+                            <td><strong>project naam</strong></td>
                             <td>{{ $bug->project->projectnaam }}</td>
                         </tr>
                         <tr>
-                            <td><strong>Omschrijving</strong></td>
+                            <td><strong>omschrijving</strong></td>
                             <td>{!! $bug->project->omschrijvingproject !!}</td>
                         </tr>
                         <tr>
-                            <td><strong>Live URL</strong></td>
+                            <td><strong>live url</strong></td>
                             <td>{!! $bug->project->liveurl !!}</td>
                         </tr>
                         <tr>
-                            <td><strong>Development URL</strong></td>
+                            <td><strong>development url</strong></td>
                             <td>{!! $bug->project->developmenturl !!}</td>
                         </tr>
 
                         <tr>
-                            <td><strong>Beheer loginnaam</strong></td>
+                            <td><strong>admin</strong></td>
                             <td>{{ $bug->project->gebruikersnaam }}</td>
                         </tr>
                         <tr>
-                            <td><strong>Beheer wachtwoord</strong></td>
+                            <td><strong>password</strong></td>
                             <td><i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></td>
                         </tr>
 
