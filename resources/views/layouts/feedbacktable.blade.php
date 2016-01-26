@@ -1,6 +1,5 @@
 
  @if(\Auth::user()->bedrijf != 'moodles')
-                    <div class="col-lg-12">
                         <h4>Verstuurde feedback</h4>
                         <div class="table-responsive">
                         <table class="table table-hover data_table">
@@ -50,7 +49,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
                     @section('scripts')
                                 <script type="text/javascript">
                                    $(document).ready(function() {
@@ -68,7 +66,6 @@
                                 </script>
                     @endsection
                     @else
-                    <div class="col-lg-12">
                                             <h4>Laatst gemelde feedback</h4>
                                             <div class="table-responsive">
                                             <table class="table table-hover data_table">
@@ -134,7 +131,6 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
                                         @section('scripts')
                                                     <script type="text/javascript">
                                                        $(document).ready(function() {
