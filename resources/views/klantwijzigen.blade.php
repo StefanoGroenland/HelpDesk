@@ -31,7 +31,7 @@
                 <div class="col-lg-12">
                   <div class="panel panel-default">
                                     <div class="panel-heading">
-                                      <h3 class="panel-title">Verander klant</h3>
+                                      <h3 class="panel-title">Wijzig klant</h3>
                                     </div>
                                     <div class="panel-body">
                                       <form method="POST" action="/updateKlant">
@@ -99,12 +99,6 @@
                                        </div>
                                        <div class="row">
                                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                         <div class="form-group">
-                                            <label for="achternaam">Bedrijf</label>
-                                            <input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="{{$klant->bedrijf}}">
-                                          </div>
-                                         </div>
-                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          @if($errors->has('telefoonnummer'))
                                            <div class="form-group has-error">
                                            @else
@@ -114,6 +108,12 @@
                                            <input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$klant->telefoonnummer}}">
                                          </div>
                                          </div>
+                                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                       <div class="form-group">
+                                          <label for="achternaam">Bedrijf</label>
+                                          <input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="{{$klant->bedrijf}}">
+                                        </div>
+                                       </div>
                                        </div>
 
                                          <div class="row">

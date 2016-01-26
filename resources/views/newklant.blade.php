@@ -78,7 +78,7 @@
                            <div class="form-group">
                            @endif
                           <label for="wachtwoord">Herhaal wachtwoord</label>
-                          <input type="password" class="form-control" required="true" id="wachtwoord" name="password_confirmation" placeholder="Wachtwoord">
+                          <input type="password" class="form-control" required="true" id="wachtwoord" name="password_confirmation" placeholder="Herhaal wachtwoord">
                         </div>
                         </div>
                    </div>
