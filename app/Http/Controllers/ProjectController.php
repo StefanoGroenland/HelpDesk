@@ -56,6 +56,7 @@ class ProjectController extends Controller
                     'achternaam'                    => $request['achternaam'],
                     'geslacht'                      => $geslacht,
                     'telefoonnummer'                => $request['telefoonnummer'],
+                    'profielfoto'                   => 'assets/images/avatar.png',
                 );
 
                 $rules = array(

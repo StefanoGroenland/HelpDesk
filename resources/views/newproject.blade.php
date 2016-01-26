@@ -87,7 +87,11 @@
                         </div>
 
                         <fieldset id="fieldset-klant" >
+                                @if($errors->has('username'))
+                                <div class="form-group has-error">
+                                @else
                                 <div class="form-group">
+                                @endif
                                       <label for="sel4">Nieuwe klant</label>
                                       <input type="gebruikersnaam" class="form-control" id="username" required="true" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
                                 </div>
