@@ -50,9 +50,13 @@
                                                              @endif
                                                          @endif
                                                     @endforeach
-                                                    <div id='notificatie'><div>
-                                                        {{$unread}}
-                                                        </div></div>
+                                                    @if($unread > 0)
+                                                        <div id='notificatie'>
+                                                            <div>
+                                                                {{$unread}}
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                         <div class="col-xs-12 text-right">
 
                                                             <span class="label label-{{$panel_type}}">{{substr($project->projectnaam,0,20)}}..</span>
@@ -181,9 +185,13 @@
                                                         @endif
                                                     @endif
                                                 @endforeach
-                                                <div id='notificatie'><div>
-                                                {{$unread}}
-                                                </div></div>
+                                                @if($unread > 0)
+                                                    <div id='notificatie'>
+                                                        <div>
+                                                            {{$unread}}
+                                                        </div>
+                                                    </div>
+                                                @endif
                                                 <div class="col-xs-12 text-right pull-right">
                                                 <span style="border: solid #ffffff 1px;" class="label label-purple pull-left">{{$krit}}</span>
 
