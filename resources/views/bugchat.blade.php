@@ -201,30 +201,20 @@
                 </div>
                 <hr>
                </div>
-                    <h3>Discussie
-                        <button onclick="refresh_feed()" class="btn btn-default btn-xs pull-right">
-                           <i class="fa fa-refresh fa-spin"></i>
-                           refresh feed
-                        </button>
-                    </h3>
+                    <h3>Discussie</h3>
                     <ul class="list-unstyled" >
                     <li class="text-left">
                          <div class="panel-heading panel-success">
                           <i class="fa fa-fw fa-info fa-2x"></i>
-                         <span class="label label-success">
-                           Automatisch bericht
-                         </span>
-                         <div class="panel-heading" style="padding: 10px 50px 10px;">
-                            Elke 5 minuten wordt de chat feed ververst. Mocht u handmatig willen verversen, Kunt u rechts boven op :
-                             <button class="btn btn-default btn-xs disabled">
-                                <i class="fa fa-refresh fa-spin"></i>
-                                refresh feed
-                             </button>
-                             drukken.
+                            <span class="label label-success">
+                              Automatisch bericht
+                            </span>
+                            <div class="panel-heading" style="padding: 10px 50px 10px;">
+                               U kunt hier een discussie voeren met een medewerker van Moodles. U kunt eventueel ook bijlages toevoegen aan uw bericht.
+                            </div>
                          </div>
-                         </div>
-                         </li>
-                         </ul>
+                        </li>
+                      </ul>
                     <ul class="list-unstyled" id="display">
                     <li class="text-left">
                         @foreach($afzenders as $afzender)
@@ -351,66 +341,6 @@
                        })
                 });
             </script>
-
-                <script type="text/javascript">
-                function convertDate(inputFormat) {
-                  function pad(s) { return (s < 10) ? '0' + s : s; }
-                  var d = new Date(inputFormat);
-                  return[
-                      ("00" + d.getDate()).slice(-2) + "-" +
-                      ("00" + (d.getMonth() + 1)).slice(-2) + "-" +
-                      d.getFullYear() + " " +
-                      ("00" + d.getHours()).slice(-2) + ":" +
-                      ("00" + d.getMinutes()).slice(-2) + ":" +
-                      ("00" + d.getSeconds()).slice(-2)];
-                }
-
-                function refresh_feed(){
-                $.ajax({
-                    url: '/refreshChat/'+ {{$bug->id}},
-                    data: {},
-                    type: 'GET',
-                    _token: "{{ csrf_token() }}",
-                    success: function (data) {
-                        var count = 0;
-                        var div = '<li class="text-left">';
-                        var div = '<input type="hidden" id="counted_rows" value="+ count +">';
-
-
-                        $.each(data, function(index, elem) {
-                            if (elem.medewerker) {
-                            div += '<div class="panel-heading panel-default">';
-                            {{--<img src="{{'../'.$afzender->medewerker->profielfoto}}" class="img-responsive img-circle pull-left" alt="medewerker_ava"--}}
-                            div += '<img class="img-responsive img-circle pull-left small_avatar" alt="medewerker_ava" src=" '+ '../'+ elem.medewerker.profielfoto +' " />';
-                            div += '<span class="label label-default">'+ elem.medewerker.voornaam +' '+ elem.medewerker.tussenvoegsel +' '+ elem.medewerker.achternaam + '</span>';
-                            div += '<span class="pull-right label label-default"><i class="fa fa-clock-o"></i> ' + convertDate(elem.created_at)+ '</span>' ;
-                            div += '<div class="panel-heading">';
-                            div +=  elem.bericht;
-                            div += '</div>';
-                            div += '</div>';
-                            }
-                            else {
-                            div += '<div class="panel-heading panel-info">';
-                            div += '<img class="img-responsive img-circle pull-left small_avatar" alt="klant_ava" src=" '+ '../'+ elem.klant.profielfoto +' " />';
-                            div += '<span class="label label-info">' + elem.klant.voornaam +' '+ elem.klant.tussenvoegsel +' '+ elem.klant.achternaam + '</span>';
-                            div +=  ' <span class="pull-right label label-default"><i class="fa fa-clock-o"></i> ' + convertDate(elem.created_at)+ '</span>' ;
-                            div += '<div class="panel-heading">'
-                            div +=  elem.bericht;
-                            div += '</div>';
-                            div += '</div>';
-                            }
-                            count++;
-
-                        });
-
-                        div += '</li>';
-                        $("#display").html(div);
-                    }
-                });
-              }setInterval(function(){refresh_feed()}, 300000);
-
-                </script>
-
 
         @endsection
      @extends('layouts.footer')
