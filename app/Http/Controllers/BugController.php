@@ -179,7 +179,7 @@ class BugController extends Controller
 
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
-            return redirect('/feedbackmelden/'.$pro_id)->withErrors($validator);
+            return redirect('/feedbackmelden/'.$pro_id)->withErrors($validator)->withInput($data);
         }
         Bug::create($data);
         $dat = array(

@@ -74,7 +74,7 @@
                                  <div class="form-group">
                                  @endif
                                  <label for="end_date">Startdatum</label>
-                                     <input data-toggle="tooltip" title="Wanneer heeft de fout zich als eerst voorgedaan?" type="text" name="start_datum" class="form_datetime form-control date-picker" placeholder="{{date('d-m-Y H:i')}}" data-rule-maxlength="30">
+                                     <input data-toggle="tooltip" title="Wanneer heeft de fout zich als eerst voorgedaan?" type="text" name="start_datum" class="form_datetime form-control date-picker" placeholder="{{date('d-m-Y H:i')}}" value="{{old('start_datum')}}" data-rule-maxlength="30">
                                  </div>
                                 </div>
                             </div>
