@@ -34,7 +34,11 @@
 <!--</div>-->
 
     <!-- /#wrapper -->
-
+            <script type="text/javascript">
+                function myFunction() {
+                    location.reload();
+                }setInterval(function(){myFunction()}, 300000);
+            </script>
     @extends('layouts.footer')
 
 </body>
