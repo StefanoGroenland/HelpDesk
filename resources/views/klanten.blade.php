@@ -36,6 +36,7 @@
                   <div class="table-responsive">
                       <table class="table table-hover data_table" >
                           <thead>
+                          <th style="width: 10%">Bedrijf</th>
                           <th style="width: 10%">Voornaam</th>
                           <th style="width: 5%">Tussenvoegsel</th>
                           <th style="width: 10%">Achternaam</th>
@@ -43,12 +44,12 @@
                           <th style="width: 5%">Geslacht</th>
                           <th style="width: 10%">E-mail</th>
                           <th style="width: 10%">Telefoonnummer</th>
-                          <th style="width: 10%">Bedrijf</th>
                           <th style="width: 10%"></th>
                           </thead>
                           <tbody>
                               @foreach($klanten as $klant)
                               <tr style="cursor:pointer;!important;" data-href="/klantwijzigen/{{$klant->id}}" >
+                              <td>{{$klant->bedrijf}}</td>
                               <td>{{ucfirst($klant->voornaam)}}</td>
                               @if($klant->tussenvoegsel)
                                 <td>{{$klant->tussenvoegsel}}</td>
@@ -60,7 +61,6 @@
                               <td>{{$klant->geslacht}}</td>
                               <td>{{$klant->email}}</td>
                               <td>{{$klant->telefoonnummer}}</td>
-                              <td>{{$klant->bedrijf}}</td>
                               <td class="text-right">
                                  <a href="/klantwijzigen/{{$klant->id}}" class="">
                                    <button class="btn btn-success wijzigKnop2" name="zoekProject" type="button" data-project="{{$klant->email}}">
