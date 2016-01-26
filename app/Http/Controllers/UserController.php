@@ -249,10 +249,9 @@ class UserController extends Controller
             'username'                  => 'unique:gebruikers,username,'.$id,
             'telefoonnummer'            => 'numeric',
             'username'                  => 'required|min:4',
-            'username'                  => 'required|min:4',
             'password'                  => 'required|min:4',
-            'voornaam'                  => 'required|min:4',
-            'achternaam'                => 'required|min:4',
+            'voornaam'                  => 'required|min:3',
+            'achternaam'                => 'required|min:3',
         );
         $validator = Validator::make($data,$rules);
         if($validator->fails()){
@@ -291,8 +290,8 @@ class UserController extends Controller
             'email'                     => 'unique:gebruikers,email,'.$id,
             'username'                  => 'unique:gebruikers,username,'.$id,
             'telefoonnummer'            => 'required|numeric|min:11',
-            'voornaam'                  => 'required|min:4',
-            'achternaam'                => 'required|min:4',
+            'voornaam'                  => 'required|min:3',
+            'achternaam'                => 'required|min:3',
             'bedrijf'                   => 'required|not_in:moodles,Moodles',
             'password'                  => 'min:4|confirmed',
             'password_confirmation'     => 'min:4',

@@ -10,7 +10,7 @@ U heeft reactie op een discussie
 <div class="table-responsive">
      <table class="table">
          <thead>
-         <th>Bug</th>
+         <th>Feedback</th>
          <th>Soort</th>
          <th>Klant</th>
          <th>Projectnummer</th>

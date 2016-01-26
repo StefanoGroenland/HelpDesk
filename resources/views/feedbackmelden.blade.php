@@ -80,7 +80,7 @@
                             </div>
                                <div class="alert alert-info"><i class="fa fa-info" ></i> Gelieve de fout hieronder zo uitgebreid mogelijk te beschrijven. Indien mogelijk vul ook het webadres waar de fout voorkomt toe.</div>
                                <div class="form-group">
-                                  <textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving"></textarea>
+                                  <textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving">{{old('beschrijving')}}</textarea>
                                 </div>
                               <button data-toggle="tooltip" title="Heeft u de fout zo specifiek mogelijk beschreven? indien mogelijk met de locaties / manieren waardoor de fout onstaat?" type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button>
                             </form>
