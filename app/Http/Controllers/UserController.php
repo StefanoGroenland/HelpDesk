@@ -199,7 +199,7 @@ class UserController extends Controller
                 $request->file('profielfoto')->move($destinationPath,$fileName);
                 $ava = $destinationPath .'/'. $fileName;
 
-                $img = Image::make($ava)->resize(75,75)->save();
+                $img = Image::make($ava)->resize(100,100)->save();
 
 
                 $final = $destinationPath.'/'.$img->basename;
