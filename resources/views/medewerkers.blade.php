@@ -51,7 +51,7 @@
                              @if($medewerker->tussenvoegsel)
                              <td>{{$medewerker->tussenvoegsel}}</td>
                              @else
-                             <td>geen</td>
+                             <td></td>
                              @endif
                              <td>{{ucfirst($medewerker->achternaam)}}</td>
                              <td>{{$medewerker->username}}</td>

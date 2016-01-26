@@ -53,7 +53,7 @@
                               @if($klant->tussenvoegsel)
                                 <td>{{$klant->tussenvoegsel}}</td>
                               @else
-                              <td>geen</td>
+                              <td></td>
                               @endif
                               <td>{{ucfirst($klant->achternaam)}}</td>
                               <td>{{$klant->username}}</td>
