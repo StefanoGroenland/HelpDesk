@@ -46,8 +46,8 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
-        return parent::render($request, $e);
+//        return parent::render($request, $e);
 
-//        return redirect('/404');
+        return redirect('/404');
     }
 }

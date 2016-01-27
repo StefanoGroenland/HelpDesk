@@ -311,6 +311,7 @@
                               </span>
                               <span class="form-control"></span>
                             </div>
+                            <label class="checkbox-inline"><input type="checkbox" name="checkboxMsg" value="checked">Stuur e-mail notificatie naar klant</label>
                         </div>
                        </div>
 
