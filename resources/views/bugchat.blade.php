@@ -121,19 +121,19 @@
                     @endif
                         <table class="table table-bordered table-responsive">
                             <tr>
-                                <td><strong>feedback titel</strong></td>
+                                <td><strong>Feedback titel</strong></td>
                                 <td>{{ $bug->titel }}</td>
                             </tr>
                             <tr>
-                                <td><strong>omschrijving</strong></td>
+                                <td><strong>Omschrijving</strong></td>
                                 <td>{!! $bug->beschrijving !!}</td>
                             </tr>
                             <tr>
-                                <td><strong>start datum</strong></td>
+                                <td><strong>Start datum</strong></td>
                                 <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
                             </tr>
                             <tr>
-                                <td><strong>eind datum</strong></td>
+                                <td><strong>Eind datum</strong></td>
                                 @if($bug->eind_datum == '0000-00-00 00:00:00')
                                     <td>Geen deadline</td>
                                 @else
@@ -141,7 +141,7 @@
                                 @endif
                             </tr>
                             <tr>
-                                <td><strong>soort</strong></td>
+                                <td><strong>Soort</strong></td>
                                 <td>{{ $bug->soort }}</td>
                             </tr>
                             @if(Auth::user()->bedrijf == 'moodles')
@@ -164,28 +164,28 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <table class="table table-bordered table-responsive">
                         <tr>
-                            <td><strong>project naam</strong></td>
+                            <td><strong>Project naam</strong></td>
                             <td>{{ $bug->project->projectnaam }}</td>
                         </tr>
                         <tr>
-                            <td><strong>omschrijving</strong></td>
+                            <td><strong>Omschrijving</strong></td>
                             <td>{!! $bug->project->omschrijvingproject !!}</td>
                         </tr>
                         <tr>
-                            <td><strong>live url</strong></td>
-                            <td>{!! $bug->project->liveurl !!}</td>
+                            <td><strong>Live url</strong></td>
+                            <td><a style="text-decoration: underline;" target="_blank" href="http://{{$bug->project->liveurl }}">{!! $bug->project->liveurl !!}<a/></td>
                         </tr>
                         <tr>
-                            <td><strong>development url</strong></td>
-                            <td>{!! $bug->project->developmenturl !!}</td>
+                            <td><strong>Development url</strong></td>
+                            <td><a style="text-decoration: underline;" target="_blank" href="http://{{ $bug->project->developmenturl }}">{!! $bug->project->developmenturl !!}</a></td>
                         </tr>
 
                         <tr>
-                            <td><strong>admin</strong></td>
+                            <td><strong>Admin</strong></td>
                             <td>{{ $bug->project->gebruikersnaam }}</td>
                         </tr>
                         <tr>
-                            <td><strong>password</strong></td>
+                            <td><strong>Password</strong></td>
                             <td><i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></td>
                         </tr>
 
@@ -194,8 +194,6 @@
 
                     </div>
                      @endif
-
-
 
                     </div>
                 </div>
