@@ -84,43 +84,69 @@
                             <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
                         </form>
                         <br>
-                        <table class="table table-bordered table-responsive">
+
+                        <table class="table table-bordered table-responsive"  >
                             <tr>
-                                <td><strong>Feedback titel</strong></td>
-                                <td>{{ $bug->titel }}</td>
+                                <td>
+                                <strong>Feedback titel</strong><br>
+                                {{ $bug->titel }}
+                                </td>
                             </tr>
                             <tr>
-                                <td><strong>Omschrijving</strong></td>
-                                <td>{!! $bug->beschrijving !!}</td>
+                                <td>
+                                <strong>Omschrijving</strong><br>
+                                {!! $bug->beschrijving !!}
+                                </td>
                             </tr>
                             <tr>
-                                <td><strong>Start datum</strong></td>
-                                <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
+                                <td>
+                                <strong>Start datum</strong><br>
+                                {{date('d-m-Y - H:i',strtotime($bug->start_datum))}}
+                                </td>
                             </tr>
                             <tr>
-                                <td><strong>Eind datum</strong></td>
                                 @if($bug->eind_datum == '0000-00-00 00:00:00')
-                                    <td>Geen deadline</td>
+                                    <td>
+                                    <strong>Eind datum</strong><br>
+                                    Geen deadline
+                                    </td>
                                 @else
-                                    <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
+                                    <td>
+                                    <strong>Eind datum</strong><br>
+                                    {{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}
+                                    </td>
                                 @endif
                             </tr>
                             <tr>
-                                <td><strong>Soort</strong></td>
-                                <td>{{ $bug->soort }}</td>
+                                <td>
+                                <strong>Soort</strong><br>
+                                {{ $bug->soort }}
+                                </td>
                             </tr>
                             @if(Auth::user()->rol == 'medewerker')
                             <tr>
-                                <td><strong><i class="fa fa-user"></i></strong></td>
-                                <td>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
+                                <td>
+                                <strong><i class="fa fa-user"></i> Contactpersoon</strong><br>
+                                @if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}
+                                </td>
                             </tr>
                             <tr>
-                                <td><strong><i class="fa fa-envelope-o"></i></strong></td>
-                                <td>{{' '.$bug->klant->email}}</td>
+                                <td>
+                                <strong><i class="fa fa-envelope-o"></i> E-mail</strong><br>
+                                {{' '.$bug->klant->email}}
+                                </td>
                             </tr>
                             <tr>
-                                <td><strong><i class="fa fa-mobile-phone fa-2x"></i></strong></td>
-                                <td>{{$bug->klant->telefoonnummer}}</td>
+                                <td>
+                                <strong><i class="fa fa-mobile-phone fa-2x"></i> Telefoonnummer</strong><br>
+                                {{$bug->klant->telefoonnummer}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong><i class="fa fa-building"></i> Bedrijf</strong><br>
+                                    {{$bug->klant->bedrijf}}
+                                </td>
                             </tr>
                         </table>
                     </div>
