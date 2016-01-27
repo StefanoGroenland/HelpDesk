@@ -197,7 +197,8 @@
 
                                                     <small><strong>{{substr($pro->projectnaam,0,15)}}..</strong></small>
                                                     <div>
-                                                    <span style="border: solid #ffffff 1px;" class="label label-danger pull-left">{{$hoog}}</span><span class="badge">
+                                                    <span style="border: solid #ffffff 1px;" class="label label-danger pull-left">{{$hoog}}</span>
+                                                    <span class="badge pull-right">
                                                     @foreach($bugs as $bug)
                                                     @if($bug->status == 'open')
                                                         @if($bug->project_id == $pro->id )
@@ -208,7 +209,7 @@
                                                     {{$i}}
                                                     </span> Openstaand</div>
                                                     <span style="border: solid #ffffff 1px;" class="label label-warning pull-left">{{$gem}}</span>
-                                                    <div><span class="badge">
+                                                    <div><span class="badge pull-right">
                                                     @foreach($bugs as $bug)
                                                     @if($bug->status == 'bezig')
                                                         @if($bug->project_id == $pro->id)
@@ -219,7 +220,7 @@
                                                     {{$x}}
                                                     </span> Bezig</div>
                                                     <span style="border: solid #ffffff 1px;" class="label label-success pull-left">{{$laag}}</span>
-                                                    <div><span class="badge">
+                                                    <div><span class="badge pull-right">
                                                     @foreach($bugs as $bug)
                                                     @if($bug->status == 'gesloten')
                                                         @if($bug->project_id == $pro->id)
@@ -235,7 +236,7 @@
                                         </div>
                                          <a href="/bugs/{{$pro->id}}">
                                             <div class="panel-footer">
-                                                <span class="pull-left">Bekijk</span>
+                                                <span class="pull-left">{{$pro->projectnaam}}</span>
                                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                                 <div class="clearfix"></div>
                                             </div>
