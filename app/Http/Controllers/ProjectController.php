@@ -69,15 +69,13 @@ class ProjectController extends Controller
                     'bedrijf'                       => 'required|not_in:moodles,Moodles',
                     'username'                      => 'required|min:4|unique:gebruikers',
                     'projectnaam'                   => 'required|min:4',
-                    'gebruikersnaam'                => 'required|min:4',
-                    'wachtwoord'                    => 'required|min:4',
+                    'gebruikersnaam'                => 'min:3',
+                    'wachtwoord'                    => 'min:3',
                     'geslacht'                      => 'required',
 
 
                     'projectnaam'                   => 'required|unique:projecten',
                     'liveurl'                       => 'required',
-                    'gebruikersnaam'                => 'required',
-                    'wachtwoord'                    => 'required',
                     'omschrijvingproject'           => 'required',
                 );
 
@@ -137,8 +135,8 @@ class ProjectController extends Controller
                 $rules = array(
                     'projectnaam'                   => 'required|unique:projecten',
                     'liveurl'                       => 'required',
-                    'gebruikersnaam'                => 'required',
-                    'wachtwoord'                    => 'required',
+                    'gebruikersnaam'                => 'min:3',
+                    'wachtwoord'                    => 'min:3',
                     'omschrijvingproject'           => 'required',
                 );
                 $validator = Validator::make($data,$rules);

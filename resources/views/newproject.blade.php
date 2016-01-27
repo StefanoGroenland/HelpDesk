@@ -46,10 +46,10 @@
                             </div>
                             <div class="form-group">
                                <label for="sel4">Beheer account</label>
-                              <input data-toggle="tooltip" title="Met dit account moet toegang zijn op het beheerderspaneel van de website!" type="text" class="form-control" id="gebruikersnaam" required="true" name="gebruikersnaam" placeholder="Gebruikersnaam" value="{{old('gebruikersnaam')}}">
+                              <input data-toggle="tooltip" title="Met dit account moet toegang zijn op het beheerderspaneel van de website!" type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam" placeholder="Gebruikersnaam" value="{{old('gebruikersnaam')}}">
                             </div>
                              <div class="form-group">
-                              <input data-toggle="tooltip" title="Wachtwoord voor bovenstaand Beheer account." type="text" class="form-control" id="wachtwoord" required="true" name="wachtwoord" placeholder="Wachtwoord" value="{{old('wachtwoord')}}">
+                              <input data-toggle="tooltip" title="Wachtwoord voor bovenstaand Beheer account." type="text" class="form-control" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" value="{{old('wachtwoord')}}">
                             </div>
                             <div class="form-group">
                                <textarea class="form-control" rows="13" id="omschrijvingproject" name="omschrijvingproject">{{old('omschrijvingproject')}}</textarea>

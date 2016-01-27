@@ -57,13 +57,13 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                      <div class="form-group">
                                          <label for="bedrijfsnaam">Beheer account</label>
-                                         <input type="text" class="form-control gebruikersnaam2" required="true" id="gebruikersnaam2" name="gebruikersnaam" placeholder="Gebruikersnaam" value="{{$project->gebruikersnaam}}">
+                                         <input type="text" class="form-control gebruikersnaam2"  id="gebruikersnaam2" name="gebruikersnaam" placeholder="Gebruikersnaam" value="{{$project->gebruikersnaam}}">
                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group">
                                         <label for="bedrijfsnaam">Beheer wachtwoord</label>
-                                          <input type="text" class="form-control wachtwoord2"  required="true"id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="{{Crypt::decrypt($project->wachtwoord)}}">
+                                          <input type="text" class="form-control wachtwoord2" id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="{{Crypt::decrypt($project->wachtwoord)}}">
                                         </div>
                                     </div>
                               </div>
