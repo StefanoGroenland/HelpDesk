@@ -83,7 +83,7 @@
                                                     <tbody>
                                                     @if(count($bugs) > 0)
                                                     @foreach($bugs as $bug)
-
+                                                        @if($bug->status != 'gesloten')
                                                         <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
                                                             {{--@if($bug->updated_at == '0000-00-00 00:00:00')--}}
                                                             {{--<td>{{$bug->created_at->format('d-m-y - H:i')}}</td>--}}
@@ -113,7 +113,7 @@
                                                             @endif
                                                             </td>
                                                             @if($bug->klant)
-                                                            <td>{{ucfirst($bug->klant->voornaam) .' '. $bug->klant->tussenvoegsel .' '. ucfirst($bug->klant->achternaam)}}</td>
+                                                            <td>{{$bug->klant->bedrijf}}</td>
                                                             @endif
                                                             @if($bug->project)
                                                                 <td>{{$bug->project->projectnaam}}</td>
@@ -126,6 +126,7 @@
                                                                </a>
                                                             </td>
                                                         </tr>
+                                                            @endif
                                                         @endforeach
                                                         @endif
                                                     </tbody>

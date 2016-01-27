@@ -18,83 +18,10 @@
                           @endforeach
                 <!-- /.row -->
 
-
-
-                @foreach($projects as $project)
-                                <div class="row">
-                                   <div class="col-lg-12">
-                                   <h3 class="page-header">
-                                       {{$project->projectnaam}} <small>alle bugs voor {{$project->projectnaam}}</small>
-                                   </h3>
-                                   <div class="table-responsive">
-                                    <table class="table table-hover data_table">
-                                        <thead>
-                                        <th style="width: 10%"><i class="fa fa-hashtag"></i></th>
-                                        <th style="width: 10%">Bug titel</th>
-                                        <th style="width: 10%">Status</th>
-                                        <th style="width: 10%">Soort</th>
-                                        <th style="width: 10%">Prioriteit</th>
-                                        <th style="width: 10%">Startdatum</th>
-                                        <th style="width: 10%">Deadline</th>
-                                        <th style="width: 10%">Project</th>
-                                        <th style="width: 10%"></th>
-                                        </thead>
-                                        <tbody>
-                                           @foreach($bugs_all as $bug)
-                                           @if($bug->project_id == $project->id)
-                                                <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
-                                                    @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0 && $bug->status != 'gesloten')
-                                                        <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-                                                    @elseif(Auth::user()->bedrijf != 'moodles' && $bug->last_admin > 0 && $bug->status != 'gesloten')
-                                                        <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-                                                    @elseif($bug->status == 'gesloten')
-                                                        <td>{{$bug->id}}</td>
-                                                    @else
-                                                        <td>{{$bug->id}}</td>
-                                                    @endif
-                                                    <td>{{substr($bug->titel,0,15)}}...</td>
-                                                    <td>{{$bug->status}}</td>
-                                                    <td>{{$bug->soort}}</td>
-                                                    <td>
-                                                    @if($bug->prioriteit == 1)
-                                                    <span class="label label-success">Laag</span>
-                                                    @elseif($bug->prioriteit == 2)
-                                                    <span class="label label-warning">Gemiddeld</span>
-                                                    @elseif($bug->prioriteit == 3)
-                                                    <span class="label label-danger">Hoog</span>
-                                                    @elseif($bug->prioriteit == 4)
-                                                    <span class="label label-purple">Kritisch</span>
-                                                    @else
-                                                    <span class="label label-info">Geen prioriteit</span>
-                                                    @endif
-                                                    </td>
-                                                    <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
-                                                    @if($bug->eind_datum == '0000-00-00 00:00:00')
-                                                    <td>Geen eind datum.</td>
-                                                    @else
-                                                    <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
-                                                    @endif
-                                                    <td>{{$project->projectnaam}}</td>
-                                                    <td class="text-right">
-                                                        <a href="/bugchat/{{$bug->id}}">
-                                                            <button type="submit" class="btn btn-success">
-                                                                <i class="fa fa-comment-o"></i>
-                                                            </button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                @endif
-                                            @endforeach
-                                        </tbody>
-                                      </table>
-                                   </div>
-                                  </div>
-                                 </div>
-                @endforeach
-
                 @if(Auth::user()->bedrijf == 'moodles')
                 <div class="row">
                     <div class="col-lg-12">
+                    <h3>Open feedback <small>Alle feedback met de status 'open' of 'bezig'</small></h3>
                     <div class="table-responsive">
                     <table class="table table-hover data_table">
                         <thead>
@@ -112,7 +39,7 @@
                         <tbody>
                             @foreach($bugs_all as $bug)
                                 @if($bug->project)
-                                    @if($bug->project_id == $bug->project->id)
+                                    @if($bug->project_id == $bug->project->id && $bug->status != 'gesloten')
                                         <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
                                         @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0 && $bug->status != 'gesloten')
                                             <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
@@ -166,6 +93,86 @@
                                     @endif
                                     @endif
                             @endforeach
+                             </tbody>
+                            </table>
+                          </div>
+                         </div>
+                         </div>
+
+                            <div class="row">
+                            <div class="col-lg-12">
+                            <h3>Gesloten feedback <small>Alle feedback met de status 'gesloten'</small></h3>
+                            <div class="table-responsive">
+                            <table class="table table-hover data_table">
+                                <thead>
+                                <th style="width: 10%"><i class="fa fa-hashtag"></i></th>
+                                <th style="width: 10%">Feedback titel</th>
+                                <th style="width: 10%">Status</th>
+                                <th style="width: 10%">Soort</th>
+                                <th style="width: 10%">Prioriteit</th>
+                                <th style="width: 10%">Startdatum</th>
+                                <th style="width: 10%">Deadline</th>
+                                <th style="width: 10%">Gemeld door</th>
+                                <th style="width: 10%">Project</th>
+                                <th style="width: 10%"></th>
+                                </thead>
+                                <tbody>
+                                    @foreach($bugs_all as $bug)
+                                        @if($bug->project)
+                                            @if($bug->project_id == $bug->project->id && $bug->status == 'gesloten')
+                                                <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
+                                                @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0 && $bug->status == 'gesloten')
+                                                    <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
+                                                @elseif(Auth::user()->bedrijf != 'moodles' && $bug->last_admin > 0 && $bug->status == 'gesloten')
+                                                    <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
+                                                @elseif($bug->status == 'gesloten')
+                                                    <td>{{$bug->id}}</td>
+                                                @else
+                                                    <td>{{$bug->id}}</td>
+                                                @endif
+                                                <td>{{substr($bug->titel,0,15)}}...</td>
+                                                <td>{{$bug->status}}</td>
+                                                <td>{{$bug->soort}}</td>
+                                                <td>
+                                                @if($bug->prioriteit == 1)
+                                                <span class="label label-success">Laag</span>
+                                                @elseif($bug->prioriteit == 2)
+                                                <span class="label label-warning">Gemiddeld</span>
+                                                @elseif($bug->prioriteit == 3)
+                                                <span class="label label-danger">Hoog</span>
+                                                @elseif($bug->prioriteit == 4)
+                                                <span class="label label-purple">Kritisch</span>
+                                                @else
+                                                <span class="label label-info">Geen prioriteit</span>
+                                                @endif
+                                                </td>
+                                                <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
+                                                @if($bug->eind_datum == '0000-00-00 00:00:00')
+                                                <td>Geen eind datum.</td>
+                                                   @else
+                                                <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
+                                                @endif
+                                                @if($bug->klant)
+                                                <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
+                                                @endif
+                                                <td>{{$bug->project->projectnaam}}</td>
+                                                <td class="text-right" >
+                                                    <a href="/bugchat/{{$bug->id}}" class="">
+                                                        <button type="submit" class="btn btn-success">
+                                                            <i class="fa fa-comment-o"></i>
+                                                        </button>
+                                                    </a>
+                                                    @if(Auth::user()->bedrijf == 'moodles')
+                                                    <button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
+                                                      <i class="glyphicon glyphicon-trash"></i>
+                                                    </button>
+                                                    @endif
+                                                </td>
+                                            </tr>
+
+                                            @endif
+                                            @endif
+                                    @endforeach
                             @else
                             @endif
 
