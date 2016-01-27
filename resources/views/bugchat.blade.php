@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<style>
+.clickable:hover{
+    cursor:pointer;
+}
+</style>
     @include('layouts.header')
 
     @extends('layouts.top-links')
@@ -35,8 +40,8 @@
                 @else
                 <span class="label label-info pull-right">Geen</span>
                 @endif
-                <a type="button" class="pull-right" data-toggle="modal" data-target="#projectDetails">
-                  <i class="fa fa-flask"></i>
+                <a type="button" style="margin-right:20px;!important;"  class="pull-right clickable" data-toggle="modal" data-target="#projectDetails">
+                  <i class="fa fa-flask fa-2x"></i>
                 </a>
                 </h3>
                 @endif

@@ -48,7 +48,34 @@ class BugController extends Controller
             }
             return View::make('/feedbackmelden' , compact('projecten','id'));
     }
+    public function showFeedbackWijzigen($id){
+        $bug = Bug::find($id);
+        if(Auth::user()->rol == 'medewerker'){
+            return View::make('/feedbackwijzigen', compact('bug'));
+        }
+        return redirect('/404');
+    }
+    public function updateFeedback($id,Request $request){
+        $bug = Bug::find($id);
+        $data = array(
+            'titel'                 => $request['titel'],
+            'prioriteit'            => $request['prioriteit'],
+            'soort'                 => $request['soort'],
+            'start_datum'           => $request['start_datum'],
+            'beschrijving'          => $request['beschrijving'],
+        );
+        if($data['start_datum'] == '1970-01-01 00:00:00' || $data['start_datum'] == '1899-31-12 00:00:00' || $data['start_datum'] == ''){
+            $request->session()->flash('alert-danger', 'Start datum moet correct worden ingevuld.');
+            return redirect('/feedbackwijzigen/'.$id)->withInput($data);
+        }
+        $data['start_datum'] = date('Y-m-d H:i',strtotime($data['start_datum']));
+        Bug::lastPerson($bug,1,0);
 
+        Bug::where('id', '=', $id)->update($data);
+
+        $request->session()->flash('alert-success', ''. $data['titel'] . ' veranderd.');
+        return redirect('/feedbackwijzigen/'. $id);
+    }
     public function showBugOverzicht($id){
         if(Auth::user()->rol == 'medewerker' || Auth::user()->id == $id){
             $bugs_related           = $this->getRelatedBugs($id);

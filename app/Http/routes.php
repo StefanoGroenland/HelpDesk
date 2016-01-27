@@ -56,6 +56,10 @@ Route::group(['middleware' => 'auth'], function () {
         //    BugController Routes
         Route::delete('/verwijderBug/{id}', 'BugController@verwijderBug');
         Route::put('/updateBug/{id}',array('as' => 'updateBug', 'uses' => 'BugController@updateBug'));
+        Route::get('/feedbackwijzigen/{id}', array('as' => 'fbchange', 'uses' => 'BugController@showFeedbackWijzigen'));
+        Route::put('/wijzigFeedback/{id}', array('as' => 'fbwijzigen', 'uses' => 'BugController@updateFeedback'));
+
+
     });
 
     Route::get('/feedbackmelden/{id}', array('as' => 'feedbackmelden', 'uses' => 'BugController@showBugMuteren'));
