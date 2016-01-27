@@ -164,22 +164,22 @@
                                                         {{-- */$unread ++;/* --}}
                                                         @endif
                                                     @endif
-                                                    @if($bug->prioriteit == 1)
+                                                    @if($bug->prioriteit == 1 && $bug->status != 'gesloten')
                                                         @if($bug->project_id == $pro->id)
                                                         {{-- */$laag++;/* --}}
                                                         @endif
                                                     @endif
-                                                    @if($bug->prioriteit == 2)
+                                                    @if($bug->prioriteit == 2 && $bug->status != 'gesloten')
                                                         @if($bug->project_id == $pro->id)
                                                         {{-- */$gem++;/* --}}
                                                         @endif
                                                     @endif
-                                                    @if($bug->prioriteit == 3)
+                                                    @if($bug->prioriteit == 3 && $bug->status != 'gesloten')
                                                         @if($bug->project_id == $pro->id)
                                                         {{-- */$hoog++;/* --}}
                                                         @endif
                                                     @endif
-                                                    @if($bug->prioriteit == 4)
+                                                    @if($bug->prioriteit == 4 && $bug->status != 'gesloten')
                                                         @if($bug->project_id == $pro->id)
                                                         {{-- */$krit++;/* --}}
                                                         @endif
@@ -195,7 +195,7 @@
                                                 <div class="col-xs-12 text-right pull-right">
                                                 <span style="border: solid #ffffff 1px;" class="label label-purple pull-left">{{$krit}}</span>
 
-                                                    {{--<small><strong>{{substr($pro->projectnaam,0,15)}}..</strong></small>--}}
+                                                    <small><strong>{{substr($pro->projectnaam,0,15)}}..</strong></small>
                                                     <div>
                                                     <span style="border: solid #ffffff 1px;" class="label label-danger pull-left">{{$hoog}}</span>
                                                     <span class="badge pull-right">
