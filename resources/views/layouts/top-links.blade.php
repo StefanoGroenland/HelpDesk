@@ -101,22 +101,24 @@
                         <button class="btn btn-default navbar-btn"><i class="fa fa-building"></i> Dashboard</button>
                      </a>
                  </li>
+                 @if(Auth::user()->bedrijf == 'moodles')
+                 <li>
+                     <a href="{{URL::to('/klanten')}}">
+                        <button class="btn btn-default navbar-btn"><i class="fa fa-user"></i> Klanten</button>
+                     </a>
+                 </li>
+                 <li>
+                   <a href="{{URL::to('/projecten')}}">
+                      <button class="btn btn-default navbar-btn"><i class="fa fa-briefcase"></i> Projecten</button>
+                   </a>
+                 </li>
+                 @endif
                  <li>
                      <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
                         <button class="btn btn-default navbar-btn"><i class="fa fa-bug"></i> Feedback overzicht</button>
                      </a>
                  </li>
                  @if(Auth::user()->bedrijf == 'moodles')
-                 <li>
-                   <a href="{{URL::to('/projecten')}}">
-                      <button class="btn btn-default navbar-btn"><i class="fa fa-briefcase"></i> Projecten</button>
-                   </a>
-                 </li>
-                 <li>
-                     <a href="{{URL::to('/klanten')}}">
-                        <button class="btn btn-default navbar-btn"><i class="fa fa-user"></i> Klanten</button>
-                     </a>
-                 </li>
                  <li>
                     <a href="{{URL::to('/medewerkers')}}">
                        <button class="btn btn-default navbar-btn"><i class="fa fa-users"></i> Medewerkers</button>
