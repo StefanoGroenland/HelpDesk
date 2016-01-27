@@ -25,7 +25,8 @@ class BugAttachment extends Model
     ];
     protected $guarded = ['id'];
 
-    public static function uploadToDb($file,$id){
+    public static function uploadToDb($file, $id)
+    {
         return DB::table('bugs_attachments')->insert([
             'bug_id' => $id,
             'image' => $file,

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Chat as Chat;
 use DB;
+
 class Bug extends Model
 {
     /**
@@ -35,51 +36,72 @@ class Bug extends Model
     ];
     protected $guarded = ['id'];
 
-    public function user(){
-        return $this->belongsTo('App\User','medewerker_id','id');
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'medewerker_id', 'id');
     }
-    public function klant(){
-        return $this->belongsTo('App\User','klant_id','id');
+
+    public function klant()
+    {
+        return $this->belongsTo('App\User', 'klant_id', 'id');
     }
-    public function melder(){
-        return $this->belongsTo('App\User','gemeld_door','id');
+
+    public function melder()
+    {
+        return $this->belongsTo('App\User', 'gemeld_door', 'id');
     }
-    public function chat(){
-        return $this->hasMany('App\Chat','bug_id','id');
+
+    public function chat()
+    {
+        return $this->hasMany('App\Chat', 'bug_id', 'id');
     }
-    public function project(){
+
+    public function project()
+    {
         return $this->belongsTo('App\Project', 'project_id', 'id');
     }
-    public function getAllBugs(){
-       DB::table('bugs')->all();
+
+    public function getAllBugs()
+    {
+        DB::table('bugs')->all();
     }
-    public static function verwijderBug($id){
-        $bug_id = DB::table('bugs')->select(DB::raw('id'))->where('project_id','=',$id)->first();
-        if($bug_id != null){
+
+    public static function verwijderBug($id)
+    {
+        $bug_id = DB::table('bugs')->select(DB::raw('id'))->where('project_id', '=', $id)->first();
+        if ($bug_id != null) {
             $bug_id = $bug_id->id;
             Chat::deleteChatFeedPerBug($bug_id);
-            DB::table('bugs_attachments')->where('bug_id', '=',$bug_id)->delete();
-            return DB::table('bugs')->where('project_id', '=',$id)->delete();
-        }else {
-            return DB::table('bugs')->where('id', '=',$id)->delete();
+            DB::table('bugs_attachments')->where('bug_id', '=', $bug_id)->delete();
+            return DB::table('bugs')->where('project_id', '=', $id)->delete();
+        } else {
+            return DB::table('bugs')->where('id', '=', $id)->delete();
         }
     }
-    public static function uploadToDb($file,$id){
+
+    public static function uploadToDb($file, $id)
+    {
         return DB::table('bugs_attachments')->insert([
             'bug_id' => $id,
             'image' => $file,
             'created_at' => date('Y-m-d H:i:s')
         ]);
     }
-    public static function defineKlant($id){
-        return DB::table('projecten')->select(DB::raw('gebruiker_id'))->where('id','=',$id)->first();
+
+    public static function defineKlant($id)
+    {
+        return DB::table('projecten')->select(DB::raw('gebruiker_id'))->where('id', '=', $id)->first();
     }
-    public static function defineProject($id){
-        return DB::table('bugs')->select(DB::raw('project_id'))->where('id','=',$id)->first();
+
+    public static function defineProject($id)
+    {
+        return DB::table('bugs')->select(DB::raw('project_id'))->where('id', '=', $id)->first();
     }
-    public static function lastPerson($bug,$admin,$client){
+
+    public static function lastPerson($bug, $admin, $client)
+    {
         return DB::table('bugs')
-            ->where('id','=',$bug)
+            ->where('id', '=', $bug)
             ->update(
                 array(
                     'last_admin' => $admin,

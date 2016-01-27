@@ -53,54 +53,66 @@ class User extends Model implements AuthenticatableContract,
     protected $guarded = ['id'];
 
 
-    public function bug(){
-        return $this->hasMany('App\Bug','klant_id','id');
+    public function bug()
+    {
+        return $this->hasMany('App\Bug', 'klant_id', 'id');
     }
-    public function project(){
-        return $this->hasMany('App\Project','gebruiker_id');
+
+    public function project()
+    {
+        return $this->hasMany('App\Project', 'gebruiker_id');
     }
-    public function chat(){
-        return $this->hasMany('App\Chat','afzender_id','id');
+
+    public function chat()
+    {
+        return $this->hasMany('App\Chat', 'afzender_id', 'id');
     }
 
     public static function getMedewerkers()
     {
         return DB::table('gebruikers')
             ->select(DB::raw('id,email,username,voornaam,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
-            ->where('rol','=', 'medewerker')
+            ->where('rol', '=', 'medewerker')
             ->get();
     }
-    public static function getMedewerker($id){
+
+    public static function getMedewerker($id)
+    {
         return DB::table('gebruikers')
             ->select(DB::raw('id,email,username,voornaam,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
             ->where('email', '=', $id)
-            ->where('rol', '=' , 'medewerker')
+            ->where('rol', '=', 'medewerker')
             ->get();
     }
-    public static function getKlant($id){
+
+    public static function getKlant($id)
+    {
         return DB::table('gebruikers')
             ->select(DB::raw('id,email,username,voornaam,bedrijf,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
-            ->where('email','=',$id)
-            ->where('rol','!=','medewerker')
+            ->where('email', '=', $id)
+            ->where('rol', '!=', 'medewerker')
             ->get();
     }
-    public static function verwijderGebruiker($id){
-        if(User::find($id)->rol == 'medewerker') {
+
+    public static function verwijderGebruiker($id)
+    {
+        if (User::find($id)->rol == 'medewerker') {
             DB::table('gebruikers')->where('id', '=', $id)->delete();
             return redirect('/medewerkers');
-        }else {
+        } else {
             DB::table('gebruikers')->where('id', '=', $id)->delete();
-            $projecten = DB::table('projecten')->where('gebruiker_id','=',$id)->get();
-            foreach($projecten as $pro){
+            $projecten = DB::table('projecten')->where('gebruiker_id', '=', $id)->get();
+            foreach ($projecten as $pro) {
                 Project::verwijderProject($pro->id);
             }
             return redirect('/klanten');
         }
     }
 
-    public static function uploadPicture($id,$img){
+    public static function uploadPicture($id, $img)
+    {
         DB::table('gebruikers')
-            ->where('id' , $id)
+            ->where('id', $id)
             ->update(['profielfoto' => $img]);
     }
 }

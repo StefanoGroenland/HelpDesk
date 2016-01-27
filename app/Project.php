@@ -32,26 +32,31 @@ class Project extends Model
     ];
     protected $guarded = ['id'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\User', 'gebruiker_id', 'id');
     }
 
-    public function bug(){
+    public function bug()
+    {
         return $this->hasMany('App\Bug', 'project_id');
     }
 
-    public static function getUsers(){
-        $users = User::where('rol','!=', 'medewerker' )->get();
+    public static function getUsers()
+    {
+        $users = User::where('rol', '!=', 'medewerker')->get();
         return $users;
     }
 
-    public static function verwijderProject($id){
-        DB::table('projecten')->where('id', '=',$id)->delete();
+    public static function verwijderProject($id)
+    {
+        DB::table('projecten')->where('id', '=', $id)->delete();
         Bug::verwijderBug($id);
         return redirect('/projecten');
     }
 
-    public static function getProjectOnSearch($inp){
+    public static function getProjectOnSearch($inp)
+    {
         return DB::table('projecten')
             ->select(DB::raw('id,titel,projectnaam,liveurl,developmenturl
             ,gebruikersnaam,wachtwoord
@@ -59,7 +64,6 @@ class Project extends Model
             ->where('projectnaam', '=', $inp)
             ->get();
     }
-
 
 
 }
