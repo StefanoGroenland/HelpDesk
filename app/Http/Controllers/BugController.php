@@ -51,7 +51,7 @@ class BugController extends Controller
     public function showBugOverzicht($id){
         if(Auth::user()->rol == 'medewerker' || Auth::user()->id == $id){
             $bugs_related           = $this->getRelatedBugs($id);
-            $bugs_all               = Bug::with('klant')->orderBy('id','desc')->get();
+            $bugs_all               = Bug::with('klant','melder')->orderBy('id','desc')->get();
             $projects               = Project::where('gebruiker_id','=', $id)->get();
             $projects_all           = Project::all();
             return View::make('/bugoverzicht', compact('bugs_related', 'bugs_all', 'projects', 'projects_all', 'klanten'));
@@ -64,7 +64,7 @@ class BugController extends Controller
         $project = Project::find($id);
 
         if (Auth::user()->rol == 'medewerker' || Auth::user()->id == $project->gebruiker_id){
-            $bugs = Bug::where('project_id', '=', $id)->get();
+            $bugs = Bug::with('melder')->where('project_id', '=', $id)->get();
             return View::make('/bugoverzichtperproject', compact('bugs', 'project'));
         }else{
             return redirect('/dashboard');
@@ -128,7 +128,7 @@ class BugController extends Controller
 
     public function addBug(Request $request){
         $pro_id = Route::current()->getParameter('id');
-        $posted_by = Bug::defineKlant($pro_id);
+        $customer = Bug::defineKlant($pro_id);
 
         $data = array(
                 'titel'             => $request['titel'],
@@ -137,7 +137,8 @@ class BugController extends Controller
                 'status'            => 'open',
                 'start_datum'       => $request['start_datum'],
                 'beschrijving'      => $request['beschrijving'],
-                'klant_id'          => $posted_by->gebruiker_id,
+                'klant_id'          => $customer->gebruiker_id,
+                'gemeld_door'       => Auth::user()->id,
                 'project_id'        => $pro_id,
             );
 

@@ -26,6 +26,7 @@ class CreateBugsTable extends Migration
             $table->integer('project_id');
             $table->boolean('last_admin');
             $table->boolean('last_client');
+            $table->string('gemeld_door');
         });
     }
     /**

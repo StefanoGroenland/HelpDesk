@@ -25,7 +25,8 @@
                     <div class="table-responsive">
                     <table class="table table-hover data_table">
                         <thead>
-                        <th style="width: 10%"><i class="fa fa-hashtag"></i></th>
+                        <th style="width: 5%"><i class="fa fa-hashtag"></i></th>
+                        <th style="width: 5%">Bedrijf</th>
                         <th style="width: 10%">Feedback titel</th>
                         <th style="width: 10%">Status</th>
                         <th style="width: 10%">Soort</th>
@@ -50,6 +51,7 @@
                                         @else
                                             <td>{{$bug->id}}</td>
                                         @endif
+                                        <td>{{$bug->klant->bedrijf}}</td>
                                         <td>{{substr($bug->titel,0,15)}}...</td>
                                         <td>{{$bug->status}}</td>
                                         <td>{{$bug->soort}}</td>
@@ -72,8 +74,8 @@
                                            @else
                                         <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
                                         @endif
-                                        @if($bug->klant)
-                                        <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
+                                        @if($bug->melder)
+                                        <td>{{ucfirst($bug->melder->voornaam) .' '.$bug->melder->tussenvoegsel.' '. ucfirst($bug->melder->achternaam)}}</td>
                                         @endif
                                         <td>{{$bug->project->projectnaam}}</td>
                                         <td class="text-right" >
@@ -105,7 +107,8 @@
                             <div class="table-responsive">
                             <table class="table table-hover data_table">
                                 <thead>
-                                <th style="width: 10%"><i class="fa fa-hashtag"></i></th>
+                                <th style="width: 5%"><i class="fa fa-hashtag"></i></th>
+                                <th style="width: 5%">Bedrijf</th>
                                 <th style="width: 10%">Feedback titel</th>
                                 <th style="width: 10%">Status</th>
                                 <th style="width: 10%">Soort</th>
@@ -130,6 +133,7 @@
                                                 @else
                                                     <td>{{$bug->id}}</td>
                                                 @endif
+                                                <td>{{$bug->klant->bedrijf}}</td>
                                                 <td>{{substr($bug->titel,0,15)}}...</td>
                                                 <td>{{$bug->status}}</td>
                                                 <td>{{$bug->soort}}</td>
@@ -152,8 +156,8 @@
                                                    @else
                                                 <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
                                                 @endif
-                                                @if($bug->klant)
-                                                <td>{{ucfirst($bug->klant->voornaam) .' '.$bug->klant->tussenvoegsel.' '. ucfirst($bug->klant->achternaam)}}</td>
+                                                @if($bug->melder)
+                                                <td>{{ucfirst($bug->melder->voornaam) .' '.$bug->melder->tussenvoegsel.' '. ucfirst($bug->melder->achternaam)}}</td>
                                                 @endif
                                                 <td>{{$bug->project->projectnaam}}</td>
                                                 <td class="text-right" >

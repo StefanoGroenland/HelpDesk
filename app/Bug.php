@@ -31,6 +31,7 @@ class Bug extends Model
         'medewerker_id',
         'last_admin',
         'last_client',
+        'gemeld_door',
     ];
     protected $guarded = ['id'];
 
@@ -39,6 +40,9 @@ class Bug extends Model
     }
     public function klant(){
         return $this->belongsTo('App\User','klant_id','id');
+    }
+    public function melder(){
+        return $this->belongsTo('App\User','gemeld_door','id');
     }
     public function chat(){
         return $this->hasMany('App\Chat','bug_id','id');
