@@ -84,7 +84,6 @@ class ProjectController extends Controller
 
                 'projectnaam' => 'required|unique:projecten',
                 'liveurl' => 'required',
-
                 'omschrijvingproject' => 'required',
             );
 
