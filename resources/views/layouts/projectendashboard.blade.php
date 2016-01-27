@@ -1,6 +1,6 @@
 
  @if(\Auth::user()->bedrijf != 'moodles')
- <div class="col-lg-12">
+ <div class="col-lg-12" style="padding-left:0px;!important;padding-right:0px;!important;" >
                  @foreach($projects as $project)
                                          {{-- */$i=0;/* --}}
                                          {{-- */$x=0;/* --}}
@@ -109,7 +109,7 @@
                             </div>
 
 @else
- <div class="col-lg-12">
+ <div class="col-lg-12" style="padding-left:0px;!important;padding-right:0px;!important;" >
                 @if(count($projects) > 0)
                                 @foreach($projects as $pro)
                                 {{-- */$unread=0;/* --}}
