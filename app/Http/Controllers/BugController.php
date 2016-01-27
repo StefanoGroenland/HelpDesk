@@ -37,17 +37,6 @@ class BugController extends Controller
         }
         return redirect('/dashboard');
     }
-    public function refreshChat($id){
-        if(Auth::user()->rol == 'medewerker'){
-            Bug::lastPerson($id,1,0);
-        }else{
-            Bug::lastPerson($id,0,1);
-        }
-        return $afzenders = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
-    }
-    public function feedCount($id){
-        return $query = Chat::where('bug_id','=',$id)->get();
-    }
     public function showBugMuteren($id){
 
             $user_id = Auth::user()->id;
