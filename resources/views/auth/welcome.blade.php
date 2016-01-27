@@ -20,7 +20,7 @@
                                     </ul>
                                 @endif
                                     <label for="gebruikersnaam">Gebruikersnaam</label>
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Gebrukersnaam" value="{{old('username')}}">
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="wachtwoord">Wachtwoord</label>
