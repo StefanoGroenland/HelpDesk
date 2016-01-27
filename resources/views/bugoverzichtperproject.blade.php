@@ -95,6 +95,11 @@
                                                 </button>
                                             </a>
                                             @if(Auth::user()->rol == 'medewerker')
+                                            <a href="/feedbackwijzigen/{{$bug->id}}">
+                                                <button type="submit" class="btn btn-warning">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                            </a>
                                             <button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
                                               <i class="glyphicon glyphicon-trash"></i>
                                             </button>
@@ -174,6 +179,11 @@
                                                 </button>
                                             </a>
                                             @if(Auth::user()->rol == 'medewerker')
+                                            <a href="/feedbackwijzigen/{{$bug->id}}">
+                                                <button type="submit" class="btn btn-warning">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                            </a>
                                             <button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
                                               <i class="glyphicon glyphicon-trash"></i>
                                             </button>
