@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
-@include('layouts.header')
-
-    @extends('layouts.top-links')
-            <div class="container">
-                    <form method="POST" action="/auth/login">
-                     {!! csrf_field() !!}
-                        <div class="row">
-                            <div class="col-lg-4"></div>
-                            <div class="col-lg-4 well">
-                                <img src="{{URL::asset('../assets/images/logo.png')}}" class="img-responsive center-block" alt="Responsive image">
-                                <div class="form-group" style="margin-top:50px;!important;">
-                                @if (count($errors))
-                                    <ul class="list-unstyled">
-                                        @foreach($errors->all() as $error)
-                                            <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                                    <label for="gebruikersnaam">Gebruikersnaam</label>
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="wachtwoord">Wachtwoord</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Wachtwoord">
-                                </div>
-                                <button type="submit" class="btn btn-success">Aanmelden</button>
-                                <a class="pull-right btn btn-success" href="../auth/email">
-                                Wachtwoord vergeten?
-                                </a>
-                            </div>
-                            <div class="col-lg-4"></div>
-                        </div>
-                  </form>
-            </div>
-            <!-- /.container-fluid -->
-
-        @extends('layouts.footer')
-
-</body>
-
+	@include('layouts.header')
+	@extends('layouts.top-links')
+	<div class="container">
+		<form method="POST" action="/auth/login">
+			{!! csrf_field() !!}
+			<div class="row">
+				<div class="col-lg-4"></div>
+				<div class="col-lg-4 well">
+					<img src="{{URL::asset('../assets/images/logo.png')}}" class="img-responsive center-block" alt="Responsive image">
+					<div class="form-group" style="margin-top:50px;!important;">
+						@if (count($errors))
+						<ul class="list-unstyled">
+							@foreach($errors->all() as $error)
+							<li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+							@endforeach
+						</ul>
+						@endif
+						<label for="gebruikersnaam">Gebruikersnaam</label>
+						<input type="text" class="form-control" id="username" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
+					</div>
+					<div class="form-group">
+						<label for="wachtwoord">Wachtwoord</label>
+						<input type="password" class="form-control" id="password" name="password" placeholder="Wachtwoord">
+					</div>
+					<button type="submit" class="btn btn-success">Aanmelden</button>
+					<a class="pull-right btn btn-success" href="../auth/email">
+					Wachtwoord vergeten?
+					</a>
+				</div>
+				<div class="col-lg-4"></div>
+			</div>
+		</form>
+	</div>
+	<!-- /.container-fluid -->
+	@extends('layouts.footer')
+	</body>
 </html>
