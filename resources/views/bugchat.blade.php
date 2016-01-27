@@ -35,6 +35,9 @@
                 @else
                 <span class="label label-info pull-right">Geen</span>
                 @endif
+                <a type="button" class="pull-right" data-toggle="modal" data-target="#projectDetails">
+                  <i class="fa fa-flask"></i>
+                </a>
                 </h3>
                 @endif
 
@@ -81,44 +84,6 @@
                             <button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
                         </form>
                         <br>
-                    </div>
-                </div>
-                @endif
-                {{--endcontrol--}}
-
-            </div>
-
-
-            <div class="row">
-
-
-                <div class="col-lg-2"></div>
-                <div class="col-lg-9">
-                <div class="col-lg-12">
-
-                <div class="row">
-                @if(Auth::user()->bedrijf != 'moodles')
-                    <div class="col-lg-12">
-                    <h3><i class="fa fa-hashtag"></i>{{$bug->id}}
-                    @if($bug->prioriteit == 1)
-                    <span class="label label-success ">Laag</span>
-                    @elseif($bug->prioriteit == 2)
-                    <span class="label label-warning ">Gem.</span>
-                    @elseif($bug->prioriteit == 3)
-                    <span class="label label-danger ">Hoog</span>
-                    @elseif($bug->prioriteit == 4)
-                    <span class="label label-purple ">Krit.</span>
-                    @else
-                    <span class="label label-info ">Geen</span>
-                    @endif
-                    </h3>
-                    @endif
-                    <div class="row">
-                    @if(Auth::user()->bedrijf == 'moodles')
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    @else
-                    <div class="col-lg-12"></div>
-                    @endif
                         <table class="table table-bordered table-responsive">
                             <tr>
                                 <td><strong>Feedback titel</strong></td>
@@ -157,48 +122,74 @@
                                 <td><strong><i class="fa fa-mobile-phone fa-2x"></i></strong></td>
                                 <td>{{$bug->klant->telefoonnummer}}</td>
                             </tr>
-                            @endif
                         </table>
                     </div>
-                     @if(Auth::user()->bedrijf == 'moodles')
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <table class="table table-bordered table-responsive">
-                        <tr>
-                            <td><strong>Project naam</strong></td>
-                            <td>{{ $bug->project->projectnaam }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Omschrijving</strong></td>
-                            <td>{!! $bug->project->omschrijvingproject !!}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Live url</strong></td>
-                            <td><a style="text-decoration: underline;" target="_blank" href="http://{{$bug->project->liveurl }}">{!! $bug->project->liveurl !!}<a/></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Development url</strong></td>
-                            <td><a style="text-decoration: underline;" target="_blank" href="http://{{ $bug->project->developmenturl }}">{!! $bug->project->developmenturl !!}</a></td>
-                        </tr>
+                  @endif
 
-                        <tr>
-                            <td><strong>Admin</strong></td>
-                            <td>{{ $bug->project->gebruikersnaam }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Password</strong></td>
-                            <td><i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></td>
-                        </tr>
-
-
-                    </table>
-
-                    </div>
-                     @endif
-
-                    </div>
+                  </div>
                 </div>
+                @endif
+                {{--endcontrol--}}
+
+
+
+            <div class="row">
+
+
+                <div class="col-lg-2"></div>
+                <div class="col-lg-9">
+                <div class="col-lg-12">
+
+                <div class="row">
+                @if(Auth::user()->bedrijf != 'moodles')
+                    <div class="col-lg-12">
+                    <h3><i class="fa fa-hashtag"></i>{{$bug->id}}
+                    @if($bug->prioriteit == 1)
+                    <span class="label label-success ">Laag</span>
+                    @elseif($bug->prioriteit == 2)
+                    <span class="label label-warning ">Gem.</span>
+                    @elseif($bug->prioriteit == 3)
+                    <span class="label label-danger ">Hoog</span>
+                    @elseif($bug->prioriteit == 4)
+                    <span class="label label-purple ">Krit.</span>
+                    @else
+                    <span class="label label-info ">Geen</span>
+                    @endif
+                    </h3>
+                    @endif
+
+                </div>
+                @if(Auth::user()->bedrijf != 'moodles')
+                <table class="table table-bordered table-responsive">
+                    <tr>
+                        <td><strong>Feedback titel</strong></td>
+                        <td>{{ $bug->titel }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Omschrijving</strong></td>
+                        <td>{!! $bug->beschrijving !!}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Start datum</strong></td>
+                        <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Eind datum</strong></td>
+                        @if($bug->eind_datum == '0000-00-00 00:00:00')
+                            <td>Geen deadline</td>
+                        @else
+                            <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td><strong>Soort</strong></td>
+                        <td>{{ $bug->soort }}</td>
+                    </tr>
+                </table>
                 <hr>
+                @endif
                </div>
+
                     <h3>Discussie</h3>
                     <ul class="list-unstyled" >
                     <li class="text-left">
@@ -301,6 +292,51 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="projectDetails" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <h4 class="modal-title">Project details</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                          <table class="table table-bordered table-responsive">
+                                              <tr>
+                                                  <td><strong>Project naam</strong></td>
+                                                  <td>{{ $bug->project->projectnaam }}</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><strong>Omschrijving</strong></td>
+                                                  <td>{!! $bug->project->omschrijvingproject !!}</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><strong>Live url</strong></td>
+                                                  <td><a style="text-decoration: underline;" target="_blank" href="http://{{$bug->project->liveurl }}">{!! $bug->project->liveurl !!}</a></td>
+                                              </tr>
+                                              <tr>
+                                                  <td><strong>Development url</strong></td>
+                                                  <td><a style="text-decoration: underline;" target="_blank" href="http://{{ $bug->project->developmenturl }}">{!! $bug->project->developmenturl !!}</a></td>
+                                              </tr>
+
+                                              <tr>
+                                                  <td><strong>Admin</strong></td>
+                                                  <td>{{ $bug->project->gebruikersnaam }}</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><strong>Password</strong></td>
+                                                  <td><i data-toggle="tooltip" title="Wachtwoord : {!! \Crypt::decrypt($bug->project->wachtwoord) !!}" class="fa fa-eye" ></i></td>
+                                              </tr>
+
+
+                                          </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
+                                        </div>
+                                      </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                  </div><!-- /.modal -->
 <!-- /.container-fluid -->
 {{--</div>--}}
 <!-- /#page-wrapper -->
