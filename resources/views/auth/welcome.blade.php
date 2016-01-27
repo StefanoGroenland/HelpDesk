@@ -27,7 +27,9 @@
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Wachtwoord">
                                 </div>
                                 <button type="submit" class="btn btn-success">Aanmelden</button>
-                                <a class="pull-right" href="../auth/email">Wachtwoord vergeten?</a>
+                                <a class="pull-right btn btn-success" href="../auth/email">
+                                Wachtwoord vergeten?
+                                </a>
                             </div>
                             <div class="col-lg-4"></div>
                         </div>
