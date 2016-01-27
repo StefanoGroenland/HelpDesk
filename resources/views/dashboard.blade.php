@@ -14,7 +14,7 @@
 
                 <div class="col-lg-12">
                 <h4 class="page-header">
-                @if(Auth::user()->bedrijf == 'moodles')
+                @if(Auth::user()->rol == 'medewerker')
                     Projecten
                 @else
                     Mijn projecten

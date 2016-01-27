@@ -41,7 +41,7 @@ class Project extends Model
     }
 
     public static function getUsers(){
-        $users = User::where('bedrijf','!=', 'moodles' )->get();
+        $users = User::where('rol','!=', 'medewerker' )->get();
         return $users;
     }
 

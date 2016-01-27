@@ -25,6 +25,7 @@ class CreateGebruikersTable extends Migration
             $table->string('geslacht');
             $table->text('profielfoto');
             $table->text('telefoonnummer');
+            $table->enum('rol',['klant','medewerker']);
             $table->rememberToken();
         });
     }

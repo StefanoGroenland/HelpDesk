@@ -1,5 +1,5 @@
 
- @if(\Auth::user()->bedrijf != 'moodles')
+ @if(\Auth::user()->rol != 'medewerker')
                         <h4>Verstuurde feedback</h4>
                         <div class="table-responsive">
                         <table class="table table-hover data_table">

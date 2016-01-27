@@ -1,5 +1,5 @@
 
- @if(\Auth::user()->bedrijf != 'moodles')
+ @if(\Auth::user()->rol != 'medewerker')
  <div class="col-lg-12" style="padding-left:0px;!important;padding-right:0px;!important;" >
                  @foreach($projects as $project)
                                          {{-- */$i=0;/* --}}

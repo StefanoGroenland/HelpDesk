@@ -48,7 +48,7 @@ class ChatController extends Controller
 
                     $request->session()->flash('alert-warning', 'Bericht zonder bijlage verstuurd.');
                     Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg);
-                    if(Auth::user()->bedrijf == 'moodles'){
+                    if(Auth::user()->rol == 'medewerker'){
                         Bug::lastPerson($bug_id,1,0);
                         $bug = Bug::with('klant')->find($bug_id);
                         $intel = array(
@@ -117,7 +117,7 @@ class ChatController extends Controller
             Chat::sendMessage($afzender_id,$klant_id,$medewerker_id,$bug_id,$project_id,$msg_with);
 
             $msg_with = $request['bericht'] . '<br><small>Deze reactie bevat een bijlage die alleen gezien kan worden op Moodles helpdesk.</small>';
-            if(Auth::user()->bedrijf == 'moodles'){
+            if(Auth::user()->rol == 'medewerker'){
                 Bug::lastPerson($bug_id,1,0);
                 $bug = Bug::with('klant')->find($bug_id);
                 $intel = array(

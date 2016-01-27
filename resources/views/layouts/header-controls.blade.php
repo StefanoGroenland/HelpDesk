@@ -1,4 +1,4 @@
-@if(Auth::user()->bedrijf == 'moodles')
+@if(Auth::user()->rol == 'medewerker')
       <small class="pull-right">
                 <ul class="list-inline list-unstyled">
                   <li class="pull-right">

@@ -37,7 +37,7 @@ class UserController extends Controller
         if(\Auth::guest()){
             return redirect('/');
         }
-        else if(\Auth::user()->bedrijf == 'moodles'){
+        else if(\Auth::user()->rol == 'medewerker'){
 //            $temp_projects = Project::has('bug','>',0)->get();
             $temp_projects = Project::whereHas('bug', function($q){
                 $q->where('status','!=','gesloten');
@@ -134,7 +134,7 @@ class UserController extends Controller
             array_forget($data, 'password');
             array_forget($data, 'password_confirmation');
         }
-        if(Auth::user()->bedrijf == 'moodles'){
+        if(Auth::user()->rol == 'medewerker'){
             $rules = array(
                 'email'                     => 'unique:gebruikers,email,'.$id,
                 'username'                  => 'unique:gebruikers,username,'.$id,
@@ -344,6 +344,7 @@ class UserController extends Controller
             'telefoonnummer'            => $request['telefoonnummer'],
             'geslacht'                  => $geslacht,
             'profielfoto'               => 'assets/images/avatar.png',
+            'rol'                       => 'medewerker'
         );
 
         $rules = array(
@@ -386,6 +387,7 @@ class UserController extends Controller
             'telefoonnummer'            => $request['telefoonnummer'],
             'geslacht'                  => $geslacht,
             'profielfoto'               => 'assets/images/avatar.png',
+            'rol'                       => 'klant'
         );
         $rules = array(
             'email'                     => 'unique:gebruikers',

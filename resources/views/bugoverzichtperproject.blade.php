@@ -53,9 +53,9 @@
                             @foreach($bugs as $bug)
                                     @if($bug->status != 'gesloten')
                                     <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}" >
-                                        @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0)
+                                        @if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0)
                                         <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-                                        @elseif(Auth::user()->bedrijf != 'moodles' && $bug->last_admin > 0)
+                                        @elseif(Auth::user()->rol != 'medewerker' && $bug->last_admin > 0)
                                         <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
                                         @else
                                         <td>{{$bug->id}}</td>
@@ -92,7 +92,7 @@
                                                     <i class="fa fa-comment-o"></i>
                                                 </button>
                                             </a>
-                                            @if(Auth::user()->bedrijf == 'moodles')
+                                            @if(Auth::user()->rol == 'medewerker')
                                             <button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
                                               <i class="glyphicon glyphicon-trash"></i>
                                             </button>
@@ -130,9 +130,9 @@
                             @foreach($bugs as $bug)
                                     @if($bug->status == 'gesloten')
                                     <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}" >
-                                        @if(Auth::user()->bedrijf == 'moodles' && $bug->last_client > 0)
+                                        @if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0)
                                         <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-                                        @elseif(Auth::user()->bedrijf != 'moodles' && $bug->last_admin > 0)
+                                        @elseif(Auth::user()->rol != 'medewerker' && $bug->last_admin > 0)
                                         <td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
                                         @else
                                         <td>{{$bug->id}}</td>
@@ -169,7 +169,7 @@
                                                     <i class="fa fa-comment-o"></i>
                                                 </button>
                                             </a>
-                                            @if(Auth::user()->bedrijf == 'moodles')
+                                            @if(Auth::user()->rol == 'medewerker')
                                             <button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
                                               <i class="glyphicon glyphicon-trash"></i>
                                             </button>

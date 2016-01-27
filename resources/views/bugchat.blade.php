@@ -21,7 +21,7 @@
         <!-- /.row -->
         <div class="row">
 
-            @if(Auth::user()->bedrijf == 'moodles')
+            @if(Auth::user()->rol == 'medewerker')
             <div class="col-lg-2">
                 <h3><i class="fa fa-hashtag"></i>{{$bug->id}}
                 @if($bug->prioriteit == 1)
@@ -42,7 +42,7 @@
                 @endif
 
                 {{--controls--}}
-                @if(Auth::user()->bedrijf == 'moodles')
+                @if(Auth::user()->rol == 'medewerker')
                 <div class="row">
                     <div class="col-lg-12">
                         <form method="POST" action="/updateBug/{{$bug->id}}">
@@ -109,7 +109,7 @@
                                 <td><strong>Soort</strong></td>
                                 <td>{{ $bug->soort }}</td>
                             </tr>
-                            @if(Auth::user()->bedrijf == 'moodles')
+                            @if(Auth::user()->rol == 'medewerker')
                             <tr>
                                 <td><strong><i class="fa fa-user"></i></strong></td>
                                 <td>@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
@@ -125,7 +125,6 @@
                         </table>
                     </div>
                   @endif
-
                   </div>
                 </div>
                 @endif
@@ -141,7 +140,7 @@
                 <div class="col-lg-12">
 
                 <div class="row">
-                @if(Auth::user()->bedrijf != 'moodles')
+                @if(Auth::user()->rol != 'medewerker')
                     <div class="col-lg-12">
                     <h3><i class="fa fa-hashtag"></i>{{$bug->id}}
                     @if($bug->prioriteit == 1)
@@ -159,7 +158,7 @@
                     @endif
 
                 </div>
-                @if(Auth::user()->bedrijf != 'moodles')
+                @if(Auth::user()->rol != 'medewerker')
                 <table class="table table-bordered table-responsive">
                     <tr>
                         <td><strong>Feedback titel</strong></td>
@@ -236,10 +235,10 @@
                     {!! csrf_field() !!}
                         <div class="form-group">
                             <input type="hidden" name="afzender_id"        value="{{Auth::user()->id}}">
-                            @if(Auth::user()->bedrijf == 'moodles')
+                            @if(Auth::user()->rol == 'medewerker')
                                 <input type="hidden" name="klant_id"        value="0">
                                 <input type="hidden" name="medewerker_id"        value="{{Auth::user()->id}}">
-                            @elseif(Auth::user()->bedrijf != 'moodles')
+                            @elseif(Auth::user()->rol != 'medewerker')
                                 <input type="hidden" name="klant_id"        value="{{Auth::user()->id}}">
                                 <input type="hidden" name="medewerker_id"        value="0">
                             @endif

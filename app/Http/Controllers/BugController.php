@@ -23,12 +23,12 @@ class BugController extends Controller
         $bug = Bug::with('klant','user','project')->find($id);
 
 
-        if(Auth::user()->bedrijf == 'moodles'){
+        if(Auth::user()->rol == 'medewerker'){
             Bug::lastPerson($id,1,0);
         }else{
             Bug::lastPerson($id,0,1);
         }
-        if(Auth::user()->bedrijf == 'moodles' || $bug->klant->id == $bug->project->gebruiker_id){
+        if(Auth::user()->rol == 'medewerker' || $bug->klant->id == $bug->project->gebruiker_id){
             $afzenders              = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
             $bug_attachments        = BugAttachment::where('bug_id','=',$id)->get();
 
@@ -38,7 +38,7 @@ class BugController extends Controller
         return redirect('/dashboard');
     }
     public function refreshChat($id){
-        if(Auth::user()->bedrijf == 'moodles'){
+        if(Auth::user()->rol == 'medewerker'){
             Bug::lastPerson($id,1,0);
         }else{
             Bug::lastPerson($id,0,1);
@@ -51,7 +51,7 @@ class BugController extends Controller
     public function showBugMuteren($id){
 
             $user_id = Auth::user()->id;
-            if(Auth::user()->bedrijf == 'moodles'){
+            if(Auth::user()->rol == 'medewerker'){
                 $projecten = Project::all();
             }else{
                 $projecten = Project::where('gebruiker_id', '=', $user_id)->get();
@@ -60,7 +60,7 @@ class BugController extends Controller
     }
 
     public function showBugOverzicht($id){
-        if(Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $id){
+        if(Auth::user()->rol == 'medewerker' || Auth::user()->id == $id){
             $bugs_related           = $this->getRelatedBugs($id);
             $bugs_all               = Bug::with('klant')->orderBy('id','desc')->get();
             $projects               = Project::where('gebruiker_id','=', $id)->get();
@@ -74,7 +74,7 @@ class BugController extends Controller
     {
         $project = Project::find($id);
 
-        if (Auth::user()->bedrijf == 'moodles' || Auth::user()->id == $project->gebruiker_id){
+        if (Auth::user()->rol == 'medewerker' || Auth::user()->id == $project->gebruiker_id){
             $bugs = Bug::where('project_id', '=', $id)->get();
             return View::make('/bugoverzichtperproject', compact('bugs', 'project'));
         }else{
@@ -152,7 +152,7 @@ class BugController extends Controller
                 'project_id'        => $pro_id,
             );
 
-        if(Auth::user()->bedrijf == 'moodles' ){
+        if(Auth::user()->rol == 'medewerker' ){
             $data['last_admin']     = 1;
             $data['last_client']    = 0;
         }else{

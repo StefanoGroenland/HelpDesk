@@ -48,6 +48,7 @@ class User extends Model implements AuthenticatableContract,
         'telefoonnummer',
         'achternaam',
         'profielfoto',
+        'rol',
     ];
     protected $guarded = ['id'];
 
@@ -66,25 +67,25 @@ class User extends Model implements AuthenticatableContract,
     {
         return DB::table('gebruikers')
             ->select(DB::raw('id,email,username,voornaam,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
-            ->where('bedrijf','=', 'moodles')
+            ->where('rol','=', 'medewerker')
             ->get();
     }
     public static function getMedewerker($id){
         return DB::table('gebruikers')
             ->select(DB::raw('id,email,username,voornaam,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
             ->where('email', '=', $id)
-            ->where('bedrijf', '=' , 'moodles')
+            ->where('rol', '=' , 'medewerker')
             ->get();
     }
     public static function getKlant($id){
         return DB::table('gebruikers')
             ->select(DB::raw('id,email,username,voornaam,bedrijf,achternaam,tussenvoegsel,geslacht,telefoonnummer'))
             ->where('email','=',$id)
-            ->where('bedrijf','!=','moodles')
+            ->where('rol','!=','medewerker')
             ->get();
     }
     public static function verwijderGebruiker($id){
-        if(User::find($id)->bedrijf == 'moodles') {
+        if(User::find($id)->rol == 'medewerker') {
             DB::table('gebruikers')->where('id', '=', $id)->delete();
             return redirect('/medewerkers');
         }else {

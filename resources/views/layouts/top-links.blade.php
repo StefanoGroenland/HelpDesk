@@ -101,7 +101,7 @@
                         <button class="btn btn-default navbar-btn"><i class="fa fa-building"></i> Dashboard</button>
                      </a>
                  </li>
-                 @if(Auth::user()->bedrijf == 'moodles')
+                 @if(Auth::user()->rol == 'medewerker')
                  <li>
                      <a href="{{URL::to('/klanten')}}">
                         <button class="btn btn-default navbar-btn"><i class="fa fa-user"></i> Klanten</button>
@@ -118,7 +118,7 @@
                         <button class="btn btn-default navbar-btn"><i class="fa fa-bug"></i> Feedback overzicht</button>
                      </a>
                  </li>
-                 @if(Auth::user()->bedrijf == 'moodles')
+                 @if(Auth::user()->rol == 'medewerker')
                  <li>
                     <a href="{{URL::to('/medewerkers')}}">
                        <button class="btn btn-default navbar-btn"><i class="fa fa-users"></i> Medewerkers</button>
