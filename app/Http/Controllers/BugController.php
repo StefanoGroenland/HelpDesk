@@ -28,14 +28,15 @@ class BugController extends Controller
         }else{
             Bug::lastPerson($id,0,1);
         }
-        if(Auth::user()->rol == 'medewerker' || $bug->klant->id == $bug->project->gebruiker_id){
+
+        if(Auth::user()->rol == 'medewerker' || Auth::user()->id == $bug->project->gebruiker_id){
             $afzenders              = Chat::with('medewerker','klant')->where('bug_id','=',$id)->get();
             $bug_attachments        = BugAttachment::where('bug_id','=',$id)->get();
 
-
             return View::make('/bugchat', compact('bug', 'medewerkers','afzenders','bug_attachments','project'));
         }
-        return redirect('/dashboard');
+
+        return redirect('/404');
     }
     public function showBugMuteren($id){
 
