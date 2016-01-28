@@ -55,8 +55,8 @@
                   </div>
                   @endif
                   <div class="col-xs-12 text-right">
-                     <span class="label label-{{$panel_type}}">{{substr($project->projectnaam,0,20)}}..</span>
-                     <div><span class="badge">
+                     {{--<span class="label label-{{$panel_type}}">{{substr($project->projectnaam,0,20)}}..</span>--}}
+                     <div style="margin-top:20px;" ><span class="badge">
                         @foreach($bugs_send as $bug)
                         @if($bug->status == 'open')
                         @if($bug->project_id == $project->id)
