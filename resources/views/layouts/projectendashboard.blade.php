@@ -185,8 +185,8 @@
                @endif
                <div class="col-xs-12 text-right pull-right">
                   <span style="border: solid #ffffff 1px;" class="label label-purple pull-left">{{$krit}}</span>
-                  <small><strong>{{substr($pro->projectnaam,0,15)}}..</strong></small>
-                  <div>
+                  {{--<small><strong>{{substr($pro->projectnaam,0,15)}}..</strong></small>--}}
+                  <div style="margin-top:20px;" >
                      <span style="border: solid #ffffff 1px;" class="label label-danger pull-left">{{$hoog}}</span>
                      <span class="badge pull-right">
                      @foreach($bugs as $bug)
