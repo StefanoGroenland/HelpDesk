@@ -1,27 +1,7 @@
-@if (\Auth::guest())
-<body>
+@if (Auth::guest())
+<body background="http://www.r2online.nl/wp-content/uploads/2013/11/258-De-Rotterdam-01.jpg" >
    @else
    <style>
-      @-webkit-keyframes spin {
-      0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
-      }
-      100% {
-      -webkit-transform: rotate(359deg);
-      transform: rotate(359deg);
-      }
-      }
-      @keyframes spin {
-      0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
-      }
-      100% {
-      -webkit-transform: rotate(359deg);
-      transform: rotate(359deg);
-      }
-      }
       .navbar-btn{
       margin-top:0px;!important;
       margin-bottom:0px;!important;
@@ -36,6 +16,7 @@
       .str strong{
       font-size:20px;
       }
+
    </style>
    <body>
       <!-- Navigation -->
@@ -49,7 +30,7 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="/dashboard"><img src="http://helpdesk.moodles.nl/assets/images/logo.png" style="max-height: 24px;" ></a>
+               <a href="/dashboard"><img src="http://helpdesk.moodles.nl/assets/images/logo.png" style="max-height: 50px;margin-left:-5px;" ></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

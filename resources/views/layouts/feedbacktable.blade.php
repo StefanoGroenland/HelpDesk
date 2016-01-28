@@ -94,7 +94,7 @@
             --}}
             {{--@endif--}}
             <td>{{$bug->created_at->format('d-m-Y - H:i')}}</td>
-            <td>{{$bug->status}}</td>
+            <td>{{strtoupper($bug->status)}}</td>
             <td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
             @if($bug->eind_datum == '0000-00-00 00:00:00')
             <td>Geen eind datum.</td>

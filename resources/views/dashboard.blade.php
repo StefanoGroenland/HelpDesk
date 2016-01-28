@@ -7,13 +7,11 @@
 			<!-- Page Heading -->
 			<div class="row">
 				<div class="col-lg-12">
-					<h4 class="page-header">
-						@if(Auth::user()->rol == 'medewerker')
-						Projecten
-						@else
-						Mijn projecten
-						@endif
-					</h4>
+				    @if( ! Auth::user()->rol == 'medewerker')
+				        <h4 class="page-header">
+				            Mijn projecten
+				        </h4>
+				    @endif
 				</div>
 				@include('layouts.projectendashboard')
 			</div>
