@@ -14,8 +14,8 @@
 <form method="POST" action="/auth/email">
      {!! csrf_field() !!}
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 well light-opacity">
+        <div class="col-lg-4 col-md-4 col-sm-4"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 well light-opacity">
 
                 <div class="form-group">
                          @if (count($errors))
@@ -42,12 +42,12 @@
                 </div>
 
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4"></div>
     </div>
     <div class="row">
-                             <div class="col-md-4"></div>
-                             <div class="col-md-4"><a class="pull-right" href="/" style="color:#fff;font-size:11px;margin-top:-10px;">Ga terug</a></div>
-                             <div class="col-md-4"></div>
+                             <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                             <div class="col-lg-4 col-md-4 col-sm-4"><a class="pull-right" href="/" style="color:#fff;font-size:11px;margin-top:-10px;">Ga terug</a></div>
+                             <div class="col-lg-4 col-md-4 col-sm-4"></div>
                             </div>
 
  </form>
