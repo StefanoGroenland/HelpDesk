@@ -66,6 +66,8 @@
                      <strong style="color:white;">Feedback discussie</strong> <small> discussie </small>
                      @elseif(\Request::route()->getName() == 'medewerkers')
                      <strong style="color:white;">Medewerkers</strong> <small> een overzicht van alle medewerkers</small>
+                     @elseif(\Request::route()->getName() == 'fbchange')
+                     <strong style="color:white;">Feedback wijzigen</strong> <small> hier kan feedback gewijzigd worden</small>
                      @else
                      <strong style="color:white;">Dashboard</strong> <small> Overzicht</small>
                      @endif
