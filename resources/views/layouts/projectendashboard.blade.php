@@ -95,7 +95,7 @@
          </div>
          <a href="/bugs/{{$project->id}}">
             <div class="panel-footer">
-               <span class="pull-left">Bekijk</span>
+               <span class="pull-left">{{$project->projectnaam}}</span>
                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                <div class="clearfix"></div>
             </div>
