@@ -1,5 +1,5 @@
 @if (Auth::guest())
-<body background="http://www.r2online.nl/wp-content/uploads/2013/11/258-De-Rotterdam-01.jpg" >
+<body>
    @else
    <style>
       .navbar-btn{
