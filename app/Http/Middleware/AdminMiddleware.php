@@ -16,7 +16,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->bedrijf != 'moodles'){
+        if(Auth::user()->rol != 'medewerker'){
             return redirect('/dashboard');
         }
         return $next($request);
