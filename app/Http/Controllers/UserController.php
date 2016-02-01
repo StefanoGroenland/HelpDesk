@@ -151,9 +151,9 @@ class UserController extends Controller
         if (Auth::user()->rol == 'medewerker') {
             $rules = array(
                 'email' => 'required|unique:gebruikers,email,' . $id,
-                'username' => 'alpha_num|required|unique:gebruikers,username,' . $id,
+                'username' => 'required|unique:gebruikers,username,' . $id,
                 'telefoonnummer' => 'required|numeric|digits:11',
-                'password' => 'alpha_num|required|min:4|confirmed',
+                'password' => 'required|min:4|confirmed',
                 'password_confirmation' => 'min:4',
                 'voornaam' => 'required|min:4|max:50',
                 'achternaam' => 'required|min:4|max:50',
@@ -161,9 +161,9 @@ class UserController extends Controller
         } else {
             $rules = array(
                 'email' => 'required|unique:gebruikers,email,' . $id,
-                'username' => 'alpha_num|required|unique:gebruikers,username,' . $id,
+                'username' => 'required|unique:gebruikers,username,' . $id,
                 'telefoonnummer' => 'required|numeric|digits:11',
-                'password' => 'alpha_num|required|min:4|confirmed',
+                'password' => 'required|min:4|confirmed',
                 'password_confirmation' => 'min:4',
                 'voornaam' => 'required|min:4',
                 'achternaam' => 'required|min:4',
@@ -265,7 +265,7 @@ class UserController extends Controller
 
         $rules = array(
             'email' => 'required|unique:gebruikers,email,' . $id,
-            'username' => 'alpha_num|required|unique:gebruikers,username,' . $id,
+            'username' => 'required|unique:gebruikers,username,' . $id,
             'telefoonnummer' => 'required|numeric|digits:10',
             'voornaam' => 'required|min:3|max:50',
             'achternaam' => 'required|min:3|max:50',
@@ -317,7 +317,7 @@ class UserController extends Controller
         }
         $rules = array(
             'email' => 'required|unique:gebruikers,email,' . $id,
-            'username' => 'alpha_num|required|unique:gebruikers,username,' . $id,
+            'username' => 'required|unique:gebruikers,username,' . $id,
             'telefoonnummer' => 'required|numeric|digits:10',
             'voornaam' => 'required|min:3|max:50',
             'achternaam' => 'required|min:3|max:50',
@@ -384,7 +384,7 @@ class UserController extends Controller
 
         $rules = array(
             'email' => 'unique:gebruikers|email',
-            'username' => 'alpha_num|unique:gebruikers',
+            'username' => 'unique:gebruikers',
             'telefoonnummer' => 'required|numeric|digits:10',
             'password' => 'required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
@@ -431,7 +431,7 @@ class UserController extends Controller
             'voornaam'  => 'required|max:30',
             'tussenvoegsel' => 'max:30',
             'achternaam'    => 'required|max:60',
-            'username' => 'alpha_num|required|unique:gebruikers',
+            'username' => 'required|unique:gebruikers',
             'telefoonnummer' => 'required|numeric|digits:10',
             'bedrijf' => 'required|not_in:moodles,Moodles|max:50',
             'password' => 'required|min:4|confirmed',
