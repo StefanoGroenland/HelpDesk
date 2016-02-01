@@ -1,5 +1,12 @@
 @if (Auth::guest())
 <body>
+<style>
+body{
+    background-image:url('http://www.r2online.nl/wp-content/uploads/2013/11/258-De-Rotterdam-01.jpg');
+    background-position: top center
+}
+
+</style>
    @else
    <style>
       .navbar-btn{
