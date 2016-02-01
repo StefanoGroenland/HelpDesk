@@ -143,6 +143,10 @@ class BugController extends Controller
         if ($data['eind_datum'] == "1970-01-01 01:00") {
             array_forget($data, 'eind_datum');
         }
+        if($data['eind_datum'] < $bug->start_datum){
+            $request->session()->flash('alert-danger', '' . $bug->titel . ' eind datum kan niet voor start datum plaatsvinden.');
+            return redirect('/bugchat/' . $bug->id);
+        }
         Bug::lastPerson($bug, 1, 0);
 
         Bug::where('id', '=', $bug->id)->update($data);
@@ -199,7 +203,7 @@ class BugController extends Controller
 
         }
         $rules = array(
-            'titel' => 'required|min:4|max:50',
+            'titel' => 'required|min:4|max:50|string',
             'prioriteit' => 'required',
             'soort' => 'required',
             'status' => 'required',
