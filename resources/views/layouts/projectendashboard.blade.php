@@ -37,7 +37,7 @@
       {{-- */$panel_type='default';/* --}}
       @endif
       <div class="panel panel-{{$panel_type}}" style="margin-top:-20px;!important;">
-         <div class="panel-heading" style="padding-left:10px;padding-right:10px;">
+         <div class="panel-heading ph-top" style="padding-left:10px;padding-right:10px;">
             <a href="/bugs/{{$project->id}}">
                <div class="row">
                   @foreach($bugs_send as $bug)
@@ -146,7 +146,7 @@
    {{-- */$panel_type='default';/* --}}
    @endif
    <div class="panel panel-{{$panel_type}}" style="margin-top:-20px;!important;" >
-      <div class="panel-heading" style="padding-left:10px;padding-right:10px;">
+      <div class="panel-heading ph-top" style="padding-left:10px;padding-right:10px;">
          <a href="/bugs/{{$pro->id}}">
             <div class="row">
                @foreach($bugs as $bug)

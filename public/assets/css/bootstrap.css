@@ -3837,11 +3837,14 @@ a.list-group-item-danger.active, a.list-group-item-danger.active:focus, a.list-g
     padding: 15px;
 }
 .panel-heading {
-    /*padding-top: 10px;*/
+    padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid transparent;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+}
+.ph-top{
+    padding-top:0px;!important;
 }
 .panel-title {
     margin-top: 0;
