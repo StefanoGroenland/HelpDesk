@@ -386,7 +386,7 @@ class UserController extends Controller
             'email' => 'unique:gebruikers|email',
             'username' => 'alpha_num|unique:gebruikers',
             'telefoonnummer' => 'required|numeric|digits:10',
-            'password' => 'alpha_num|required|min:4|confirmed',
+            'password' => 'required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
             'geslacht' => 'required',
         );
@@ -434,7 +434,7 @@ class UserController extends Controller
             'username' => 'alpha_num|required|unique:gebruikers',
             'telefoonnummer' => 'required|numeric|digits:10',
             'bedrijf' => 'required|not_in:moodles,Moodles|max:50',
-            'password' => 'alpha_num|required|min:4|confirmed',
+            'password' => 'required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
             'geslacht' => 'required',
         );

@@ -78,7 +78,7 @@ class ProjectController extends Controller
                 'username' => 'required|min:4|unique:gebruikers|alpha_num',
                 'projectnaam' => 'required|min:4|max:50',
                 'gebruikersnaam' => 'min:3|max:30|alpha_num',
-                'wachtwoord' => 'min:3|alpha_num',
+                'wachtwoord' => 'min:3',
                 'geslacht' => 'required',
                 'projectnaam' => 'required|unique:projecten',
                 'liveurl' => 'required',
@@ -179,7 +179,7 @@ class ProjectController extends Controller
             'projectnaam' => 'required|max:50',
             'liveurl' => 'required',
             'gebruikersnaam' => 'min:3|max:50|alpha_num',
-            'wachtwoord' => 'min:3|alpha_num',
+            'wachtwoord' => 'min:3',
             'omschrijvingproject' => 'required',
          );
         $validator = Validator::make($data, $rules);
