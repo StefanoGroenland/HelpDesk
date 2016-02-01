@@ -57,93 +57,94 @@
 	<div class="panel panel-default">
 	<div class="panel-heading">
 	<h3 class="panel-title">Klant gegevens</h3>
-	</div>
-	<div class="panel-body">
-	<div class="form-group">
-	<label class="radio-inline">
-	<input type="radio" name="radkoppel" id="radkoppel" value="koppel_klant"> Koppel klant
-	</label>
-	<label class="radio-inline">
-	<input type="radio" name="radmaak" id="radmaak" value="maak_klant" checked> Nieuwe klant
-	</label>
-	</div>
-	<div class="form-group" >
-	<label for="gebruiker_id">Koppel klant</label>
-	<select class="form-control"  id="gebruiker_id" name="gebruiker_id" disabled>
-	@foreach($klanten as $klant)
-	<option value="{{$klant->id}}" >{{$klant->bedrijf }}</option>
-	@endforeach
-	</select>
-	</div>
-	<fieldset id="fieldset-klant" >
-	@if($errors->has('username'))
-	<div class="form-group has-error">
-	@else
-	<div class="form-group">
-	@endif
-	<label for="sel4">Nieuwe klant</label>
-	<input type="gebruikersnaam" class="form-control" id="username" required="true" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
-	</div>
-	@if($errors->has('password'))
-	<div class="form-group has-error">
-	@else
-	<div class="form-group">
-	@endif
-	<input type="password" class="form-control" id="password" required="true" name="password" placeholder="Wachtwoord">
-	</div>
-	@if($errors->has('password'))
-	<div class="form-group has-error">
-	@else
-	<div class="form-group">
-	@endif
-	<input type="password" class="form-control" id="password_confirmation" required="true" name="password_confirmation" placeholder="Herhaal wachtwoord">
-	</div>
-	@if($errors->has('email'))
-	<div class="form-group has-error">
-	@else
-	<div class="form-group">
-	@endif
-	<input type="email" class="form-control" id="email" required="true" name="email" placeholder="E-mail" value="{{old('email')}}">
-	</div>
-	@if($errors->has('bedrijf'))
-	<div class="form-group has-error">
-	@else
-	<div class="form-group">
-	@endif
-	<input type="text" class="form-control" id="bedrijf"  name="bedrijf" placeholder="Bedrijf" value="{{old('bedrijf')}}">
-	</div>
-	<div class="form-group">
-	<input type="text" class="form-control" id="voornaam" required="true" name="voornaam" placeholder="Voornaam" value="{{old('voornaam')}}">
-	</div>
-	<div class="form-group">
-	<input type="text" class="form-control" id="tussenvoegsel"  name="tussenvoegsel" placeholder="Tussenvoegsel" value="{{old('tussenvoegsel')}}">
-	</div>
-	<div class="form-group">
-	<input type="text" class="form-control" id="achternaam" required="true" name="achternaam" placeholder="Achternaam" value="{{old('achternaam')}}">
-	</div>
-	<div class="form-group">
-	<label class="radio-inline">
-	<input type="radio" name="radman" id="radman" checked> Man
-	</label>
-	<label class="radio-inline">
-	<input type="radio" name="radvrouw" id="radvrouw"> Vrouw
-	</label>
-	</div>
-	@if($errors->has('telefoonnummer'))
-	<div class="form-group has-error">
-	@else
-	<div class="form-group">
-	@endif
-	<input type="text" class="form-control" id="telefoonnummer" maxlength="11" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="{{old('telefoonnummer')}}">
-	</div>
-	</fieldset>
-	<button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button>
-	</div>
-	</div>
-	</form>
-	</div>
-	</div>
-	</div>
+	    </div>
+	    <div class="panel-body">
+	        <div class="form-group">
+	        <label class="radio-inline">
+	            <input type="radio" name="radkoppel" id="radkoppel" value="koppel_klant"> Koppel klant
+	        </label>
+	        <label class="radio-inline">
+	            <input type="radio" name="radmaak" id="radmaak" value="maak_klant" checked> Nieuwe klant
+	        </label>
+	        </div>
+	        <div class="form-group" >
+	        <label for="gebruiker_id">Koppel klant</label>
+	            <select class="form-control"  id="gebruiker_id" name="gebruiker_id" disabled>
+	            @foreach($klanten as $klant)
+	            <option value="{{$klant->id}}" >{{$klant->bedrijf }}</option>
+	            @endforeach
+	            </select>
+	        </div>
+
+	    <fieldset id="fieldset-klant" >
+	    @if($errors->has('username'))
+	        <div class="form-group has-error">
+	    @else
+	        <div class="form-group">
+	    @endif
+	    <label for="sel4">Nieuwe klant</label>
+	        <input type="gebruikersnaam" class="form-control" id="username" required="true" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
+	    </div>
+	        @if($errors->has('password'))
+	            <div class="form-group has-error">
+	        @else
+	            <div class="form-group">
+	        @endif
+	    <input type="password" class="form-control" id="password" required="true" name="password" placeholder="Wachtwoord">
+	    </div>
+	        @if($errors->has('password'))
+	            <div class="form-group has-error">
+	        @else
+	            <div class="form-group">
+	        @endif
+	        <input type="password" class="form-control" id="password_confirmation" required="true" name="password_confirmation" placeholder="Herhaal wachtwoord">
+	    </div>
+	        @if($errors->has('email'))
+	        <div class="form-group has-error">
+	        @else
+	        <div class="form-group">
+	        @endif
+	        <input type="email" class="form-control" id="email" required="true" name="email" placeholder="E-mail" value="{{old('email')}}">
+	    </div>
+	        @if($errors->has('bedrijf'))
+	        <div class="form-group has-error">
+	        @else
+	        <div class="form-group">
+	        @endif
+	        <input type="text" class="form-control" id="bedrijf"  name="bedrijf" placeholder="Bedrijf" value="{{old('bedrijf')}}">
+	    </div>
+	    <div class="form-group">
+	        <input type="text" class="form-control" id="voornaam" required="true" name="voornaam" placeholder="Voornaam" value="{{old('voornaam')}}">
+	    </div>
+	    <div class="form-group">
+	        <input type="text" class="form-control" id="tussenvoegsel"  name="tussenvoegsel" placeholder="Tussenvoegsel" value="{{old('tussenvoegsel')}}">
+	    </div>
+	    <div class="form-group">
+	        <input type="text" class="form-control" id="achternaam" required="true" name="achternaam" placeholder="Achternaam" value="{{old('achternaam')}}">
+	    </div>
+	    <div class="form-group">
+	    <label class="radio-inline">
+	        <input type="radio" name="radman" id="radman" checked> Man
+	    </label>
+	    <label class="radio-inline">
+	        <input type="radio" name="radvrouw" id="radvrouw"> Vrouw
+	    </label>
+	    </div>
+	    @if($errors->has('telefoonnummer'))
+	    <div class="form-group has-error">
+	    @else
+	    <div class="form-group">
+	    @endif
+	    <input type="text" class="form-control" id="telefoonnummer" maxlength="10" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="{{old('telefoonnummer')}}">
+	    </div>
+	    </fieldset>
+	    <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button>
+	    </div>
+	    </div>
+	    </form>
+	    </div>
+	    </div>
+	    </div>
 	<!-- /.container-fluid -->
 	</div>
 	<!-- /#page-wrapper -->

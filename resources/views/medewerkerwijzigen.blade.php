@@ -47,6 +47,24 @@
 									</div>
 								</div>
 								<div class="row">
+                                	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                		@if($errors->has('password'))
+                                           <div class="form-group has-error">
+                                           @else
+                                           <div class="form-group">
+                                           @endif
+                                			<label for="achternaam">Wachtwoord</label>
+                                			<input type="password" class="form-control"  id="wachtwoord2" name="password" placeholder="Wachtwoord"  value="">
+                                		</div>
+                                	</div>
+                                	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                		<div class="form-group">
+                                			<label for="achternaam">Herhaal wachtwoord</label>
+                                			<input type="password" class="form-control"  id="wachtwoord2" name="password_confirmation" placeholder="Herhaal wachtwoord"  value="">
+                                		</div>
+                                	</div>
+                                </div>
+								<div class="row">
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 										<div class="form-group">
 											<label for="voornaam">Voornaam</label>
@@ -85,7 +103,7 @@
 											<div class="form-group">
 												@endif
 												<label for="telefoonnummer">Telefoonnummer</label>
-												<input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$medewerker->telefoonnummer}}">
+												<input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="10" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$medewerker->telefoonnummer}}">
 											</div>
 										</div>
 									</div>

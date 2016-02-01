@@ -113,7 +113,7 @@
 												<div class="form-group">
 													@endif
 													<label for="telefoonnummer">Telefoonnummer</label>
-													<input type="text" class="form-control" required="true" id="telefoonnummer" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer" value="{{old('telefoonnummer')}}">
+													<input type="text" class="form-control" required="true" id="telefoonnummer" maxlength="10" name="telefoonnummer" placeholder="Telefoonnummer" value="{{old('telefoonnummer')}}">
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

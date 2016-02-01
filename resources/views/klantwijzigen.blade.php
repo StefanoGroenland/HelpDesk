@@ -40,7 +40,11 @@
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('username'))
+                                          <div class="form-group has-error">
+                                          @else
+                                          <div class="form-group">
+                                          @endif
 											<label for="gebruikersnaam">Gebruikersnaam</label>
 											<input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="{{$klant->username}}">
 										</div>
@@ -48,7 +52,11 @@
 								</div>
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('password'))
+                                           <div class="form-group has-error">
+                                           @else
+                                           <div class="form-group">
+                                           @endif
 											<label for="achternaam">Wachtwoord</label>
 											<input type="password" class="form-control"  id="wachtwoord2" name="password" placeholder="Wachtwoord"  value="">
 										</div>
@@ -62,19 +70,31 @@
 								</div>
 								<div class="row">
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('voornaam'))
+                                             <div class="form-group has-error">
+                                             @else
+                                             <div class="form-group">
+                                             @endif
 											<label for="voornaam">Voornaam</label>
 											<input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="{{$klant->voornaam}}">
 										</div>
 									</div>
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('tussenvoegsel'))
+                                             <div class="form-group has-error">
+                                             @else
+                                             <div class="form-group">
+                                             @endif
 											<label for="tussenvoegsel">Tussenvoegsel</label>
 											<input type="text" class="form-control" id="tussenvoegsel2" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="{{$klant->tussenvoegsel}}">
 										</div>
 									</div>
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('voornaam'))
+                                             <div class="form-group has-error">
+                                             @else
+                                             <div class="form-group">
+                                             @endif
 											<label for="achternaam">Achternaam</label>
 											<input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="{{$klant->achternaam}}">
 										</div>
@@ -99,11 +119,15 @@
 											<div class="form-group">
 												@endif
 												<label for="telefoonnummer">Telefoonnummer</label>
-												<input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="11" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$klant->telefoonnummer}}">
+												<input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="10" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$klant->telefoonnummer}}">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-											<div class="form-group">
+										@if($errors->has('bedrijf'))
+                                             <div class="form-group has-error">
+                                             @else
+                                             <div class="form-group">
+                                             @endif
 												<label for="achternaam">Bedrijf</label>
 												<input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="{{$klant->bedrijf}}">
 											</div>

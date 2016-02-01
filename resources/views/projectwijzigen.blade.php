@@ -14,6 +14,13 @@
 			</div>
 			@endif
 			@endforeach
+			@if (count($errors))
+            	<ul class="list-unstyled">
+            		@foreach($errors->all() as $error)
+            		<li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+            		@endforeach
+            	</ul>
+            	@endif
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
@@ -26,13 +33,21 @@
 								<input type="hidden" name="_method" value="PUT">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('projectnaam'))
+                                        	<div class="form-group has-error">
+                                        	@else
+                                        	<div class="form-group">
+                                        	@endif
 											<label for="projectnaam2">Projectnaam</label>
 											<input type="text" class="form-control projectnaam2" required="true" id="projectnaam2" name="projectnaam" placeholder="Projectnaam" value="{{$project->projectnaam}}">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('liveurl'))
+                                        	<div class="form-group has-error">
+                                        	@else
+                                        	<div class="form-group">
+                                        	@endif
 											<label for="liveurl2">Live URL</label>
 											<input type="text" class="form-control projecturl2" required="true" id="liveurl2" name="liveurl" placeholder="Live URL" value="{{$project->liveurl}}">
 										</div>
@@ -40,7 +55,11 @@
 								</div>
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('developmenturl'))
+                                        	<div class="form-group has-error">
+                                        	@else
+                                        	<div class="form-group">
+                                        	@endif
 											<label for="bedrijfsnaam">Development URL</label>
 											<input type="text" class="form-control projecturl2" id="developmenturl2" name="developmenturl" placeholder="Development URL" value="{{$project->developmenturl}}">
 										</div>
@@ -50,13 +69,21 @@
 								</div>
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('gebruikersnaam'))
+                                        	<div class="form-group has-error">
+                                        	@else
+                                        	<div class="form-group">
+                                        	@endif
 											<label for="bedrijfsnaam">Beheer account</label>
 											<input type="text" class="form-control gebruikersnaam2"  id="gebruikersnaam2" name="gebruikersnaam" placeholder="Gebruikersnaam" value="{{$project->gebruikersnaam}}">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('wachtwoord'))
+                                        	<div class="form-group has-error">
+                                        	@else
+                                        	<div class="form-group">
+                                        	@endif
 											<label for="bedrijfsnaam">Beheer wachtwoord</label>
 											<input type="text" class="form-control wachtwoord2" id="wachtwoord2" name="wachtwoord" placeholder="Wachtwoord" value="{{Crypt::decrypt($project->wachtwoord)}}">
 										</div>

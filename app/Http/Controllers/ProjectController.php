@@ -68,20 +68,18 @@ class ProjectController extends Controller
             );
 
             $rules = array(
-                'telefoonnummer' => 'numeric',
-                'email' => 'required|unique:gebruikers',
+                'telefoonnummer' => 'required|numeric|digits:11',
+                'email' => 'required|unique:gebruikers|email',
                 'password' => 'required|confirmed|min:4',
                 'password_confirmation' => 'required',
-                'voornaam' => 'required',
-                'achternaam' => 'required',
-                'bedrijf' => 'required|not_in:moodles,Moodles',
-                'username' => 'required|min:4|unique:gebruikers',
-                'projectnaam' => 'required|min:4',
-                'gebruikersnaam' => 'min:3',
-                'wachtwoord' => 'min:3',
+                'voornaam' => 'required|max:50',
+                'achternaam' => 'required|max:50',
+                'bedrijf' => 'required|not_in:moodles,Moodles|max:50',
+                'username' => 'required|min:4|unique:gebruikers|alpha_num',
+                'projectnaam' => 'required|min:4|max:50',
+                'gebruikersnaam' => 'min:3|max:30|alpha_num',
+                'wachtwoord' => 'min:3|alpha_num',
                 'geslacht' => 'required',
-
-
                 'projectnaam' => 'required|unique:projecten',
                 'liveurl' => 'required',
                 'omschrijvingproject' => 'required',
@@ -140,7 +138,7 @@ class ProjectController extends Controller
                 'gebruiker_id' => $request['gebruiker_id'],
             );
             $rules = array(
-                'projectnaam' => 'required|unique:projecten',
+                'projectnaam' => 'required|unique:projecten|max:30',
                 'liveurl' => 'required',
                 'gebruikersnaam' => 'min:3',
                 'wachtwoord' => 'min:3',
@@ -177,6 +175,18 @@ class ProjectController extends Controller
             'wachtwoord' => Crypt::encrypt($request['wachtwoord']),
             'omschrijvingproject' => $request['omschrijvingproject'],
         );
+        $rules = array(
+            'projectnaam' => 'required|max:50',
+            'liveurl' => 'required',
+            'gebruikersnaam' => 'min:3|max:50|alpha_num',
+            'wachtwoord' => 'min:3|alpha_num',
+            'omschrijvingproject' => 'required',
+         );
+        $validator = Validator::make($data, $rules);
+        if ($validator->fails()) {
+            return redirect('/projectwijzigen/'.$id)->withErrors($validator)->withInput($data);
+        }
+
         Project::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Project ' . $request['projectnaam'] . ' veranderd.');
         return redirect('/projecten');

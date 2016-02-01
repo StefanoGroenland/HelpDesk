@@ -150,20 +150,20 @@ class UserController extends Controller
         }
         if (Auth::user()->rol == 'medewerker') {
             $rules = array(
-                'email' => 'unique:gebruikers,email,' . $id,
-                'username' => 'unique:gebruikers,username,' . $id,
-                'telefoonnummer' => 'numeric|min:11',
-                'password' => 'min:4|confirmed',
+                'email' => 'required|unique:gebruikers,email,' . $id,
+                'username' => 'alpha_num|required|unique:gebruikers,username,' . $id,
+                'telefoonnummer' => 'required|numeric|digits:11',
+                'password' => 'alpha_num|required|min:4|confirmed',
                 'password_confirmation' => 'min:4',
-                'voornaam' => 'required|min:4',
-                'achternaam' => 'required|min:4',
+                'voornaam' => 'required|min:4|max:50',
+                'achternaam' => 'required|min:4|max:50',
             );
         } else {
             $rules = array(
-                'email' => 'unique:gebruikers,email,' . $id,
-                'username' => 'unique:gebruikers,username,' . $id,
-                'telefoonnummer' => 'numeric|min:11',
-                'password' => 'min:4|confirmed',
+                'email' => 'required|unique:gebruikers,email,' . $id,
+                'username' => 'alpha_num|required|unique:gebruikers,username,' . $id,
+                'telefoonnummer' => 'required|numeric|digits:11',
+                'password' => 'alpha_num|required|min:4|confirmed',
                 'password_confirmation' => 'min:4',
                 'voornaam' => 'required|min:4',
                 'achternaam' => 'required|min:4',
@@ -254,7 +254,8 @@ class UserController extends Controller
             'id' => $request['id'],
             'username' => $request['username'],
             'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+            'password' => $request['password'],
+            'password_confirmation' => $request['password_confirmation'],
             'voornaam' => $request['voornaam'],
             'tussenvoegsel' => $request['tussenvoegsel'],
             'achternaam' => $request['achternaam'],
@@ -263,18 +264,26 @@ class UserController extends Controller
         );
 
         $rules = array(
-            'email' => 'unique:gebruikers,email,' . $id,
-            'username' => 'unique:gebruikers,username,' . $id,
-            'telefoonnummer' => 'numeric',
-            'username' => 'required|min:4',
-            'password' => 'required|min:4',
-            'voornaam' => 'required|min:3',
-            'achternaam' => 'required|min:3',
+            'email' => 'required|unique:gebruikers,email,' . $id,
+            'username' => 'alpha_num|required|unique:gebruikers,username,' . $id,
+            'telefoonnummer' => 'required|numeric|digits:10',
+            'voornaam' => 'required|min:3|max:50',
+            'achternaam' => 'required|min:3|max:50',
+            'password' => 'min:4|confirmed',
+            'password_confirmation' => 'min:4',
         );
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
             return redirect('/medewerkerwijzigen/' . $id)->withErrors($validator);
         }
+        if (array_key_exists('password', $data)) {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            User::where('id', '=', $id)->update($data);
+            $request->session()->flash('alert-warning', 'Gebruiker ' . $request['username'] . ' veranderd zonder wijzigingen aan het wachtwoord.');
+            return redirect('/medewerkers');
+        }
+        array_forget($data, 'password_confirmation');
         User::where('id', '=', $id)->update($data);
         $request->session()->flash('alert-success', 'Gebruiker ' . $request['username'] . ' veranderd.');
         return redirect('/medewerkers');
@@ -307,12 +316,12 @@ class UserController extends Controller
             array_forget($data, 'password_confirmation');
         }
         $rules = array(
-            'email' => 'unique:gebruikers,email,' . $id,
-            'username' => 'unique:gebruikers,username,' . $id,
-            'telefoonnummer' => 'required|numeric|min:11',
-            'voornaam' => 'required|min:3',
-            'achternaam' => 'required|min:3',
-            'bedrijf' => 'required|not_in:moodles,Moodles',
+            'email' => 'required|unique:gebruikers,email,' . $id,
+            'username' => 'alpha_num|required|unique:gebruikers,username,' . $id,
+            'telefoonnummer' => 'required|numeric|digits:10',
+            'voornaam' => 'required|min:3|max:50',
+            'achternaam' => 'required|min:3|max:50',
+            'bedrijf' => 'required|not_in:moodles,Moodles|max:50',
             'password' => 'min:4|confirmed',
             'password_confirmation' => 'min:4',
         );
@@ -374,10 +383,10 @@ class UserController extends Controller
         );
 
         $rules = array(
-            'email' => 'unique:gebruikers',
-            'username' => 'unique:gebruikers',
-            'telefoonnummer' => 'numeric',
-            'password' => 'required|min:4|confirmed',
+            'email' => 'unique:gebruikers|email',
+            'username' => 'alpha_num|unique:gebruikers',
+            'telefoonnummer' => 'required|numeric|digits:10',
+            'password' => 'alpha_num|required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
             'geslacht' => 'required',
         );
@@ -418,11 +427,14 @@ class UserController extends Controller
             'rol' => 'klant'
         );
         $rules = array(
-            'email' => 'unique:gebruikers',
-            'username' => 'unique:gebruikers',
-            'telefoonnummer' => 'required|numeric',
-            'bedrijf' => 'required|not_in:moodles,Moodles',
-            'password' => 'required|min:4|confirmed',
+            'email' => 'required|unique:gebruikers|email',
+            'voornaam'  => 'required|max:30',
+            'tussenvoegsel' => 'max:30',
+            'achternaam'    => 'required|max:60',
+            'username' => 'alpha_num|required|unique:gebruikers',
+            'telefoonnummer' => 'required|numeric|digits:10',
+            'bedrijf' => 'required|not_in:moodles,Moodles|max:50',
+            'password' => 'alpha_num|required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
             'geslacht' => 'required',
         );

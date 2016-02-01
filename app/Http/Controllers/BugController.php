@@ -76,6 +76,10 @@ class BugController extends Controller
             $request->session()->flash('alert-danger', 'Start datum moet correct worden ingevuld.');
             return redirect('/feedbackwijzigen/' . $id)->withInput($data);
         }
+        if (strlen($data['titel']) > 50) {
+            $request->session()->flash('alert-danger', 'Titel mag niet meer als 50 karakters bevatten.');
+            return redirect('/feedbackwijzigen/' . $id)->withInput($data);
+        }
         $data['start_datum'] = date('Y-m-d H:i', strtotime($data['start_datum']));
         Bug::lastPerson($bug, 1, 0);
 
@@ -195,7 +199,7 @@ class BugController extends Controller
 
         }
         $rules = array(
-            'titel' => 'required|min:4',
+            'titel' => 'required|min:4|max:50',
             'prioriteit' => 'required',
             'soort' => 'required',
             'status' => 'required',

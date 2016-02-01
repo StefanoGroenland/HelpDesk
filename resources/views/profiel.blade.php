@@ -137,7 +137,7 @@
 											<div class="form-group">
 												@endif
 												<label for="bedrijfsnaam">Telefoonnummer</label>
-												<input type="text" class="form-control" required="true" maxlength="11" name="telefoonnummer" value="{{$user->telefoonnummer}}">
+												<input type="text" class="form-control" required="true" maxlength="10" name="telefoonnummer" value="{{$user->telefoonnummer}}">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
