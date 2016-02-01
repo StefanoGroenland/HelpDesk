@@ -56,7 +56,7 @@
                   @endif
                   <div class="col-xs-12 text-right">
                      {{--<span class="label label-{{$panel_type}}">   </span>--}}
-                     <div style="margin-top:20px;" ><span class="badge">
+                     <div><span class="badge">
                         @foreach($bugs_send as $bug)
                             @if($bug->status == 'open')
                                 @if($bug->project_id == $project->id)
@@ -95,7 +95,7 @@
          </div>
          <a href="/bugs/{{$project->id}}">
             <div class="panel-footer">
-               <span class="pull-left">{{$project->projectnaam}}</span>
+               <span class="pull-left" style="color:#aaaaaa;" >{{substr($project->projectnaam,0,20)}}</span>
                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                <div class="clearfix"></div>
             </div>
@@ -146,7 +146,7 @@
    {{-- */$panel_type='default';/* --}}
    @endif
    <div class="panel panel-{{$panel_type}}" style="margin-top:-20px;!important;" >
-      <div class="panel-heading ph-top" style="padding-left:10px;padding-right:10px;">
+      <div class="panel-heading ph-top" style="padding-left:10px;!important;padding-right:10px;!important;padding-top:0px;!important;">
          <a href="/bugs/{{$pro->id}}">
             <div class="row">
                @foreach($bugs as $bug)
@@ -230,7 +230,7 @@
       </div>
       <a href="/bugs/{{$pro->id}}">
          <div class="panel-footer">
-            <span class="pull-left" style="color:#aaaaaa;" >{{$pro->projectnaam}}</span>
+            <span class="pull-left" style="color:#aaaaaa;" >{{substr($pro->projectnaam,0,20)}}</span>
             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
             <div class="clearfix"></div>
          </div>
