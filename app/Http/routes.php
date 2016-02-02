@@ -26,6 +26,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'UserController@showDashboard'));
 
     Route::group(['middleware' => 'isAdmin'], function(){
+
+        Route::get('/mails', 'MessageController@index');
+        Route::get('/mailverwerken/{id}', 'MessageController@mailVerwerken');
+        Route::get('/fetch', 'MessageController@fetchMails');
+        Route::put('/postfeedback/{id}', 'MessageController@postFeedback');
+
         Route::get('/klantwijzigen/{id}', array('as' => 'klantwijzigen', 'uses' =>'UserController@showKlantMuteren'));
         Route::get('/newklant', array('as' => 'newklant', 'uses' =>'UserController@showNewKlant'));
         Route::post('/updateKlantData', array('as' => 'klantdata', 'uses' => 'UserController@getKlantData'));
