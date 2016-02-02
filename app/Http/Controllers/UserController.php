@@ -152,8 +152,8 @@ class UserController extends Controller
             $rules = array(
                 'email' => 'required|unique:gebruikers,email,' . $id,
                 'username' => 'required|unique:gebruikers,username,' . $id,
-                'telefoonnummer' => 'required|numeric|digits:11',
-                'password' => 'required|min:4|confirmed',
+                'telefoonnummer' => 'required|numeric|digits:10',
+                'password' => 'min:4|confirmed',
                 'password_confirmation' => 'min:4',
                 'voornaam' => 'required|min:4|max:50',
                 'achternaam' => 'required|min:4|max:50',
@@ -162,8 +162,8 @@ class UserController extends Controller
             $rules = array(
                 'email' => 'required|unique:gebruikers,email,' . $id,
                 'username' => 'required|unique:gebruikers,username,' . $id,
-                'telefoonnummer' => 'required|numeric|digits:11',
-                'password' => 'required|min:4|confirmed',
+                'telefoonnummer' => 'required|numeric|digits:10',
+                'password' => 'min:4|confirmed',
                 'password_confirmation' => 'min:4',
                 'voornaam' => 'required|min:4',
                 'achternaam' => 'required|min:4',
