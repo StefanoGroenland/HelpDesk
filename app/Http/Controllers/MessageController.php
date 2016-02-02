@@ -25,6 +25,7 @@ class MessageController extends Controller {
 
     public function index()
     {
+        $this->fetchMails();
         $messages = Message::all();
 
         return View::make('mailoverzicht', compact('messages'));
@@ -114,5 +115,14 @@ class MessageController extends Controller {
         $request->session()->flash('alert-success', 'Feedback ' . $request['titel'] . ' toegevoegd.');
         return redirect('/mails');
     }
+    public function verwijderMail()
+    {
+        $sid = Route::current()->getParameter('id');
+        $mail = Message::find($sid);
+        session()->flash('alert-success', 'Mail : ' . $mail->subject . ' verwijderd.');
+        Message::deleteMail($sid);
+        return redirect('/mails');
 
-} 
+    }
+
+}

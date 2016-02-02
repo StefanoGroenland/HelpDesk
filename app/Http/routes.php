@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/mailverwerken/{id}', 'MessageController@mailVerwerken');
         Route::get('/fetch', 'MessageController@fetchMails');
         Route::put('/postfeedback/{id}', 'MessageController@postFeedback');
+        Route::delete('/verwijderMail/{id}', 'MessageController@verwijderMail');
 
         Route::get('/klantwijzigen/{id}', array('as' => 'klantwijzigen', 'uses' =>'UserController@showKlantMuteren'));
         Route::get('/newklant', array('as' => 'newklant', 'uses' =>'UserController@showNewKlant'));

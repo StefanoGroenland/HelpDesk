@@ -43,7 +43,7 @@
 										<i class="fa fa-search"></i>
 										</button>
 										</a>
-										<button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="#id" data-target="#myModalid">
+										<button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$message->id}}" data-target="#myModal{{$message->id}}">
 										<i class="glyphicon glyphicon-trash"></i>
 										</button>
 									</td>
@@ -61,35 +61,35 @@
 	</div>
 
 
-	{{--@foreach($bugs_all as $key)--}}
-	{{--<div class="modal fade" id="myModal{{$key->id}}" tabindex="-1" role="dialog">--}}
-		{{--<div class="modal-dialog">--}}
-			{{--<div class="modal-content">--}}
-				{{--<div class="modal-header">--}}
-					{{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
-					{{--<h4 class="modal-title">Verwijder verzoek</h4>--}}
-				{{--</div>--}}
-				{{--<div class="modal-body">--}}
-					{{--<p>Weet u zeker dat u <strong>{{$key->titel}}</strong> wilt verwijderen&hellip;</p>--}}
-				{{--</div>--}}
-				{{--<div class="modal-footer">--}}
-					{{--<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>--}}
-					{{--<form method="POST" action="/verwijderBug/{{$key->id}}" >--}}
-						{{--{!! method_field('DELETE') !!}--}}
-						{{--{!! csrf_field() !!}--}}
-						{{--<button type="submit" class="btn btn-danger pull-right">--}}
-						{{--<i class="glyphicon glyphicon-trash"></i>--}}
-						{{--Verwijder feedback--}}
-						{{--</button>--}}
-					{{--</form>--}}
-				{{--</div>--}}
-			{{--</div>--}}
-			{{--<!-- /.modal-content -->--}}
-		{{--</div>--}}
-		{{--<!-- /.modal-dialog -->--}}
-	{{--</div>--}}
-	{{--<!-- /.modal -->--}}
-	{{--@endforeach--}}
+	@foreach($messages as $key)
+	<div class="modal fade" id="myModal{{$key->id}}" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Verwijder verzoek</h4>
+				</div>
+				<div class="modal-body">
+					<p>Weet u zeker dat u <strong>{{$key->subject}}</strong> wilt verwijderen&hellip;</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
+					<form method="POST" action="/verwijderMail/{{$key->id}}" >
+						{!! method_field('DELETE') !!}
+						{!! csrf_field() !!}
+						<button type="submit" class="btn btn-danger pull-right">
+						<i class="glyphicon glyphicon-trash"></i>
+						Verwijder mail
+						</button>
+					</form>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	@endforeach
 
 
 	<!-- /#wrapper -->
