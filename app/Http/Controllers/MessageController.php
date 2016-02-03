@@ -58,8 +58,7 @@ class MessageController extends Controller {
             {
                 $body = (imap_fetchbody($mbox,$num,1));
             }
-
-            if($fromaddress !== "helpdesk@moodles.nl" && $fromaddress !== "Mailer-Daemon@mx02.ips.nl"){
+            if($fromaddress !== "helpdesk@moodles.nl" && substr($fromaddress,0,14) !== "Mailer-Daemon@"){
                 Message::insertMail($fromaddress,$subject,$formatted,$body);
                 imap_delete($mbox, $num);
                 imap_expunge($mbox);
