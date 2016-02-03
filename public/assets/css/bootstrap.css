@@ -1008,6 +1008,7 @@ dd {
         margin-left: 180px;
     }
     .container {
+        margin: 0 auto;
         width: 750px;
     }
 }abbr[data-original-title], abbr[title] {
@@ -1083,7 +1084,7 @@ pre {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.container, .container-fluid {
+.container, {
     margin-right: auto;
     margin-left: auto;
 }
@@ -1103,14 +1104,16 @@ pre code {
 }
 @media (min-width:992px) {
     .container {
+        margin: 0 auto;
         width: 970px;
     }
 }@media (min-width:1200px) {
     .container {
+        margin: 0 auto;
         width: 1170px;
     }
 }.container-fluid {
-     margin-top: 20px;
+     margin-top: 50px;
  }
 .row {
     margin-right: -15px;
@@ -2916,6 +2919,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
     padding-bottom: 10px;
     line-height: 20px;
 }
+
 @media (max-width:767px) {
     .navbar-nav .open .dropdown-menu {
         position: static;
@@ -3159,7 +3163,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
     color: #fff;
-    background-color: #080808;
+    background-color: transparent;
 }
 .navbar-inverse .navbar-nav>.disabled>a, .navbar-inverse .navbar-nav>.disabled>a:focus, .navbar-inverse .navbar-nav>.disabled>a:hover {
     color: #444;
@@ -4662,7 +4666,7 @@ button.close {
 }
 #notificatie {
     position: absolute;
-    top: -19px;
+    top: 0px;
     right: 10px;
     background-color: #e21313;
     color: #fff;

@@ -36,7 +36,7 @@
       @else
       {{-- */$panel_type='default';/* --}}
       @endif
-      <div class="panel panel-{{$panel_type}}" style="margin-top:-20px;!important;">
+      <div class="panel panel-{{$panel_type}}">
          <div class="panel-heading ph-top" style="padding-left:10px;padding-right:10px;">
             <a href="/bugs/{{$project->id}}">
                <div class="row">
@@ -95,7 +95,7 @@
          </div>
          <a href="/bugs/{{$project->id}}">
             <div class="panel-footer">
-               <span class="pull-left" style="color:#aaaaaa;" >{{substr($project->projectnaam,0,20)}}</span>
+               <span class="pull-left" style="color:#000000;" >{{substr($project->projectnaam,0,20)}}</span>
                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                <div class="clearfix"></div>
             </div>
@@ -145,7 +145,7 @@
         @else
    {{-- */$panel_type='default';/* --}}
    @endif
-   <div class="panel panel-{{$panel_type}}" style="margin-top:-20px;!important;" >
+   <div class="panel panel-{{$panel_type}}">
       <div class="panel-heading ph-top" style="padding-left:10px;!important;padding-right:10px;!important;">
          <a href="/bugs/{{$pro->id}}">
             <div class="row">
@@ -184,7 +184,7 @@
                </div>
                @endif
                <div class="col-xs-12 text-right pull-right">
-                  <span style="border: solid #ffffff 1px;" class="label label-purple pull-left">{{$krit}}</span>
+                  <span class="label label-purple pull-left">{{$krit}}</span>
                   {{--<small><strong>{{substr($pro->projectnaam,0,15)}}..</strong></small>--}}
                   <span class="badge pull-right">
                                        @foreach($bugs as $bug)
@@ -197,7 +197,7 @@
                                        {{$i}}
                                        </span> <span style="padding-right:5px;" >Openstaand</span>
                   <div>
-                     <span style="border: solid #ffffff 1px;" class="label label-danger pull-left">{{$hoog}}</span>
+                     <span class="label label-danger pull-left">{{$hoog}}</span>
                         <div><span class="badge pull-right">
                                              @foreach($bugs as $bug)
                                                 @if($bug->status == 'bezig')
@@ -210,7 +210,7 @@
                                              </span> <span style="padding-right:5px;">Bezig</span>
                                           </div>
                   </div>
-                  <span style="border: solid #ffffff 1px;" class="label label-warning pull-left">{{$gem}}</span>
+                  <span class="label label-warning pull-left">{{$gem}}</span>
                     <div><span class="badge pull-right">
                      @foreach($bugs as $bug)
                         @if($bug->status == 'gesloten')
@@ -222,7 +222,7 @@
                      {{$y}}
                      </span> <span style="padding-right:5px;">Gesloten</span>
                   </div>
-                  <span style="border: solid #ffffff 1px;" class="label label-success pull-left">{{$laag}}</span>
+                  <span class="label label-success pull-left">{{$laag}}</span>
 
                </div>
             </div>
@@ -230,7 +230,7 @@
       </div>
       <a href="/bugs/{{$pro->id}}">
          <div class="panel-footer">
-            <span class="pull-left" style="color:#aaaaaa;" >{{substr($pro->projectnaam,0,20)}}</span>
+            <span class="pull-left" style="color:#000000;" >{{substr($pro->projectnaam,0,20)}}</span>
             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
             <div class="clearfix"></div>
          </div>

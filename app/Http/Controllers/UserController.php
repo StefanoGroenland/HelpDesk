@@ -167,7 +167,7 @@ class UserController extends Controller
                 'password_confirmation' => 'min:4',
                 'voornaam' => 'required|min:4',
                 'achternaam' => 'required|min:4',
-                'bedrijf' => 'required|min:4|not_in:moodles,Moodles',
+                'bedrijf' => 'required|min:4',
             );
         }
 
@@ -230,7 +230,7 @@ class UserController extends Controller
 
     public function showKlantenOverzicht()
     {
-        $klanten = User::where('bedrijf', '!=', 'moodles')->get();
+        $klanten = User::where('rol', '!=', 'medewerker')->get();
         return View::make('klanten', compact('klanten'));
     }
 
@@ -321,7 +321,7 @@ class UserController extends Controller
             'telefoonnummer' => 'required|numeric|digits:10',
             'voornaam' => 'required|min:3|max:50',
             'achternaam' => 'required|min:3|max:50',
-            'bedrijf' => 'required|not_in:moodles,Moodles|max:50',
+            'bedrijf' => 'required|max:50',
             'password' => 'min:4|confirmed',
             'password_confirmation' => 'min:4',
         );
@@ -433,7 +433,7 @@ class UserController extends Controller
             'achternaam'    => 'required|max:60',
             'username' => 'required|unique:gebruikers',
             'telefoonnummer' => 'required|numeric|digits:10',
-            'bedrijf' => 'required|not_in:moodles,Moodles|max:50',
+            'bedrijf' => 'required|max:50',
             'password' => 'required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
             'geslacht' => 'required',

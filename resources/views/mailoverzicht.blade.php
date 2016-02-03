@@ -23,9 +23,9 @@
 							<thead>
 								<th style="width: 5%"><i class="fa fa-hashtag"></i></th>
 								<th style="width: 5%">Afzender</th>
-								<th style="width: 10%">feedback titel</th>
-								<th style="width: 10%">ontvangen op</th>
-								<th style="width: 10%">omschrijving</th>
+								<th style="width: 10%">Feedback titel</th>
+								<th style="width: 10%">Ontvangen op</th>
+								<th style="width: 10%">Omschrijving</th>
 								<th style="width: 10%"></th>
 							</thead>
 							<tbody>

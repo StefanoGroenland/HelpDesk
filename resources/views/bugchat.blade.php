@@ -36,12 +36,11 @@
 					<span class="label label-info pull-right">Geen</span>
 					@endif
 					<a type="button" style="margin-right:20px;!important;"  class="pull-right clickable" data-toggle="modal" data-target="#projectDetails">
-					<i class="fa fa-flask fa-2x"></i>
+					<i class="fa fa-flask"></i>
 					</a>
 				</h3>
-				@endif
 				{{--controls--}}
-				@if(Auth::user()->rol == 'medewerker')
+
 				<div class="row">
 					<div class="col-lg-12">
 						<form method="POST" action="/updateBug/{{$bug->id}}">
@@ -83,72 +82,42 @@
 							<button type="submit" class="btn btn-success center-block"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
 						</form>
 						<br>
-						<table class="table table-bordered table-responsive"  >
-							<tr>
-								<td>
-									<strong>Feedback titel</strong><br>
-									{{ $bug->titel }}
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<strong>Omschrijving</strong><br>
-									{!! $bug->beschrijving !!}
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<strong>Start datum</strong><br>
-									{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}
-								</td>
-							</tr>
-							<tr>
-								@if($bug->eind_datum == '0000-00-00 00:00:00')
-								<td>
-									<strong>Eind datum</strong><br>
-									Geen deadline
-								</td>
-								@else
-								<td>
-									<strong>Eind datum</strong><br>
-									{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}
-								</td>
-								@endif
-							</tr>
-							<tr>
-								<td>
-									<strong>Soort</strong><br>
-									{{ $bug->soort }}
-								</td>
-							</tr>
-							@if(Auth::user()->rol == 'medewerker')
-							<tr>
-								<td>
-									<strong><i class="fa fa-user"></i> Contactpersoon</strong><br>
-									@if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<strong><i class="fa fa-envelope-o"></i> E-mail</strong><br>
-									{{' '.$bug->klant->email}}
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<strong><i class="fa fa-mobile-phone fa-2x"></i> Telefoonnummer</strong><br>
-									{{$bug->klant->telefoonnummer}}
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<strong><i class="fa fa-building"></i> Bedrijf</strong><br>
-									{{$bug->klant->bedrijf}}
-								</td>
-							</tr>
-						</table>
+
+						<ul class="list-group">
+                          <li class="list-group-item">Feedback titel<br>
+                                {{ $bug->titel }}
+                          </li>
+                          <li class="list-group-item">Omschrijving<br>
+                                {!! $bug->beschrijving !!}
+                          </li>
+                          <li class="list-group-item">Start datum<br>
+                                {{ date('d-m-Y - H:i',strtotime($bug->start_datum)) }}
+                          </li>
+                          <li class="list-group-item">Eind datum<br>
+                            @if($bug->eind_datum == '0000-00-00 00:00:00')
+                                Geen deadline
+                            @else
+                                {{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}
+                            @endif
+                          </li>
+                          <li class="list-group-item">Soort<br>
+                                {{ $bug->soort }}
+                          </li>
+                          <li class="list-group-item">Contactpersoon<br>
+                                @if($bug->klant->geslacht == 'man'){{" Dhr. "}}@else{{" Mevr. "}}@endif{{ucfirst($bug->klant->voornaam) . ' ' . $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}
+                          </li>
+                          <li class="list-group-item"><i class="fa fa-envelope-o"></i> E-mail<br>
+                                {{' '.$bug->klant->email}}
+                          </li>
+                          <li class="list-group-item"><i class="fa fa-phone"></i> Telefoonnummer<br>
+                                {{' '.$bug->klant->telefoonnnummer}}
+                          </li>
+                          <li class="list-group-item"><i class="fa fa-building"></i> Bedrijf<br>
+                                {{$bug->klant->bedrijf}}
+                          </li>
+                        </ul>
 					</div>
-					@endif
+
 				</div>
 			</div>
 			@endif
@@ -176,6 +145,7 @@
 								@endif
 							</div>
 							@if(Auth::user()->rol != 'medewerker')
+
 							<table class="table table-bordered table-responsive">
 								<tr>
 									<td><strong>Feedback titel</strong></td>
@@ -208,15 +178,13 @@
 						<h3>Discussie</h3>
 						<ul class="list-unstyled" >
 							<li class="text-left">
-								<div class="panel-heading panel-success">
 									<i class="fa fa-fw fa-info fa-2x"></i>
 									<span class="label label-success">
 									Automatisch bericht
 									</span>
-									<div class="panel-heading" style="padding: 10px 50px 10px;">
+									<div class="alert alert-success" style="padding: 10px 50px 10px;">
 										U kunt hier een discussie voeren met een medewerker van Moodles. U kunt eventueel ook bijlages toevoegen aan uw bericht.
 									</div>
-								</div>
 							</li>
 						</ul>
 						<ul class="list-unstyled" id="display">
@@ -224,13 +192,13 @@
 								@foreach($afzenders as $afzender)
 								{{--mw--}}
 								@if($afzender->medewerker)
-								<div class="panel-heading panel-default">
+								<div class="">
 									<img src="{{'../'.$afzender->medewerker->profielfoto}}" class="img-responsive img-circle pull-left small_avatar" alt="medewerker_ava"/>
-									<span class="label label-default">
+									<span class="label label-warning">
 									{{$afzender->medewerker->voornaam.' '.$afzender->medewerker->tussenvoegsel.' '. $afzender->medewerker->achternaam}}
 									</span>
 									@elseif($afzender->klant)
-									<div class="panel-heading panel-info">
+									<div class="">
 										{{--klant--}}
 										<img src="{{'../'.$afzender->klant->profielfoto}}" class="img-responsive img-circle pull-left small_avatar" alt="klant_ava"/>
 										<span class="label label-info">
@@ -242,63 +210,63 @@
 											{!! $afzender->bericht !!}
 										</div>
 									</div>
+									<br>
 									@endforeach
 							</li>
 						</ul>
 						<form method="POST" class="formulier" action="/sendMessage" enctype="multipart/form-data">
-						{!! csrf_field() !!}
-						<div class="form-group">
-						<input type="hidden" name="afzender_id"        value="{{Auth::user()->id}}">
-						@if(Auth::user()->rol == 'medewerker')
-						<input type="hidden" name="klant_id"        value="0">
-						<input type="hidden" name="medewerker_id"        value="{{Auth::user()->id}}">
-						@elseif(Auth::user()->rol != 'medewerker')
-						<input type="hidden" name="klant_id"        value="{{Auth::user()->id}}">
-						<input type="hidden" name="medewerker_id"        value="0">
-						@endif
-						<input type="hidden" name="bug_id"          value="{{$bug->id}}">
-						<input type="hidden" name="project_id"      value="{{$bug->project_id}}">
-						@if($bug->status == 'gesloten')
-						<div class="panel-heading panel-success">
-						<i class="fa fa-fw fa-info fa-2x"></i>
-						<span class="label label-success">
-						Automatisch bericht
-						</span>
-						<div class="panel-heading">
-						De discussie is gesloten. Bedankt voor uw medewerking!
-						</div>
-						</div>
-						<label for="bericht">Bericht : </label>
-						<span class="label label-danger">De discussie is gesloten</span>
-						<textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
-						<h3>De discussie is gesloten</h3>
-						</textarea>
-						@else
-						<textarea class="form-control" name="bericht" id="bericht" rows="6"></textarea>
-						@endif
-						</div>
-						@if($bug->status == 'gesloten')
-						@elseif($bug->status != 'gesloten')
-						<div class="row">
-						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12"></div>
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-						<button data-toggle="tooltip" title="U kunt ook bijlages mee versturen! Klik op 'Bijlages kiezen'!" type="submit" style="margin-left:10px;" class="btn btn-success pull-right sendButton">
-						<i class="fa fa-send"></i> Verstuur
-						</button>
-						<div class="input-group">
-						<span class="input-group-btn">
-						<span class="btn btn-success" data-toggle="tooltip" title="Hier kunt u een bestand kiezen als bijlage" onclick="$(this).parent().find('input[type=file]').click();"><i class="fa fa-search" ></i> Bijlage kiezen</span>
-						<input name="file[]" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());" style="display: none;" type="file">
-						</span>
-						<span class="form-control"></span>
-						</div>
-						@if(Auth::user()->rol == 'medewerker')
-						<label class="checkbox-inline"><input type="checkbox" name="checkboxMsg" value="checked">Stuur e-mail notificatie naar klant</label>
-						@endif
-						</div>
-						</div>
-						@else
-						@endif
+						    {!! csrf_field() !!}
+						    <div class="form-group">
+						        <input type="hidden" name="afzender_id"        value="{{Auth::user()->id}}">
+						        @if(Auth::user()->rol == 'medewerker')
+						            <input type="hidden" name="klant_id"        value="0">
+						            <input type="hidden" name="medewerker_id"        value="{{Auth::user()->id}}">
+						        @elseif(Auth::user()->rol != 'medewerker')
+						            <input type="hidden" name="klant_id"        value="{{Auth::user()->id}}">
+						            <input type="hidden" name="medewerker_id"        value="0">
+						        @endif
+						            <input type="hidden" name="bug_id"          value="{{$bug->id}}">
+						            <input type="hidden" name="project_id"      value="{{$bug->project_id}}">
+						        @if($bug->status == 'gesloten')
+
+						        <i class="fa fa-fw fa-info fa-2x"></i>
+						        <span class="label label-success">
+						            Automatisch bericht
+						        </span>
+						    <div class="alert alert-success" style="padding: 10px 50px 10px;">
+						        De discussie is gesloten. Bedankt voor uw medewerking!
+						    </div>
+						    <label for="bericht">Bericht : </label>
+						        <span class="label label-danger">De discussie is gesloten</span>
+						        <textarea class="form-control" name="bericht" id="bericht" disabled rows="6">
+						    <h3>De discussie is gesloten</h3>
+						    </textarea>
+						    @else
+						    <textarea class="form-control" name="bericht" id="bericht" rows="6"></textarea>
+						    @endif
+						    </div>
+						    @if($bug->status == 'gesloten')
+						    @elseif($bug->status != 'gesloten')
+						    <div class="row">
+						    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12"></div>
+						    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						        <button data-toggle="tooltip" title="U kunt ook bijlages mee versturen! Klik op 'Bijlages kiezen'!" type="submit" style="margin-left:10px;" class="btn btn-success pull-right sendButton">
+						            <i class="fa fa-send"></i> Verstuur
+						        </button>
+						    <div class="input-group">
+						    <span class="input-group-btn">
+						        <span class="btn btn-success" data-toggle="tooltip" title="Hier kunt u een bestand kiezen als bijlage" onclick="$(this).parent().find('input[type=file]').click();"><i class="fa fa-search" ></i> Bijlage kiezen</span>
+						            <input name="file[]" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());" style="display: none;" type="file">
+						        </span>
+						        <span class="form-control"></span>
+						    </div>
+						        @if(Auth::user()->rol == 'medewerker')
+						                <label class="checkbox-inline"><input type="checkbox" name="checkboxMsg" value="checked">Stuur e-mail notificatie naar klant</label>
+						        @endif
+						            </div>
+						        </div>
+						    @else
+						    @endif
 						</form>
 						</div>
 					</div>

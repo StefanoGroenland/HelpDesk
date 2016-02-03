@@ -9,11 +9,6 @@ body{
 </style>
    @else
    <style>
-      .navbar-btn{
-      margin-top:0px;!important;
-      margin-bottom:0px;!important;
-      vertical-align: top;!important;
-      }
       .navbar-nav > li > a{
       padding-right:0px;!important;
       padding-bottom:0px;!important;
@@ -86,39 +81,39 @@ body{
                   </li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
-                  <li>
-                     <a href="{{URL::to('/dashboard')}}">
-                     <button class="btn btn-default navbar-btn"><i class="fa fa-building"></i> Dashboard</button>
+                  <li style="padding:10px;" @if(\Request::route()->getName() == 'dashboard')class="active"@endif >
+                     <a style="padding-top:5px;" href="{{URL::to('/dashboard')}}">
+                     <i class="fa fa-building"></i> Dashboard
                      </a>
                   </li>
                   @if(Auth::user()->rol == 'medewerker')
-                  <li>
-                     <a href="{{URL::to('/klanten')}}">
-                     <button class="btn btn-default navbar-btn"><i class="fa fa-user"></i> Klanten</button>
+                  <li style="padding:10px;" @if(\Request::route()->getName() == 'klanten')class="active"@endif>
+                     <a style="padding-top:5px;" href="{{URL::to('/klanten')}}">
+                     <i class="fa fa-user"></i> Klanten
                      </a>
                   </li>
-                  <li>
-                     <a href="{{URL::to('/projecten')}}">
-                     <button class="btn btn-default navbar-btn"><i class="fa fa-briefcase"></i> Projecten</button>
+                  <li style="padding:10px;" @if(\Request::route()->getName() == 'projecten')class="active"@endif>
+                     <a style="padding-top:5px;" href="{{URL::to('/projecten')}}">
+                     <i class="fa fa-briefcase"></i> Projecten
                      </a>
                   </li>
                   @endif
-                  <li>
-                     <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
-                     <button class="btn btn-default navbar-btn"><i class="fa fa-bug"></i> Feedback overzicht</button>
+                    <li style="padding:10px;" @if(\Request::route()->getName() == 'bugoverzicht')class="active"@endif>
+                     <a style="padding-top:5px;" href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
+                    <i class="fa fa-bug"></i> Feedback overzicht
                      </a>
                   </li>
                   @if(Auth::user()->rol == 'medewerker')
-                  <li>
-                     <a href="{{URL::to('/mails')}}">
-                     <button class="btn btn-default navbar-btn"><i class="fa fa-envelope-o"></i> Inbox</button>
+                    <li style="padding:10px;" @if(\Request::route()->getName() == 'mailoverzicht')class="active"@endif>
+                     <a style="padding-top:5px;" href="{{URL::to('/mails')}}">
+                     <i class="fa fa-envelope-o"></i> Inbox
                      </a>
                   </li>
                   @endif
                   @if(Auth::user()->rol == 'medewerker')
-                  <li>
-                     <a href="{{URL::to('/medewerkers')}}">
-                     <button class="btn btn-default navbar-btn"><i class="fa fa-users"></i> Medewerkers</button>
+                    <li style="padding:10px;" @if(\Request::route()->getName() == 'medewerkers')class="active"@endif>
+                     <a style="padding-top:5px;" href="{{URL::to('/medewerkers')}}">
+                     <i class="fa fa-users"></i> Medewerkers
                      </a>
                   </li>
                   @endif

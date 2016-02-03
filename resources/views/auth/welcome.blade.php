@@ -13,13 +13,12 @@
     		<img src="{{URL::asset('../assets/images/logo.png')}}" class="img-responsive center-block" alt="Responsive image">
             <br />
     
-            <div class="container">
+            {{--<div class="container">--}}
                     <form method="POST" action="/auth/login">
                      {!! csrf_field() !!}
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4"></div>
                             <div class="col-lg-4 col-md-4 col-sm-4 well light-opacity">
-                                
                                 <div class="form-group">
                                 @if (count($errors))
                                     <ul class="list-unstyled">
@@ -36,8 +35,6 @@
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Wachtwoord">
                                 </div>
                                 <button type="submit" class="btn btn-default pull-right">Inloggen</button>
-                                
-                                
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4"></div>
                         </div>
@@ -49,7 +46,7 @@
                         </div>
                         
                   </form>
-            </div>
+            {{--</div>--}}
             <!-- /.container-fluid -->
 
         @extends('layouts.footer')
