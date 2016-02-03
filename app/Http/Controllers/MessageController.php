@@ -32,12 +32,10 @@ class MessageController extends Controller {
     }
     public function fetchMails()
     {
-        $order   = array("\r\n", "\n", "\r");
         $server = "{mail.moodles.nl:143/novalidate-cert}INBOX";
         $username = "helpdesk@moodles.nl";
         $password = "4SQ1wddTQU";
         $mbox = imap_open($server,$username,$password);
-
 
         $num = imap_num_msg($mbox);
         if($num > 0){
@@ -50,9 +48,7 @@ class MessageController extends Controller {
             $date = $header->date;
             $formatted = date('Y-m-d H:i:s', strtotime($date));
 
-
             $body = quoted_printable_decode(imap_fetchbody($mbox,$num,1.1));
-
 
             if($body == '')
             {
@@ -63,8 +59,6 @@ class MessageController extends Controller {
                 imap_delete($mbox, $num);
                 imap_expunge($mbox);
             }
-
-
 //            header('refresh: 3');
         } else {
             //no emails, refresh again in 20 seconds to check for new
