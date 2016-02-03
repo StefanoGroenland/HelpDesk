@@ -35,7 +35,7 @@
                                     <td>{{$message->id}}</td>
                                     <td>{{$message->from}}</td>
                                     <td>{{$message->subject}}</td>
-                                    <td>{{$message->date}}</td>
+                                    <td>{{date('d-m-Y H:i:s', strtotime($message->date))}}</td>
                                     <td>{{substr($message->body,0,25)}}</td>
 									<td class="text-right" >
 										<a href="/mailverwerken/{{$message->id}}" class="">
