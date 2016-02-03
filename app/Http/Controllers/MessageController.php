@@ -66,11 +66,10 @@ class MessageController extends Controller {
             }
 
 
-
-            header('refresh: 3');
+//            header('refresh: 3');
         } else {
             //no emails, refresh again in 20 seconds to check for new
-            header('refresh: 20');
+//            header('refresh: 20');
         }
         imap_close($mbox);
     }
