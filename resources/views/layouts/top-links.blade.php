@@ -110,15 +110,15 @@ body{
                   </li>
                   @if(Auth::user()->rol == 'medewerker')
                   <li>
-                     <a href="{{URL::to('/medewerkers')}}">
-                     <button class="btn btn-default navbar-btn"><i class="fa fa-users"></i> Medewerkers</button>
+                     <a href="{{URL::to('/mails')}}">
+                     <button class="btn btn-default navbar-btn"><i class="fa fa-envelope-o"></i> Inbox</button>
                      </a>
                   </li>
                   @endif
                   @if(Auth::user()->rol == 'medewerker')
                   <li>
-                     <a href="{{URL::to('/mails')}}">
-                     <button class="btn btn-default navbar-btn"><i class="fa fa-envelope-o"></i> Inbox</button>
+                     <a href="{{URL::to('/medewerkers')}}">
+                     <button class="btn btn-default navbar-btn"><i class="fa fa-users"></i> Medewerkers</button>
                      </a>
                   </li>
                   @endif
