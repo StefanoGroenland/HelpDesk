@@ -146,7 +146,7 @@
    {{-- */$panel_type='default';/* --}}
    @endif
    <div class="panel panel-{{$panel_type}}" style="margin-top:-20px;!important;" >
-      <div class="panel-heading ph-top" style="padding-left:10px;!important;padding-right:10px;!important;padding-top:0px;!important;">
+      <div class="panel-heading ph-top" style="padding-left:10px;!important;padding-right:10px;!important;">
          <a href="/bugs/{{$pro->id}}">
             <div class="row">
                @foreach($bugs as $bug)
