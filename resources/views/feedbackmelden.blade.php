@@ -76,7 +76,7 @@
 									<div class="form-group">
 										<textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving">{{old('beschrijving')}}</textarea>
 									</div>
-									<button data-toggle="tooltip" title="Heeft u de fout zo specifiek mogelijk beschreven? indien mogelijk met de locaties / manieren waardoor de fout onstaat?" type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button>
+									<button data-toggle="tooltip" title="Heeft u de fout zo specifiek mogelijk beschreven? indien mogelijk met de locaties / manieren waardoor de fout onstaat?" type="submit" class="btn btn-success pull-right"><span class="fa fa-plus" aria-hidden="true"></span> Toevoegen</button>
 					</form>
 					</div>
 					</div>

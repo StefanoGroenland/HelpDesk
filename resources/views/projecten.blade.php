@@ -50,11 +50,11 @@
 									<td class="text-right" >
 										<a href="/projectwijzigen/{{$project->id}}" class="">
 										<button class="btn btn-success wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
-										<i class="glyphicon glyphicon-pencil"></i>
+										<i class="fa fa-pencil"></i>
 										</button>
 										</a>
 										<button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$project->id}}" data-target="#myModal{{$project->id}}">
-										<i class="glyphicon glyphicon-trash"></i>
+										<i class="fa fa-trash"></i>
 										</button>
 									</td>
 								</tr>
@@ -84,7 +84,6 @@
 						{!! method_field('DELETE') !!}
 						{!! csrf_field() !!}
 						<button type="submit" class="btn btn-danger pull-right">
-						{{--<i class="glyphicon glyphicon-trash"></i>--}}
 						Verwijder project
 						</button>
 					</form>

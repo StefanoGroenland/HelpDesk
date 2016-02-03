@@ -9,7 +9,7 @@
 				<div class="col-lg-12">
 					<a href="../newklant" class="pull-left" style="margin-bottom: 25px;!important;">
 					<button type="submit" class="btn btn-success">
-					<i class="glyphicon glyphicon-plus"></i>
+					<i class="fa fa-plus"></i>
 					Klant toevoegen
 					</button>
 					</a>
@@ -58,11 +58,11 @@
 									<td class="text-right">
 										<a href="/klantwijzigen/{{$klant->id}}" class="">
 										<button class="btn btn-success wijzigKnop2" name="zoekProject" type="button" data-project="{{$klant->email}}">
-										<i class="glyphicon glyphicon-pencil"></i>
+										<i class="fa fa-pencil"></i>
 										</button>
 										</a>
 										<button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$klant->id}}" data-target="#myModal{{$klant->id}}">
-										<i class="glyphicon glyphicon-trash"></i>
+										<i class="fa fa-trash"></i>
 										</button>
 									</td>
 								</tr>
@@ -90,7 +90,6 @@
 							{!! method_field('DELETE') !!}
 							{!! csrf_field() !!}
 							<button type="submit" class="btn btn-danger pull-right">
-							{{--<i class="glyphicon glyphicon-trash"></i>--}}
 							Verwijder klant
 							</button>
 						</form>

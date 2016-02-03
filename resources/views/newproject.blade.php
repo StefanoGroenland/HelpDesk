@@ -138,7 +138,7 @@
 	    <input type="text" class="form-control" id="telefoonnummer" maxlength="10" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="{{old('telefoonnummer')}}">
 	    </div>
 	    </fieldset>
-	    <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button>
+	    <button type="submit" class="btn btn-success pull-right"><span class="fa fa-plus" aria-hidden="true"></span> Toevoegen</button>
 	    </div>
 	    </div>
 	    </form>

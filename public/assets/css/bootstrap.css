@@ -22,7 +22,7 @@ body, figure {
     max-height: 340px;
 }
 html {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", serif;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%}
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
@@ -734,7 +734,7 @@ html {
 }
 body {
     overflow-x: hidden;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Roboto", serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
@@ -2055,7 +2055,7 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
     }
 }.btn {
      display: inline-block;
-     padding: 6px;
+     padding: 6px 12px;
      margin-bottom: 0;
      font-size: 13px;
      font-weight: 400;

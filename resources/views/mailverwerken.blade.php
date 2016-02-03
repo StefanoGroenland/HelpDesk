@@ -86,7 +86,7 @@
 										<textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving">{!! nl2br($msg->body) !!}</textarea>
 
 									</div>
-									<button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button>
+									<button type="submit" class="btn btn-success pull-right"><span class="fa fa-plus" aria-hidden="true"></span> Toevoegen</button>
 					</form>
 					@endforeach
 					</div>

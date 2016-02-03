@@ -22,7 +22,7 @@
 					</h3>
 					<a href="/feedbackmelden/{{$project->id}}" class="pull-left">
 					<button type="submit" class="btn btn-success">
-					<i class="glyphicon glyphicon-plus"></i>
+					<i class="fa fa-plus"></i>
 					Feedback toevoegen
 					</button>
 					</a>
@@ -97,7 +97,7 @@
 										</button>
 										</a>
 										<button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
-										<i class="glyphicon glyphicon-trash"></i>
+										<i class="fa fa-trash"></i>
 										</button>
 										@endif
 									</td>
@@ -179,7 +179,7 @@
 										</button>
 										</a>
 										<button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$bug->id}}" data-target="#myModal{{$bug->id}}">
-										<i class="glyphicon glyphicon-trash"></i>
+										<i class="fa fa-trash"></i>
 										</button>
 										@endif
 									</td>
@@ -214,7 +214,6 @@
 						{!! method_field('DELETE') !!}
 						{!! csrf_field() !!}
 						<button type="submit" class="btn btn-danger pull-right">
-						{{--<i class="glyphicon glyphicon-trash"></i>--}}
 						Verwijder feedback
 						</button>
 					</form>

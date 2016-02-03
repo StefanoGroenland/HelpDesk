@@ -137,7 +137,7 @@
 												</div>
 											</div>
 											<div class="row">
-												<div class="col-lg-12"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button></div>
+												<div class="col-lg-12"><button type="submit" class="btn btn-success pull-right"><span class="fa fa-plus" aria-hidden="true"></span> Toevoegen</button></div>
 											</div>
 					</form>
 					</div>

@@ -138,7 +138,7 @@ body{
                            <a href="{{URL::to('/profiel')}}"><i class="fa fa-fw fa-user"></i> Profiel</a>
                         </li>
                         <li>
-                           <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                           <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> Uitloggen</a>
                         </li>
                      </ul>
                   </li>

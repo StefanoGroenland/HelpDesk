@@ -44,7 +44,7 @@
 										</button>
 										</a>
 										<button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$message->id}}" data-target="#myModal{{$message->id}}">
-										<i class="glyphicon glyphicon-trash"></i>
+										<i class="fa fa-trash"></i>
 										</button>
 									</td>
 								</tr>
@@ -78,7 +78,6 @@
 						{!! method_field('DELETE') !!}
 						{!! csrf_field() !!}
 						<button type="submit" class="btn btn-danger pull-right">
-						<i class="glyphicon glyphicon-trash"></i>
 						Verwijder mail
 						</button>
 					</form>
