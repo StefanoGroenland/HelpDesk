@@ -147,6 +147,10 @@ class BugController extends Controller
             $request->session()->flash('alert-danger', '' . $bug->titel . ' eind datum kan niet voor start datum plaatsvinden.');
             return redirect('/bugchat/' . $bug->id);
         }
+        if($data['eind_datum'] == ""){
+            $request->session()->flash('alert-danger', '' . $bug->titel . ' eind datum moet ingevuld zijn!');
+            return redirect('/bugchat/' . $bug->id);
+        }
         Bug::lastPerson($bug, 1, 0);
 
         Bug::where('id', '=', $bug->id)->update($data);

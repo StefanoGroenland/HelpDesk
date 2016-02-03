@@ -76,7 +76,7 @@
 							<div class="form-group">
 								<label for="end_date">Einddatum</label>
 								{{--<input type="text"  name="eind_datum" class="form-control" id="einddatum">--}}
-								<input type="text" name="eind_datum" class="form_datetime form-control date-picker" placeholder="@if($bug->eind_datum != '0000-00-00 00:00:00'){{date('d-m-Y H:i',strtotime($bug->eind_datum))}}
+								<input type="text" name="eind_datum" class="form_datetime form-control date-picker" value="@if($bug->eind_datum != '0000-00-00 00:00:00'){{date('d-m-Y H:i',strtotime($bug->eind_datum))}}
 									@else {{date('d-m-Y H:i')}} @endif
 									" data-rule-maxlength="30">
 							</div>

@@ -68,16 +68,16 @@ class ProjectController extends Controller
             );
 
             $rules = array(
-                'telefoonnummer' => 'required|numeric|digits:11',
+                'telefoonnummer' => 'required|numeric|digits:10',
                 'email' => 'required|unique:gebruikers|email',
                 'password' => 'required|confirmed|min:4',
                 'password_confirmation' => 'required',
                 'voornaam' => 'required|max:50',
                 'achternaam' => 'required|max:50',
-                'bedrijf' => 'required|not_in:moodles,Moodles|max:50',
-                'username' => 'required|min:4|unique:gebruikers|alpha_num',
+                'bedrijf' => 'required|max:50',
+                'username' => 'required|min:4|unique:gebruikers',
                 'projectnaam' => 'required|min:4|max:50',
-                'gebruikersnaam' => 'min:3|max:30|alpha_num',
+                'gebruikersnaam' => 'min:3|max:30',
                 'wachtwoord' => 'min:3',
                 'geslacht' => 'required',
                 'projectnaam' => 'required|unique:projecten',
@@ -178,7 +178,7 @@ class ProjectController extends Controller
         $rules = array(
             'projectnaam' => 'required|max:50',
             'liveurl' => 'required',
-            'gebruikersnaam' => 'min:3|max:50|alpha_num',
+            'gebruikersnaam' => 'min:3|max:50',
             'wachtwoord' => 'min:3',
             'omschrijvingproject' => 'required',
          );

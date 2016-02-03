@@ -83,7 +83,8 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving">{{$msg->body}}</textarea>
+										<textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving">{!! nl2br($msg->body) !!}</textarea>
+
 									</div>
 									<button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Toevoegen</button>
 					</form>
