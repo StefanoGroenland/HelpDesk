@@ -133,7 +133,7 @@ body{
                      " style="margin-right:3px; height: 26px;!important; width: 26px;!important;"/>
                      {{ucfirst(Auth::user()->voornaam) .' '. ucfirst(Auth::user()->achternaam)}}
                      <span class="caret"></span></a>
-                     <ul class="dropdown-menu" style="margin-top:9px;!important;">
+                     <ul class="dropdown-menu">
                         <li>
                            <a href="{{URL::to('/profiel')}}"><i class="fa fa-fw fa-user"></i> Profiel</a>
                         </li>
