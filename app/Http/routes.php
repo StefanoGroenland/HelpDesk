@@ -27,8 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'isAdmin'], function(){
 
-        Route::get('/mails', 'MessageController@index');
-        Route::get('/mailverwerken/{id}', 'MessageController@mailVerwerken');
+        Route::get('/mails', array('as' => 'mailoverzicht', 'uses' => 'MessageController@index'));
+        Route::get('/mailverwerken/{id}', array('as' => 'mailverwerken', 'uses' => 'MessageController@mailVerwerken'));
         Route::get('/fetch', 'MessageController@fetchMails');
         Route::post('/postfeedback/{id}', 'MessageController@postFeedback');
         Route::delete('/verwijderMail/{id}', 'MessageController@verwijderMail');

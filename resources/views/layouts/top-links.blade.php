@@ -75,6 +75,10 @@ body{
                      <strong style="color:white;">Medewerkers</strong> <small> een overzicht van alle medewerkers</small>
                      @elseif(\Request::route()->getName() == 'fbchange')
                      <strong style="color:white;">Feedback wijzigen</strong> <small> hier kan feedback gewijzigd worden</small>
+                     @elseif(\Request::route()->getName() == 'mailoverzicht')
+                     <strong style="color:white;">Mail overzicht</strong> <small> alle meldingen via e-mail</small>
+                     @elseif(\Request::route()->getName() == 'mailverwerken')
+                     <strong style="color:white;">Mail verwerken</strong> <small> Meld feedback met e-mail melding</small>
                      @else
                      <strong style="color:white;">Dashboard</strong> <small> Overzicht</small>
                      @endif
@@ -108,6 +112,13 @@ body{
                   <li>
                      <a href="{{URL::to('/medewerkers')}}">
                      <button class="btn btn-default navbar-btn"><i class="fa fa-users"></i> Medewerkers</button>
+                     </a>
+                  </li>
+                  @endif
+                  @if(Auth::user()->rol == 'medewerker')
+                  <li>
+                     <a href="{{URL::to('/mails')}}">
+                     <button class="btn btn-default navbar-btn"><i class="fa fa-envelope-o"></i> Inbox</button>
                      </a>
                   </li>
                   @endif
