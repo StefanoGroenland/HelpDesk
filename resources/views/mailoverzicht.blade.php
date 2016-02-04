@@ -23,10 +23,10 @@
 							<thead>
 								<th style="width: 5%"><i class="fa fa-hashtag"></i></th>
 								<th style="width: 5%">Afzender</th>
-								<th style="width: 10%">Feedback titel</th>
-								<th style="width: 10%">Ontvangen op</th>
-								<th style="width: 10%">Omschrijving</th>
-								<th style="width: 10%"></th>
+								<th style="width: 5%">Feedback titel</th>
+								<th style="width: 5%">Ontvangen op</th>
+								<th style="width: 20%">Omschrijving</th>
+								<th style="width: 5%"></th>
 							</thead>
 							<tbody>
 								@foreach($messages as $message)
@@ -36,7 +36,7 @@
                                     <td>{{$message->from}}</td>
                                     <td>{{$message->subject}}</td>
                                     <td>{{date('d-m-Y H:i:s', strtotime($message->date))}}</td>
-                                    <td>{{substr($message->body,0,25)}}</td>
+                                    <td>{{substr($message->body,0,80)}}@if(strlen($message->body) > 80)...@endif</td>
 									<td class="text-right" >
 										<a href="/mailverwerken/{{$message->id}}" class="">
 										<button type="submit" class="btn btn-success">

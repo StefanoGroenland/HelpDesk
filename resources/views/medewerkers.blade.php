@@ -29,13 +29,13 @@
 					<div class="table-responsive">
 						<table class="table table-hover data_table">
 							<thead>
-								<th style="width: 10%">Voornaam</th>
+								<th style="width: 5%">Voornaam</th>
 								<th style="width: 5%">Tussenvoegsel</th>
-								<th style="width: 10%">Achternaam</th>
+								<th style="width: 5%">Achternaam</th>
 								<th style="width: 10%">Gebruikersnaam</th>
-								<th style="width: 10%">Geslacht</th>
-								<th style="width: 10%">E-mail</th>
-								<th style="width: 10%">Telefoonummer</th>
+								<th style="width: 4%">Geslacht</th>
+								<th style="width: 15%">E-mail</th>
+								<th style="width: 8%">Telefoonummer</th>
 								<th style="width: 10%"></th>
 							</thead>
 							<tbody>

@@ -23,10 +23,10 @@
 						<table class="table table-hover data_table">
 							<thead>
 								<th style="width: 5%"><i class="fa fa-hashtag"></i></th>
-								<th style="width: 5%">Bedrijf</th>
-								<th style="width: 10%">Feedback titel</th>
-								<th style="width: 10%">Status</th>
-								<th style="width: 10%">Soort</th>
+								<th style="width: 10%">Bedrijf</th>
+								<th style="width: 15%">Feedback titel</th>
+								<th style="width: 5%">Status</th>
+								<th style="width: 5%">Soort</th>
 								<th style="width: 10%">Prioriteit</th>
 								<th style="width: 10%">Startdatum</th>
 								<th style="width: 10%">Deadline</th>
@@ -108,16 +108,16 @@
 						<table class="table table-hover data_table">
 							<thead>
 								<th style="width: 5%"><i class="fa fa-hashtag"></i></th>
-								<th style="width: 5%">Bedrijf</th>
-								<th style="width: 10%">Feedback titel</th>
-								<th style="width: 10%">Status</th>
-								<th style="width: 10%">Soort</th>
-								<th style="width: 10%">Prioriteit</th>
-								<th style="width: 10%">Startdatum</th>
-								<th style="width: 10%">Deadline</th>
-								<th style="width: 10%">Gemeld door</th>
-								<th style="width: 10%">Project</th>
-								<th style="width: 10%"></th>
+                                <th style="width: 10%">Bedrijf</th>
+                                <th style="width: 15%">Feedback titel</th>
+                                <th style="width: 5%">Status</th>
+                                <th style="width: 5%">Soort</th>
+                                <th style="width: 10%">Prioriteit</th>
+                                <th style="width: 10%">Startdatum</th>
+                                <th style="width: 10%">Deadline</th>
+                                <th style="width: 10%">Gemeld door</th>
+                                <th style="width: 10%">Project</th>
+                                <th style="width: 10%"></th>
 							</thead>
 							<tbody>
 								@foreach($bugs_all as $bug)
@@ -191,11 +191,11 @@
 										<div class="table-responsive">
 											<table class="table table-hover data_table">
 												<thead>
-													<th style="width: 10%"><i class="fa fa-hashtag"></i></th>
-													<th style="width: 10%">Bug titel</th>
-													<th style="width: 10%">Status</th>
-													<th style="width: 10%">Soort</th>
-													<th style="width: 10%">Prioriteit</th>
+													<th style="width: 5%"><i class="fa fa-hashtag"></i></th>
+													<th style="width: 20%">Feedback titel</th>
+													<th style="width: 5%">Status</th>
+													<th style="width: 5%">Soort</th>
+													<th style="width: 5%">Prioriteit</th>
 													<th style="width: 10%">Startdatum</th>
 													<th style="width: 10%">Deadline</th>
 													<th style="width: 10%">Project</th>
