@@ -34,8 +34,8 @@
 								<th style="width: 10%">Project</th>
 								<th style="width: 10%">Live url</th>
 								<th style="width: 10%">Development url</th>
-								<th style="width: 5%">Klant</th>
-								<th style="width: 15%">Omschrijving</th>
+								<th style="width: 10%">Klant</th>
+								<th style="width: 40%">Omschrijving</th>
 								<th style="width: 8%"></th>
 							</thead>
 							<tbody>
@@ -45,8 +45,8 @@
 									<td>{{$project->projectnaam}}</td>
 									<td>{{$project->liveurl}}</td>
 									<td>{{$project->developmenturl}}</td>
-									<td>{{$project->user->voornaam .' '. $project->user->tussenvoegsel .' '. $project->user->achternaam }}</td>
-									<td>{!! substr($project->omschrijvingproject,0,90) !!}</td>
+									<td>{{ucfirst($project->user->bedrijf)}}</td>
+									<td>{!! substr($project->omschrijvingproject,0,120) !!}@if(strlen($project->omschrijvingproject) > 120)...@endif</td>
 									<td class="text-right" >
 										<a href="/projectwijzigen/{{$project->id}}" class="">
 										<button class="btn btn-success wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
