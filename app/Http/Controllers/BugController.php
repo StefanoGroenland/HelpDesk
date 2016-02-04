@@ -180,7 +180,22 @@ class BugController extends Controller
         return redirect('/bugchat/' . $bug->id);
     }
 
+    public function pushSlack($project,$titel,$prioriteit,$categorie,$link){
 
+        $msg = "Nieuwe melding bij *". $project . "*, *" . $titel  . "*, *" . $prioriteit ."*, *". $categorie . "*, http://helpdesk.moodles.nl/bugchat/" . $link;
+
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch,CURLOPT_URL, "https://slack.com/api/chat.postMessage?");
+        curl_setopt($ch,CURLOPT_POST,1);
+        curl_setopt($ch,CURLOPT_POSTFIELDS,
+            "token=xoxp-20209881569-20208187653-20313990064-4377ff607a&channel=%23helpdesk&text=". $msg ."&pretty=1&icon_emoji=:bangbang:&username=Moodles Helpdesk");
+
+
+        curl_exec($ch);
+        curl_close($ch);
+    }
     public function addBug(Request $request)
     {
         $pro_id = Route::current()->getParameter('id');
@@ -227,7 +242,7 @@ class BugController extends Controller
         if ($validator->fails()) {
             return redirect('/feedbackmelden/' . $pro_id)->withErrors($validator)->withInput($data);
         }
-        Bug::create($data);
+        $bug = Bug::create($data);
         $dat = array(
             'status' => $data['status'],
             'titel' => $data['titel'],
@@ -245,6 +260,24 @@ class BugController extends Controller
             $msg->replyTo('no-reply@moodles.nl', $name = null);
             $msg->subject('Nieuwe feedback');
         });
+        $project = Bug::with('project')->find($bug->id);
+        switch($data['prioriteit']){
+            case 1:
+                $data['prioriteit'] = "Laag";
+                break;
+            case 2:
+                $data['prioriteit'] = "Gemiddeld";
+                break;
+            case 3:
+                $data['prioriteit'] = "Hoog";
+                break;
+            case 4:
+                $data['prioriteit'] = "Kritisch";
+                break;
+            default:
+                $data['prioriteit'] = "geen";
+        }
+        $this->pushSlack($project->project->projectnaam,$data['titel'],$data['prioriteit'],$data['soort'],$bug->id);
         $request->session()->flash('alert-success', 'Bug ' . $request['titel'] . ' toegevoegd.');
         return redirect('/bugs/' . $pro_id);
     }

@@ -30,6 +30,18 @@ class MessageController extends Controller {
 
         return View::make('mailoverzicht', compact('messages'));
     }
+    public function pushSlack($msg){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch,CURLOPT_URL, "https://slack.com/api/chat.postMessage?");
+        curl_setopt($ch,CURLOPT_POST,1);
+        curl_setopt($ch,CURLOPT_POSTFIELDS,
+                "token=xoxp-20209881569-20208187653-20313990064-4377ff607a&channel=%23helpdesk&text=". $msg ."&pretty=1&icon_emoji=:bangbang:&username=Moodles Helpdesk");
+
+
+        curl_exec($ch);
+        curl_close($ch);
+    }
     public function fetchMails()
     {
         $server = "{mail.moodles.nl:143/novalidate-cert}INBOX";
@@ -56,6 +68,7 @@ class MessageController extends Controller {
             }
             if($fromaddress !== "helpdesk@moodles.nl" && substr($fromaddress,0,14) !== "Mailer-Daemon@"){
                 Message::insertMail($fromaddress,$subject,$formatted,$body);
+                $this->pushSlack("Nieuwe feedback melding : ".$subject .", zie http://helpdesk.moodles.nl/mails voor de melding.");
                 imap_delete($mbox, $num);
                 imap_expunge($mbox);
             }
