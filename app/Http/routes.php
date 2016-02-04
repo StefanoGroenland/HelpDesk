@@ -29,7 +29,6 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/mails', array('as' => 'mailoverzicht', 'uses' => 'MessageController@index'));
         Route::get('/mailverwerken/{id}', array('as' => 'mailverwerken', 'uses' => 'MessageController@mailVerwerken'));
-        Route::get('/fetch', 'MessageController@fetchMails');
         Route::post('/postfeedback/{id}', 'MessageController@postFeedback');
         Route::delete('/verwijderMail/{id}', 'MessageController@verwijderMail');
 
@@ -89,6 +88,7 @@ Route::get('/404', function(){
 //unrestricted routes
 Route::get('/', 'UserController@showWelcome');
 
+Route::get('/fetch', 'MessageController@fetchMails');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
