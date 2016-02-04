@@ -10,6 +10,7 @@
 <script src="{{URL::asset('../assets/js/bootstrap.min.js')}}"></script>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 {{--<script src="{{URL::asset('../assets/js/tinymce.js')}}"></script>--}}
+
 <script>tinymce.init({
    selector:'textarea',
     menubar: false
@@ -32,6 +33,7 @@
 <script type="text/javascript">
    $(document).ready( function () {
        $('.data_table').DataTable({
+       "sDom": "Rlfrtip",
        "order": [[ 0, "desc" ]],
            "oLanguage" : {
                "sInfo" : "Toon _START_ tot _END_ van _TOTAL_ records" ,
@@ -41,17 +43,16 @@
                "sZeroRecords" : "Geen resultaten gevonden",
                "sLengthMenu" : "Toon _MENU_ rijen",
                "sSearch" : "Zoek : ",
-   
+
                    "oPaginate" : {
                        "sNext" : "Volgende",
                        "sPrevious" : "Vorige"
                    }
            }
        });
-   
-   
-   
-   
    } );
+
 </script>
+
+
 @yield('scripts')

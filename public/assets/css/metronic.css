@@ -1129,7 +1129,7 @@ fieldset[disabled] .form-group.form-md-line-input .form-control {
 hr,
 p {
     word-wrap: break-word;!important;
-    margin: 20px 0
+    /*margin: 20px 0*/
 }
 
 @-webkit-keyframes growCircleRadio {
