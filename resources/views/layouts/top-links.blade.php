@@ -104,7 +104,7 @@ body{
                      </a>
                   </li>
                   @endif
-                    <li style="padding:10px;" @if(\Request::route()->getName() == 'bugoverzicht')class="active"@endif>
+                    <li style="padding:10px;" @if(\Request::route()->getName() == 'bugoverzicht')class="active" @elseif(\Request::route()->getName() == 'bugs') class="active" @endif>
                      <a style="padding-top:5px;" href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
                     <i class="fa fa-bug"></i> Feedback overzicht
                      </a>

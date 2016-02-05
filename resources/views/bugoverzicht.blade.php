@@ -41,6 +41,8 @@
                                 @if($bug->project_id == $bug->project->id && $bug->status != 'gesloten')
                                 @if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0 && $bug->status != 'gesloten')
                                     <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
+                                    @else
+                                    <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
                                 @endif
 									<td>{{$bug->id}}</td>
 									    <td>{{$bug->klant->bedrijf}}</td>
@@ -125,6 +127,8 @@
 								@if($bug->project_id == $bug->project->id && $bug->status == 'gesloten')
 								@if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0 && $bug->status == 'gesloten')
                                     <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
+                                    @else
+                                    <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
                                 @endif
 									<td>{{$bug->id}}</td>
 									<td>{{$bug->klant->bedrijf}}</td>
@@ -202,6 +206,8 @@
                                                             <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
                                                         @elseif(Auth::user()->rol != 'medewerker' && $bug->last_admin > 0)
                                                             <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
+                                                            @else
+                                                            <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
                                                         @endif
 														<td>{{$bug->id}}</td>
 														<td>{{substr($bug->titel,0,15)}}...</td>

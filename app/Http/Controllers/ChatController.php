@@ -42,12 +42,20 @@ class ChatController extends Controller
                     } else {
                         $request->session()->flash('alert-danger', 'Bestand uploaden mislukt! bestands type werd niet geaccepteerd.');
                         Chat::sendMessage($afzender_id, $klant_id, $medewerker_id, $bug_id, $project_id, $msg);
+                        if(Auth::user()->rol != "medewerker"){
+                            $bug = Bug::with('project')->find($bug_id);
+                            $this->pushSlack($bug->titel,$bug->prioriteit,$bug->id,$msg);
+                        }
                         return redirect('/bugchat/' . $id);
                     }
                 } else {
 
                     $request->session()->flash('alert-warning', 'Bericht zonder bijlage verstuurd.');
                     Chat::sendMessage($afzender_id, $klant_id, $medewerker_id, $bug_id, $project_id, $msg);
+                    $bug = Bug::find($bug_id);
+                    if(Auth::user()->rol != "medewerker"){
+                        $this->pushSlack($bug->titel,$bug->prioriteit,$bug->id,$msg);
+                    }
                     if (Auth::user()->rol == 'medewerker') {
                         Bug::lastPerson($bug_id, 1, 0);
 
@@ -116,6 +124,10 @@ class ChatController extends Controller
 
 
             Chat::sendMessage($afzender_id, $klant_id, $medewerker_id, $bug_id, $project_id, $msg_with);
+            $bug = Bug::find($bug_id);
+            if(Auth::user()->rol != "medewerker"){
+                $this->pushSlack($bug->titel,$bug->prioriteit,$bug->id,$msg);
+            }
 
             $msg_with = $request['bericht'] . '<br><small>Deze reactie bevat een bijlage die alleen gezien kan worden op Moodles helpdesk.</small>';
             if (Auth::user()->rol == 'medewerker') {
@@ -173,6 +185,36 @@ class ChatController extends Controller
         }
         $request->session()->flash('alert-danger', 'Er ging iets mis. Neem contact op met de systeembeheerder !');
         return redirect('/bugchat/' . $bug_id);
+    }
+    public function pushSlack($titel,$prioriteit,$id,$msg){
+        switch($prioriteit){
+            case 1:
+                $prioriteit = "LAAG";
+                break;
+            case 2:
+                $prioriteit = "GEMIDDELD";
+                break;
+            case 3:
+                $prioriteit = "HOOG";
+                break;
+            case 4:
+                $prioriteit = "KRITISCH";
+                break;
+            default:
+                $prioriteit = "geen";
+        }
+        $msg = "Chat reactie op *" . $titel  . "*, prio : *" . $prioriteit . "*, http://helpdesk.moodles.nl/bugchat/" . $id . " , Bericht : " . strip_tags(substr($msg,0,120)). "...";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch,CURLOPT_URL, "https://slack.com/api/chat.postMessage?");
+        curl_setopt($ch,CURLOPT_POST,1);
+        curl_setopt($ch,CURLOPT_POSTFIELDS,
+            "token=xoxp-20209881569-20208187653-20313990064-4377ff607a&channel=%23helpdesk&text=". $msg ."&pretty=1&icon_emoji=:bangbang:&username=Moodles Helpdesk");
+
+
+        curl_exec($ch);
+        curl_close($ch);
     }
 
 
