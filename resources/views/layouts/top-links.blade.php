@@ -87,12 +87,18 @@ body{
                      </a>
                   </li>
                   @if(Auth::user()->rol == 'medewerker')
-                  <li style="padding:10px;" @if(\Request::route()->getName() == 'klanten')class="active"@endif>
+                     <li style="padding:10px;" @if(\Request::route()->getName() == 'klanten')class="active"
+                                     @elseif(\Request::route()->getName() == 'newklant')class="active"
+                                     @elseif(\Request::route()->getName() == 'klantwijzigen')class="active"
+                     @endif>
                      <a style="padding-top:5px;" href="{{URL::to('/klanten')}}">
                      <i class="fa fa-user"></i> Klanten
                      </a>
                   </li>
-                  <li style="padding:10px;" @if(\Request::route()->getName() == 'projecten')class="active"@endif>
+                    <li style="padding:10px;" @if(\Request::route()->getName() == 'projecten')class="active"
+                                    @elseif(\Request::route()->getName() == 'newproject')class="active"
+                                    @elseif(\Request::route()->getName() == 'projectwijzigen')class="active"
+                    @endif>
                      <a style="padding-top:5px;" href="{{URL::to('/projecten')}}">
                      <i class="fa fa-briefcase"></i> Projecten
                      </a>
@@ -111,13 +117,16 @@ body{
                   </li>
                   @endif
                   @if(Auth::user()->rol == 'medewerker')
-                    <li style="padding:10px;" @if(\Request::route()->getName() == 'medewerkers')class="active"@endif>
+                    <li style="padding:10px;" @if(\Request::route()->getName() == 'medewerkers')class="active"
+                                    @elseif(\Request::route()->getName() == 'newmedewerker')class="active"
+                                    @elseif(\Request::route()->getName() == 'medewerkerwijzigen')class="active"
+                    @endif>
                      <a style="padding-top:5px;" href="{{URL::to('/medewerkers')}}">
                      <i class="fa fa-users"></i> Medewerkers
                      </a>
                   </li>
                   @endif
-                  <li class="dropdown">
+                  <li @if(\Request::route()->getName() == 'profiel')class="active dropdown"@else class="dropdown" @endif  >
                      <a style="padding-top:15px;!important;margin-left:50px;!important;padding-bottom: 15px;!important;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                      <img class="img-responsive img-circle pull-left " alt="profile_img" src="
                      @if(Auth::user()->profielfoto)
