@@ -48,8 +48,13 @@
 									<td>{{ucfirst($project->user->bedrijf)}}</td>
 									<td>{!! substr($project->omschrijvingproject,0,120) !!}@if(strlen($project->omschrijvingproject) > 120)...@endif</td>
 									<td class="text-right" >
-										<a href="/projectwijzigen/{{$project->id}}" class="">
-										<button class="btn btn-success wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
+									    <a href="/feedbackmelden/{{$project->id}}">
+                                        <button class="btn btn-success wijzigKnop2" name="zoekProject" type="button">
+                                        <i class="fa fa-plus"></i>
+                                        </button>
+                                        </a>
+										<a href="/projectwijzigen/{{$project->id}}">
+										<button class="btn btn-warning wijzigKnop2" name="zoekProject" type="button" data-project="{{$project->projectnaam}}">
 										<i class="fa fa-pencil"></i>
 										</button>
 										</a>
