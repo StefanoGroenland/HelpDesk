@@ -60,17 +60,17 @@
 									<td>{{strtoupper($bug->status)}}</td>
 									<td>{{$bug->soort}}</td>
 									<td>
-										@if($bug->prioriteit == 1)
-										<span class="label label-success">Laag</span>
-										@elseif($bug->prioriteit == 2)
-										<span class="label label-warning">Gemiddeld</span>
-										@elseif($bug->prioriteit == 3)
-										<span class="label label-danger">Hoog</span>
-										@elseif($bug->prioriteit == 4)
-										<span class="label label-purple">Kritisch</span>
-										@else
-										<span class="label label-info">Geen prioriteit</span>
-										@endif
+                                        @if($bug->prioriteit == 1)
+                                        <span class="label label-success"><span style="display:none;">4</span>Laag</span>
+                                        @elseif($bug->prioriteit == 2)
+                                        <span class="label label-warning"><span style="display:none;">3</span>Gemiddeld</span>
+                                        @elseif($bug->prioriteit == 3)
+                                        <span class="label label-danger"><span style="display:none;">2</span>Hoog</span>
+                                        @elseif($bug->prioriteit == 4)
+                                        <span class="label label-purple"><span style="display:none;">1</span>Kritisch</span>
+                                        @else
+                                        <span class="label label-info">Geen prioriteit</span>
+                                        @endif
 									</td>
 									<td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
 									@if($bug->eind_datum == '0000-00-00 00:00:00')
@@ -144,17 +144,17 @@
 									<td>{{strtoupper($bug->status)}}</td>
 									<td>{{$bug->soort}}</td>
 									<td>
-										@if($bug->prioriteit == 1)
-										<span class="label label-success">Laag</span>
-										@elseif($bug->prioriteit == 2)
-										<span class="label label-warning">Gemiddeld</span>
-										@elseif($bug->prioriteit == 3)
-										<span class="label label-danger">Hoog</span>
-										@elseif($bug->prioriteit == 4)
-										<span class="label label-purple">Kritisch</span>
-										@else
-										<span class="label label-info">Geen prioriteit</span>
-										@endif
+                                        @if($bug->prioriteit == 1)
+                                        <span class="label label-success"><span style="display:none;">4</span>Laag</span>
+                                        @elseif($bug->prioriteit == 2)
+                                        <span class="label label-warning"><span style="display:none;">3</span>Gemiddeld</span>
+                                        @elseif($bug->prioriteit == 3)
+                                        <span class="label label-danger"><span style="display:none;">2</span>Hoog</span>
+                                        @elseif($bug->prioriteit == 4)
+                                        <span class="label label-purple"><span style="display:none;">1</span>Kritisch</span>
+                                        @else
+                                        <span class="label label-info">Geen prioriteit</span>
+                                        @endif
 									</td>
 									<td>{{date('d-m-Y - H:i',strtotime($bug->start_datum))}}</td>
 									@if($bug->eind_datum == '0000-00-00 00:00:00')
