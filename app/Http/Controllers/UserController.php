@@ -181,7 +181,7 @@ class UserController extends Controller
             $data['password'] = Hash::make($data['password']);
         } else {
             User::where('id', '=', $id)->update($data);
-            $request->session()->flash('alert-warning', 'Uw account is gewijziged, er zijn geen wijzigingen aan het wachtwoord doorgevoerd.');
+            $request->session()->flash('alert-success', 'Uw account is gewijziged, er zijn geen wijzigingen aan het wachtwoord doorgevoerd.');
             return redirect('/profiel');
         }
         array_forget($data, 'password_confirmation');
@@ -280,7 +280,7 @@ class UserController extends Controller
             $data['password'] = Hash::make($data['password']);
         } else {
             User::where('id', '=', $id)->update($data);
-            $request->session()->flash('alert-warning', 'Gebruiker ' . $request['username'] . ' veranderd zonder wijzigingen aan het wachtwoord.');
+            $request->session()->flash('alert-success', 'Gebruiker ' . $request['username'] . ' veranderd zonder wijzigingen aan het wachtwoord.');
             return redirect('/medewerkers');
         }
         array_forget($data, 'password_confirmation');
@@ -334,7 +334,7 @@ class UserController extends Controller
             $data['password'] = Hash::make($data['password']);
         } else {
             User::where('id', '=', $id)->update($data);
-            $request->session()->flash('alert-warning', 'Klant ' . $request['username'] . ' veranderd zonder wijzigingen aan het wachtwoord.');
+            $request->session()->flash('alert-success', 'Klant ' . $request['username'] . ' veranderd zonder wijzigingen aan het wachtwoord.');
             return redirect('/klanten');
         }
         array_forget($data, 'password_confirmation');
