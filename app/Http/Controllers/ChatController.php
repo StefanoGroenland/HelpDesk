@@ -144,7 +144,7 @@ class ChatController extends Controller
                 }
             } else {
                 Bug::lastPerson($bug_id, 0, 1);
-                $bug = Bug::with('klant')->find($bug_id);
+                $bug = Bug::with('klant','project')->find($bug_id);
                 $inet = array(
                     //data om mee te nemen in de view
                     'bug_id' => $request['bug_id'],

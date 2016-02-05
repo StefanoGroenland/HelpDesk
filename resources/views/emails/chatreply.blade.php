@@ -9,15 +9,13 @@ U heeft reactie op een discussie
 		<thead>
 			<th>Feedback</th>
 			<th>Soort</th>
-			<th>Klant</th>
-			<th>Projectnummer</th>
+			<th>Project</th>
 		</thead>
 		<tbody>
 			<tr>
 				<td>{{$bug->titel}}</td>
 				<td>{{$bug->soort}}</td>
-				<td>{{$bug->klant_id .' '. $bug->klant->voornaam .' '. $bug->klant->tussenvoegsel .' '. $bug->klant->achternaam}}</td>
-				<td>{{$bug->project_id}}</td>
+				<td>{{$bug->project->projectnaam}}</td>
 			</tr>
 		</tbody>
 	</table>
