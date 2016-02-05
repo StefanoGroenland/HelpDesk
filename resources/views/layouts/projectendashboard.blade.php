@@ -195,7 +195,7 @@
                                           @endif
                                        @endforeach
                                        {{$i}}
-                                       </span> <span style="padding-right:5px;" >Openstaand</span>
+                                       </span> <span style="padding-right:5px;color:white;" >Openstaand</span>
                   <div>
                      <span class="label label-danger pull-left">{{$hoog}}</span>
                         <div><span class="badge pull-right">
@@ -207,7 +207,7 @@
                                                 @endif
                                              @endforeach
                                              {{$x}}
-                                             </span> <span style="padding-right:5px;">Bezig</span>
+                                             </span> <span style="padding-right:5px;color:white;">Bezig</span>
                                           </div>
                   </div>
                   <span class="label label-warning pull-left">{{$gem}}</span>
@@ -220,7 +220,7 @@
                         @endif
                      @endforeach
                      {{$y}}
-                     </span> <span style="padding-right:5px;">Gesloten</span>
+                     </span> <span style="padding-right:5px;color:white;">Gesloten</span>
                   </div>
                   <span class="label label-success pull-left">{{$laag}}</span>
 
