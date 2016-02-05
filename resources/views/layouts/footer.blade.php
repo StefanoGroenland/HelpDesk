@@ -6,10 +6,35 @@
 <![endif]-->
 <!-- jQuery -->
 <script src="{{URL::asset('../assets/js/jquery.js')}}"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="{{URL::asset('../assets/js/bootstrap.min.js')}}"></script>
+
+<script src="{{URL::asset('../assets/js/jquery.fancybox.pack.js')}}"></script>
+<script src="{{URL::asset('../assets/js/jquery.fancybox-buttons.js')}}"></script>
+<script src="{{URL::asset('../assets/js/jquery.fancybox-media.js')}}"></script>
+<script src="{{URL::asset('../assets/js/jquery.fancybox-thumbs.js')}}"></script>
+
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 {{--<script src="{{URL::asset('../assets/js/tinymce.js')}}"></script>--}}
+
+<script>
+var $j = jQuery.noConflict();
+
+$j(document).ready(function(){
+
+
+    $j('.fancybox').fancybox({
+        openEffect  : 'none',
+        closeEffect : 'none',
+        helpers : {
+            media : {}
+        }
+    });
+
+});
+</script>
+
 
 <script>tinymce.init({
    selector:'textarea',

@@ -50,7 +50,7 @@ class ChatController extends Controller
                     }
                 } else {
 
-                    $request->session()->flash('alert-success', 'Bericht verstuurd.');
+                    $request->session()->flash('alert-warning', 'Bericht zonder bijlage verstuurd.');
                     Chat::sendMessage($afzender_id, $klant_id, $medewerker_id, $bug_id, $project_id, $msg);
                     $bug = Bug::find($bug_id);
                     if(Auth::user()->rol != "medewerker"){
@@ -118,7 +118,7 @@ class ChatController extends Controller
             } elseif (strpos($ava, 'csv')) {
                 $ava = '<a href="../' . $ava . '" target="_blank"><img src="../assets/images/excel_file.png" width="50" height="50"></a>';
             } else {
-                $ava = '<a href="../' . $ava . '" target="_blank"><img src="../' . $ava . '" width="50" height="50"></a>';
+                $ava = '<a class="fancybox" href="../' . $ava . '" target="_blank"><img src="../' . $ava . '" width="50" height="50"></a>';
             }
             $msg_with = $request['bericht'] . $ava;
 
@@ -180,7 +180,7 @@ class ChatController extends Controller
             }
             return redirect('/bugchat/' . $id);
         } else {
-            $request->session()->flash('alert-danger', 'Bericht verzenden mislukt, geen bericht gevonden.');
+            $request->session()->flash('alert-warning', 'Bericht verzenden mislukt, geen bericht gevonden.');
             return redirect('/bugchat/' . $bug_id);
         }
         $request->session()->flash('alert-danger', 'Er ging iets mis. Neem contact op met de systeembeheerder !');
@@ -216,6 +216,7 @@ class ChatController extends Controller
         curl_exec($ch);
         curl_close($ch);
     }
+
 
 
 }
