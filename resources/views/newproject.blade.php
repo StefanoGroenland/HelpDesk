@@ -158,7 +158,7 @@
 	    @else
 	        <div class="form-group">
 	    @endif
-	        <input type="text" class="form-control" id="telefoonnummer" maxlength="10" required="true" name="telefoonnummer" placeholder="Telefoon nummer *" value="{{old('telefoonnummer')}}">
+	        <input type="text" class="form-control" id="telefoonnummer" maxlength="10" required="true" name="telefoonnummer" placeholder="Telefoonnummer *" value="{{old('telefoonnummer')}}">
 	        </div>
 	    </fieldset>
 	    <button type="submit" class="btn btn-success pull-right"><span class="fa fa-plus" aria-hidden="true"></span> Toevoegen</button>

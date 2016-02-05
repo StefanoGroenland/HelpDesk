@@ -25,7 +25,7 @@
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Wijzig project</h3>
+							<h3 class="panel-title">Wijzig project <small>alle velden met * zijn verplicht</small></h3>
 						</div>
 						<div class="panel-body">
 							<form method="POST" action="/updateProject/{{$project->id}}">
@@ -38,7 +38,7 @@
                                         	@else
                                         	<div class="form-group">
                                         	@endif
-											<label for="projectnaam2">Projectnaam</label>
+											<label for="projectnaam2">Projectnaam *</label>
 											<input type="text" class="form-control projectnaam2" required="true" id="projectnaam2" name="projectnaam" placeholder="Projectnaam" value="{{$project->projectnaam}}">
 										</div>
 									</div>
@@ -48,7 +48,7 @@
                                         	@else
                                         	<div class="form-group">
                                         	@endif
-											<label for="liveurl2">Live URL</label>
+											<label for="liveurl2">Live URL *</label>
 											<input type="text" class="form-control projecturl2" required="true" id="liveurl2" name="liveurl" placeholder="Live URL" value="{{$project->liveurl}}">
 										</div>
 									</div>
@@ -89,7 +89,12 @@
 										</div>
 									</div>
 								</div>
-								<div class="form-group">
+								@if($errors->has('omschrijvingproject'))
+                                    <div class="form-group has-error">
+                                @else
+                                    <div class="form-group">
+                                @endif
+								<label for="bedrijfsnaam">Omschrijving</label>
 									<textarea class="form-control omschrijving2" rows="8" id="omschrijving2" name="omschrijvingproject" value="" >{{$project->omschrijvingproject}}</textarea>
 								</div>
 								<button type="submit" class="btn btn-success pull-right"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>

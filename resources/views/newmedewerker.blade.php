@@ -25,7 +25,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Nieuwe medewerker </h3>
+					<h3 class="panel-title">Nieuwe medewerker <small>alle velden met * zijn verplicht</small></h3>
 				</div>
 				<div class="panel-body">
 					<form method="POST" action="/addMedewerker" >
@@ -37,7 +37,7 @@
 									@else
 									<div class="form-group">
 										@endif
-										<label for="email">E-mail</label>
+										<label for="email">E-mail *</label>
 										<input type="email" class="form-control" required="true" id="email" name="email" placeholder="Email" value="{{old('email')}}">
 									</div>
 								</div>
@@ -47,7 +47,7 @@
 										@else
 										<div class="form-group">
 											@endif
-											<label for="gebruikersnaam">Gebruikersnaam</label>
+											<label for="gebruikersnaam">Gebruikersnaam *</label>
 											<input type="text" class="form-control" required="true" id="gebruikersnaam" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
 										</div>
 									</div>
@@ -59,7 +59,7 @@
 											@else
 											<div class="form-group">
 												@endif
-												<label for="wachtwoord">Wachtwoord</label>
+												<label for="wachtwoord">Wachtwoord *</label>
 												<input type="password" class="form-control" required="true" id="wachtwoord" name="password" placeholder="Wachtwoord">
 											</div>
 										</div>
@@ -69,7 +69,7 @@
 												@else
 												<div class="form-group">
 													@endif
-													<label for="wachtwoord">Herhaal wachtwoord</label>
+													<label for="wachtwoord">Herhaal wachtwoord *</label>
 													<input type="password" class="form-control" required="true" id="wachtwoord" name="password_confirmation" placeholder="Herhaal wachtwoord">
 												</div>
 											</div>
@@ -77,7 +77,7 @@
 										<div class="row">
 											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 												<div class="form-group">
-													<label for="voornaam">Voornaam</label>
+													<label for="voornaam">Voornaam *</label>
 													<input type="text" class="form-control" required="true" id="voornaam" name="voornaam" placeholder="Voornaam" value="{{old('voornaam')}}">
 												</div>
 											</div>
@@ -89,7 +89,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 												<div class="form-group">
-													<label for="achternaam">Achternaam</label>
+													<label for="achternaam">Achternaam *</label>
 													<input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam" value="{{old('achternaam')}}">
 												</div>
 											</div>
@@ -113,7 +113,7 @@
 													{{--
 												</div>
 												--}}
-												<label for="achternaam">Geslacht</label>
+												<label for="achternaam">Geslacht *</label>
 												<div class="form-group">
 													<label class="radio-inline">
 													<input type="radio" name="radman" id="radman" checked> Man
@@ -131,7 +131,7 @@
 													@else
 													<div class="form-group">
 														@endif
-														<label for="telefoonnummer">Telefoonnummer</label>
+														<label for="telefoonnummer">Telefoonnummer *</label>
 														<input type="text" class="form-control" required="true" id="telefoonnummer" maxlength="10" name="telefoonnummer" placeholder="Telefoonnummer" value="{{old('telefoonnummer')}}">
 													</div>
 												</div>

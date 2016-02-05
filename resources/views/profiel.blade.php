@@ -60,20 +60,20 @@
 						<input type="hidden" name="_method" value="PUT">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Mijn gegevens</h3>
+								<h3 class="panel-title">Mijn gegevens <small>alle velden met * zijn verplicht</small></h3>
 							</div>
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="email">E-mail</label>
+											<label for="email">E-mail *</label>
 											<input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
 											<input type="email" class="form-control" required="true" name="email" value="{{$user->email}}">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="gebruikersnaam">Gebruikersnaam</label>
+											<label for="gebruikersnaam">Gebruikersnaam *</label>
 											<input type="text" class="form-control" required="true" name="username" value="{{$user->username}}">
 										</div>
 									</div>
@@ -81,13 +81,13 @@
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="wachtwoord">Wachtwoord</label>
+											<label for="wachtwoord">Wachtwoord *</label>
 											<input type="password" class="form-control" name="password" >
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="wachtwoord">Herhaal wachtwoord</label>
+											<label for="wachtwoord">Herhaal wachtwoord *</label>
 											<input type="password" class="form-control" name="password_confirmation" >
 										</div>
 									</div>
@@ -95,7 +95,7 @@
 								<div class="row">
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 										<div class="form-group">
-											<label for="voornaam">Voornaam</label>
+											<label for="voornaam">Voornaam *</label>
 											<input type="text" class="form-control" required="true" name="voornaam" value="{{$user->voornaam}}">
 										</div>
 									</div>
@@ -107,7 +107,7 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="achternaam">Achternaam</label>
+											<label for="achternaam">Achternaam *</label>
 											<input type="text" class="form-control" required="true" name="achternaam" value="{{$user->achternaam}}">
 										</div>
 									</div>
@@ -115,7 +115,7 @@
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="geslacht">Geslacht</label>
+											<label for="geslacht">Geslacht *</label>
 											<select class="form-control" id="geslacht2" required="true" name="geslacht">
 											<option value="man" @if($user->geslacht == 'man') selected @endif >Man</option>
 											<option value="vrouw" @if($user->geslacht == 'vrouw') selected @endif >Vrouw</option>
@@ -124,7 +124,7 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="bedrijfsnaam">Bedrijfsnaam</label>
+											<label for="bedrijfsnaam">Bedrijf *</label>
 											<input type="text" class="form-control" required="true" name="bedrijf" value="{{$user->bedrijf}}">
 										</div>
 									</div>
@@ -136,7 +136,7 @@
 											@else
 											<div class="form-group">
 												@endif
-												<label for="bedrijfsnaam">Telefoonnummer</label>
+												<label for="bedrijfsnaam">Telefoonnummer *</label>
 												<input type="text" class="form-control" required="true" maxlength="10" name="telefoonnummer" value="{{$user->telefoonnummer}}">
 											</div>
 										</div>
