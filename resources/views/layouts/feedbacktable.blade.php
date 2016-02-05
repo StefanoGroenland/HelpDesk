@@ -3,7 +3,7 @@
 <div class="table-responsive">
    <table class="table table-hover data_table">
       <thead>
-         <th>Gepost op :</th>
+         <th>Gepost op</th>
          <th>Start datum</th>
          <th>Deadline</th>
          <th>Soort</th>
@@ -69,7 +69,7 @@
 <div class="table-responsive">
    <table class="table table-hover data_table">
       <thead>
-         <th>Gepost op </th>
+         <th>Gepost op</th>
          <th>Status </th>
          <th>Startdatum</th>
          <th>Deadline</th>
