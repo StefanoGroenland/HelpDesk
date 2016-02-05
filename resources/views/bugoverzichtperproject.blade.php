@@ -58,7 +58,7 @@
 									<td>{{$bug->id}}</td>
 									@endif
 									<td>{{$bug->klant->bedrijf}}</td>
-									<td>{{substr($bug->titel,0,15)}}...</td>
+									<td>{{substr($bug->titel,0,30)}}@if(strlen($bug->titel) > 30)...@endif</td>
 									<td>{{strtoupper($bug->status)}}</td>
 									<td>{{$bug->soort}}</td>
 									<td>
@@ -140,7 +140,7 @@
 									<td>{{$bug->id}}</td>
 									@endif
 									<td>{{$bug->klant->bedrijf}}</td>
-									<td>{{substr($bug->titel,0,15)}}...</td>
+									<td>{{substr($bug->titel,0,30)}}@if(strlen($bug->titel) > 30)...@endif</td>
 									<td>{{strtoupper($bug->status)}}</td>
 									<td>{{$bug->soort}}</td>
 									<td>
