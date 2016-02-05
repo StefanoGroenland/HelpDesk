@@ -112,8 +112,12 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<br>
-					<h3>Afgehandelde feedback <small>feedback met status 'gesloten'</small></h3>
-					<div class="table-responsive">
+					<h3>Gesloten feedback <small>feedback met status 'gesloten'</small></h3>
+					<a class="btn btn-info" role="button" data-toggle="collapse" href="#collapseGesloten" aria-expanded="false" aria-controls="collapseGesloten">
+                      <i class="fa fa-archive" > </i> Gesloten feedback bekijken
+                    </a>
+					<div class="table-responsive collapse" id="collapseGesloten">
+                    	<br>
 						<table class="table table-hover data_table">
 							<thead>
 								<th style="width: 5%"><i class="fa fa-hashtag"></i></th>

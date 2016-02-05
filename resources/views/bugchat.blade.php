@@ -36,7 +36,7 @@
 					<span class="label label-info pull-right">Geen</span>
 					@endif
 					<a type="button" style="margin-right:20px;!important;"  class="pull-right clickable" data-toggle="modal" data-target="#projectDetails">
-					<i class="fa fa-flask"></i>
+					<i class="fa fa-flask" style="color:black;" ></i>
 					</a>
 				</h3>
 				{{--controls--}}
