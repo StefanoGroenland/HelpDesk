@@ -70,23 +70,28 @@
 	    </div>
 	    <div class="panel-body">
 	        <div class="form-group">
-	        <label class="radio-inline">
-	            <input type="radio" name="radkoppel" id="radkoppel" value="koppel_klant"> Koppel klant
-	        </label>
-	        <label class="radio-inline">
-	            <input type="radio" name="radmaak" id="radmaak" value="maak_klant" checked> Nieuwe klant
-	        </label>
+                 <label class="radio-inline">
+                     <input type="radio" name="radkoppel" id="radkoppel" value="koppel_klant" checked> Koppel klant
+                 </label>
+                <label class="radio-inline">
+                	     <input type="radio" name="radmaak" id="radmaak" value="maak_klant"> Nieuwe klant
+                </label>
 	        </div>
-	        <div class="form-group" >
+	        <div class="form-group" id="koppel">
 	        <label for="gebruiker_id">Koppel klant</label>
-	            <select class="form-control"  id="gebruiker_id" name="gebruiker_id" disabled>
+	            <select class="form-control"  id="gebruiker_id" name="gebruiker_id" >
 	            @foreach($klanten as $klant)
-	            <option value="{{$klant->id}}" >{{$klant->bedrijf }}</option>
+	                @if(old('gebruiker_id') == $klant->id)
+	                <option value="{{$klant->id}}" selected>{{ $klant->bedrijf }}</option>
+	                @else
+	                <option value="{{$klant->id}}">{{ $klant->bedrijf }}</option>
+	                @endif
+
 	            @endforeach
 	            </select>
 	        </div>
 
-	    <fieldset id="fieldset-klant" >
+	    <fieldset id="fieldset-klant" class="hide" disabled>
 	    @if($errors->has('username'))
 	        <div class="form-group has-error">
 	    @else
@@ -166,16 +171,26 @@
 	<!-- /.container-fluid -->
 	</div>
 	<!-- /#page-wrapper -->
+    <style>
+        .hide{
+            display:none;
+        }
+
+    </style>
 	@section('scripts')
 	<script type="text/javascript">
 		$("#radkoppel").on("click",function(){
 		   $('#fieldset-klant').prop('disabled',true)
 		   $('#gebruiker_id').prop('disabled',false)
+		   $('#fieldset-klant').addClass('hide');
+		    $('#koppel').removeClass('hide')
 		   $('#radmaak').prop('checked',false)
 		});
 		$("#radmaak").on("click",function(){
 		   $('#fieldset-klant').prop('disabled',false)
 		   $('#gebruiker_id').prop('disabled',true)
+		   $('#koppel').addClass('hide')
+		   $('#fieldset-klant').removeClass('hide');
 		   $('#radkoppel').prop('checked',false)
 		});
 	</script>
