@@ -22,7 +22,7 @@
             <td>{{date('d-m-Y - H:i',strtotime($bug->eind_datum))}}</td>
             @endif
             <td>{{$bug->soort}}</td>
-            <td>{{$bug->status}}</td>
+            <td>{{strtoupper($bug->status)}}</td>
             <td>
                @if($bug->prioriteit == 1)
                <span class="label label-success">Laag</span>
