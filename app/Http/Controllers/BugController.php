@@ -154,7 +154,7 @@ class BugController extends Controller
         Bug::lastPerson($bug, 1, 0);
 
         Bug::where('id', '=', $bug->id)->update($data);
-        $bug = Bug::with('klant')->find($id);
+        $bug = Bug::with('klant','project')->find($id);
         if ($data['status'] == 'gesloten') {
 
             $dat = array(
@@ -174,6 +174,8 @@ class BugController extends Controller
                 $msg->replyTo('no-reply@moodles.nl', $name = null);
                 $msg->subject('Feedback gesloten');
             });
+            $request->session()->flash('alert-success', '' . $bug->titel . ' gesloten.');
+            return redirect('/bugs/' . $bug->project->id);
         }
 
         $request->session()->flash('alert-success', '' . $bug->titel . ' veranderd.');
