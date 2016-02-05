@@ -50,7 +50,7 @@
 									@endif
 									<td>{{$bug->klant->bedrijf}}</td>
 									<td>{{substr($bug->titel,0,15)}}...</td>
-									<td>{{$bug->status}}</td>
+									<td>{{strtoupper($bug->status)}}</td>
 									<td>{{$bug->soort}}</td>
 									<td>
 										@if($bug->prioriteit == 1)
@@ -135,7 +135,7 @@
 									@endif
 									<td>{{$bug->klant->bedrijf}}</td>
 									<td>{{substr($bug->titel,0,15)}}...</td>
-									<td>{{$bug->status}}</td>
+									<td>{{strtoupper($bug->status)}}</td>
 									<td>{{$bug->soort}}</td>
 									<td>
 										@if($bug->prioriteit == 1)
@@ -215,7 +215,7 @@
 														<td>{{$bug->id}}</td>
 														@endif
 														<td>{{substr($bug->titel,0,15)}}...</td>
-														<td>{{$bug->status}}</td>
+														<td>{{strtoupper($bug->status)}}</td>
 														<td>{{$bug->soort}}</td>
 														<td>
 															@if($bug->prioriteit == 1)
