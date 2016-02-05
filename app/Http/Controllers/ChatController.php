@@ -171,7 +171,7 @@ class ChatController extends Controller
             $request->session()->flash('alert-warning', 'Bericht verzenden mislukt, geen bericht gevonden.');
             return redirect('/bugchat/' . $bug_id);
         }
-        $request->session()->flash('alert-alert', 'Er ging iets mis. Neem contact op met de systeembeheerder !');
+        $request->session()->flash('alert-danger', 'Er ging iets mis. Neem contact op met de systeembeheerder !');
         return redirect('/bugchat/' . $bug_id);
     }
 
