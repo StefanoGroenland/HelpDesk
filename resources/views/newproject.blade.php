@@ -25,29 +25,39 @@
 	<div class="col-lg-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Project gegevens</h3>
+				<h3 class="panel-title">Project gegevens <small>alle velden met * zijn verplicht</small></h3>
 			</div>
 			<div class="panel-body">
 				<form method="POST" action="/addProject">
 					{!! csrf_field() !!}
 					<div class="form-group">
 						<label for="sel4">Project gegevens</label>
-						<input type="text" class="form-control" id="projectnaam" required="true" name="projectnaam" placeholder="Projectnaam" value="{{old('projectnaam')}}">
+						<input type="text" class="form-control" id="projectnaam" required="true" name="projectnaam" placeholder="Projectnaam *" value="{{old('projectnaam')}}">
 					</div>
-					<div class="form-group">
-						<input data-toggle="tooltip" title="Live URL / Productie URL van ons is dit bijvoorbeeld helpdesk.moodles.nl" type="text" class="form-control" id="projecturl" required="true" name="liveurl" placeholder="Productie URL" value="{{old('liveurl')}}">
+
+					@if($errors->has('liveurl'))
+                        <div class="form-group has-error">
+                    @else
+                        <div class="form-group">
+                    @endif
+						<input data-toggle="tooltip" title="Live URL / Productie URL van ons is dit bijvoorbeeld helpdesk.moodles.nl" type="text" class="form-control" id="projecturl" required="true" name="liveurl" placeholder="Productie URL *" value="{{old('liveurl')}}">
 					</div>
 					<div class="form-group">
 						<input data-toggle="tooltip" title="Development URL van ons is dit bijvoorbeeld dev.helpdesk.moodles.nl/admin Let op! : voeg de link toe naar het beheerpaneel" type="text" class="form-control" id="projecturl" name="developmenturl" placeholder="Development URL" value="{{old('developmenturl')}}">
 					</div>
-					<div class="form-group">
+					@if($errors->has('gebruikersnaam'))
+                        <div class="form-group has-error">
+                    @else
+                        <div class="form-group">
+                    @endif
 						<label for="sel4">Beheer account</label>
 						<input data-toggle="tooltip" title="Met dit account moet toegang zijn op het beheerderspaneel van de website!" type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam" placeholder="Gebruikersnaam" value="{{old('gebruikersnaam')}}">
 					</div>
 					<div class="form-group">
-						<input data-toggle="tooltip" title="Wachtwoord voor bovenstaand Beheer account." type="text" class="form-control" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" value="{{old('wachtwoord')}}">
+						<input data-toggle="tooltip" title="Wachtwoord voor bovenstaand Beheer account." type="text" class="form-control" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord">
 					</div>
 					<div class="form-group">
+					<label for="sel4">Omschrijving *</label>
 						<textarea class="form-control" rows="13" id="omschrijvingproject" name="omschrijvingproject">{{old('omschrijvingproject')}}</textarea>
 					</div>
 			</div>
@@ -83,44 +93,52 @@
 	        <div class="form-group">
 	    @endif
 	    <label for="sel4">Nieuwe klant</label>
-	        <input type="gebruikersnaam" class="form-control" id="username" required="true" name="username" placeholder="Gebruikersnaam" value="{{old('username')}}">
+	        <input type="gebruikersnaam" class="form-control" id="username" required="true" name="username" placeholder="Gebruikersnaam *" value="{{old('username')}}">
 	    </div>
 	        @if($errors->has('password'))
 	            <div class="form-group has-error">
 	        @else
 	            <div class="form-group">
 	        @endif
-	    <input type="password" class="form-control" id="password" required="true" name="password" placeholder="Wachtwoord">
+	    <input type="password" class="form-control" id="password" required="true" name="password" placeholder="Wachtwoord *">
 	    </div>
 	        @if($errors->has('password'))
 	            <div class="form-group has-error">
 	        @else
 	            <div class="form-group">
 	        @endif
-	        <input type="password" class="form-control" id="password_confirmation" required="true" name="password_confirmation" placeholder="Herhaal wachtwoord">
+	        <input type="password" class="form-control" id="password_confirmation" required="true" name="password_confirmation" placeholder="Herhaal wachtwoord *">
 	    </div>
 	        @if($errors->has('email'))
 	        <div class="form-group has-error">
 	        @else
 	        <div class="form-group">
 	        @endif
-	        <input type="email" class="form-control" id="email" required="true" name="email" placeholder="E-mail" value="{{old('email')}}">
+	        <input type="email" class="form-control" id="email" required="true" name="email" placeholder="E-mail *" value="{{old('email')}}">
 	    </div>
 	        @if($errors->has('bedrijf'))
 	        <div class="form-group has-error">
 	        @else
 	        <div class="form-group">
 	        @endif
-	        <input type="text" class="form-control" id="bedrijf"  name="bedrijf" placeholder="Bedrijf" value="{{old('bedrijf')}}">
+	        <input type="text" class="form-control" id="bedrijf"  name="bedrijf" placeholder="Bedrijf *" value="{{old('bedrijf')}}">
 	    </div>
-	    <div class="form-group">
-	        <input type="text" class="form-control" id="voornaam" required="true" name="voornaam" placeholder="Voornaam" value="{{old('voornaam')}}">
+	    @if($errors->has('voornaam'))
+            <div class="form-group has-error">
+        @else
+            <div class="form-group">
+        @endif
+	        <input type="text" class="form-control" id="voornaam" required="true" name="voornaam" placeholder="Voornaam *" value="{{old('voornaam')}}">
 	    </div>
 	    <div class="form-group">
 	        <input type="text" class="form-control" id="tussenvoegsel"  name="tussenvoegsel" placeholder="Tussenvoegsel" value="{{old('tussenvoegsel')}}">
 	    </div>
-	    <div class="form-group">
-	        <input type="text" class="form-control" id="achternaam" required="true" name="achternaam" placeholder="Achternaam" value="{{old('achternaam')}}">
+	    @if($errors->has('achternaam'))
+            <div class="form-group has-error">
+        @else
+            <div class="form-group">
+        @endif
+	        <input type="text" class="form-control" id="achternaam" required="true" name="achternaam" placeholder="Achternaam *" value="{{old('achternaam')}}">
 	    </div>
 	    <div class="form-group">
 	    <label class="radio-inline">
@@ -131,12 +149,12 @@
 	    </label>
 	    </div>
 	    @if($errors->has('telefoonnummer'))
-	    <div class="form-group has-error">
+	        <div class="form-group has-error">
 	    @else
-	    <div class="form-group">
+	        <div class="form-group">
 	    @endif
-	    <input type="text" class="form-control" id="telefoonnummer" maxlength="10" required="true" name="telefoonnummer" placeholder="Telefoon nummer" value="{{old('telefoonnummer')}}">
-	    </div>
+	        <input type="text" class="form-control" id="telefoonnummer" maxlength="10" required="true" name="telefoonnummer" placeholder="Telefoon nummer *" value="{{old('telefoonnummer')}}">
+	        </div>
 	    </fieldset>
 	    <button type="submit" class="btn btn-success pull-right"><span class="fa fa-plus" aria-hidden="true"></span> Toevoegen</button>
 	    </div>

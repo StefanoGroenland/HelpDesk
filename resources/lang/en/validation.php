@@ -110,7 +110,12 @@ return [
         'password_confirmation' => 'Herhaal wachtwoord',
         'email'                 => 'E-mail',
         'telefoonnummer'        => 'Telefoonnummer',
-        'bedrijf'               => 'Bedrijf'
+        'bedrijf'               => 'Bedrijf',
+        'liveurl'               => 'Productie url',
+        'voornaam'              => 'Voornaam',
+        'achternaam'            => 'Achternaam',
+        'projectnaam'           => 'Projectnaam',
+        'omschrijvingproject'   => 'Omschrijving',
     ],
 
 ];
