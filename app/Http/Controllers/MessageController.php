@@ -88,19 +88,33 @@ class MessageController extends Controller {
     }
     public function postFeedback($id, Request $request)
     {
-        $customer = Bug::defineKlant($request['project_id']);
-
-        $data = array(
-            'titel' => $request['titel'],
-            'prioriteit' => $request['prioriteit'],
-            'soort' => $request['soort'],
-            'status' => 'open',
-            'start_datum' => $request['start_datum'],
-            'beschrijving' => $request['beschrijving'],
-            'klant_id' => $customer->gebruiker_id,
-            'gemeld_door' => Auth::user()->id,
-            'project_id' => $request['project_id'],
-        );
+        if($request['project_id'] == "geen"){
+            $data = array(
+                'titel' => $request['titel'],
+                'prioriteit' => $request['prioriteit'],
+                'soort' => $request['soort'],
+                'status' => 'open',
+                'start_datum' => $request['start_datum'],
+                'beschrijving' => $request['beschrijving'],
+                'gemeld_door' => Auth::user()->id,
+                'project_id' => $request['project_id'],
+            );
+            $request->session()->flash('alert-danger', 'Selecteer een klant');
+            return redirect('/mailverwerken/' . $id)->withInput($data);
+        }else{
+            $customer = Bug::defineKlant($request['project_id']);
+            $data = array(
+                'titel' => $request['titel'],
+                'prioriteit' => $request['prioriteit'],
+                'soort' => $request['soort'],
+                'status' => 'open',
+                'start_datum' => $request['start_datum'],
+                'beschrijving' => $request['beschrijving'],
+                'klant_id' => $customer->gebruiker_id,
+                'gemeld_door' => Auth::user()->id,
+                'project_id' => $request['project_id'],
+            );
+        }
 
         if (Auth::user()->rol == 'medewerker') {
             $data['last_admin'] = 1;

@@ -90,7 +90,10 @@ class Bug extends Model
 
     public static function defineKlant($id)
     {
-        return DB::table('projecten')->select(DB::raw('gebruiker_id'))->where('id', '=', $id)->first();
+        if($id > 0){
+            return DB::table('projecten')->select(DB::raw('gebruiker_id'))->where('id', '=', $id)->first();
+        }
+        return "geen";
     }
 
     public static function defineProject($id)
