@@ -49,14 +49,10 @@
 							<tbody>
 								@foreach($bugs as $bug)
 								@if($bug->status != 'gesloten')
-								<tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}" >
-									@if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0)
-									<td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-									@elseif(Auth::user()->rol != 'medewerker' && $bug->last_admin > 0)
-									<td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-									@else
+								@if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0 && $bug->status != 'gesloten')
+                                        <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
+                                    @endif
 									<td>{{$bug->id}}</td>
-									@endif
 									<td>{{$bug->klant->bedrijf}}</td>
 									<td>{{substr($bug->titel,0,30)}}@if(strlen($bug->titel) > 30)...@endif</td>
 									<td>{{strtoupper($bug->status)}}</td>
@@ -135,14 +131,10 @@
 							<tbody>
 								@foreach($bugs as $bug)
 								@if($bug->status == 'gesloten')
-								<tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}" >
-									@if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0)
-									<td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-									@elseif(Auth::user()->rol != 'medewerker' && $bug->last_admin > 0)
-									<td>{{$bug->id}}<i class="fa fa-exclamation" style="color:red"></i></td>
-									@else
+								@if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0 && $bug->status == 'gesloten')
+                                    <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
+                                @endif
 									<td>{{$bug->id}}</td>
-									@endif
 									<td>{{$bug->klant->bedrijf}}</td>
 									<td>{{substr($bug->titel,0,30)}}@if(strlen($bug->titel) > 30)...@endif</td>
 									<td>{{strtoupper($bug->status)}}</td>
