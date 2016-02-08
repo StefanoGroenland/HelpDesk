@@ -24,6 +24,8 @@
    <link href='{{URL::asset('../assets/css/jquery.fancybox-buttons.css')}}' rel='stylesheet' type='text/css'>
    <link href='{{URL::asset('../assets/css/jquery.fancybox-thumbs.css')}}' rel='stylesheet' type='text/css'>
 
+   <link href='{{URL::asset('../assets/css/plugins/crop/jquery.Jcrop.css')}}' rel='stylesheet' type='text/css'>
+
 
 
 </head>

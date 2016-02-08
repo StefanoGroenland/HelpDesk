@@ -15,9 +15,57 @@
 <script src="{{URL::asset('../assets/js/jquery.fancybox-media.js')}}"></script>
 <script src="{{URL::asset('../assets/js/jquery.fancybox-thumbs.js')}}"></script>
 
+<script src="{{URL::asset('../assets/js/plugins/crop/jquery.color.js')}}"></script>
+<script src="{{URL::asset('../assets/js/plugins/crop/jquery.Jcrop.js')}}"></script>
+
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 {{--<script src="{{URL::asset('../assets/js/tinymce.js')}}"></script>--}}
 
+ <script type="text/javascript">
+    jQuery(function($) {
+            $('#jcrop_target').Jcrop({
+                bgColor:     'transparant',
+                setSelect:   [ 0, 0, 200, 200 ],
+                bgOpacity:   .4,
+                aspectRatio: 1,
+                onSelect: updateCoords
+            });
+        });
+    function updateCoords(c)
+    {
+    	$('#x').val(c.x);
+    	$('#y').val(c.y);
+    	$('#w').val(c.w);
+    	$('#h').val(c.h);
+    };
+
+
+
+</script>
+<script type="text/javascript">
+        $("#imgInp").change(function(){
+        console.log("changed!");
+            readURL(this);
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.jcrop-holder img').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function checkCoords()
+        {
+        	if (parseInt(jQuery('#w').val())>0) return true;
+        	return true;
+        };
+
+
+	</script>
 <script>
 var $j = jQuery.noConflict();
 

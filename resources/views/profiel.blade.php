@@ -28,11 +28,15 @@
 							<h3 class="panel-title">Profiel</h3>
 						</div>
 						<div class="panel-body">
-							<form method="POST" class="formulier" action="/profiel/upload" files="true" enctype="multipart/form-data">
+							<form method="POST" class="formulier" onsubmit="return checkCoords();" action="/profiel/upload" files="true" enctype="multipart/form-data">
 								{!! csrf_field() !!}
 								<input type="hidden" name="_method" value="PUT">
 								<input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
-								<img width="100" height="100" style="margin-bottom:25px;" src="
+								<input type="hidden" id="x" name="x">
+								<input type="hidden" id="y" name="y">
+								<input type="hidden" id="w" name="w">
+								<input type="hidden" id="h" name="h">
+								<img width="200" height="200" id="jcrop_target"  style="margin-bottom:25px;" src="
 								@if(!$user->profielfoto)
 								{{"../assets/images/avatar.png"}}
 								@else
@@ -46,7 +50,7 @@
 								<div class="input-group">
 									<span class="input-group-btn">
 									<span class="btn btn-success" data-toggle="tooltip" title="Kies een foto" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
-									<input name="profielfoto" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());" style="display: none;" type="file">
+									<input name="profielfoto" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
 									</span>
 									<span class="form-control"></span>
 								</div>
@@ -81,13 +85,13 @@
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="wachtwoord">Wachtwoord *</label>
+											<label for="wachtwoord">Wachtwoord</label>
 											<input type="password" class="form-control" name="password" >
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="wachtwoord">Herhaal wachtwoord *</label>
+											<label for="wachtwoord">Herhaal wachtwoord</label>
 											<input type="password" class="form-control" name="password_confirmation" >
 										</div>
 									</div>
@@ -155,6 +159,7 @@
 	</div>
 	<!-- /#wrapper -->
 	@section('scripts')
+
 	<script type="text/javascript">
 		$('.sendButton').click(function(e){
 		     var $this = $(this);

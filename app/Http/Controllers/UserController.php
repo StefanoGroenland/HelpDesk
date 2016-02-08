@@ -192,6 +192,12 @@ class UserController extends Controller
 
     public function upload(Request $request)
     {
+        $x = $_POST['x'];
+        $y = $_POST['y'];
+        $h = $_POST['h'];
+        $w = $_POST['w'];
+
+
         $id = $request['id'];
         $file = array('profielfoto' => $request->file('profielfoto'));
 
@@ -213,7 +219,7 @@ class UserController extends Controller
                 $request->file('profielfoto')->move($destinationPath, $fileName);
                 $ava = $destinationPath . '/' . $fileName;
 
-                $img = Image::make($ava)->resize(100, 100)->save();
+                $img = Image::make($ava)->fit(200)->crop($w, $h, $x, $y)->save();
 
 
                 $final = $destinationPath . '/' . $img->basename;
