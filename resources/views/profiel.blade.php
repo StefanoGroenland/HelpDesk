@@ -49,7 +49,7 @@
 								</button>
 								<div class="input-group">
 									<span class="input-group-btn">
-									<span class="btn btn-success" data-toggle="tooltip" title="Kies een foto" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
+									<span class="btn btn-success" id="verkennerButton" data-toggle="tooltip" title="Kies een foto" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
 									<input name="profielfoto" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
 									</span>
 									<span class="form-control"></span>
@@ -161,10 +161,34 @@
 	@section('scripts')
 
 	<script type="text/javascript">
+
+	    $(function(){
+	    var input = $('#imgInp');
+	    var sendButton = $('.sendButton');
+
+	        if(input.val().length === 0){
+	            sendButton.attr("disabled", true);
+	        }
+	    })
+
+	    $('#imgInp').change(function(){
+            var input = $('#imgInp');
+            var sendButton = $('.sendButton');
+
+            if(input === 0){
+                sendButton.attr("disabled", true);
+            }else{
+                sendButton.attr("disabled", false);
+            }
+	    });
+
+
+
 		$('.sendButton').click(function(e){
 		     var $this = $(this);
 		     var form = $('.formulier');
 		     $this.toggleClass('sendButton');
+
 		     if($this.hasClass('sendButton')){
 		         $this.text('Verstuur')
 		     }else{
