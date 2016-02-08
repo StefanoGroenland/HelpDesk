@@ -27,9 +27,12 @@ $j(document).ready(function(){
     $j('.fancybox').fancybox({
         openEffect  : 'none',
         closeEffect : 'none',
+        maxWidth: 700,
+        maxHeight: 500,
         helpers : {
             media : {}
         }
+
     });
 
 });
