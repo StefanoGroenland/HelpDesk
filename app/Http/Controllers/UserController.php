@@ -280,7 +280,7 @@ class UserController extends Controller
         );
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
-            return redirect('/medewerkerwijzigen/' . $id)->withErrors($validator);
+            return redirect('/medewerkerwijzigen/' . $id)->withInput($data)->withErrors($validator);
         }
         if (array_key_exists('password', $data)) {
             $data['password'] = Hash::make($data['password']);
@@ -333,7 +333,7 @@ class UserController extends Controller
         );
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
-            return redirect('/klantwijzigen/' . $id)->withErrors($validator);
+            return redirect('/klantwijzigen/' . $id)->withInput($data)->withErrors($validator);
         }
 
         if (array_key_exists('password', $data)) {

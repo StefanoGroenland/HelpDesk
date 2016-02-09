@@ -33,7 +33,11 @@
 								<input type="hidden" name="_method" value="PUT">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+									@if($errors->has('email'))
+                                       <div class="form-group has-error">
+                                          @else
+                                            <div class="form-group">
+                                            @endif
 											<label for="email">E-mail *</label>
 											<input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail" value="@if(old('email')){{old('email')}} @else{{$klant->email}}@endif">
 											<input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$klant->id}}">
@@ -107,10 +111,10 @@
 										<label for="achternaam">Geslacht *</label>
 										<div class="form-group">
 											<label class="radio-inline">
-											<input type="radio" name="radman" id="radman" @if($klant->geslacht == 'man') checked @endif> Man
-											</label>
-											<label class="radio-inline">
-											<input type="radio" name="radvrouw" id="radvrouw" @if($klant->geslacht == 'vrouw') checked @endif> Vrouw
+											    <input type="radio" name="radman" id="radman" @if(old('geslacht') == 'man') checked @elseif($klant->geslacht == 'man') checked @endif> Man
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="radvrouw" id="radvrouw" @if(old('geslacht') == 'vrouw') checked @elseif($klant->geslacht == 'vrouw') checked @endif> Vrouw
 											</label>
 										</div>
 									</div>
