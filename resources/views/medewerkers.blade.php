@@ -54,7 +54,7 @@
 									<td>{{$medewerker->telefoonnummer}}</td>
 									<td class="text-right">
 										<a href="/medewerkerwijzigen/{{$medewerker->id}}" class="">
-										<button class="btn btn-success wijzigKnop2" name="zoekProject" type="button" data-project="{{$medewerker->email}}">
+										<button class="btn btn-warning wijzigKnop2" name="zoekProject" type="button" data-project="{{$medewerker->email}}">
 										<i class="fa fa-pencil"></i>
 										</button>
 										</a>

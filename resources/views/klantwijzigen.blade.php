@@ -123,7 +123,7 @@
 											<div class="form-group">
 												@endif
 												<label for="telefoonnummer">Telefoonnummer *</label>
-												<input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="10" name="telefoonnummer" placeholder="Telefoonnummer" value="{{$klant->telefoonnummer}}">
+												<input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="10" name="telefoonnummer" placeholder="Telefoonnummer" value="@if(old('telefoonnummer')){{old('telefoonnummer')}} @else{{$klant->telefoonnummer}}@endif">
 											</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -133,7 +133,7 @@
                                              <div class="form-group">
                                              @endif
 												<label for="achternaam">Bedrijf *</label>
-												<input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="{{$klant->bedrijf}}">
+												<input type="text" class="form-control" required="true" id="bedrijf2" name="bedrijf" placeholder="Bedrijf"  value="@if(old('bedrijf')){{old('bedrijf')}} @else{{$klant->bedrijf}}@endif">
 											</div>
 										</div>
 									</div>

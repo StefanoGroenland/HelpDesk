@@ -51,7 +51,7 @@
                                            <div class="form-group">
                                            @endif
 											<label for="gebruikersnaam">Gebruikersnaam *</label>
-											<input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="{{$medewerker->username}}">
+											<input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="@if(old('username')){{old('username')}} @else{{$medewerker->username}}@endif">
 										</div>
 									</div>
 								</div>
@@ -108,10 +108,10 @@
 										<label for="achternaam">Geslacht *</label>
 										<div class="form-group">
 											<label class="radio-inline">
-											<input type="radio" name="radman" id="radman" @if($medewerker->geslacht == 'man') checked @endif> Man
+											<input type="radio" name="radman" id="radman" @if(old('geslacht') == 'man') checked @elseif($medewerker->geslacht == 'man') checked @endif> Man
 											</label>
 											<label class="radio-inline">
-											<input type="radio" name="radvrouw" id="radvrouw" @if($medewerker->geslacht == 'vrouw') checked @endif> Vrouw
+											<input type="radio" name="radvrouw" id="radvrouw" @if(old('geslacht') == 'vrouw') checked @elseif($medewerker->geslacht == 'vrouw') checked @endif> Vrouw
 											</label>
 										</div>
 									</div>
