@@ -40,7 +40,7 @@
 									<td class="text-right" >
 										<a href="/mailverwerken/{{$message->id}}" class="">
 										<button type="submit" class="btn btn-success">
-										<i class="fa fa-pencil"></i>
+										<i class="fa fa-check"></i>
 										</button>
 										</a>
 										<button type="button" class="btn btn-danger deleteButton" data-toggle="modal" data-modal-id="{{$message->id}}" data-target="#myModal{{$message->id}}">

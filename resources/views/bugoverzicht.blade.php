@@ -39,12 +39,12 @@
 								@if($bug->project)
 								@if($bug->project)
                                 @if($bug->project_id == $bug->project->id && $bug->status != 'gesloten')
-                                @if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0 && $bug->status != 'gesloten')
-                                    <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
-                                    @else
-                                    <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
-                                @endif
-									<td>{{$bug->id}}</td>
+									<tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
+                                        @if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0 && $bug->status != 'gesloten')
+                                    	<td  class="attention text-center" >{{$bug->id}}<br><i class="fa fa-exclamation-circle"></i></td>
+                                    	@else
+                                    	<td class="text-center">{{$bug->id}}</td>
+                                    	@endif
 									    <td>{{$bug->klant->bedrijf}}</td>
 									    <td>{{substr($bug->titel,0,15)}}...</td>
 									    <td>{{strtoupper($bug->status)}}</td>
@@ -125,12 +125,12 @@
 								@foreach($bugs_all as $bug)
 								@if($bug->project)
 								@if($bug->project_id == $bug->project->id && $bug->status == 'gesloten')
-								@if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0 && $bug->status == 'gesloten')
-                                    <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
-                                    @else
                                     <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
-                                @endif
-									<td>{{$bug->id}}</td>
+                                    @if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0 && $bug->status == 'gesloten')
+									<td class="text-center attention" >{{$bug->id}}<br><i class="fa fa-exclamation-circle"></i></td>
+									@else
+									<td class="text-center">{{$bug->id}}</td>
+									@endif
 									<td>{{$bug->klant->bedrijf}}</td>
 									<td>{{substr($bug->titel,0,15)}}...</td>
 									<td>{{strtoupper($bug->status)}}</td>
@@ -202,12 +202,14 @@
 												<tbody>
 													@foreach($bugs_all as $bug)
 													@if($bug->project_id == $project->id)
-                                                        @if(Auth::user()->rol == 'klant' && $bug->last_admin > 0)
-                                                            <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
-                                                            @else
-                                                            <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
+
+
+														<tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
+                                                        @if(Auth::user()->rol == 'klant' && $bug->last_admin > 0 && $bug->status != 'gesloten')
+                                                        <td class="text-center attention" >{{$bug->id}}<br><i class="fa fa-exclamation-circle"></i></td>
+                                                        @else
+                                                        <td class="text-center">{{$bug->id}}</td>
                                                         @endif
-														<td>{{$bug->id}}</td>
 														<td>{{substr($bug->titel,0,15)}}...</td>
 														<td>{{strtoupper($bug->status)}}</td>
 														<td>{{$bug->soort}}</td>

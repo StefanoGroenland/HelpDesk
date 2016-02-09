@@ -9,6 +9,13 @@
 .btn, .btn-group, .btn-group-vertical, .caret, .checkbox-inline, .radio-inline, img {
     vertical-align: middle;
 }
+.attention{
+    background-color: #E43A45;
+    color:#ffffff;
+}
+.attention .fa{
+    color:#000000;
+}
 hr, img {
     border: 0;
 }
