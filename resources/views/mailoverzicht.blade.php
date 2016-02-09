@@ -36,7 +36,7 @@
                                     <td>{{$message->from}}</td>
                                     <td>{{$message->subject}}</td>
                                     <td>{{date('d-m-Y H:i:s', strtotime($message->date))}}</td>
-                                    <td>{{substr($message->body,0,80)}}@if(strlen($message->body) > 80)...@endif</td>
+                                    <td>{{substr($message->body,0,120)}}@if(strlen($message->body) > 80)...@endif</td>
 									<td class="text-right" >
 										<a href="/mailverwerken/{{$message->id}}" class="">
 										<button type="submit" class="btn btn-success">
