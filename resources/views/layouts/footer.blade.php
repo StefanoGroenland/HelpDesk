@@ -23,13 +23,18 @@
 
  <script type="text/javascript">
     jQuery(function($) {
-            $('#jcrop_target').Jcrop({
-                bgColor:     'transparant',
-                setSelect:   [ 0, 0, 200, 200 ],
-                bgOpacity:   .4,
-                aspectRatio: 1,
-                onSelect: updateCoords
-            });
+        var input = $('#imgInp');
+          $('#imgInp').change(function(){
+          if(input.val() !== ""){
+             $('#jcrop_target').Jcrop({
+                 bgColor:     'transparant',
+                 setSelect:   [ 0, 0, 200, 200 ],
+                 bgOpacity:   .4,
+                 aspectRatio: 1,
+                 onSelect: updateCoords
+             });
+            }
+          });
         });
     function updateCoords(c)
     {
