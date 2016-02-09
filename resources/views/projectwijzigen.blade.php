@@ -40,7 +40,7 @@
                                         	@endif
 											<label for="projectnaam2">Projectnaam *</label>
 											<input type="text" class="form-control projectnaam2" required="true" id="projectnaam2" name="projectnaam" placeholder="Projectnaam"
-											    value="@if(old('projectnaam')) {{ old('projectnaam') }} @else {{$project->projectnaam}} @endif">
+											    value="@if(old('projectnaam')){{old('projectnaam')}}@else{{$project->projectnaam}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -51,7 +51,7 @@
                                         	@endif
 											<label for="liveurl2">Live URL *</label>
 											<input type="text" class="form-control projecturl2" required="true" id="liveurl2" name="liveurl" placeholder="Live URL"
-											    value="@if(old('liveurl')) {{ old('liveurl') }} @else {{$project->liveurl}} @endif">
+											    value="@if(old('liveurl')){{old('liveurl')}}@else{{$project->liveurl}}@endif">
 										</div>
 									</div>
 								</div>
@@ -64,7 +64,7 @@
                                         	@endif
 											<label for="bedrijfsnaam">Development URL</label>
 											<input type="text" class="form-control projecturl2" id="developmenturl2" name="developmenturl" placeholder="Development URL"
-											    value="@if(old('developmenturl')){{old('developmenturl')}} @else{{$project->developmenturl}}@endif">
+											    value="@if(old('developmenturl')){{old('developmenturl')}}@else{{$project->developmenturl}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -79,7 +79,7 @@
                                         	@endif
 											<label for="bedrijfsnaam">Beheer account</label>
 											<input type="text" class="form-control gebruikersnaam2"  id="gebruikersnaam2" name="gebruikersnaam" placeholder="Gebruikersnaam"
-											    value="@if(old('gebruikersnaam')){{old('gebruikersnaam')}} @else{{$project->gebruikersnaam}}@endif">
+											    value="@if(old('gebruikersnaam')){{old('gebruikersnaam')}}@else{{$project->gebruikersnaam}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -100,7 +100,7 @@
                                     <div class="form-group">
                                 @endif
 								<label for="bedrijfsnaam">Omschrijving</label>
-									<textarea class="form-control omschrijving2" rows="8" id="omschrijving2" name="omschrijvingproject">@if(old('omschrijvingproject')) {!! nl2br(old('omschrijvingproject')) !!} @else {!! nl2br($project->omschrijvingproject) !!} @endif</textarea>
+									<textarea class="form-control omschrijving2" rows="8" id="omschrijving2" name="omschrijvingproject">@if(old('omschrijvingproject')){!! nl2br(old('omschrijvingproject')) !!}@else{!! nl2br($project->omschrijvingproject) !!}@endif</textarea>
 								</div>
 								<button type="submit" class="btn btn-success pull-right"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
 						</div>

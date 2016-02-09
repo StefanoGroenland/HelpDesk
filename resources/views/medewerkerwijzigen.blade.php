@@ -40,7 +40,7 @@
                                         	@endif
 											<label for="email">E-mail *</label>
 											<input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail"
-											    value="@if(old('email')){{old('email')}} @else{{$medewerker->email}}@endif">
+											    value="@if(old('email')){{old('email')}}@else{{$medewerker->email}}@endif">
 											<input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$medewerker->id}}">
 										</div>
 									</div>
@@ -51,7 +51,7 @@
                                            <div class="form-group">
                                            @endif
 											<label for="gebruikersnaam">Gebruikersnaam *</label>
-											<input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="@if(old('username')){{old('username')}} @else{{$medewerker->username}}@endif">
+											<input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="@if(old('username')){{old('username')}}@else{{$medewerker->username}}@endif">
 										</div>
 									</div>
 								</div>
@@ -85,13 +85,13 @@
                                            <div class="form-group">
                                            @endif
 											<label for="voornaam">Voornaam *</label>
-											<input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="@if(old('voornaam')){{old('voornaam')}} @else{{$medewerker->voornaam}}@endif">
+											<input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="@if(old('voornaam')){{old('voornaam')}}@else{{$medewerker->voornaam}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 										<div class="form-group">
 											<label for="tussenvoegsel">Tussenvoegsel</label>
-											<input type="text" class="form-control" id="tussenvoegsel2" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="@if(old('tussenvoegsel')){{old('tussenvoegsel')}} @else{{$medewerker->tussenvoegsel}}@endif">
+											<input type="text" class="form-control" id="tussenvoegsel2" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="@if(old('tussenvoegsel')){{old('tussenvoegsel')}}@else{{$medewerker->tussenvoegsel}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -101,7 +101,7 @@
                                            <div class="form-group">
                                            @endif
 											<label for="achternaam">Achternaam *</label>
-											<input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="@if(old('achternaam')){{old('achternaam')}} @else{{$medewerker->achternaam}}@endif">
+											<input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="@if(old('achternaam')){{old('achternaam')}}@else{{$medewerker->achternaam}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -124,7 +124,7 @@
 											<div class="form-group">
 												@endif
 												<label for="telefoonnummer">Telefoonnummer *</label>
-												<input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="10" name="telefoonnummer" placeholder="Telefoonnummer" value="@if(old('telefoonnummer')){{old('telefoonnummer')}} @else{{$medewerker->telefoonnummer}}@endif">
+												<input type="text" class="form-control" required="true" id="telefoonnummer2" maxlength="10" name="telefoonnummer" placeholder="Telefoonnummer" value="@if(old('telefoonnummer')){{old('telefoonnummer')}}@else{{$medewerker->telefoonnummer}}@endif">
 											</div>
 										</div>
 									</div>

@@ -40,7 +40,7 @@
                                            @endif
 											<label for="bedrijfsnaam">Feedback *</label>
 											<input type="text" class="form-control" id="titel" name="titel" required="true" placeholder="Titel"
-											    value="@if(old('titel')){{old('titel')}} @else{{$bug->titel}}@endif">
+											    value="@if(old('titel')){{old('titel')}}@else{{$bug->titel}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -74,7 +74,7 @@
                                           <div class="form-group">
                                            @endif
 												<label for="start_date">Startdatum *</label>
-												<input data-toggle="tooltip" title="Wanneer heeft de fout zich als eerst voorgedaan?" type="text" name="start_datum" class="form_datetime form-control date-picker" value="@if(old('start_datum')){{old('start_datum')}} @else {{date('d-m-Y H:i',strtotime($bug->start_datum))}} @endif" data-rule-maxlength="30">
+												<input data-toggle="tooltip" title="Wanneer heeft de fout zich als eerst voorgedaan?" type="text" name="start_datum" class="form_datetime form-control date-picker" value="@if(old('start_datum')){{old('start_datum')}}@else{{date('d-m-Y H:i',strtotime($bug->start_datum))}}@endif" data-rule-maxlength="30">
 											</div>
 										</div>
 									</div>
@@ -85,7 +85,7 @@
                                           <div class="form-group">
                                            @endif
 										<label for="omschrijving">Omschrijving *</label>
-										<textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving">@if(old('beschrijving')) {!! nl2br(old('beschrijving')) !!} @else {!! nl2br($bug->beschrijving) !!} @endif</textarea>
+										<textarea  class="form-control" rows="7" id="beschrijving"  name="beschrijving">@if(old('beschrijving')){!! nl2br(old('beschrijving')) !!}@else{!! nl2br($bug->beschrijving) !!}@endif</textarea>
 									</div>
 									<button type="submit" class="btn btn-success pull-right"><span class="fa fa-check" aria-hidden="true"></span> Opslaan</button>
 					</form>

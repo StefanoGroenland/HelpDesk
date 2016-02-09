@@ -270,7 +270,7 @@ class UserController extends Controller
         );
 
         $rules = array(
-            'email' => 'required|unique:gebruikers,email,' . $id,
+            'email' => 'required|email|unique:gebruikers,email,' . $id,
             'username' => 'required|unique:gebruikers,username,' . $id,
             'telefoonnummer' => 'required|numeric|digits:10',
             'voornaam' => 'required|min:3|max:50',
@@ -322,7 +322,7 @@ class UserController extends Controller
             array_forget($data, 'password_confirmation');
         }
         $rules = array(
-            'email' => 'required|unique:gebruikers,email,' . $id,
+            'email' => 'required|email|unique:gebruikers,email,' . $id,
             'username' => 'required|unique:gebruikers,username,' . $id,
             'telefoonnummer' => 'required|numeric|digits:10',
             'voornaam' => 'required|min:3|max:50',
