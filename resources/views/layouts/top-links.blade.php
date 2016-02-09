@@ -150,69 +150,69 @@ body{
                </ul>
 
                <ul class="nav navbar-nav navbar-left visible-xs visible-sm">
-                                <li style="color:#9D9D9D;" @if(\Request::route()->getName() == 'profiel')class="active " @endif  >
-                                Welkom,
-                                                   <img class="img-responsive img-circle pull-left " alt="profile_img" src="
-                                                   @if(Auth::user()->profielfoto)
-                                                   {{'../'.Auth::user()->profielfoto}}
-                                                   @else
-                                                   {{"../assets/images/avatar.png"}}
-                                                   @endif
-                                                   " style="margin-right:3px; height: 26px;!important; width: 26px;!important;"/>
-                                                   {{ucfirst(Auth::user()->voornaam) .' '. ucfirst(Auth::user()->achternaam)}}
-                                                </li>
-                                 <li @if(\Request::route()->getName() == 'dashboard')class="active"@endif >
-                                    <a href="{{URL::to('/dashboard')}}">
-                                    <i class="fa fa-building"></i> Dashboard
-                                    </a>
-                                 </li>
-                                 @if(Auth::user()->rol == 'medewerker')
-                                    <li @if(\Request::route()->getName() == 'klanten')class="active"
-                                                    @elseif(\Request::route()->getName() == 'newklant')class="active"
-                                                    @elseif(\Request::route()->getName() == 'klantwijzigen')class="active"
-                                    @endif>
-                                    <a href="{{URL::to('/klanten')}}">
-                                    <i class="fa fa-user"></i> Klanten
-                                    </a>
-                                 </li>
-                                   <li @if(\Request::route()->getName() == 'projecten')class="active"
-                                                   @elseif(\Request::route()->getName() == 'newproject')class="active"
-                                                   @elseif(\Request::route()->getName() == 'projectwijzigen')class="active"
-                                   @endif>
-                                    <a href="{{URL::to('/projecten')}}">
-                                    <i class="fa fa-briefcase"></i> Projecten
-                                    </a>
-                                 </li>
-                                 @endif
-                                   <li  @if(\Request::route()->getName() == 'bugoverzicht')class="active" @elseif(\Request::route()->getName() == 'bugs') class="active" @endif>
-                                    <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
-                                   <i class="fa fa-bug"></i> Feedback overzicht
-                                    </a>
-                                 </li>
-                                 @if(Auth::user()->rol == 'medewerker')
-                                   <li @if(\Request::route()->getName() == 'mailoverzicht')class="active"@endif>
-                                    <a href="{{URL::to('/mails')}}">
-                                    <i class="fa fa-envelope-o"></i> Inbox
-                                    </a>
-                                 </li>
-                                 @endif
-                                 @if(Auth::user()->rol == 'medewerker')
-                                   <li @if(\Request::route()->getName() == 'medewerkers')class="active"
-                                                   @elseif(\Request::route()->getName() == 'newmedewerker')class="active"
-                                                   @elseif(\Request::route()->getName() == 'medewerkerwijzigen')class="active"
-                                   @endif>
-                                    <a href="{{URL::to('/medewerkers')}}">
-                                    <i class="fa fa-users"></i> Medewerkers
-                                    </a>
-                                 </li>
-                                 @endif
-                                 <li>
-                                    <a href="{{URL::to('/profiel')}}"><i class="fa fa-fw fa-user"></i> Profiel</a>
-                                 </li>
-                                 <li>
-                                    <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> Uitloggen</a>
-                                 </li>
-                              </ul>
+                    <li style="color:#9D9D9D;" @if(\Request::route()->getName() == 'profiel')class="active " @endif  >
+                    Welkom,
+                     <img class="img-responsive img-circle pull-left " alt="profile_img" src="
+                     @if(Auth::user()->profielfoto)
+                     {{'../'.Auth::user()->profielfoto}}
+                     @else
+                     {{"../assets/images/avatar.png"}}
+                     @endif
+                     " style="margin-right:3px; height: 26px;!important; width: 26px;!important;"/>
+                     {{ucfirst(Auth::user()->voornaam) .' '. ucfirst(Auth::user()->achternaam)}}
+                      </li>
+                     <li @if(\Request::route()->getName() == 'dashboard')class="active"@endif >
+                        <a href="{{URL::to('/dashboard')}}">
+                        <i class="fa fa-building"></i> Dashboard
+                        </a>
+                     </li>
+                     @if(Auth::user()->rol == 'medewerker')
+                        <li @if(\Request::route()->getName() == 'klanten')class="active"
+                                        @elseif(\Request::route()->getName() == 'newklant')class="active"
+                                        @elseif(\Request::route()->getName() == 'klantwijzigen')class="active"
+                        @endif>
+                        <a href="{{URL::to('/klanten')}}">
+                        <i class="fa fa-user"></i> Klanten
+                        </a>
+                     </li>
+                       <li @if(\Request::route()->getName() == 'projecten')class="active"
+                                       @elseif(\Request::route()->getName() == 'newproject')class="active"
+                                       @elseif(\Request::route()->getName() == 'projectwijzigen')class="active"
+                       @endif>
+                        <a href="{{URL::to('/projecten')}}">
+                        <i class="fa fa-briefcase"></i> Projecten
+                        </a>
+                     </li>
+                     @endif
+                       <li  @if(\Request::route()->getName() == 'bugoverzicht')class="active" @elseif(\Request::route()->getName() == 'bugs') class="active" @endif>
+                        <a href="{{URL::to('/bugoverzicht/'.Auth::user()->id)}}">
+                       <i class="fa fa-bug"></i> Feedback overzicht
+                        </a>
+                     </li>
+                     @if(Auth::user()->rol == 'medewerker')
+                       <li @if(\Request::route()->getName() == 'mailoverzicht')class="active"@endif>
+                        <a href="{{URL::to('/mails')}}">
+                        <i class="fa fa-envelope-o"></i> Inbox
+                        </a>
+                     </li>
+                     @endif
+                     @if(Auth::user()->rol == 'medewerker')
+                       <li @if(\Request::route()->getName() == 'medewerkers')class="active"
+                                       @elseif(\Request::route()->getName() == 'newmedewerker')class="active"
+                                       @elseif(\Request::route()->getName() == 'medewerkerwijzigen')class="active"
+                       @endif>
+                        <a href="{{URL::to('/medewerkers')}}">
+                        <i class="fa fa-users"></i> Medewerkers
+                        </a>
+                     </li>
+                     @endif
+                     <li>
+                        <a href="{{URL::to('/profiel')}}"><i class="fa fa-fw fa-user"></i> Profiel</a>
+                     </li>
+                     <li>
+                        <a href="{{URL::to('/logout')}}"><i class="fa fa-fw fa-power-off"></i> Uitloggen</a>
+                     </li>
+               </ul>
 
             </div>
             <!-- /.navbar-collapse -->

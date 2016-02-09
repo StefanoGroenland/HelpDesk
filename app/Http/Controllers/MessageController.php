@@ -66,7 +66,7 @@ class MessageController extends Controller {
             {
                 $body = (imap_fetchbody($mbox,$num,1));
             }
-            if($fromaddress !== "helpdesk@moodles.nl" && substr($fromaddress,0,14) !== "Mailer-Daemon@"){
+            if($fromaddress !== "helpdesk@moodles.nl" && substr($fromaddress,0,14) !== "Mailer-Daemon@" && $subject !== "Reactie op feedback discussie"){
                 Message::insertMail($fromaddress,$subject,$formatted,$body);
                 $this->pushSlack("Nieuwe feedback melding : ".$subject .", zie http://helpdesk.moodles.nl/mails voor de melding.");
                 imap_delete($mbox, $num);
