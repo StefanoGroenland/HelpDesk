@@ -72,8 +72,9 @@
 
 	@if(\Request::route()->getName() == 'bugchat')
         <script type="text/javascript">
-        $(document).ready(function(){
-            $('.fancybox').fancybox({
+        var $j = jQuery.noConflict();
+        $j(document).ready(function(){
+            $j('.fancybox').fancybox({
                 openEffect  : 'none',
                 closeEffect : 'none',
                 maxWidth: 700,

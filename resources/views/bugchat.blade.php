@@ -323,14 +323,7 @@
 	--}}
 	<!-- /#page-wrapper -->
 	@section('scripts')
-	{{--<script type="text/javascript">--}}
-		{{--function changeImage(img){--}}
-		    {{--var image = document.getElementById('image');--}}
-		    {{--image.src = '../'+img;--}}
-		{{--}--}}
-		{{--
-	</script>--}}
-	<script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
+    <script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
 	<script type="text/javascript" src="{{URL::asset('../assets/js/locales/bootstrap-datetimepicker.nl.js')}}" charset="UTF-8"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
