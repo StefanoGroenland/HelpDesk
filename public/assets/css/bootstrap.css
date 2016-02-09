@@ -2919,7 +2919,21 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
     padding-bottom: 10px;
     line-height: 20px;
 }
-
+@media (max-width:1466px){
+    .col-lg-12{
+        margin-top:50px!important;
+    }
+}
+@media (max-width:1465px){
+    .col-lg-12{
+        margin-top:0px!important;
+    }
+}
+@media (min-width: 1280px) and (max-width: 1281px) {
+    .col-lg-12{
+        margin-top:100px!important;
+    }
+}
 @media (max-width:767px) {
     .navbar-nav .open .dropdown-menu {
         position: static;
