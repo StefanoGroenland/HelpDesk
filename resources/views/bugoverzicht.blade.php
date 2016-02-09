@@ -202,9 +202,7 @@
 												<tbody>
 													@foreach($bugs_all as $bug)
 													@if($bug->project_id == $project->id)
-													@if(Auth::user()->rol == 'medewerker' && $bug->last_client > 0)
-                                                            <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
-                                                        @elseif(Auth::user()->rol != 'medewerker' && $bug->last_admin > 0)
+                                                        @if(Auth::user()->rol == 'klant' && $bug->last_admin > 0)
                                                             <tr class="danger" style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">
                                                             @else
                                                             <tr style="cursor:pointer;!important;" data-href="/bugchat/{{$bug->id}}">

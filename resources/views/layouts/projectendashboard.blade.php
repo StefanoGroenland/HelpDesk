@@ -56,7 +56,7 @@
                   @endif
                   <div class="col-xs-12 text-right">
                      {{--<span class="label label-{{$panel_type}}">   </span>--}}
-                     <div><span class="badge">
+                     <div><span class="badge pull-right">
                         @foreach($bugs_send as $bug)
                             @if($bug->status == 'open')
                                 @if($bug->project_id == $project->id)
@@ -65,9 +65,9 @@
                             @endif
                         @endforeach
                         {{$i}}
-                        </span> Openstaand
+                        </span> <span style="padding-right:5px;color:white;">Openstaand</span>
                      </div>
-                     <div><span class="badge">
+                     <div><span class="badge pull-right">
                         @foreach($bugs_send as $bug)
                             @if($bug->status == 'bezig')
                                 @if($bug->project_id == $project->id)
@@ -76,9 +76,9 @@
                             @endif
                         @endforeach
                         {{$x}}
-                        </span> Bezig
+                        </span> <span style="padding-right:5px;color:white;">Bezig</span>
                      </div>
-                     <div><span class="badge">
+                     <div><span class="badge pull-right">
                         @foreach($bugs_send as $bug)
                             @if($bug->status == 'gesloten')
                                 @if($bug->project_id == $project->id)
@@ -87,7 +87,7 @@
                             @endif
                         @endforeach
                         {{$y}}
-                        </span> Gesloten
+                        </span> <span style="padding-right:5px;color:white;">Gesloten</span>
                      </div>
                   </div>
                </div>
