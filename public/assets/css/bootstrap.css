@@ -2924,7 +2924,6 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
         margin-top:50px!important;
     }
 }
-
 @media (min-width: 996px) and (max-width: 1200px) {
     .col-lg-12{
         margin-top:50px!important;
