@@ -65,6 +65,7 @@ class BugController extends Controller
     public function updateFeedback($id, Request $request)
     {
         $bug = Bug::find($id);
+
         $data = array(
             'titel' => $request['titel'],
             'prioriteit' => $request['prioriteit'],
@@ -72,24 +73,21 @@ class BugController extends Controller
             'start_datum' => $request['start_datum'],
             'beschrijving' => $request['beschrijving'],
         );
-        if ($data['start_datum'] == '1970-01-01 00:00:00' || $data['start_datum'] == '1899-31-12 00:00:00' || $data['start_datum'] == '') {
-            $request->session()->flash('alert-danger', 'Start datum moet correct worden ingevuld.');
-            return redirect('/feedbackwijzigen/' . $id)->withInput($data);
-        }
-        if (strlen($data['titel']) > 50) {
-            $request->session()->flash('alert-danger', 'Titel mag niet meer als 50 karakters bevatten.');
-            return redirect('/feedbackwijzigen/' . $id)->withInput($data);
-        }
-        if (strlen($data['titel']) == 0) {
-            $request->session()->flash('alert-danger', 'Titel is verplicht.');
-            return redirect('/feedbackwijzigen/' . $id)->withInput($data);
-        }
-        if (strlen($data['beschrijving']) == 0) {
-            $request->session()->flash('alert-danger', 'Beschrijving is verplicht.');
-            return redirect('/feedbackwijzigen/' . $id)->withInput($data);
-        }
-        $data['start_datum'] = date('Y-m-d H:i', strtotime($data['start_datum']));
+
+        $rules = array(
+            'titel' => 'required|max:50',
+            'prioriteit' => 'required',
+            'soort' => 'required',
+            'start_datum' => 'required',
+            'beschrijving' => 'required',
+        );
+
         Bug::lastPerson($bug, 1, 0);
+        $data['start_datum'] = date('Y-m-d H:i', strtotime($data['start_datum']));
+        $validator = Validator::make($data, $rules);
+        if ($validator->fails()) {
+            return redirect('/feedbackwijzigen/' . $id)->withErrors($validator)->withInput($data);
+        }
 
         Bug::where('id', '=', $id)->update($data);
 

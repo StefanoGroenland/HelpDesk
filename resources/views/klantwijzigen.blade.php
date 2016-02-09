@@ -35,7 +35,7 @@
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
 											<label for="email">E-mail *</label>
-											<input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail" value="{{$klant->email}}">
+											<input type="email" class="form-control" required="true" id="email2" name="email" placeholder="E-Mail" value="@if(old('email')){{old('email')}} @else{{$klant->email}}@endif">
 											<input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$klant->id}}">
 										</div>
 									</div>
@@ -46,7 +46,7 @@
                                           <div class="form-group">
                                           @endif
 											<label for="gebruikersnaam">Gebruikersnaam *</label>
-											<input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="{{$klant->username}}">
+											<input type="text" class="form-control" required="true" id="gebruikersnaam2" name="username" placeholder="Gebruikersnaam"  value="@if(old('username')){{old('username')}} @else{{$klant->username}}@endif">
 										</div>
 									</div>
 								</div>
@@ -62,7 +62,11 @@
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('password'))
+                                           <div class="form-group has-error">
+                                           @else
+                                           <div class="form-group">
+                                           @endif
 											<label for="achternaam">Herhaal wachtwoord</label>
 											<input type="password" class="form-control"  id="wachtwoord2" name="password_confirmation" placeholder="Herhaal wachtwoord"  value="">
 										</div>
@@ -76,7 +80,7 @@
                                              <div class="form-group">
                                              @endif
 											<label for="voornaam">Voornaam *</label>
-											<input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="{{$klant->voornaam}}">
+											<input type="text" class="form-control" required="true" id="voornaam2" name="voornaam" placeholder="Voornaam"  value="@if(old('voornaam')){{old('voornaam')}} @else{{$klant->voornaam}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -86,17 +90,17 @@
                                              <div class="form-group">
                                              @endif
 											<label for="tussenvoegsel">Tussenvoegsel</label>
-											<input type="text" class="form-control" id="tussenvoegsel2" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="{{$klant->tussenvoegsel}}">
+											<input type="text" class="form-control" id="tussenvoegsel2" name="tussenvoegsel" placeholder="Tussenvoegsel"  value="@if(old('tussenvoegsel')){{old('tussenvoegsel')}} @else{{$klant->tussenvoegsel}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										@if($errors->has('voornaam'))
+										@if($errors->has('achternaam'))
                                              <div class="form-group has-error">
                                              @else
                                              <div class="form-group">
                                              @endif
 											<label for="achternaam">Achternaam *</label>
-											<input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="{{$klant->achternaam}}">
+											<input type="text" class="form-control" required="true" id="achternaam2" name="achternaam" placeholder="Achternaam"  value="@if(old('achternaam')){{old('achternaam')}} @else{{$klant->achternaam}}@endif">
 										</div>
 									</div>
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
