@@ -57,13 +57,13 @@
                                            @else
                                            <div class="form-group">
                                            @endif
-											<label for="achternaam">Wachtwoord *</label>
+											<label for="achternaam">Wachtwoord</label>
 											<input type="password" class="form-control"  id="wachtwoord2" name="password" placeholder="Wachtwoord"  value="">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<label for="achternaam">Herhaal wachtwoord *</label>
+											<label for="achternaam">Herhaal wachtwoord</label>
 											<input type="password" class="form-control"  id="wachtwoord2" name="password_confirmation" placeholder="Herhaal wachtwoord"  value="">
 										</div>
 									</div>

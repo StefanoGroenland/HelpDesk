@@ -104,13 +104,14 @@
 		<!-- /#page-wrapper -->
 		@section('scripts')
 		<script type="text/javascript">
+		var $j = jQuery.noConflict();
 			$(document).ready(function() {
 			      $('.data_table').on("click",'tr[data-href]',  function() {
 			         window.location.href = $(this).data('href');
 			     });
 			$('.deleteButton').on("click", function(event) {
 			
-			         var modalId = $(this).data('modal-id');
+			         var modalId = $j(this).data('modal-id');
 			         event.stopPropagation();
 			         jQuery.noConflict()
 			         $('#myModal'+modalId).modal('show');

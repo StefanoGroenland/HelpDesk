@@ -389,9 +389,11 @@ class UserController extends Controller
         );
 
         $rules = array(
-            'email' => 'unique:gebruikers|email',
-            'username' => 'unique:gebruikers',
+            'email' => 'required|unique:gebruikers|email',
+            'username' => 'required|unique:gebruikers',
             'telefoonnummer' => 'required|numeric|digits:10',
+            'voornaam' => 'required',
+            'achternaam' => 'required',
             'password' => 'required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
             'geslacht' => 'required',

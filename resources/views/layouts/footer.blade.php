@@ -68,31 +68,26 @@
         	if (parseInt(jQuery('#w').val())>0) return true;
         	return true;
         };
-
-
-	</script>
-<script>
-var $j = jQuery.noConflict();
-
-$j(document).ready(function(){
-
-
-    $j('.fancybox').fancybox({
-        openEffect  : 'none',
-        closeEffect : 'none',
-        maxWidth: 700,
-        maxHeight: 500,
-        helpers : {
-            media : {}
-        }
-
-    });
-
-});
 </script>
 
+	@if(\Request::route()->getName() == 'bugchat')
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('.fancybox').fancybox({
+                openEffect  : 'none',
+                closeEffect : 'none',
+                maxWidth: 700,
+                maxHeight: 500,
+                helpers : {
+                    media : {}
+                }
+            });
+        });
+        </script>
+    @endif
 
-<script>tinymce.init({
+
+<script type="text/javascript">tinymce.init({
    selector:'textarea',
     menubar: false
     });
@@ -112,8 +107,8 @@ $j(document).ready(function(){
 {{--datatables--}}
 <script src="{{URL::asset('../assets/js/datatables.js')}}"></script>
 <script type="text/javascript">
-   $(document).ready( function () {
-       $('.data_table').DataTable({
+   jQuery(document).ready( function () {
+       jQuery('.data_table').DataTable({
        "sDom": "Rlfrtip",
        "order": [[ 0, "desc" ]],
            "oLanguage" : {

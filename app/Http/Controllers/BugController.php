@@ -80,6 +80,14 @@ class BugController extends Controller
             $request->session()->flash('alert-danger', 'Titel mag niet meer als 50 karakters bevatten.');
             return redirect('/feedbackwijzigen/' . $id)->withInput($data);
         }
+        if (strlen($data['titel']) == 0) {
+            $request->session()->flash('alert-danger', 'Titel is verplicht.');
+            return redirect('/feedbackwijzigen/' . $id)->withInput($data);
+        }
+        if (strlen($data['beschrijving']) == 0) {
+            $request->session()->flash('alert-danger', 'Beschrijving is verplicht.');
+            return redirect('/feedbackwijzigen/' . $id)->withInput($data);
+        }
         $data['start_datum'] = date('Y-m-d H:i', strtotime($data['start_datum']));
         Bug::lastPerson($bug, 1, 0);
 

@@ -76,7 +76,11 @@
 									</div>
 									<div class="row">
 										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-											<div class="form-group">
+											@if($errors->has('voornaam'))
+                                            <div class="form-group has-error">
+                                            	@else
+                                            	<div class="form-group">
+                                            		@endif
 												<label for="voornaam">Voornaam *</label>
 												<input type="text" class="form-control" required="true" id="voornaam" name="voornaam" placeholder="Voornaam" value="{{old('voornaam')}}">
 											</div>
@@ -88,7 +92,11 @@
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-											<div class="form-group">
+											@if($errors->has('achternaam'))
+                                        	<div class="form-group has-error">
+                                        		@else
+                                        		<div class="form-group">
+                                        			@endif
 												<label for="achternaam">Achternaam *</label>
 												<input type="text" class="form-control" required="true" id="achternaam" name="achternaam" placeholder="Achternaam" value="{{old('achternaam')}}">
 											</div>

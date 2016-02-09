@@ -69,14 +69,22 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('email'))
+										<div class="form-group has-error">
+											@else
+											<div class="form-group">
+												@endif
 											<label for="email">E-mail *</label>
 											<input type="hidden" class="form-control id2" id="id2"  name="id" value="{{$user->id}}">
 											<input type="email" class="form-control" required="true" name="email" value="{{$user->email}}">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+										@if($errors->has('username'))
+										<div class="form-group has-error">
+											@else
+											<div class="form-group">
+												@endif
 											<label for="gebruikersnaam">Gebruikersnaam *</label>
 											<input type="text" class="form-control" required="true" name="username" value="{{$user->username}}">
 										</div>
@@ -84,13 +92,21 @@
 								</div>
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+									@if($errors->has('password'))
+                                       <div class="form-group has-error">
+                                       	@else
+                                       	<div class="form-group">
+                                       		@endif
 											<label for="wachtwoord">Wachtwoord</label>
 											<input type="password" class="form-control" name="password" >
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+									@if($errors->has('password'))
+                                       <div class="form-group has-error">
+                                       	@else
+                                       	<div class="form-group">
+                                       		@endif
 											<label for="wachtwoord">Herhaal wachtwoord</label>
 											<input type="password" class="form-control" name="password_confirmation" >
 										</div>
@@ -98,7 +114,11 @@
 								</div>
 								<div class="row">
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-										<div class="form-group">
+											@if($errors->has('voornaam'))
+        									<div class="form-group has-error">
+        										@else
+        										<div class="form-group">
+        											@endif
 											<label for="voornaam">Voornaam *</label>
 											<input type="text" class="form-control" required="true" name="voornaam" value="{{$user->voornaam}}">
 										</div>
@@ -110,7 +130,11 @@
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+							        @if($errors->has('achternaam'))
+                    		        <div class="form-group has-error">
+                    		        	@else
+                    		        	<div class="form-group">
+                    		        		@endif
 											<label for="achternaam">Achternaam *</label>
 											<input type="text" class="form-control" required="true" name="achternaam" value="{{$user->achternaam}}">
 										</div>
@@ -127,7 +151,11 @@
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="form-group">
+									@if($errors->has('bedrijf'))
+                                       <div class="form-group has-error">
+                                       	@else
+                                       	<div class="form-group">
+                                       		@endif
 											<label for="bedrijfsnaam">Bedrijf *</label>
 											<input type="text" class="form-control" required="true" name="bedrijf" value="{{$user->bedrijf}}">
 										</div>

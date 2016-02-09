@@ -30,7 +30,11 @@
 			<div class="panel-body">
 				<form method="POST" action="/addProject">
 					{!! csrf_field() !!}
-					<div class="form-group">
+				    @if($errors->has('projectnaam'))
+                        <div class="form-group has-error">
+                    @else
+                        <div class="form-group">
+                    @endif
 						<label for="sel4">Project gegevens</label>
 						<input type="text" class="form-control" id="projectnaam" required="true" name="projectnaam" placeholder="Projectnaam *" value="{{old('projectnaam')}}">
 					</div>
