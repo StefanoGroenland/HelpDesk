@@ -5,6 +5,15 @@
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<!-- Page Heading -->
+			@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+            			@if(Session::has('alert-' . $msg))
+            			<div class="row">
+            				<div class="col-lg-12">
+            					<p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+            				</div>
+            			</div>
+            			@endif
+            			@endforeach
 			<div class="row">
 				<div class="col-lg-12">
 					<a href="../newproject" class="pull-left" style="margin-bottom: 25px;!important;">
@@ -16,15 +25,6 @@
 					{{--breadcrumbs layout spot!--}}
 				</div>
 			</div>
-			@foreach (['danger', 'warning', 'success', 'info'] as $msg)
-			@if(Session::has('alert-' . $msg))
-			<div class="row">
-				<div class="col-lg-12">
-					<p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-				</div>
-			</div>
-			@endif
-			@endforeach
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="table-responsive">
