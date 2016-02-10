@@ -129,7 +129,7 @@
 											<input type="text" class="form-control" name="tussenvoegsel" value="{{$user->tussenvoegsel}}">
 										</div>
 									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div style="padding-top:20px!important;" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							        @if($errors->has('achternaam'))
                     		        <div class="form-group has-error">
                     		        	@else
